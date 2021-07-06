@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "language": "da",
+    "title": "Tirsdag den enogtyvende maj kl. fire seksogtredive og otteogfyrre sekunder.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Mandag",
+          "Tirsdag",
+          "Onsdag",
+          "Torsdag",
+          "Fredag",
+          "Lørdag",
+          "Søndag"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "den"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "første",
+          "anden",
+          "tredje",
+          "fjerde",
+          "femte",
+          "sjette",
+          "syvende",
+          "ottende",
+          "niende",
+          "tiende",
+          "ellevte",
+          "tolvte",
+          "trettende",
+          "fjortende",
+          "femtende",
+          "sekstende",
+          "syttende",
+          "attende",
+          "nittende",
+          "tyvende",
+          "enogtyvende",
+          "toogtyvende",
+          "treogtyvende",
+          "fireogtyvende",
+          "femogtyvende",
+          "seksogtyvende",
+          "syvogtyvende",
+          "otteogtyvende",
+          "niogtyvende",
+          "tredivte",
+          "enogtredivte"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "januar",
+          "februar",
+          "marts",
+          "april",
+          "maj",
+          "juni",
+          "juli",
+          "august",
+          "september",
+          "oktober",
+          "november",
+          "december"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "kl."
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "et",
+          "to",
+          "tre",
+          "fire",
+          "fem",
+          "seks",
+          "syv",
+          "otte",
+          "ni",
+          "ti",
+          "elleve",
+          "tolv"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "nul-nul",
+          "nul-et",
+          "nul-to",
+          "nul-tre",
+          "nul-fire",
+          "nul-fem",
+          "nul-seks",
+          "nul-syv",
+          "nul-otte",
+          "nul-ni",
+          "ti",
+          "elleve",
+          "tolv",
+          "tretten",
+          "fjorten",
+          "femten",
+          "seksten",
+          "sytten",
+          "atten",
+          "nitten",
+          "tyve",
+          "enogtyve",
+          "toogtyve",
+          "treogtyve",
+          "fireogtyve",
+          "femogtyve",
+          "seksogtyve",
+          "syvogtyve",
+          "otteogtyve",
+          "niogtyve",
+          "tredive",
+          "enogtredive",
+          "toogtredive",
+          "treogtredive",
+          "fireogtredive",
+          "femogtredive",
+          "seksogtredive",
+          "syvogtredive",
+          "otteogtredive",
+          "niogtredive",
+          "fyrre",
+          "enogfyrre",
+          "toogfyrre",
+          "treogfyrre",
+          "fireogfyrre",
+          "femogfyrre",
+          "seksogfyrre",
+          "syvogfyrre",
+          "otteogfyrre",
+          "niogfyrre",
+          "halvtreds",
+          "enoghalvtreds",
+          "tooghalvtreds",
+          "treoghalvtreds",
+          "fireoghalvtreds",
+          "femoghalvtreds",
+          "seksoghalvtreds",
+          "syvoghalvtreds",
+          "otteoghalvtreds",
+          "nioghalvtreds"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "og"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "nul-nul",
+          "nul-et",
+          "nul-to",
+          "nul-tre",
+          "nul-fire",
+          "nul-fem",
+          "nul-seks",
+          "nul-syv",
+          "nul-otte",
+          "nul-ni",
+          "ti",
+          "elleve",
+          "tolv",
+          "tretten",
+          "fjorten",
+          "femten",
+          "seksten",
+          "sytten",
+          "atten",
+          "nitten",
+          "tyve",
+          "enogtyve",
+          "toogtyve",
+          "treogtyve",
+          "fireogtyve",
+          "femogtyve",
+          "seksogtyve",
+          "syvogtyve",
+          "otteogtyve",
+          "niogtyve",
+          "tredive",
+          "enogtredive",
+          "toogtredive",
+          "treogtredive",
+          "fireogtredive",
+          "femogtredive",
+          "seksogtredive",
+          "syvogtredive",
+          "otteogtredive",
+          "niogtredive",
+          "fyrre",
+          "enogfyrre",
+          "toogfyrre",
+          "treogfyrre",
+          "fireogfyrre",
+          "femogfyrre",
+          "seksogfyrre",
+          "syvogfyrre",
+          "otteogfyrre",
+          "niogfyrre",
+          "halvtreds",
+          "enoghalvtreds",
+          "tooghalvtreds",
+          "treoghalvtreds",
+          "fireoghalvtreds",
+          "femoghalvtreds",
+          "seksoghalvtreds",
+          "syvoghalvtreds",
+          "otteoghalvtreds",
+          "nioghalvtreds"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "sekunder"
+          }
+        ]
+      }
+    ]
+  ]
+}

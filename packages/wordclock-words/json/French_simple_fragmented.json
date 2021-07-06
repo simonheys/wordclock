@@ -1,0 +1,329 @@
+{
+  "meta": {
+    "language": "fr",
+    "title": "(Fragmented) Trois heures, quatre minutes, une second",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "Zéro",
+          "Une",
+          "Deux",
+          "Trois",
+          "Quatre",
+          "Cinq",
+          "Six",
+          "Sept",
+          "Huit",
+          "Neuf",
+          "Dix",
+          "Onze",
+          "Douze",
+          "Treize",
+          "Quatorze",
+          "Quinze",
+          "Seize"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour<=16"
+          },
+          {
+            "highlight": "twentyfourhour==17",
+            "text": "-sept"
+          },
+          {
+            "highlight": "twentyfourhour==18",
+            "text": "-huit"
+          },
+          {
+            "highlight": "twentyfourhour==19",
+            "text": "-neuf"
+          },
+          {
+            "highlight": "twentyfourhour==20"
+          },
+          {
+            "highlight": "twentyfourhour==21",
+            "text": "-et-une"
+          },
+          {
+            "highlight": "twentyfourhour==22",
+            "text": "-deux"
+          },
+          {
+            "highlight": "twentyfourhour==23",
+            "text": "-trois"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "hour<=1",
+            "text": "heure,"
+          },
+          {
+            "highlight": "hour>=2",
+            "text": "heures,"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "zéro",
+          "une",
+          "deux",
+          "trois",
+          "quatre",
+          "cinq",
+          "six",
+          "sept",
+          "huit",
+          "neuf",
+          "dix",
+          "onze",
+          "douze",
+          "treize",
+          "quatorze",
+          "quinze",
+          "seize"
+        ]
+      },
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute<=16"
+          },
+          {
+            "highlight": "(minute>=17&&minute<=19)",
+            "text": "dix"
+          },
+          {
+            "highlight": "minute>=20&&minute<=29",
+            "text": "vingt"
+          },
+          {
+            "highlight": "minute>=30&&minute<=39",
+            "text": "trente"
+          },
+          {
+            "highlight": "minute>=40&&minute<=49",
+            "text": "quarante"
+          },
+          {
+            "highlight": "minute>=50&&minute<=59",
+            "text": "cinquante"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute==21||minute==31||minute==41||minute==51",
+            "text": "-et-une"
+          },
+          {
+            "highlight": "minute==22||minute==32||minute==42||minute==52",
+            "text": "-deux"
+          },
+          {
+            "highlight": "minute==23||minute==33||minute==43||minute==53",
+            "text": "-trois"
+          },
+          {
+            "highlight": "minute==24||minute==34||minute==44||minute==54",
+            "text": "-quatre"
+          },
+          {
+            "highlight": "minute==25||minute==35||minute==45||minute==55",
+            "text": "-cinq"
+          },
+          {
+            "highlight": "minute==26||minute==36||minute==46||minute==56",
+            "text": "-six"
+          },
+          {
+            "highlight": "minute==17||minute==27||minute==37||minute==47||minute==57",
+            "text": "-sept"
+          },
+          {
+            "highlight": "minute==18||minute==28||minute==38||minute==48||minute==58",
+            "text": "-huit"
+          },
+          {
+            "highlight": "minute==19||minute==29||minute==39||minute==49||minute==59",
+            "text": "-neuf"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute<=1",
+            "text": "minute"
+          },
+          {
+            "highlight": "minute>=2",
+            "text": "minutes"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "zéro",
+          "une",
+          "deux",
+          "trois",
+          "quatre",
+          "cinq",
+          "six",
+          "sept",
+          "huit",
+          "neuf",
+          "dix",
+          "onze",
+          "douze",
+          "treize",
+          "quatorze",
+          "quinze",
+          "seize"
+        ]
+      },
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<=16"
+          },
+          {
+            "highlight": "(second>=17&&second<=19)",
+            "text": "dix"
+          },
+          {
+            "highlight": "second>=20&&second<=29",
+            "text": "vingt"
+          },
+          {
+            "highlight": "second>=30&&second<=39",
+            "text": "trente"
+          },
+          {
+            "highlight": "second>=40&&second<=49",
+            "text": "quarante"
+          },
+          {
+            "highlight": "second>=50&&second<=59",
+            "text": "cinquante"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==21||second==31||second==41||second==51",
+            "text": "-et-une"
+          },
+          {
+            "highlight": "second==22||second==32||second==42||second==52",
+            "text": "-deux"
+          },
+          {
+            "highlight": "second==23||second==33||second==43||second==53",
+            "text": "-trois"
+          },
+          {
+            "highlight": "second==24||second==34||second==44||second==54",
+            "text": "-quatre"
+          },
+          {
+            "highlight": "second==25||second==35||second==45||second==55",
+            "text": "-cinq"
+          },
+          {
+            "highlight": "second==26||second==36||second==46||second==56",
+            "text": "-six"
+          },
+          {
+            "highlight": "second==17||second==27||second==37||second==47||second==57",
+            "text": "-sept"
+          },
+          {
+            "highlight": "second==18||second==28||second==38||second==48||second==58",
+            "text": "-huit"
+          },
+          {
+            "highlight": "second==19||second==29||second==39||second==49||second==59",
+            "text": "-neuf"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<=1",
+            "text": "seconde"
+          },
+          {
+            "highlight": "second>=2",
+            "text": "secondes"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

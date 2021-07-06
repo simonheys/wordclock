@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "language": "fi",
+    "title": "Perjantai yhdeksäs elokuuta, yksitoista viisikymmentä ja seitsemän sekunttia.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Maanantai",
+          "Tiistai",
+          "Keskiviikko",
+          "Torstai",
+          "Perjantai",
+          "Lauantai",
+          "Sunnuntai"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "ensimmäinen",
+          "toinen",
+          "kolmas",
+          "neljäs",
+          "viides",
+          "kuudes",
+          "seitsemäs",
+          "kahdeksas",
+          "yhdeksäs",
+          "kymmenes",
+          "yhdestoista",
+          "kahdestoista",
+          "kolmastoista",
+          "neljästoista",
+          "viidestoista",
+          "kuudestoista",
+          "seitsemästoista",
+          "kahdeksastoista",
+          "yhdeksästoista",
+          "kahdeskymmenes",
+          "kahdeskymmenesensimmäinen",
+          "kahdeskymmenestoinen",
+          "kahdeskymmeneskolmas",
+          "kahdeskymmenesneljäs",
+          "kahdeskymmenesviides",
+          "kahdeskymmeneskuudes",
+          "kahdeskymmenesseitsemäs",
+          "kahdeskymmeneskahdeksas",
+          "kahdeskymmenesyhdeksäs",
+          "kolmaskymmenes",
+          "kolmaskymmenesensimmäinen"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "tammikuuta",
+          "helmikuuta",
+          "maaliskuuta",
+          "huhtikuuta",
+          "toukokuuta",
+          "kesäkuuta",
+          "heinäkuuta",
+          "elokuuta",
+          "syyskuuta",
+          "lokakuuta",
+          "marraskuuta",
+          "joulukuuta"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "nolla",
+          "yksi",
+          "kaksi",
+          "kolme",
+          "neljä",
+          "viisi",
+          "kuusi",
+          "seitsemän",
+          "kahdeksan",
+          "yhdeksän",
+          "kymmenen",
+          "yksitoista",
+          "kaksitoista",
+          "kolmetoista",
+          "neljätoista",
+          "viisitoista",
+          "kuusitoista",
+          "seitsemäntoista",
+          "kahdeksantoista",
+          "yhdeksäntoista",
+          "kaksikymmentä",
+          "kaksikymmentäyksi",
+          "kaksikymmentäkaksi",
+          "kaksikymmentäkolme"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "nolla nolla",
+          "nolla yksi",
+          "nolla kaksi",
+          "nolla kolme",
+          "nolla neljä",
+          "nolla viisi",
+          "nolla kuusi",
+          "nolla seitsemän",
+          "nolla kahdeksan",
+          "nolla yhdeksän",
+          "kymmenen",
+          "yksitoista",
+          "kaksitoista",
+          "kolmetoista",
+          "neljätoista",
+          "viisitoista",
+          "kuusitoista",
+          "seitsemäntoista",
+          "kahdeksantoista",
+          "yhdeksäntoista",
+          "kaksikymmentä",
+          "kaksikymmentäyksi",
+          "kaksikymmentäkaksi",
+          "kaksikymmentäkolme",
+          "kaksikymmentäneljä",
+          "kaksikymmentäviisi",
+          "kaksikymmentäkuusi",
+          "kaksikymmentäseitsemän",
+          "kaksikymmentäkahdeksan",
+          "kaksikymmentäyhdeksän",
+          "kolmekymmentä",
+          "kolmekymmentäyksi",
+          "kolmekymmentäkaksi",
+          "kolmekymmentäkolme",
+          "kolmekymmentäneljä",
+          "kolmekymmentäviisi",
+          "kolmekymmentäkuusi",
+          "kolmekymmentäseitsemän",
+          "kolmekymmentäkahdeksan",
+          "kolmekymmentäyhdeksän",
+          "neljäkymmentä",
+          "neljäkymmentäyksi",
+          "neljäkymmentäkaksi",
+          "neljäkymmentäkolme",
+          "neljäkymmentäneljä",
+          "neljäkymmentäviisi",
+          "neljäkymmentäkuusi",
+          "neljäkymmentäseitsemän",
+          "neljäkymmentäkahdeksan",
+          "neljäkymmentäyhdeksän",
+          "viisikymmentä",
+          "viisikymmentäyksi",
+          "viisikymmentäkaksi",
+          "viisikymmentäkolme",
+          "viisikymmentäneljä",
+          "viisikymmentäviisi",
+          "viisikymmentäkuusi",
+          "viisikymmentäseitsemän",
+          "viisikymmentäkahdeksan",
+          "viisikymmentäyhdeksän"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "ja"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "nolla",
+          "yksi",
+          "kaksi",
+          "kolme",
+          "neljä",
+          "viisi",
+          "kuusi",
+          "seitsemän",
+          "kahdeksan",
+          "yhdeksän",
+          "kymmenen",
+          "yksitoista",
+          "kaksitoista",
+          "kolmetoista",
+          "neljätoista",
+          "viisitoista",
+          "kuusitoista",
+          "seitsemäntoista",
+          "kahdeksantoista",
+          "yhdeksäntoista",
+          "kaksikymmentä",
+          "kaksikymmentäyksi",
+          "kaksikymmentäkaksi",
+          "kaksikymmentäkolme",
+          "kaksikymmentäneljä",
+          "kaksikymmentäviisi",
+          "kaksikymmentäkuusi",
+          "kaksikymmentäseitsemän",
+          "kaksikymmentäkahdeksan",
+          "kaksikymmentäyhdeksän",
+          "kolmekymmentä",
+          "kolmekymmentäyksi",
+          "kolmekymmentäkaksi",
+          "kolmekymmentäkolme",
+          "kolmekymmentäneljä",
+          "kolmekymmentäviisi",
+          "kolmekymmentäkuusi",
+          "kolmekymmentäseitsemän",
+          "kolmekymmentäkahdeksan",
+          "kolmekymmentäyhdeksän",
+          "neljäkymmentä",
+          "neljäkymmentäyksi",
+          "neljäkymmentäkaksi",
+          "neljäkymmentäkolme",
+          "neljäkymmentäneljä",
+          "neljäkymmentäviisi",
+          "neljäkymmentäkuusi",
+          "neljäkymmentäseitsemän",
+          "neljäkymmentäkahdeksan",
+          "neljäkymmentäyhdeksän",
+          "viisikymmentä",
+          "viisikymmentäyksi",
+          "viisikymmentäkaksi",
+          "viisikymmentäkolme",
+          "viisikymmentäneljä",
+          "viisikymmentäviisi",
+          "viisikymmentäkuusi",
+          "viisikymmentäseitsemän",
+          "viisikymmentäkahdeksan",
+          "viisikymmentäyhdeksän"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==1",
+            "text": "sekuntti"
+          },
+          {
+            "highlight": "second!=1",
+            "text": "sekunttia"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

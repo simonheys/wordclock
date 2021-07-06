@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wordclock language="en">
+    <title>
+        <![CDATA[Monday the second of March, four fifty six…]]>
+    </title>
+    <author>
+        <name>
+            <![CDATA[Simon Heys]]>
+        </name>
+        <url>
+            <![CDATA[http://www.simonheys.com/]]>
+        </url>
+        <email>
+            <![CDATA[si@simonheys.com]]>
+        </email>
+    </author>
+    <suitability>
+        <suitable style="linear"/>
+    </suitability>
+    <group>
+        <sequence bind="day" first="0" delimeter=",">
+            <![CDATA[Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday]]>
+        </sequence>
+    </group>
+    <group>
+        <item highlight="true">
+            <![CDATA[the]]>
+        </item>
+    </group>
+    <group>
+        <sequence bind="date" first="1" delimeter=",">
+            <![CDATA[first,second,third,fourth,fifth,sixth,seventh,eighth,ninth,tenth,eleventh,twelfth,thirteenth,fourteenth,fifteenth,sixteenth,seventeenth,eighteenth,nineteenth,twentieth,twenty-first,twenty-second,twenty-third,twenty-fourth,twenty-fifth,twenty-sixth,twenty-seventh,twenty-eighth,twenty-ninth,thirtieth,thirty-first]]>
+        </sequence>
+    </group>
+    <group>
+        <item highlight="true">
+            <![CDATA[of]]>
+        </item>
+    </group>
+    <group>
+        <sequence bind="month" first="0" delimeter=",">
+            <![CDATA[January,February,March,April,May,June,July,August,September,October,November,December]]>
+        </sequence>
+    </group>
+    <group>
+        <item highlight="true">
+            <![CDATA[,]]>
+        </item>
+    </group>
+    <group>
+        <sequence bind="hour" first="1" delimeter=",">
+            <![CDATA[one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve]]>
+        </sequence>
+    </group>
+    <group>
+        <sequence bind="minute" first="0" delimeter=",">
+            <![CDATA[o’clock,oh-one,oh-two,oh-three,oh-four,oh-five,oh-six,oh-seven,oh-eight,oh-nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,twenty-one,twenty-two,twenty-three,twenty-four,twenty-five,twenty-six,twenty-seven,twenty-eight,twenty-nine,thirty,thirty-one,thirty-two,thirty-three,thirty-four,thirty-five,thirty-six,thirty-seven,thirty-eight,thirty-nine,forty,forty-one,forty-two,forty-three,forty-four,forty-five,forty-six,forty-seven,forty-eight,forty-nine,fifty,fifty-one,fifty-two,fifty-three,fifty-four,fifty-five,fifty-six,fifty-seven,fifty-eight,fifty-nine]]>
+        </sequence>
+    </group>
+    
+    <group>
+        <item highlight="twentyfourhour&lt;12">
+            <![CDATA[am]]>
+        </item>
+        <item highlight="twentyfourhour&gt;=12">
+            <![CDATA[pm]]>
+        </item>
+        <space count="58"/>
+    </group>
+    
+    <group>
+        <item highlight="second==0">
+            <![CDATA[]]>
+        </item>
+        <item highlight="second!=0">
+            <![CDATA[and]]>
+        </item>
+        <space count="58"/>
+    </group>
+    
+    <group>
+        <sequence bind="second" first="0" delimeter=",">
+            <![CDATA[,one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,twenty-one,twenty-two,twenty-three,twenty-four,twenty-five,twenty-six,twenty-seven,twenty-eight,twenty-nine,thirty,thirty-one,thirty-two,thirty-three,thirty-four,thirty-five,thirty-six,thirty-seven,thirty-eight,thirty-nine,forty,forty-one,forty-two,forty-three,forty-four,forty-five,forty-six,forty-seven,forty-eight,forty-nine,fifty,fifty-one,fifty-two,fifty-three,fifty-four,fifty-five,fifty-six,fifty-seven,fifty-eight,fifty-nine]]>
+        </sequence>
+    </group>
+    
+    <group>
+        <item highlight="second&lt;1">
+            <![CDATA[]]>
+        </item>
+        <item highlight="second==1">
+            <![CDATA[second]]>
+        </item>
+        <item highlight="second&gt;1">
+            <![CDATA[seconds]]>
+        </item>
+        <space count="57"/>
+    </group>
+    
+</wordclock>

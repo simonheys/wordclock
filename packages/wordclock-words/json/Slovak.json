@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "language": "sk",
+    "title": "piatok dvadsiatehoprvého decembra dve hodina dvadsaťjeden po polnoci tridsaťpäť sekundy.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "pondelok",
+          "utorok",
+          "streda",
+          "štvrtok",
+          "piatok",
+          "sobota",
+          "nedeľa"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "prvého",
+          "druhého",
+          "tretieho",
+          "štvrtého",
+          "piateho",
+          "šiesteho",
+          "siedemeho",
+          "ôsmeho",
+          "deviateho",
+          "desiateho",
+          "jedenásteho",
+          "dvanásteho",
+          "trinásteho",
+          "štrnásteho",
+          "pätnásteho",
+          "šestnásteho",
+          "sedemnásteho",
+          "osemnásteho",
+          "devätnásteho",
+          "dvadsiateho",
+          "dvadsiatehoprvého",
+          "dvadsiatehodruhého",
+          "dvadsiatehotretieho",
+          "dvadsiatehoštvrtého",
+          "dvadsiatehopiateho",
+          "dvadsiatehošiesteho",
+          "dvadsiatehosiedemeho",
+          "dvadsiatehoôsmeho",
+          "dvadsiatehodeviateho",
+          "tridsiateho",
+          "tridsiatehoprvého"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "januára",
+          "februára",
+          "marca",
+          "apríla",
+          "mája",
+          "júna",
+          "júla",
+          "augusta",
+          "septembra",
+          "októbra",
+          "novembra",
+          "decembra"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "jedna",
+          "dve",
+          "tri",
+          "štyri",
+          "päť",
+          "šesť",
+          "sedem",
+          "osem",
+          "deväť",
+          "desať",
+          "jedenásť",
+          "dvanásť",
+          "trinásť",
+          "štrnásť",
+          "pätnásť",
+          "šestnásť",
+          "sedemnásť",
+          "osemnásť",
+          "devätnásť",
+          "dvadsať",
+          "dvadsaťjeden",
+          "dvadsaťdva",
+          "dvadsaťtri",
+          "polnoc"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(hour!=0) && hour<=1",
+            "text": "hodina"
+          },
+          {
+            "highlight": "(hour!=0) && hour<=4",
+            "text": "hodiny"
+          },
+          {
+            "highlight": "(hour!=0) && hour<=5",
+            "text": "hodín"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "presne",
+          "jedna",
+          "dve",
+          "tri",
+          "štyri",
+          "päť",
+          "šesť",
+          "sedem",
+          "osem",
+          "deväť",
+          "desať",
+          "jedenásť",
+          "dvanásť",
+          "trinásť",
+          "štrnásť",
+          "pätnásť",
+          "šestnásť",
+          "sedemnásť",
+          "osemnásť",
+          "devätnásť",
+          "dvadsať",
+          "dvadsaťjeden",
+          "dvadsaťdva",
+          "dvadsaťtri",
+          "dvadsaťštyri",
+          "dvadsaťpäť",
+          "dvadsaťšesť",
+          "dvadsaťsedem",
+          "dvadsaťosem",
+          "dvadsaťdeväť",
+          "tridsať",
+          "tridsaťjeden",
+          "tridsaťdva",
+          "tridsaťtri",
+          "tridsaťštyri",
+          "tridsaťpäť",
+          "tridsaťšesť",
+          "tridsaťsedem",
+          "tridsaťosem",
+          "tridsaťdeväť",
+          "štyridsať",
+          "štyridsaťjeden",
+          "štyridsaťdva",
+          "štyridsaťtri",
+          "štyridsaťštyri",
+          "štyridsaťpäť",
+          "štyridsaťšesť",
+          "štyridsaťsedem",
+          "štyridsaťosem",
+          "štyridsaťdeväť",
+          "päťdesiat",
+          "päťdesiatjeden",
+          "päťdesiatdva",
+          "päťdesiattri",
+          "päťdesiatštyri",
+          "päťdesiatpäť",
+          "päťdesiatšesť",
+          "päťdesiatsedem",
+          "päťdesiatosem",
+          "päťdesiatdeväť"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(minute!=0) && minute<=1",
+            "text": "minúta"
+          },
+          {
+            "highlight": "(minute!=0) && minute<=4",
+            "text": "minúty"
+          },
+          {
+            "highlight": "(minute!=0) && minute>=5",
+            "text": "minút"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 56
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "hour==0 && minute==0",
+            "text": "polnoc"
+          },
+          {
+            "highlight": "hour==0 && minute!=0",
+            "text": "po polnoci"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second!=0",
+            "text": "a"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "presne",
+          "jedna",
+          "dve",
+          "tri",
+          "štyri",
+          "päť",
+          "šesť",
+          "sedem",
+          "osem",
+          "deväť",
+          "desať",
+          "jedenásť",
+          "dvanásť",
+          "trinásť",
+          "štrnásť",
+          "pätnásť",
+          "šestnásť",
+          "sedemnásť",
+          "osemnásť",
+          "devätnásť",
+          "dvadsať",
+          "dvadsaťjeden",
+          "dvadsaťdva",
+          "dvadsaťtri",
+          "dvadsaťštyri",
+          "dvadsaťpäť",
+          "dvadsaťšesť",
+          "dvadsaťsedem",
+          "dvadsaťosem",
+          "dvadsaťdeväť",
+          "tridsať",
+          "tridsaťjeden",
+          "tridsaťdva",
+          "tridsaťtri",
+          "tridsaťštyri",
+          "tridsaťpäť",
+          "tridsaťšesť",
+          "tridsaťsedem",
+          "tridsaťosem",
+          "tridsaťdeväť",
+          "štyridsať",
+          "štyridsaťjeden",
+          "štyridsaťdva",
+          "štyridsaťtri",
+          "štyridsaťštyri",
+          "štyridsaťpäť",
+          "štyridsaťšesť",
+          "štyridsaťsedem",
+          "štyridsaťosem",
+          "štyridsaťdeväť",
+          "päťdesiat",
+          "päťdesiatjeden",
+          "päťdesiatdva",
+          "päťdesiattri",
+          "päťdesiatštyri",
+          "päťdesiatpäť",
+          "päťdesiatšesť",
+          "päťdesiatsedem",
+          "päťdesiatosem",
+          "päťdesiatdeväť"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(second!=0) && second<=1",
+            "text": "sekunda"
+          },
+          {
+            "highlight": "(second!=0) && second<=4",
+            "text": "sekundy"
+          },
+          {
+            "highlight": "(second!=0) && second>=5",
+            "text": "sekúnd"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

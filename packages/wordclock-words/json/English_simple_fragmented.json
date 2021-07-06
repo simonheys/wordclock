@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "language": "en",
+    "title": "(Fragmented) Three forty-five and twelve seconds",
+    "suitability": ["rotary"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "One",
+          "Two",
+          "Three",
+          "Four",
+          "Five",
+          "Six",
+          "Seven",
+          "Eight",
+          "Nine",
+          "Ten",
+          "Eleven",
+          "Twelve"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute==0",
+            "text": "o’clock"
+          },
+          {
+            "highlight": "minute>0 && minute<10",
+            "text": "oh"
+          },
+          {
+            "highlight": "minute>=20 && minute<30",
+            "text": "twenty"
+          },
+          {
+            "highlight": "minute>=30 && minute<40",
+            "text": "thirty"
+          },
+          {
+            "highlight": "minute>=40 && minute<50",
+            "text": "forty"
+          },
+          {
+            "highlight": "minute>=50 && minute<60",
+            "text": "fifty"
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 10,
+        "text": [
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(minute%10)==0 || (minute>10 && minute<21)"
+          },
+          {
+            "highlight": "(minute%10)==1",
+            "text": "one"
+          },
+          {
+            "highlight": "(minute%10)==2",
+            "text": "two"
+          },
+          {
+            "highlight": "(minute%10)==3",
+            "text": "three"
+          },
+          {
+            "highlight": "(minute%10)==4",
+            "text": "four"
+          },
+          {
+            "highlight": "(minute%10)==5",
+            "text": "five"
+          },
+          {
+            "highlight": "(minute%10)==6",
+            "text": "six"
+          },
+          {
+            "highlight": "(minute%10)==7",
+            "text": "seven"
+          },
+          {
+            "highlight": "(minute%10)==8",
+            "text": "eight"
+          },
+          {
+            "highlight": "(minute%10)==9",
+            "text": "nine"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second!=0",
+            "text": "and"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0",
+            "text": "precisely"
+          },
+          {
+            "highlight": "second>0 && second<10"
+          },
+          {
+            "highlight": "second>=20 && second<30",
+            "text": "twenty"
+          },
+          {
+            "highlight": "second>=30 && second<40",
+            "text": "thirty"
+          },
+          {
+            "highlight": "second>=40 && second<50",
+            "text": "forty"
+          },
+          {
+            "highlight": "second>=50 && second<60",
+            "text": "fifty"
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 10,
+        "text": [
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(second%10)==0 || (second>10 && second<21)"
+          },
+          {
+            "highlight": "(second%10)==1",
+            "text": "one"
+          },
+          {
+            "highlight": "(second%10)==2",
+            "text": "two"
+          },
+          {
+            "highlight": "(second%10)==3",
+            "text": "three"
+          },
+          {
+            "highlight": "(second%10)==4",
+            "text": "four"
+          },
+          {
+            "highlight": "(second%10)==5",
+            "text": "five"
+          },
+          {
+            "highlight": "(second%10)==6",
+            "text": "six"
+          },
+          {
+            "highlight": "(second%10)==7",
+            "text": "seven"
+          },
+          {
+            "highlight": "(second%10)==8",
+            "text": "eight"
+          },
+          {
+            "highlight": "(second%10)==9",
+            "text": "nine"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<1"
+          },
+          {
+            "highlight": "second==1",
+            "text": "second"
+          },
+          {
+            "highlight": "second>1",
+            "text": "seconds"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

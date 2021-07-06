@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "language": "en",
+    "title": "Monday the second of March, four fifty six…",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "day",
+        "first": 0,
+        "text": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "the"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "first",
+          "second",
+          "third",
+          "fourth",
+          "fifth",
+          "sixth",
+          "seventh",
+          "eighth",
+          "ninth",
+          "tenth",
+          "eleventh",
+          "twelfth",
+          "thirteenth",
+          "fourteenth",
+          "fifteenth",
+          "sixteenth",
+          "seventeenth",
+          "eighteenth",
+          "nineteenth",
+          "twentieth",
+          "twenty-first",
+          "twenty-second",
+          "twenty-third",
+          "twenty-fourth",
+          "twenty-fifth",
+          "twenty-sixth",
+          "twenty-seventh",
+          "twenty-eighth",
+          "twenty-ninth",
+          "thirtieth",
+          "thirty-first"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "of"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+          "ten",
+          "eleven",
+          "twelve"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "o’clock",
+          "oh-one",
+          "oh-two",
+          "oh-three",
+          "oh-four",
+          "oh-five",
+          "oh-six",
+          "oh-seven",
+          "oh-eight",
+          "oh-nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+          "twenty-one",
+          "twenty-two",
+          "twenty-three",
+          "twenty-four",
+          "twenty-five",
+          "twenty-six",
+          "twenty-seven",
+          "twenty-eight",
+          "twenty-nine",
+          "thirty",
+          "thirty-one",
+          "thirty-two",
+          "thirty-three",
+          "thirty-four",
+          "thirty-five",
+          "thirty-six",
+          "thirty-seven",
+          "thirty-eight",
+          "thirty-nine",
+          "forty",
+          "forty-one",
+          "forty-two",
+          "forty-three",
+          "forty-four",
+          "forty-five",
+          "forty-six",
+          "forty-seven",
+          "forty-eight",
+          "forty-nine",
+          "fifty",
+          "fifty-one",
+          "fifty-two",
+          "fifty-three",
+          "fifty-four",
+          "fifty-five",
+          "fifty-six",
+          "fifty-seven",
+          "fifty-eight",
+          "fifty-nine"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour<12",
+            "text": "am"
+          },
+          {
+            "highlight": "twentyfourhour>=12",
+            "text": "pm"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second!=0",
+            "text": "and"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "",
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+          "twenty-one",
+          "twenty-two",
+          "twenty-three",
+          "twenty-four",
+          "twenty-five",
+          "twenty-six",
+          "twenty-seven",
+          "twenty-eight",
+          "twenty-nine",
+          "thirty",
+          "thirty-one",
+          "thirty-two",
+          "thirty-three",
+          "thirty-four",
+          "thirty-five",
+          "thirty-six",
+          "thirty-seven",
+          "thirty-eight",
+          "thirty-nine",
+          "forty",
+          "forty-one",
+          "forty-two",
+          "forty-three",
+          "forty-four",
+          "forty-five",
+          "forty-six",
+          "forty-seven",
+          "forty-eight",
+          "forty-nine",
+          "fifty",
+          "fifty-one",
+          "fifty-two",
+          "fifty-three",
+          "fifty-four",
+          "fifty-five",
+          "fifty-six",
+          "fifty-seven",
+          "fifty-eight",
+          "fifty-nine"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<1"
+          },
+          {
+            "highlight": "second==1",
+            "text": "second"
+          },
+          {
+            "highlight": "second>1",
+            "text": "seconds"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

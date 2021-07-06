@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "language": "de",
+    "title": "Drei Uhr achtunddreißig und siebenundzwanzig Sekunden.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "Null",
+          "Ein",
+          "Zwei",
+          "Drei",
+          "Vier",
+          "Fünf",
+          "Sechs",
+          "Sieben",
+          "Acht",
+          "Neun",
+          "Zehn",
+          "Elf",
+          "Zwölf",
+          "Dreizehn",
+          "Vierzehn",
+          "Fünfzehn",
+          "Sechzehn",
+          "Siebzehn",
+          "Achtzehn",
+          "Neunzehn",
+          "Zwanzig",
+          "Einundzwanzig",
+          "Zweiundzwanzig",
+          "Dreiundzwanzig"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "Uhr"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "",
+          "eins",
+          "zwei",
+          "drei",
+          "vier",
+          "fünf",
+          "sechs",
+          "sieben",
+          "acht",
+          "neun",
+          "zehn",
+          "elf",
+          "zwölf",
+          "dreizehn",
+          "vierzehn",
+          "fünfzehn",
+          "sechzehn",
+          "siebzehn",
+          "achtzehn",
+          "neunzehn",
+          "zwanzig",
+          "einundzwanzig",
+          "zweiundzwanzig",
+          "dreiundzwanzig",
+          "vierundzwanzig",
+          "fünfundzwanzig",
+          "sechsundzwanzig",
+          "siebenundzwanzig",
+          "achtundzwanzig",
+          "neunundzwanzig",
+          "dreißig",
+          "einunddreißig",
+          "zweiunddreißig",
+          "dreiunddreißig",
+          "vierunddreißig",
+          "fünfunddreißig",
+          "sechsunddreißig",
+          "siebenunddreißig",
+          "achtunddreißig",
+          "neununddreißig",
+          "vierzig",
+          "einundvierzig",
+          "zweiundvierzig",
+          "dreiundvierzig",
+          "vierundvierzig",
+          "fünfundvierzig",
+          "sechsundvierzig",
+          "siebenundvierzig",
+          "achtundvierzig",
+          "neunundvierzig",
+          "fünfzig",
+          "einundfünfzig",
+          "zweiundfünfzig",
+          "dreiundfünfzig",
+          "vierundfünfzig",
+          "fünfundfünfzig",
+          "sechsundfünfzig",
+          "siebenundfünfzig",
+          "achtundfünfzig",
+          "neunundfünfzig"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second!=0",
+            "text": "und"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "",
+          "eine",
+          "zwei",
+          "drei",
+          "vier",
+          "fünf",
+          "sechs",
+          "sieben",
+          "acht",
+          "neun",
+          "zehn",
+          "elf",
+          "zwölf",
+          "dreizehn",
+          "vierzehn",
+          "fünfzehn",
+          "sechzehn",
+          "siebzehn",
+          "achtzehn",
+          "neunzehn",
+          "zwanzig",
+          "einundzwanzig",
+          "zweiundzwanzig",
+          "dreiundzwanzig",
+          "vierundzwanzig",
+          "fünfundzwanzig",
+          "sechsundzwanzig",
+          "siebenundzwanzig",
+          "achtundzwanzig",
+          "neunundzwanzig",
+          "dreißig",
+          "einunddreißig",
+          "zweiunddreißig",
+          "dreiunddreißig",
+          "vierunddreißig",
+          "fünfunddreißig",
+          "sechsunddreißig",
+          "siebenunddreißig",
+          "achtunddreißig",
+          "neununddreißig",
+          "vierzig",
+          "einundvierzig",
+          "zweiundvierzig",
+          "dreiundvierzig",
+          "vierundvierzig",
+          "fünfundvierzig",
+          "sechsundvierzig",
+          "siebenundvierzig",
+          "achtundvierzig",
+          "neunundvierzig",
+          "fünfzig",
+          "einundfünfzig",
+          "zweiundfünfzig",
+          "dreiundfünfzig",
+          "vierundfünfzig",
+          "fünfundfünfzig",
+          "sechsundfünfzig",
+          "siebenundfünfzig",
+          "achtundfünfzig",
+          "neunundfünfzig"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<1"
+          },
+          {
+            "highlight": "second==1",
+            "text": "Sekunde"
+          },
+          {
+            "highlight": "second>1",
+            "text": "Sekunden"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

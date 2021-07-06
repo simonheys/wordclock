@@ -1,0 +1,302 @@
+{
+  "meta": {
+    "language": "it",
+    "title": "È mezzanotte, ventun minuti e ventitré secondi",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour == 0 || twentyfourhour == 1 || twentyfourhour == 12",
+            "text": "È"
+          },
+          {
+            "highlight": "else",
+            "text": "Sono"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 22
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour == 0 || twentyfourhour == 12"
+          },
+          {
+            "highlight": "twentyfourhour == 1",
+            "text": "l'"
+          },
+          {
+            "highlight": "else",
+            "text": "le"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 21
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "mezzanotte",
+          "una",
+          "due",
+          "tre",
+          "quattro",
+          "cinque",
+          "sei",
+          "sette",
+          "otto",
+          "nove",
+          "dieci",
+          "undici",
+          "mezzogiorno",
+          "tredici",
+          "quattordici",
+          "quindici",
+          "sedici",
+          "diciassette",
+          "diciotto",
+          "diciannove",
+          "venti",
+          "ventuno",
+          "ventidue",
+          "ventitré"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute > 0 && second > 0",
+            "text": ","
+          },
+          {
+            "highlight": "minute > 0 && second == 0",
+            "text": "e"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "in punto",
+          "un",
+          "due",
+          "tre",
+          "quattro",
+          "cinque",
+          "sei",
+          "sette",
+          "otto",
+          "nove",
+          "dieci",
+          "undici",
+          "dodici",
+          "tredici",
+          "quattordici",
+          "quindici",
+          "sedici",
+          "diciassette",
+          "diciotto",
+          "diciannove",
+          "venti",
+          "ventuno",
+          "ventidue",
+          "ventitré",
+          "ventiquattro",
+          "venticinque",
+          "ventisei",
+          "ventisette",
+          "ventotto",
+          "ventinove",
+          "trenta",
+          "trentuno",
+          "trentadue",
+          "trentatré",
+          "trentaquattro",
+          "trentacinque",
+          "trentasei",
+          "trentasette",
+          "trentotto",
+          "trentanove",
+          "quaranta",
+          "quarantuno",
+          "quarantadue",
+          "quarantatré",
+          "quarantaquattro",
+          "quarantacinque",
+          "quarantasei",
+          "quarantasette",
+          "quarantotto",
+          "quarantanove",
+          "cinquanta",
+          "cinquantuno",
+          "cinquantadue",
+          "cinquantatré",
+          "cinquantaquattro",
+          "cinquantacinque",
+          "cinquantasei",
+          "cinquantasette",
+          "cinquantotto",
+          "cinquantanove"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute==0"
+          },
+          {
+            "highlight": "minute==1",
+            "text": "minuto"
+          },
+          {
+            "highlight": "minute>1",
+            "text": "minuti"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second == 0"
+          },
+          {
+            "highlight": "else",
+            "text": "e"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "",
+          "un",
+          "due",
+          "tre",
+          "quattro",
+          "cinque",
+          "sei",
+          "sette",
+          "otto",
+          "nove",
+          "dieci",
+          "undici",
+          "dodici",
+          "tredici",
+          "quattordici",
+          "quindici",
+          "sedici",
+          "diciassette",
+          "diciotto",
+          "diciannove",
+          "venti",
+          "ventuno",
+          "ventidue",
+          "ventitré",
+          "ventiquattro",
+          "venticinque",
+          "ventisei",
+          "ventisette",
+          "ventotto",
+          "ventinove",
+          "trenta",
+          "trentuno",
+          "trentadue",
+          "trentatré",
+          "trentaquattro",
+          "trentacinque",
+          "trentasei",
+          "trentasette",
+          "trentotto",
+          "trentanove",
+          "quaranta",
+          "quarantuno",
+          "quarantadue",
+          "quarantatré",
+          "quarantaquattro",
+          "quarantacinque",
+          "quarantasei",
+          "quarantasette",
+          "quarantotto",
+          "quarantanove",
+          "cinquanta",
+          "cinquantuno",
+          "cinquantadue",
+          "cinquantatré",
+          "cinquantaquattro",
+          "cinquantacinque",
+          "cinquantasei",
+          "cinquantasette",
+          "cinquantotto",
+          "cinquantanove"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second==1",
+            "text": "secondo"
+          },
+          {
+            "highlight": "else",
+            "text": "secondi"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

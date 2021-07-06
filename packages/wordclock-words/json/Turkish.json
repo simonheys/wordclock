@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "language": "tr",
+    "title": "Pazar bir Eylül, iki on beş ve yirmi dokuz saniye.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Pazartesi",
+          "Salı",
+          "Çarşamba",
+          "Perşembe",
+          "Cuma",
+          "Cumartesi",
+          "Pazar"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "bir",
+          "iki",
+          "üç",
+          "dört",
+          "beş",
+          "altı",
+          "yedi",
+          "sekiz",
+          "dokuz",
+          "on",
+          "on bir",
+          "on iki",
+          "on üç",
+          "on dört",
+          "on beş",
+          "on altı",
+          "on yedi",
+          "on sekiz",
+          "on dokuz",
+          "yirmi",
+          "yirmi bir",
+          "yirmi iki",
+          "yirmi üç",
+          "yirmi dört",
+          "yirmi beş",
+          "yirmi altı",
+          "yirmi yedi",
+          "yirmi sekiz",
+          "yirmi dokuz",
+          "otuz",
+          "otuz bir"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "Ocak",
+          "Şubat",
+          "Mart",
+          "Nisan",
+          "Mayıs",
+          "Haziran",
+          "Temmuz",
+          "Ağustos",
+          "Eylül",
+          "Ekim",
+          "Kasım",
+          "Aralık"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "yirmi dört",
+          "bir",
+          "iki",
+          "üç",
+          "dört",
+          "beş",
+          "altı",
+          "yedi",
+          "sekiz",
+          "dokuz",
+          "on",
+          "on bir",
+          "on iki",
+          "on üç",
+          "on dört",
+          "on beş",
+          "on altı",
+          "on yedi",
+          "on sekiz",
+          "on dokuz",
+          "yirmi",
+          "yirmi bir",
+          "yirmi iki",
+          "yirmi üç"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "sıfır sıfır",
+          "sıfır bir",
+          "sıfır iki",
+          "sıfır üç",
+          "sıfır dört",
+          "sıfır beş",
+          "sıfır altı",
+          "sıfır yedi",
+          "sıfır sekiz",
+          "sıfır dokuz",
+          "on",
+          "on bir",
+          "on iki",
+          "on üç",
+          "on dört",
+          "on beş",
+          "on altı",
+          "on yedi",
+          "on sekiz",
+          "on dokuz",
+          "yirmi",
+          "yirmi bir",
+          "yirmi iki",
+          "yirmi üç",
+          "yirmi dört",
+          "yirmi beş",
+          "yirmi altı",
+          "yirmi yedi",
+          "yirmi sekiz",
+          "yirmi dokuz",
+          "otuz",
+          "otuz bir",
+          "otuz iki",
+          "otuz üç",
+          "otuz dört",
+          "otuz beş",
+          "otuz altı",
+          "otuz yedi",
+          "otuz sekiz",
+          "otuz dokuz",
+          "kırk",
+          "kırk bir",
+          "kırk iki",
+          "kırk üç",
+          "kırk dört",
+          "kırk beş",
+          "kırk altı",
+          "kırk yedi",
+          "kırk sekiz",
+          "kırk dokuz",
+          "elli",
+          "elli bir",
+          "elli iki",
+          "elli üç",
+          "elli dört",
+          "elli beş",
+          "elli altı",
+          "elli yedi",
+          "elli sekiz",
+          "elli dokuz"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "ve"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "sıfır",
+          "bir",
+          "iki",
+          "üç",
+          "dört",
+          "beş",
+          "altı",
+          "yedi",
+          "sekiz",
+          "dokuz",
+          "on",
+          "on bir",
+          "on iki",
+          "on üç",
+          "on dört",
+          "on beş",
+          "on altı",
+          "on yedi",
+          "on sekiz",
+          "on dokuz",
+          "yirmi",
+          "yirmi bir",
+          "yirmi iki",
+          "yirmi üç",
+          "yirmi dört",
+          "yirmi beş",
+          "yirmi altı",
+          "yirmi yedi",
+          "yirmi sekiz",
+          "yirmi dokuz",
+          "otuz",
+          "otuz bir",
+          "otuz iki",
+          "otuz üç",
+          "otuz dört",
+          "otuz beş",
+          "otuz altı",
+          "otuz yedi",
+          "otuz sekiz",
+          "otuz dokuz",
+          "kırk",
+          "kırk bir",
+          "kırk iki",
+          "kırk üç",
+          "kırk dört",
+          "kırk beş",
+          "kırk altı",
+          "kırk yedi",
+          "kırk sekiz",
+          "kırk dokuz",
+          "elli",
+          "elli bir",
+          "elli iki",
+          "elli üç",
+          "elli dört",
+          "elli beş",
+          "elli altı",
+          "elli yedi",
+          "elli sekiz",
+          "elli dokuz"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "saniye"
+          }
+        ]
+      }
+    ]
+  ]
+}

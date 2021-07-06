@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "language": "en",
+    "title": "Three forty-five and twelve seconds",
+    "suitability": ["rotary"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "One",
+          "Two",
+          "Three",
+          "Four",
+          "Five",
+          "Six",
+          "Seven",
+          "Eight",
+          "Nine",
+          "Ten",
+          "Eleven",
+          "Twelve"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "o’clock",
+          "oh-one",
+          "oh-two",
+          "oh-three",
+          "oh-four",
+          "oh-five",
+          "oh-six",
+          "oh-seven",
+          "oh-eight",
+          "oh-nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+          "twenty-one",
+          "twenty-two",
+          "twenty-three",
+          "twenty-four",
+          "twenty-five",
+          "twenty-six",
+          "twenty-seven",
+          "twenty-eight",
+          "twenty-nine",
+          "thirty",
+          "thirty-one",
+          "thirty-two",
+          "thirty-three",
+          "thirty-four",
+          "thirty-five",
+          "thirty-six",
+          "thirty-seven",
+          "thirty-eight",
+          "thirty-nine",
+          "forty",
+          "forty-one",
+          "forty-two",
+          "forty-three",
+          "forty-four",
+          "forty-five",
+          "forty-six",
+          "forty-seven",
+          "forty-eight",
+          "forty-nine",
+          "fifty",
+          "fifty-one",
+          "fifty-two",
+          "fifty-three",
+          "fifty-four",
+          "fifty-five",
+          "fifty-six",
+          "fifty-seven",
+          "fifty-eight",
+          "fifty-nine"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second!=0",
+            "text": "and"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "precisely",
+          "one second",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+          "twenty-one",
+          "twenty-two",
+          "twenty-three",
+          "twenty-four",
+          "twenty-five",
+          "twenty-six",
+          "twenty-seven",
+          "twenty-eight",
+          "twenty-nine",
+          "thirty",
+          "thirty-one",
+          "thirty-two",
+          "thirty-three",
+          "thirty-four",
+          "thirty-five",
+          "thirty-six",
+          "thirty-seven",
+          "thirty-eight",
+          "thirty-nine",
+          "forty",
+          "forty-one",
+          "forty-two",
+          "forty-three",
+          "forty-four",
+          "forty-five",
+          "forty-six",
+          "forty-seven",
+          "forty-eight",
+          "forty-nine",
+          "fifty",
+          "fifty-one",
+          "fifty-two",
+          "fifty-three",
+          "fifty-four",
+          "fifty-five",
+          "fifty-six",
+          "fifty-seven",
+          "fifty-eight",
+          "fifty-nine"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<1"
+          },
+          {
+            "highlight": "second>1",
+            "text": "seconds"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

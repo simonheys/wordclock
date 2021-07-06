@@ -1,0 +1,320 @@
+{
+  "meta": {
+    "language": "pt",
+    "title": "(Brazilian) Segunda vinte-e-quatro de Fevereiro, 15 e horas e quarenta-e-três segundo.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Segunda",
+          "Terça",
+          "Quarta",
+          "Quinta",
+          "Sexta",
+          "Sábado",
+          "Domingo"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "trinta-e-um",
+          "um",
+          "dois",
+          "três",
+          "quatro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "onze",
+          "doze",
+          "treze",
+          "catorze",
+          "quinze",
+          "dezasseis",
+          "dezassete",
+          "dezoito",
+          "dezanove",
+          "vinte",
+          "vinte-e-um",
+          "vinte-e-dois",
+          "vinte-e-três",
+          "vinte-e-quatro",
+          "vinte-e-cinco",
+          "vinte-e-seis",
+          "vinte-e-sete",
+          "vinte-e-oito",
+          "vinte-e-nove",
+          "trinta"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "de"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "Janeiro",
+          "Fevereiro",
+          "Março",
+          "Abril",
+          "Maio",
+          "Junho",
+          "Julho",
+          "Agosto",
+          "Setembro",
+          "Outubro",
+          "Novembro",
+          "Dezembro"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "24",
+          "um",
+          "dois",
+          "três",
+          "quatro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "onze",
+          "doze",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "e"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "horas",
+          "zero-um",
+          "zero-dois",
+          "zero-três",
+          "zero-quatro",
+          "zero-cinco",
+          "zero-seis",
+          "zero-sete",
+          "zero-oito",
+          "zero-nove",
+          "dez",
+          "onze",
+          "doze",
+          "treze",
+          "catorze",
+          "quinze",
+          "dezasseis",
+          "dezassete",
+          "dezoito",
+          "dezanove",
+          "vinte",
+          "vinte-e-um",
+          "vinte-e-dois",
+          "vinte-e-três",
+          "vinte-e-quatro",
+          "vinte-e-cinco",
+          "vinte-e-seis",
+          "vinte-e-sete",
+          "vinte-e-oito",
+          "vinte-e-nove",
+          "trinta",
+          "trinta-e-um",
+          "trinta-e-dois",
+          "trinta-e-três",
+          "trinta-e-quatro",
+          "trinta-e-cinco",
+          "trinta-e-seis",
+          "trinta-e-sete",
+          "trinta-e-oito",
+          "trinta-e-nove",
+          "quarenta",
+          "quarenta-e-um",
+          "quarenta-e-dois",
+          "quarenta-e-três",
+          "quarenta-e-quatro",
+          "quarenta-e-cinco",
+          "quarenta-e-seis",
+          "quarenta-e-sete",
+          "quarenta-e-oito",
+          "quarenta-e-nove",
+          "cinquenta",
+          "cinquenta-e-um",
+          "cinquenta-e-dois",
+          "cinquenta-e-três",
+          "cinquenta-e-quatro",
+          "cinquenta-e-cinco",
+          "cinquenta-e-seis",
+          "cinquenta-e-sete",
+          "cinquenta-e-oito",
+          "cinquenta-e-nove"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "e"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "zero",
+          "um",
+          "dois",
+          "três",
+          "quatro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "onze",
+          "doze",
+          "treze",
+          "catorze",
+          "quinze",
+          "dezasseis",
+          "dezassete",
+          "dezoito",
+          "dezanove",
+          "vinte",
+          "vinte-e-um",
+          "vinte-e-dois",
+          "vinte-e-três",
+          "vinte-e-quatro",
+          "vinte-e-cinco",
+          "vinte-e-seis",
+          "vinte-e-sete",
+          "vinte-e-oito",
+          "vinte-e-nove",
+          "trinta",
+          "trinta-e-um",
+          "trinta-e-dois",
+          "trinta-e-três",
+          "trinta-e-quatro",
+          "trinta-e-cinco",
+          "trinta-e-seis",
+          "trinta-e-sete",
+          "trinta-e-oito",
+          "trinta-e-nove",
+          "quarenta",
+          "quarenta-e-um",
+          "quarenta-e-dois",
+          "quarenta-e-três",
+          "quarenta-e-quatro",
+          "quarenta-e-cinco",
+          "quarenta-e-seis",
+          "quarenta-e-sete",
+          "quarenta-e-oito",
+          "quarenta-e-nove",
+          "cinquenta",
+          "cinquenta-e-um",
+          "cinquenta-e-dois",
+          "cinquenta-e-três",
+          "cinquenta-e-quatro",
+          "cinquenta-e-cinco",
+          "cinquenta-e-seis",
+          "cinquenta-e-sete",
+          "cinquenta-e-oito",
+          "cinquenta-e-nove"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==1",
+            "text": "segundo"
+          },
+          {
+            "highlight": "second!=1",
+            "text": "segundos"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

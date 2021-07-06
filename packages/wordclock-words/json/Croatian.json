@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "language": "hr",
+    "title": "Ponedjeljak drugi ožujka,četiri četrdeset šest…",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "day",
+        "first": 0,
+        "text": [
+          "nedjelja",
+          "ponedjeljak",
+          "utorak",
+          "srijeda",
+          "četvrtak",
+          "petak",
+          "subota"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "prvi",
+          "drugi",
+          "teći",
+          "četvrti",
+          "peti",
+          "šesti",
+          "sedmi",
+          "osmi",
+          "deveti",
+          "deseti",
+          "jedanaesti",
+          "dvanaesti",
+          "trinaesti",
+          "četrnaesti",
+          "petnaesti",
+          "šestnaesti",
+          "sedamnaesti",
+          "osamnaesti",
+          "devetnaesti",
+          "dvadeseti",
+          "dvadesetprvi",
+          "dvadesetdrugi",
+          "dvadesettreći",
+          "dvadesetčetvrti",
+          "dvadesetpeti",
+          "dvadesetšesti",
+          "dvadesetsedmi",
+          "dvadesetosmi",
+          "dvadesetdeveti",
+          "trideseti",
+          "tridesetprvi"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "siječanj",
+          "veljača",
+          "ožujak",
+          "travanj",
+          "svibanj",
+          "lipanj",
+          "srpanj",
+          "kolovoz",
+          "rujan",
+          "listopad",
+          "studeni",
+          "prosinac"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "jedan",
+          "dva",
+          "tri",
+          "četiri",
+          "pet",
+          "šest",
+          "sedam",
+          "osam",
+          "devet",
+          "deset",
+          "jedanaest",
+          "dvanaest"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "sati",
+          "i jedan",
+          "i dva",
+          "i tri",
+          "i četiri",
+          "i pet",
+          "i šest",
+          "i sedam",
+          "i osam",
+          "i devet",
+          "deset",
+          "jedanaest",
+          "dvanaest",
+          "trinaest",
+          "četrnaest",
+          "petnaest",
+          "šestnaest",
+          "sedamnaest",
+          "osaamnaest",
+          "devetnaest",
+          "dvadeset",
+          "dvadesetjedan",
+          "dvadesetdva",
+          "dvadesettri",
+          "dvadesetčetiri",
+          "dvadesetpet",
+          "dvadesetšest",
+          "dvadesetsedam",
+          "dvadesetosam",
+          "dvadesetdevet",
+          "trideset",
+          "tridesetjedan",
+          "tridesetdva",
+          "tridesettri",
+          "tridesetčetiri",
+          "tridesetpet",
+          "tridesetšest",
+          "tridesetsedam",
+          "tridesetosam",
+          "tridesetdevet",
+          "četrdeset",
+          "četrdesetjedan",
+          "četrdesetdva",
+          "četrdesettri",
+          "četrdesetčetiri",
+          "četrdesetpet",
+          "četrdesetšest",
+          "četrdesetsedam",
+          "četrdesetosam",
+          "četrdesetdevet",
+          "pedeset",
+          "pedesetjedan",
+          "pedesetdva",
+          "pedesettri",
+          "pedesetčetiri",
+          "pedesetpet",
+          "pedesetšest",
+          "pedesetsedam",
+          "pedesetosam",
+          "pedesetdevet"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "minuta"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour<12",
+            "text": "prijepodne"
+          },
+          {
+            "highlight": "twentyfourhour>=12",
+            "text": "poslijepodne"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "",
+          "jedna",
+          "dvije",
+          "tri",
+          "četiri",
+          "pet",
+          "šest",
+          "sedam",
+          "osam",
+          "devet",
+          "deset",
+          "jedanaest",
+          "dvanaest",
+          "trinaest",
+          "četrnaest",
+          "petnaest",
+          "šestnaest",
+          "sedamnaest",
+          "osaamnaest",
+          "devetnaest",
+          "dvadeset",
+          "dvadesetjedna",
+          "dvadesetdvije",
+          "dvadesettri",
+          "dvadesetčetiri",
+          "dvadesetpet",
+          "dvadesetšest",
+          "dvadesetsedam",
+          "dvadesetosam",
+          "dvadesetdevet",
+          "trideset",
+          "tridesetjedna",
+          "tridesetdvije",
+          "tridesettri",
+          "tridesetčetiri",
+          "tridesetpet",
+          "tridesetšest",
+          "tridesetsedam",
+          "tridesetosam",
+          "tridesetdevet",
+          "četrdeset",
+          "četrdesetjedna",
+          "četrdesetdvije",
+          "četrdesettri",
+          "četrdesetčetiri",
+          "četrdesetpet",
+          "četrdesetšest",
+          "četrdesetsedam",
+          "četrdesetosam",
+          "četrdesetdevet",
+          "pedeset",
+          "pedesetjedna",
+          "pedesetdvije",
+          "pedesettri",
+          "pedesetčetiri",
+          "pedesetpet",
+          "pedesetšest",
+          "pedesetsedam",
+          "pedesetosam",
+          "pedesetdevet"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second!=0",
+            "text": "sekundi"
+          }
+        ]
+      }
+    ]
+  ]
+}

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wordclock language="en">
+    <title>
+        <![CDATA[Quarter to five and thirty two seconds]]>
+    </title>
+    <author>
+        <name>
+            <![CDATA[Simon Heys]]>
+        </name>
+        <url>
+            <![CDATA[http://www.simonheys.com/]]>
+        </url>
+        <email>
+            <![CDATA[si@simonheys.com]]>
+        </email>
+    </author>
+    <suitability>
+        <suitable style="rotary"/>
+        <suitable style="linear"/>
+    </suitability>
+    <group>
+        <item highlight="minute&gt;55 || minute&lt;5">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==5">
+            <![CDATA[Five past]]>
+        </item>
+        <item highlight="minute&gt;5 &amp;&amp; minute&lt;10">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==10">
+            <![CDATA[Ten past]]>
+        </item>
+        <item highlight="minute&gt;10 &amp;&amp; minute&lt;15">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==15">
+            <![CDATA[Quarter past]]>
+        </item>
+        <item highlight="minute&gt;15 &amp;&amp; minute&lt;20">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==20">
+            <![CDATA[Twenty past]]>
+        </item>
+        <item highlight="minute&gt;20 &amp;&amp; minute&lt;25">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==25">
+            <![CDATA[Twenty-five past]]>
+        </item>
+        <item highlight="minute&gt;25 &amp;&amp; minute&lt;30">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==30">
+            <![CDATA[Half past]]>
+        </item>
+        <item highlight="minute&gt;30 &amp;&amp; minute&lt;35">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==35">
+            <![CDATA[Twenty-five to]]>
+        </item>
+        <item highlight="minute&gt;35 &amp;&amp; minute&lt;40">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==40">
+            <![CDATA[Twenty to]]>
+        </item>
+        <item highlight="minute&gt;40 &amp;&amp; minute&lt;45">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==45">
+            <![CDATA[Quarter to]]>
+        </item>
+        <item highlight="minute&gt;45 &amp;&amp; minute&lt;50">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==50">
+            <![CDATA[Ten to]]>
+        </item>
+        <item highlight="minute&gt;50 &amp;&amp; minute&lt;55">
+            <![CDATA[]]>
+        </item>
+        <item highlight="minute==55">
+            <![CDATA[Five to]]>
+        </item>
+    </group>
+    <group>
+        <item highlight="hour==1 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[One]]>
+        </item>
+        <item highlight="(hour==1 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==12 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[one]]>
+        </item>
+        <item highlight="hour==2 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Two]]>
+        </item>
+        <item highlight="(hour==2 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==1 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[two]]>
+        </item>
+        <item highlight="hour==3 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Three]]>
+        </item>
+        <item highlight="(hour==3 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==2 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[three]]>
+        </item>
+        <item highlight="hour==4 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Four]]>
+        </item>
+        <item highlight="(hour==4 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==3 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[four]]>
+        </item>
+        <item highlight="hour==5 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Five]]>
+        </item>
+        <item highlight="(hour==5 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==4 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[five]]>
+        </item>
+        <item highlight="hour==6 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Six]]>
+        </item>
+        <item highlight="(hour==6 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==5 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[six]]>
+        </item>
+        <item highlight="hour==7 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Seven]]>
+        </item>
+        <item highlight="(hour==7 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==6 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[seven]]>
+        </item>
+        <item highlight="hour==8 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Eight]]>
+        </item>
+        <item highlight="(hour==8 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==7 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[eight]]>
+        </item>
+        <item highlight="hour==9 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Nine]]>
+        </item>
+        <item highlight="(hour==9 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==8 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[nine]]>
+        </item>
+        <item highlight="hour==10 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Ten]]>
+        </item>
+        <item highlight="(hour==10 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==9 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[ten]]>
+        </item>
+        <item highlight="hour==11 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Eleven]]>
+        </item>
+        <item highlight="(hour==11 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==10 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[eleven]]>
+        </item>
+        <item highlight="hour==12 &amp;&amp; ((minute%5 != 0) || minute==0)">
+            <![CDATA[Twelve]]>
+        </item>
+        <item highlight="(hour==12 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &lt;=30) || (hour==11 &amp;&amp; (minute%5 == 0) &amp;&amp; minute &gt; 30)">
+            <![CDATA[twelve]]>
+        </item>
+    </group>
+    <group>
+        <sequence bind="minute" first="0" delimeter=",">
+            <![CDATA[o’clock,oh-one,oh-two,oh-three,oh-four,,oh-six,oh-seven,oh-eight,oh-nine,,eleven,twelve,thirteen,fourteen,,sixteen,seventeen,eighteen,nineteen,,twenty-one,twenty-two,twenty-three,twenty-four,,twenty-six,twenty-seven,twenty-eight,twenty-nine,,thirty-one,thirty-two,thirty-three,thirty-four,,thirty-six,thirty-seven,thirty-eight,thirty-nine,,forty-one,forty-two,forty-three,forty-four,,forty-six,forty-seven,forty-eight,forty-nine,,fifty-one,fifty-two,fifty-three,fifty-four,,fifty-six,fifty-seven,fifty-eight,fifty-nine]]>
+        </sequence>
+    </group>
+    <group>
+        <item highlight="second==0">
+            <![CDATA[]]>
+        </item>
+        <item highlight="second!=0">
+            <![CDATA[and]]>
+        </item>
+        <space count="58"/>
+    </group>
+    <group>
+        <sequence bind="second" first="0" delimeter=",">
+            <![CDATA[precisely,one second,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,twenty-one,twenty-two,twenty-three,twenty-four,twenty-five,twenty-six,twenty-seven,twenty-eight,twenty-nine,thirty,thirty-one,thirty-two,thirty-three,thirty-four,thirty-five,thirty-six,thirty-seven,thirty-eight,thirty-nine,forty,forty-one,forty-two,forty-three,forty-four,forty-five,forty-six,forty-seven,forty-eight,forty-nine,fifty,fifty-one,fifty-two,fifty-three,fifty-four,fifty-five,fifty-six,fifty-seven,fifty-eight,fifty-nine]]>
+        </sequence>
+    </group>
+    
+    <group>
+        <item highlight="second&lt;1">
+            <![CDATA[]]>
+        </item>
+        <item highlight="second&gt;1">
+            <![CDATA[seconds]]>
+        </item>
+        <space count="58"/>
+    </group>
+</wordclock>

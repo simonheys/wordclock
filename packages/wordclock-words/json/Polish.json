@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "language": "pl",
+    "title": "niedziela, dwudziesty-siódmy maja, piąta zero-trzy i trzydzieści-dwa",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "poniedziałek",
+          "wtorek",
+          "środa",
+          "czwartek",
+          "piątek",
+          "sobota",
+          "niedziela"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "pierwszy",
+          "drugi",
+          "trzeci",
+          "czwarty",
+          "piąty",
+          "szósty",
+          "siódmy",
+          "ósmy",
+          "dziewiąty",
+          "dziesiąty",
+          "jedenasty",
+          "dwunasty",
+          "trzynasty",
+          "czternasty",
+          "piętnasty",
+          "szesnasty",
+          "siedemnasty",
+          "osiemnasty",
+          "dziewiętnasty",
+          "dwudziesty",
+          "dwudziesty-pierwszy",
+          "dwudziesty-drugi",
+          "dwudziesty-trzeci",
+          "dwudziesty-czwarty",
+          "dwudziesty-piąty",
+          "dwudziesty-szósty",
+          "dwudziesty-siódmy",
+          "dwudziesty-ósmy",
+          "dwudziesty-dziewiąty",
+          "trzydziesty",
+          "trzydziesty-pierwszy"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "stycznia",
+          "lutego",
+          "marca",
+          "kwietnia",
+          "maja",
+          "czerwca",
+          "lipca",
+          "sierpnia",
+          "września",
+          "października",
+          "listopada",
+          "grudnia"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "północ",
+          "pierwsza",
+          "druga",
+          "trzecia",
+          "czwarta",
+          "piąta",
+          "szósta",
+          "siódma",
+          "ósma",
+          "dziewiąta",
+          "dziesiąta",
+          "jedenasta",
+          "dwunasta",
+          "trzynasta",
+          "czternasta",
+          "piętnasta",
+          "szesnasta",
+          "siedemnasta",
+          "osiemnasta",
+          "dziewiętnasta",
+          "dwudziesta",
+          "dwudziesta-pierwsza",
+          "dwudziesta-druga",
+          "dwudziesta-trzecia"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "zero-zero",
+          "zero-jeden",
+          "zero-dwa",
+          "zero-trzy",
+          "zero-cztery",
+          "zero-pięć",
+          "zero-sześć",
+          "zero-siedem",
+          "zero-osiem",
+          "zero-dziewięć",
+          "dziesięć",
+          "jedenaście",
+          "dwanaście",
+          "trzynaście",
+          "czternaście",
+          "piętnaście",
+          "szesnaście",
+          "siedemnaście",
+          "osiemnaście",
+          "dziewiętnaście",
+          "dwadzieścia",
+          "dwadzieścia-jeden",
+          "dwadzieścia-dwa",
+          "dwadzieścia-trzy",
+          "dwadzieścia-cztery",
+          "dwadzieścia-pięć",
+          "dwadzieścia-sześć",
+          "dwadzieścia-siedem",
+          "dwadzieścia-osiem",
+          "dwadzieścia-dziewięć",
+          "trzydzieści",
+          "trzydzieści-jeden",
+          "trzydzieści-dwa",
+          "trzydzieści-trzy",
+          "trzydzieści-cztery",
+          "trzydzieści-pięć",
+          "trzydzieści-sześć",
+          "trzydzieści-siedem",
+          "trzydzieści-osiem",
+          "trzydzieści-dziewięć",
+          "czterdzieści",
+          "czterdzieści-jeden",
+          "czterdzieści-dwa",
+          "czterdzieści-trzy",
+          "czterdzieści-cztery",
+          "czterdzieści-pięć",
+          "czterdzieści-sześć",
+          "czterdzieści-siedem",
+          "czterdzieści-osiem",
+          "czterdzieści-dziewięć",
+          "pięćdziesiąt",
+          "pięćdziesiąt-jeden",
+          "pięćdziesiąt-dwa",
+          "pięćdziesiąt-trzy",
+          "pięćdziesiąt-cztery",
+          "pięćdziesiąt-pięć",
+          "pięćdziesiąt-sześć",
+          "pięćdziesiąt-siedem",
+          "pięćdziesiąt-osiem",
+          "pięćdziesiąt-dziewięć"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "i"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "zero",
+          "jedna",
+          "dwie",
+          "trzy",
+          "cztery",
+          "pięć",
+          "sześć",
+          "siedem",
+          "osiem",
+          "dziewięć",
+          "dziesięć",
+          "jedenaście",
+          "dwanaście",
+          "trzynaście",
+          "czternaście",
+          "piętnaście",
+          "szesnaście",
+          "siedemnaście",
+          "osiemnaście",
+          "dziewiętnaście",
+          "dwadzieścia",
+          "dwadzieścia-jeden",
+          "dwadzieścia-dwa",
+          "dwadzieścia-trzy",
+          "dwadzieścia-cztery",
+          "dwadzieścia-pięć",
+          "dwadzieścia-sześć",
+          "dwadzieścia-siedem",
+          "dwadzieścia-osiem",
+          "dwadzieścia-dziewięć",
+          "trzydzieści",
+          "trzydzieści-jeden",
+          "trzydzieści-dwa",
+          "trzydzieści-trzy",
+          "trzydzieści-cztery",
+          "trzydzieści-pięć",
+          "trzydzieści-sześć",
+          "trzydzieści-siedem",
+          "trzydzieści-osiem",
+          "trzydzieści-dziewięć",
+          "czterdzieści",
+          "czterdzieści-jeden",
+          "czterdzieści-dwa",
+          "czterdzieści-trzy",
+          "czterdzieści-cztery",
+          "czterdzieści-pięć",
+          "czterdzieści-sześć",
+          "czterdzieści-siedem",
+          "czterdzieści-osiem",
+          "czterdzieści-dziewięć",
+          "pięćdziesiąt",
+          "pięćdziesiąt-jeden",
+          "pięćdziesiąt-dwa",
+          "pięćdziesiąt-trzy",
+          "pięćdziesiąt-cztery",
+          "pięćdziesiąt-pięć",
+          "pięćdziesiąt-sześć",
+          "pięćdziesiąt-siedem",
+          "pięćdziesiąt-osiem",
+          "pięćdziesiąt-dziewięć"
+        ]
+      }
+    ]
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "language": "is",
+    "title": "Mánudagur þannáttunda  ágúst, sjö fimmtíuogfimm og fjöritíuogein sekúnda.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "day",
+        "first": 0,
+        "text": [
+          "Sunnudagur",
+          "Mánudagur",
+          "þriðjudagur",
+          "Miðvikudagur",
+          "Fimmtudagur",
+          "Föstudagur",
+          "Laugardagur"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "þann"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "fyrsta",
+          "annar",
+          "þriðja",
+          "fjórða",
+          "fimmta",
+          "sjötta",
+          "sjöunda",
+          "áttunda",
+          "níunda",
+          "tíunda",
+          "ellefta",
+          "tólfta",
+          "þrettánda",
+          "fjórtanda",
+          "fimmtánda",
+          "sextánda",
+          "sautjánda",
+          "átjánda",
+          "nítjánda",
+          "tuttugasta",
+          "tuttugastiogfyrsta",
+          "tuttugastiogannan",
+          "tuttugastiogþriðja",
+          "tuttugastiogfjórða",
+          "tuttugastiogfimmta",
+          "tuttugastiogsjötta",
+          "tuttugastiogsjöunda",
+          "tuttugastiogáttunda",
+          "tuttugastiogníunda",
+          "þrítugasta",
+          "þrítugastiogfyrsta"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "janúar",
+          "febrúar",
+          "mars",
+          "apríl",
+          "maí",
+          "júní",
+          "júlí",
+          "ágúst",
+          "september",
+          "október",
+          "nóvember",
+          "desember"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "Zero",
+          "eitt",
+          "tvö",
+          "þrjú",
+          "fjögur",
+          "fimm",
+          "sex",
+          "sjö",
+          "átta",
+          "níu",
+          "tíu",
+          "ellefu",
+          "tólf",
+          "þrettán",
+          "fjórtán",
+          "fimmtán",
+          "sextán",
+          "sautján",
+          "átján",
+          "nítján",
+          "tuttugu",
+          "tuttutguogeitt",
+          "tuttuguogtvö",
+          "tuttuguogþrjú"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "ein",
+          "tvær",
+          "þrjár",
+          "fjórar",
+          "fimm",
+          "sex",
+          "sjö",
+          "átta",
+          "níu",
+          "tíu",
+          "ellefu",
+          "tólf",
+          "þrettán",
+          "fjórtán",
+          "fimmtán",
+          "sextán",
+          "sautján",
+          "átján",
+          "nítján",
+          "tuttugu",
+          "tuttuguogein",
+          "tuttuguogtvær",
+          "tuttuguogþrjár",
+          "tuttuguogfjórar",
+          "tuttuguogfimm",
+          "tuttuguogsex",
+          "tuttuguogsjö",
+          "tuttuguogátta",
+          "tuttuguogníu",
+          "þrjátíu",
+          "þrjátíuogein",
+          "þrjátíuogtvær",
+          "þrjátíuogþrjár",
+          "þrjátíuogfjórar",
+          "þrjátíuogfimm",
+          "þrjátíuogsex",
+          "þrjátíuogsjö",
+          "þrjátíuogátta",
+          "þrjátíuogníu",
+          "fjöritíu",
+          "fjöritíuogein",
+          "fjöritíuogtvær",
+          "fjöritíuogþrjár",
+          "fjöritíuogfjórar",
+          "fjöritíuogfimm",
+          "fjöritíuogsex",
+          "fjöritíuogsjö",
+          "fjöritíuogátta",
+          "fjöritíuogníu",
+          "fimmtíu",
+          "fimmtíuogein",
+          "fimmtíuogtvær",
+          "fimmtíuogþrjár",
+          "fimmtíuogfjórar",
+          "fimmtíuogfimm",
+          "fimmtíuogsex",
+          "fimmtíuogsjö",
+          "fimmtíuogátta",
+          "fimmtíuogníu"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "og"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "núll",
+          "ein",
+          "tvær",
+          "þrjár",
+          "fjórar",
+          "fimm",
+          "sex",
+          "sjö",
+          "átta",
+          "níu",
+          "tíu",
+          "ellefu",
+          "tólf",
+          "þrettán",
+          "fjórtán",
+          "fimmtán",
+          "sextán",
+          "sautján",
+          "átján",
+          "nítján",
+          "tuttugu",
+          "tuttuguogein",
+          "tuttuguogtvær",
+          "tuttuguogþrjár",
+          "tuttuguogfjórar",
+          "tuttuguogfimm",
+          "tuttuguogsex",
+          "tuttuguogsjö",
+          "tuttuguogátta",
+          "tuttuguogníu",
+          "þrjátíu",
+          "þrjátíuogein",
+          "þrjátíuogtvær",
+          "þrjátíuogþrjár",
+          "þrjátíuogfjórar",
+          "þrjátíuogfimm",
+          "þrjátíuogsex",
+          "þrjátíuogsjö",
+          "þrjátíuogátta",
+          "þrjátíuogníu",
+          "fjöritíu",
+          "fjöritíuogein",
+          "fjöritíuogtvær",
+          "fjöritíuogþrjár",
+          "fjöritíuogfjórar",
+          "fjöritíuogfimm",
+          "fjöritíuogsex",
+          "fjöritíuogsjö",
+          "fjöritíuogátta",
+          "fjöritíuogníu",
+          "fimmtíu",
+          "fimmtíuogein",
+          "fimmtíuogtvær",
+          "fimmtíuogþrjár",
+          "fimmtíuogfjórar",
+          "fimmtíuogfimm",
+          "fimmtíuogsex",
+          "fimmtíuogsjö",
+          "fimmtíuogátta",
+          "fimmtíuogníu"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==1",
+            "text": "sekúnda"
+          },
+          {
+            "highlight": "second!=1",
+            "text": "sekúndur"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "language": "et",
+    "title": "Kell on neli viiskümmend kolm ja kaksteist sekundit",
+    "suitability": ["rotary"]
+  },
+  "groups": [
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "Kell on"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour>0 && twentyfourhour<10"
+          },
+          {
+            "highlight": "twentyfourhour>19 || twentyfourhour==0",
+            "text": "kakskümmend"
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 10,
+        "text": [
+          "kümme",
+          "üksteist",
+          "kaksteist",
+          "kolmteist",
+          "neliteist",
+          "viisteist",
+          "kuusteist",
+          "seitseteist",
+          "kaheksateist",
+          "üheksateist"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour>9 && twentyfourhour<21"
+          },
+          {
+            "highlight": "(twentyfourhour%10)==1",
+            "text": "üks"
+          },
+          {
+            "highlight": "(twentyfourhour%10)==2",
+            "text": "kaks"
+          },
+          {
+            "highlight": "(twentyfourhour%10)==3",
+            "text": "kolm"
+          },
+          {
+            "highlight": "(twentyfourhour%10)==4 || twentyfourhour==0",
+            "text": "neli"
+          },
+          {
+            "highlight": "twentyfourhour==5",
+            "text": "viis"
+          },
+          {
+            "highlight": "twentyfourhour==6",
+            "text": "kuus"
+          },
+          {
+            "highlight": "twentyfourhour==7",
+            "text": "seitse"
+          },
+          {
+            "highlight": "twentyfourhour==8",
+            "text": "kaheksa"
+          },
+          {
+            "highlight": "twentyfourhour==9",
+            "text": "üheksa"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(minute==0) || (minute>0 && minute<10)",
+            "text": "null"
+          },
+          {
+            "highlight": "minute>=20 && minute<30",
+            "text": "kakskümmend"
+          },
+          {
+            "highlight": "minute>=30 && minute<40",
+            "text": "kolmkümmend"
+          },
+          {
+            "highlight": "minute>=40 && minute<50",
+            "text": "nelikümmend"
+          },
+          {
+            "highlight": "minute>=50 && minute<60",
+            "text": "viiskümmend"
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 10,
+        "text": [
+          "kümme",
+          "üksteist",
+          "kaksteist",
+          "kolmteist",
+          "neliteist",
+          "viisteist",
+          "kuusteist",
+          "seitseteist",
+          "kaheksateist",
+          "üheksateist"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "((minute%10)==0 && minute!=0) || (minute>10 && minute<21)"
+          },
+          {
+            "highlight": "minute==0",
+            "text": "null"
+          },
+          {
+            "highlight": "(minute%10)==1",
+            "text": "üks"
+          },
+          {
+            "highlight": "(minute%10)==2",
+            "text": "kaks"
+          },
+          {
+            "highlight": "(minute%10)==3",
+            "text": "kolm"
+          },
+          {
+            "highlight": "(minute%10)==4",
+            "text": "neli"
+          },
+          {
+            "highlight": "(minute%10)==5",
+            "text": "viis"
+          },
+          {
+            "highlight": "(minute%10)==6",
+            "text": "kuus"
+          },
+          {
+            "highlight": "(minute%10)==7",
+            "text": "seitse"
+          },
+          {
+            "highlight": "(minute%10)==8",
+            "text": "kaheksa"
+          },
+          {
+            "highlight": "(minute%10)==9",
+            "text": "üheksa"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second!=0",
+            "text": "ja"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second>0 && second<10"
+          },
+          {
+            "highlight": "second>=20 && second<30",
+            "text": "kakskümmend"
+          },
+          {
+            "highlight": "second>=30 && second<40",
+            "text": "kolmkümmend"
+          },
+          {
+            "highlight": "second>=40 && second<50",
+            "text": "nelikümmend"
+          },
+          {
+            "highlight": "second>=50 && second<60",
+            "text": "viiskümmend"
+          }
+        ]
+      },
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 10,
+        "text": [
+          "kümme",
+          "üksteist",
+          "kaksteist",
+          "kolmteist",
+          "neliteist",
+          "viisteist",
+          "kuusteist",
+          "seitseteist",
+          "kaheksateist",
+          "üheksateist"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(second%10)==0 || (second>10 && second<21)"
+          },
+          {
+            "highlight": "(second%10)==1",
+            "text": "üks"
+          },
+          {
+            "highlight": "(second%10)==2",
+            "text": "kaks"
+          },
+          {
+            "highlight": "(second%10)==3",
+            "text": "kolm"
+          },
+          {
+            "highlight": "(second%10)==4",
+            "text": "neli"
+          },
+          {
+            "highlight": "(second%10)==5",
+            "text": "viis"
+          },
+          {
+            "highlight": "(second%10)==6",
+            "text": "kuus"
+          },
+          {
+            "highlight": "(second%10)==7",
+            "text": "seitse"
+          },
+          {
+            "highlight": "(second%10)==8",
+            "text": "kaheksa"
+          },
+          {
+            "highlight": "(second%10)==9",
+            "text": "üheksa"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<1"
+          },
+          {
+            "highlight": "second==1",
+            "text": "sekund"
+          },
+          {
+            "highlight": "second>1",
+            "text": "sekundit"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

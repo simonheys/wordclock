@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "language": "cs",
+    "title": "pátek dvacátéhoprvního prosince dvě hodiny dvacetjedna po půlnoci třicetpět sekund.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "pondělí",
+          "úterý",
+          "středa",
+          "čtvrtek",
+          "pátek",
+          "sobota",
+          "neděle"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "prvního",
+          "druhého",
+          "třetího",
+          "čtvrtého",
+          "pátého",
+          "šestého",
+          "sedmého",
+          "osmého",
+          "devátého",
+          "desátého",
+          "jedenáctého",
+          "dvanáctého",
+          "třináctého",
+          "čtrnáctého",
+          "patnáctého",
+          "šestnáctého",
+          "sedmnáctého",
+          "osmnáctého",
+          "devatenáctého",
+          "dvacátého",
+          "dvacátéhoprvého",
+          "dvacátéhodruhého",
+          "dvacátéhotřetího",
+          "dvacátéhočtvrtého",
+          "dvacátéhopátého",
+          "dvacátéhošestého",
+          "dvacátéhosedmého",
+          "dvacátéhoosmého",
+          "dvacátéhodevátého",
+          "třicátého",
+          "třicátéhoprvního"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "ledna",
+          "února",
+          "března",
+          "dubna",
+          "května",
+          "června",
+          "července",
+          "srpna",
+          "září",
+          "října",
+          "listopadu",
+          "prosince"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 0,
+        "text": [
+          "jedna",
+          "dvě",
+          "tři",
+          "čtyři",
+          "pět",
+          "šest",
+          "sedm",
+          "osm",
+          "děvět",
+          "deset",
+          "jedenáct",
+          "dvanáct",
+          "třináct",
+          "čtrnáct",
+          "patnáct",
+          "šestnáct",
+          "sedmnáct",
+          "osemnáct",
+          "devatenáct",
+          "dvacet",
+          "dvacetjedna",
+          "dvacetdva",
+          "dvacettři",
+          "půlnoc"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(hour!=0) && hour<=1",
+            "text": "hodina"
+          },
+          {
+            "highlight": "(hour!=0) && hour<=4",
+            "text": "hodiny"
+          },
+          {
+            "highlight": "(hour!=0) && hour>=5",
+            "text": "hodin"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "přesně",
+          "jedna",
+          "dvě",
+          "tři",
+          "čtyři",
+          "pět",
+          "šest",
+          "sedm",
+          "osm",
+          "děvět",
+          "deset",
+          "jedenáct",
+          "dvanáct",
+          "třináct",
+          "čtrnáct",
+          "patnáct",
+          "šestnáct",
+          "sedmnáct",
+          "osemnáct",
+          "devatenáct",
+          "dvacet",
+          "dvacetjedna",
+          "dvacetdva",
+          "dvacettři",
+          "dvacetčtyři",
+          "dvacetpět",
+          "dvacetšest",
+          "dvacetsedm",
+          "dvacetosm",
+          "dvacetděvet",
+          "třicet",
+          "třicetjedna",
+          "třicetdva",
+          "třicettři",
+          "třicetčtyři",
+          "třicetpět",
+          "třicetšest",
+          "třicetsedm",
+          "třicetosm",
+          "třicetdevět",
+          "čtyřicet",
+          "čtyřicetjedna",
+          "čtyřicetdva",
+          "čtyřicetři",
+          "čtyřicetčtyři",
+          "čtyřicetpět",
+          "čtyřicetšest",
+          "čtyřicetsedm",
+          "čtyřicetosm",
+          "čtyřicetdevět",
+          "padesát",
+          "padesátjedna",
+          "padesátdva",
+          "padesáttři",
+          "padesátčtyři",
+          "padesátpět",
+          "padesátšest",
+          "padesátsedm",
+          "padesátosm",
+          "padesátdevět"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(minute!=0) && minute<=1",
+            "text": "minuta"
+          },
+          {
+            "highlight": "(minute!=0) && minute<=4",
+            "text": "minuty"
+          },
+          {
+            "highlight": "(minute!=0) && minute>=5",
+            "text": "minut"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 56
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "hour==0 && minute==0",
+            "text": "půlnoc"
+          },
+          {
+            "highlight": "hour==0 && minute!=0",
+            "text": "po půlnoci"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second!=0",
+            "text": "a"
+          },
+          {
+            "highlight": "else"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "přesně",
+          "jedna",
+          "dvě",
+          "tři",
+          "čtyři",
+          "pět",
+          "šest",
+          "sedm",
+          "osm",
+          "děvět",
+          "deset",
+          "jedenáct",
+          "dvanáct",
+          "třináct",
+          "čtrnáct",
+          "patnáct",
+          "šestnáct",
+          "sedmnáct",
+          "osemnáct",
+          "devatenáct",
+          "dvacet",
+          "dvacetjedna",
+          "dvacetdva",
+          "dvacettři",
+          "dvacetčtyři",
+          "dvacetpět",
+          "dvacetšest",
+          "dvacetsedm",
+          "dvacetosm",
+          "dvacetděvet",
+          "třicet",
+          "třicetjedna",
+          "třicetdva",
+          "třicettři",
+          "třicetčtyři",
+          "třicetpět",
+          "třicetšest",
+          "třicetsedm",
+          "třicetosm",
+          "třicetdevět",
+          "čtyřicet",
+          "čtyřicetjedna",
+          "čtyřicetdva",
+          "čtyřicetři",
+          "čtyřicetčtyři",
+          "čtyřicetpět",
+          "čtyřicetšest",
+          "čtyřicetsedm",
+          "čtyřicetosm",
+          "čtyřicetdevět",
+          "padesát",
+          "padesátjedna",
+          "padesátdva",
+          "padesáttři",
+          "padesátčtyři",
+          "padesátpět",
+          "padesátšest",
+          "padesátsedm",
+          "padesátosm",
+          "padesátdevět"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "(second!=0) && second<=1",
+            "text": "sekunda"
+          },
+          {
+            "highlight": "(second!=0) && second<=4",
+            "text": "sekundy"
+          },
+          {
+            "highlight": "(second!=0) && second>=5",
+            "text": "sekund"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

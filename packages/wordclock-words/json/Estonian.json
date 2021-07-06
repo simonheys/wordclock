@@ -1,0 +1,320 @@
+{
+  "meta": {
+    "language": "et",
+    "title": "On kolmapäev, kaheksas oktoober, kell on viis viiskümmend viis ja neli sekund.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "On"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "esmaspäev",
+          "teisipäev",
+          "kolmapäev",
+          "neljapäev",
+          "reede",
+          "laupäev",
+          "pühapäev"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "esimene",
+          "teine",
+          "kolmas",
+          "neljas",
+          "viies",
+          "kuues",
+          "seitsmes",
+          "kaheksas",
+          "üheksas",
+          "kümnes",
+          "üheteistkümnes",
+          "kaheteistkümnes",
+          "kolmeteistkümnes",
+          "neljateistkümnes",
+          "viieteistkümnes",
+          "kuueteistkümnes",
+          "seitsmeteistkümnes",
+          "kaheksateistkümnes",
+          "üheksateistkümnes",
+          "kahekümnes",
+          "kahekümne esimene",
+          "kahekümne teine",
+          "kahekümne kolmas",
+          "kahekümne neljas",
+          "kahekümne viies",
+          "kahekümne kuues",
+          "kahekümne seitsmes",
+          "kahekümne kaheksas",
+          "kahekümne üheksas",
+          "kolmekümnes",
+          "kolmekümne esimene"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "jaanuar",
+          "veebruar",
+          "märts",
+          "aprill",
+          "mai",
+          "juuni",
+          "juuli",
+          "august",
+          "september",
+          "oktoober",
+          "november",
+          "detsember"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ", kell on"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "kakskümmend kolm",
+          "null",
+          "üks",
+          "kaks",
+          "kolm",
+          "neli",
+          "viis",
+          "kuus",
+          "seitse",
+          "kaheksa",
+          "üheksa",
+          "kümme",
+          "üksteist",
+          "kaksteist",
+          "kolmteist",
+          "neliteist",
+          "viisteist",
+          "kuusteist",
+          "seitseteist",
+          "kaheksateist",
+          "üheksateist",
+          "kakskümmend",
+          "kakskümmend üks",
+          "kakskümmend kaks"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "",
+          "null üks",
+          "null kaks",
+          "null kolm",
+          "null neli",
+          "null viis",
+          "null kuus",
+          "null seitse",
+          "null kaheksa",
+          "null üheksa",
+          "kümme",
+          "üksteist",
+          "kaksteist",
+          "kolmteist",
+          "neliteist",
+          "viisteist",
+          "kuusteist",
+          "seitseteist",
+          "kaheksateist",
+          "üheksateist",
+          "kakskümmend",
+          "kakskümmend üks",
+          "kakskümmend kaks",
+          "kakskümmend kolm",
+          "kakskümmend neli",
+          "kakskümmend viis",
+          "kakskümmend kuus",
+          "kakskümmend seitse",
+          "kakskümmend kaheksa",
+          "kakskümmend üheksa",
+          "kolmkümmend",
+          "kolmkümmend üks",
+          "kolmkümmend kaks",
+          "kolmkümmend kolm",
+          "kolmkümmend neli",
+          "kolmkümmend viis",
+          "kolmkümmend kuus",
+          "kolmkümmend seitse",
+          "kolmkümmend kaheksa",
+          "kolmkümmend üheksa",
+          "nelikümmend",
+          "nelikümmend üks",
+          "nelikümmend kaks",
+          "nelikümmend kolm",
+          "nelikümmend neli",
+          "nelikümmend viis",
+          "nelikümmend kuus",
+          "nelikümmend seitse",
+          "nelikümmend kaheksa",
+          "nelikümmend üheksa",
+          "viiskümmend",
+          "viiskümmend üks",
+          "viiskümmend kaks",
+          "viiskümmend kolm",
+          "viiskümmend neli",
+          "viiskümmend viis",
+          "viiskümmend kuus",
+          "viiskümmend seitse",
+          "viiskümmend kaheksa",
+          "viiskümmend üheksa"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "ja"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "null",
+          "üks",
+          "kaks",
+          "kolm",
+          "neli",
+          "viis",
+          "kuus",
+          "seitse",
+          "kaheksa",
+          "üheksa",
+          "kümme",
+          "üksteist",
+          "kaksteist",
+          "kolmteist",
+          "neliteist",
+          "viisteist",
+          "kuusteist",
+          "seitseteist",
+          "kaheksateist",
+          "üheksateist",
+          "kakskümmend",
+          "kakskümmend üks",
+          "kakskümmend kaks",
+          "kakskümmend kolm",
+          "kakskümmend neli",
+          "kakskümmend viis",
+          "kakskümmend kuus",
+          "kakskümmend seitse",
+          "kakskümmend kaheksa",
+          "kakskümmend üheksa",
+          "kolmkümmend",
+          "kolmkümmend üks",
+          "kolmkümmend kaks",
+          "kolmkümmend kolm",
+          "kolmkümmend neli",
+          "kolmkümmend viis",
+          "kolmkümmend kuus",
+          "kolmkümmend seitse",
+          "kolmkümmend kaheksa",
+          "kolmkümmend üheksa",
+          "nelikümmend",
+          "nelikümmend üks",
+          "nelikümmend kaks",
+          "nelikümmend kolm",
+          "nelikümmend neli",
+          "nelikümmend viis",
+          "nelikümmend kuus",
+          "nelikümmend seitse",
+          "nelikümmend kaheksa",
+          "nelikümmend üheksa",
+          "viiskümmend",
+          "viiskümmend üks",
+          "viiskümmend kaks",
+          "viiskümmend kolm",
+          "viiskümmend neli",
+          "viiskümmend viis",
+          "viiskümmend kuus",
+          "viiskümmend seitse",
+          "viiskümmend kaheksa",
+          "viiskümmend üheksa"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==1",
+            "text": "sekund"
+          },
+          {
+            "highlight": "second!=1",
+            "text": "sekundit"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

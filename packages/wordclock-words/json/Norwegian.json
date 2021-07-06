@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "language": "no",
+    "title": "Søndag den tjueåttende november, femti-en minutter og tjuesyv sekunder over syv",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Mandag",
+          "Tirsdag",
+          "Onsdag",
+          "Torsdag",
+          "Fredag",
+          "Lørdag",
+          "Søndag"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "den"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "første",
+          "andre",
+          "tredje",
+          "fjerde",
+          "femte",
+          "sjette",
+          "syvende",
+          "åttende",
+          "niende",
+          "tiende",
+          "ellevte",
+          "tolvte",
+          "trettende",
+          "fjortende",
+          "femtende",
+          "sekstende",
+          "syttende",
+          "attende",
+          "nittende",
+          "tjuende",
+          "tjueførste",
+          "tjueandre",
+          "tjuetredje",
+          "tjuefjerde",
+          "tjuefemte",
+          "tjuesjette",
+          "tjuesyvende",
+          "tjueåttende",
+          "tjueniende",
+          "tredevte",
+          "tretti-første"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "januar",
+          "februar",
+          "mars",
+          "april",
+          "mai",
+          "juni",
+          "juli",
+          "august",
+          "september",
+          "oktober",
+          "november",
+          "desember"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "null",
+          "ett",
+          "to",
+          "tre",
+          "fire",
+          "fem",
+          "seks",
+          "syv",
+          "åtte",
+          "ni",
+          "ti",
+          "elleve",
+          "tolv",
+          "tretten",
+          "fjorten",
+          "femten",
+          "seksten",
+          "sytten",
+          "atten",
+          "nitten",
+          "tjue",
+          "tjueen",
+          "tjueto",
+          "tjuetre",
+          "tjuefire",
+          "tjuefem",
+          "tjueseks",
+          "tjuesyv",
+          "tjueåtte",
+          "tjueni",
+          "tretti",
+          "tretti-en",
+          "tretti-to",
+          "tretti-tre",
+          "tretti-fire",
+          "tretti-fem",
+          "tretti-seks",
+          "tretti-syv",
+          "tretti-åtte",
+          "tretti-ni",
+          "førti",
+          "førti-en",
+          "førti-to",
+          "førti-tre",
+          "førti-fire",
+          "førti-fem",
+          "førti-seks",
+          "førti-syv",
+          "førti-åtte",
+          "førti-ni",
+          "femti",
+          "femti-en",
+          "femti-to",
+          "femti-tre",
+          "femti-fire",
+          "femti-fem",
+          "femti-seks",
+          "femti-syv",
+          "femti-åtte",
+          "femti-ni"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "minutter og"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "null",
+          "ett",
+          "to",
+          "tre",
+          "fire",
+          "fem",
+          "seks",
+          "syv",
+          "åtte",
+          "ni",
+          "ti",
+          "elleve",
+          "tolv",
+          "tretten",
+          "fjorten",
+          "femten",
+          "seksten",
+          "sytten",
+          "atten",
+          "nitten",
+          "tjue",
+          "tjueen",
+          "tjueto",
+          "tjuetre",
+          "tjuefire",
+          "tjuefem",
+          "tjueseks",
+          "tjuesyv",
+          "tjueåtte",
+          "tjueni",
+          "tretti",
+          "tretti-en",
+          "tretti-to",
+          "tretti-tre",
+          "tretti-fire",
+          "tretti-fem",
+          "tretti-seks",
+          "tretti-syv",
+          "tretti-åtte",
+          "tretti-ni",
+          "førti",
+          "førti-en",
+          "førti-to",
+          "førti-tre",
+          "førti-fire",
+          "førti-fem",
+          "førti-seks",
+          "førti-syv",
+          "førti-åtte",
+          "førti-ni",
+          "femti",
+          "femti-en",
+          "femti-to",
+          "femti-tre",
+          "femti-fire",
+          "femti-fem",
+          "femti-seks",
+          "femti-syv",
+          "femti-åtte",
+          "femti-ni"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "sekunder over"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "ett",
+          "to",
+          "tre",
+          "fire",
+          "fem",
+          "seks",
+          "syv",
+          "åtte",
+          "ni",
+          "ti",
+          "elleve",
+          "tolv"
+        ]
+      }
+    ]
+  ]
+}

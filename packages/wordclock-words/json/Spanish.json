@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "language": "es",
+    "title": "Martes veinticinco de junio, cuatro catorce con treinta segundos de la mañana.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves",
+          "Viernes",
+          "Sábado",
+          "Domingo"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "primero",
+          "dos",
+          "tres",
+          "cuatro",
+          "cinco",
+          "seis",
+          "siete",
+          "ocho",
+          "nueve",
+          "diez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "quince",
+          "dieciséis",
+          "diecisiete",
+          "dieciocho",
+          "diecinueve",
+          "veinte",
+          "veintiuno",
+          "veintidós",
+          "veintitrés",
+          "veinticuatro",
+          "veinticinco",
+          "veintiséis",
+          "veintisiete",
+          "veintiocho",
+          "veintinueve",
+          "treinta",
+          "treinta y uno"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "de"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octubre",
+          "noviembre",
+          "diciembre"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "una",
+          "dos",
+          "tres",
+          "cuatro",
+          "cinco",
+          "seis",
+          "siete",
+          "ocho",
+          "nueve",
+          "diez",
+          "once",
+          "doce"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "en punto",
+          "uno",
+          "dos",
+          "tres",
+          "cuatro",
+          "cinco",
+          "seis",
+          "siete",
+          "ocho",
+          "nueve",
+          "diez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "y cuarto",
+          "dieciséis",
+          "diecisiete",
+          "dieciocho",
+          "diecinueve",
+          "veinte",
+          "veintiuno",
+          "veintidós",
+          "veintitrés",
+          "veinticuatro",
+          "veinticinco",
+          "veintiséis",
+          "veintisiete",
+          "veintiocho",
+          "veintinueve",
+          "y media",
+          "treinta y uno",
+          "treinta y dos",
+          "treinta y tres",
+          "treinta y cuatro",
+          "treinta y cinco",
+          "treinta y seis",
+          "treinta y siete",
+          "treinta y ocho",
+          "treinta y nueve",
+          "cuarenta",
+          "cuarenta y uno",
+          "cuarenta y dos",
+          "cuarenta y tres",
+          "cuarenta y cuatro",
+          "cuarenta y cinco",
+          "cuarenta y seis",
+          "cuarenta y siete",
+          "cuarenta y ocho",
+          "cuarenta y nueve",
+          "cincuenta",
+          "cincuenta y uno",
+          "cincuenta y dos",
+          "cincuenta y tres",
+          "cincuenta y cuatro",
+          "cincuenta y cinco",
+          "cincuenta y seis",
+          "cincuenta y siete",
+          "cincuenta y ocho",
+          "cincuenta y nueve"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "con"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "cero",
+          "un",
+          "dos",
+          "tres",
+          "cuatro",
+          "cinco",
+          "seis",
+          "siete",
+          "ocho",
+          "nueve",
+          "diez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "quince",
+          "dieciséis",
+          "diecisiete",
+          "dieciocho",
+          "diecinueve",
+          "veinte",
+          "veintiun",
+          "veintidós",
+          "veintitrés",
+          "veinticuatro",
+          "veinticinco",
+          "veintiséis",
+          "veintisiete",
+          "veintiocho",
+          "veintinueve",
+          "treinta",
+          "treinta y un",
+          "treinta y dos",
+          "treinta y tres",
+          "treinta y cuatro",
+          "treinta y cinco",
+          "treinta y seis",
+          "treinta y siete",
+          "treinta y ocho",
+          "treinta y nueve",
+          "cuarenta",
+          "cuarenta y un",
+          "cuarenta y dos",
+          "cuarenta y tres",
+          "cuarenta y cuatro",
+          "cuarenta y cinco",
+          "cuarenta y seis",
+          "cuarenta y siete",
+          "cuarenta y ocho",
+          "cuarenta y nueve",
+          "cincuenta",
+          "cincuenta y un",
+          "cincuenta y dos",
+          "cincuenta y tres",
+          "cincuenta y cuatro",
+          "cincuenta y cinco",
+          "cincuenta y seis",
+          "cincuenta y siete",
+          "cincuenta y ocho",
+          "cincuenta y nueve"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==1",
+            "text": "segundo"
+          },
+          {
+            "highlight": "second!=1",
+            "text": "segundos"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour<12",
+            "text": "de la mañana"
+          },
+          {
+            "highlight": "twentyfourhour>=12",
+            "text": "de la tarde"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

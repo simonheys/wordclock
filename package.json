@@ -1,0 +1,20 @@
+{
+  "name": "wordclock",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Simon Heys <si@simonheys.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "yarn lint:prettier",
+    "lint:prettier": "prettier -l './**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
+    "precommit": "yarn lint",
+    "prettier": "prettier --write './**/*.{js,json,css,scss}'"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "prettier": "^2.3.2"
+  }
+}

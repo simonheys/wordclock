@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "language": "sl",
+    "title": "(24 ur) Četrtek, trideseti avgust, dvaindvajset minut in enaindvajset sekund.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "day",
+        "first": 0,
+        "text": [
+          "Nedelja,",
+          "Ponedeljek,",
+          "Torek,",
+          "Sreda,",
+          "Četrtek,",
+          "Petek,",
+          "Sobota,"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "prvi",
+          "drugi",
+          "tretji",
+          "četrti",
+          "peti",
+          "šesti",
+          "sedmi",
+          "osmi",
+          "deveti",
+          "deseti",
+          "enajsti",
+          "dvanajsti",
+          "trinajsti",
+          "štirinajsti",
+          "petnajsti",
+          "šestnajsti",
+          "sedemnajsti",
+          "osemnajsti",
+          "devetnajsti",
+          "dvajseti",
+          "enaindvajseti",
+          "dvaindvajseti",
+          "triindvajseti",
+          "štiriindvajseti",
+          "petindvajseti",
+          "šestindvajseti",
+          "sedemindvajseti",
+          "osemindvajseti",
+          "devetindvajseti",
+          "trideseti",
+          "enaintrideseti,"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "januar,",
+          "februar,",
+          "marec,",
+          "april,",
+          "maj,",
+          "junij,",
+          "julij,",
+          "avgust,",
+          "september,",
+          "oktober,",
+          "november,",
+          "december,"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "hour==0 && (minute==0)",
+            "text": "polnoč"
+          },
+          {
+            "highlight": "hour==0 && (minute>=1)",
+            "text": "polnoč,"
+          },
+          {
+            "highlight": "hour==1 && (minute==0)",
+            "text": "ena"
+          },
+          {
+            "highlight": "hour==1 && (minute>=1)",
+            "text": "ena,"
+          },
+          {
+            "highlight": "hour==2 && (minute==0)",
+            "text": "dve"
+          },
+          {
+            "highlight": "hour==2 && (minute>=1)",
+            "text": "dve,"
+          },
+          {
+            "highlight": "hour==3 && (minute==0)",
+            "text": "tri"
+          },
+          {
+            "highlight": "hour==3 && (minute>=1)",
+            "text": "tri,"
+          },
+          {
+            "highlight": "hour==4 && (minute==0)",
+            "text": "štiri"
+          },
+          {
+            "highlight": "hour==4 && (minute>=1)",
+            "text": "štiri,"
+          },
+          {
+            "highlight": "hour==5 && (minute==0)",
+            "text": "pet"
+          },
+          {
+            "highlight": "hour==5 && (minute>=1)",
+            "text": "pet,"
+          },
+          {
+            "highlight": "hour==6 && (minute==0)",
+            "text": "šest"
+          },
+          {
+            "highlight": "hour==6 && (minute>=1)",
+            "text": "šest,"
+          },
+          {
+            "highlight": "hour==7 && (minute==0)",
+            "text": "sedem"
+          },
+          {
+            "highlight": "hour==7 && (minute>=1)",
+            "text": "sedem,"
+          },
+          {
+            "highlight": "hour==8 && (minute==0)",
+            "text": "osem"
+          },
+          {
+            "highlight": "hour==8 && (minute>=1)",
+            "text": "osem,"
+          },
+          {
+            "highlight": "hour==9 && (minute==0)",
+            "text": "devet"
+          },
+          {
+            "highlight": "hour==9 && (minute>=1)",
+            "text": "devet,"
+          },
+          {
+            "highlight": "hour==10 && (minute==0)",
+            "text": "deset"
+          },
+          {
+            "highlight": "hour==10 && (minute>=1)",
+            "text": "deset,"
+          },
+          {
+            "highlight": "hour==11 && (minute==0)",
+            "text": "enajst"
+          },
+          {
+            "highlight": "hour==11 && (minute>=1)",
+            "text": "enajst,"
+          },
+          {
+            "highlight": "hour==12 && (minute==0)",
+            "text": "dvanajst"
+          },
+          {
+            "highlight": "hour==12 && (minute>=1)",
+            "text": "dvanajst,"
+          },
+          {
+            "highlight": "hour==13 && (minute==0)",
+            "text": "trinajst"
+          },
+          {
+            "highlight": "hour==13 && (minute>=1)",
+            "text": "trinajst,"
+          },
+          {
+            "highlight": "hour==14 && (minute==0)",
+            "text": "štirinajst"
+          },
+          {
+            "highlight": "hour==14 && (minute>=1)",
+            "text": "štirinajst,"
+          },
+          {
+            "highlight": "hour==15 && (minute==0)",
+            "text": "petnajst"
+          },
+          {
+            "highlight": "hour==15 && (minute>=1)",
+            "text": "petnajst,"
+          },
+          {
+            "highlight": "hour==16 && (minute==0)",
+            "text": "šestnajst"
+          },
+          {
+            "highlight": "hour==16 && (minute>=1)",
+            "text": "šestnajst,"
+          },
+          {
+            "highlight": "hour==17 && (minute==0)",
+            "text": "sedemnajst"
+          },
+          {
+            "highlight": "hour==17 && (minute>=1)",
+            "text": "sedemnajst,"
+          },
+          {
+            "highlight": "hour==18 && (minute==0)",
+            "text": "osemnajst"
+          },
+          {
+            "highlight": "hour==18 && (minute>=1)",
+            "text": "osemnajst,"
+          },
+          {
+            "highlight": "hour==19 && (minute==0)",
+            "text": "devetnajst"
+          },
+          {
+            "highlight": "hour==19 && (minute>=1)",
+            "text": "devetnajst,"
+          },
+          {
+            "highlight": "hour==20 && (minute==0)",
+            "text": "dvajset"
+          },
+          {
+            "highlight": "hour==20 && (minute>=1)",
+            "text": "dvajset,"
+          },
+          {
+            "highlight": "hour==21 && (minute==0)",
+            "text": "enaindvajset"
+          },
+          {
+            "highlight": "hour==21 && (minute>=1)",
+            "text": "enaindvajset,"
+          },
+          {
+            "highlight": "hour==22 && (minute==0)",
+            "text": "dvaindvajset"
+          },
+          {
+            "highlight": "hour==22 && (minute>=1)",
+            "text": "dvaindvajset,"
+          },
+          {
+            "highlight": "hour==23 && (minute==0)",
+            "text": "triindvajset"
+          },
+          {
+            "highlight": "hour==23 && (minute>=1)",
+            "text": "triindvajset,"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "",
+          "ena",
+          "dve",
+          "tri",
+          "štiri",
+          "pet",
+          "šest",
+          "sedem",
+          "osem",
+          "devet",
+          "deset",
+          "enajst",
+          "dvanajst",
+          "trinajst",
+          "štirinajst",
+          "petnajst",
+          "šestnajst",
+          "sedemnajst",
+          "osemnajst",
+          "devetnajst",
+          "dvajset",
+          "enaindvajset",
+          "dvaindvajset",
+          "triindvajset",
+          "štiriindvajset",
+          "petindvajset",
+          "šestindvajset",
+          "sedemindvajset",
+          "osemindvajset",
+          "devetindvajset",
+          "trideset",
+          "enaintrideset",
+          "dvaintrideset",
+          "triintrideset",
+          "štiriintrideset",
+          "petintrideset",
+          "šestintrideset",
+          "sedemintrideset",
+          "osemintrideset",
+          "devetintrideset",
+          "štirideset",
+          "enainštirideset",
+          "dvainštirideset",
+          "triinštirideset",
+          "štiriinštirideset",
+          "petinštirideset",
+          "šestinštirideset",
+          "sedeminštirideset",
+          "oseminštirideset",
+          "devetinštirideset",
+          "petdeset",
+          "enainpetdeset",
+          "dvainpetdeset",
+          "triinpetdeset",
+          "štiriinpetdeset",
+          "petinpetdeset",
+          "šestinpetdeset",
+          "sedeminpetdeset",
+          "oseminpetdeset",
+          "devetinpetdeset"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute==0"
+          },
+          {
+            "highlight": "minute==1",
+            "text": "minuta"
+          },
+          {
+            "highlight": "minute==2",
+            "text": "minuti"
+          },
+          {
+            "highlight": "minute==3 || minute==4",
+            "text": "minute"
+          },
+          {
+            "highlight": "minute>=5",
+            "text": "minut"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 55
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second>=1",
+            "text": "in"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "",
+          "ena",
+          "dve",
+          "tri",
+          "štiri",
+          "pet",
+          "šest",
+          "sedem",
+          "osem",
+          "devet",
+          "deset",
+          "enajst",
+          "dvanajst",
+          "trinajst",
+          "štirinajst",
+          "petnajst",
+          "šestnajst",
+          "sedemnajst",
+          "osemnajst",
+          "devetnajst",
+          "dvajset",
+          "enaindvajset",
+          "dvaindvajset",
+          "triindvajset",
+          "štiriindvajset",
+          "petindvajset",
+          "šestindvajset",
+          "sedemindvajset",
+          "osemindvajset",
+          "devetindvajset",
+          "trideset",
+          "enaintrideset",
+          "dvaintrideset",
+          "triintrideset",
+          "štiriintrideset",
+          "petintrideset",
+          "šestintrideset",
+          "sedemintrideset",
+          "osemintrideset",
+          "devetintrideset",
+          "štirideset",
+          "enainštirideset",
+          "dvainštirideset",
+          "triinštirideset",
+          "štiriinštirideset",
+          "petinštirideset",
+          "šestinštirideset",
+          "sedeminštirideset",
+          "oseminštirideset",
+          "devetinštirideset",
+          "petdeset",
+          "enainpetdeset",
+          "dvainpetdeset",
+          "triinpetdeset",
+          "štiriinpetdeset",
+          "petinpetdeset",
+          "šestinpetdeset",
+          "sedeminpetdeset",
+          "oseminpetdeset",
+          "devetinpetdeset"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second==1",
+            "text": "sekunda"
+          },
+          {
+            "highlight": "second==2",
+            "text": "sekundi"
+          },
+          {
+            "highlight": "second==3 || second==4",
+            "text": "sekunde"
+          },
+          {
+            "highlight": "second>=5",
+            "text": "sekund"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 55
+      }
+    ]
+  ]
+}

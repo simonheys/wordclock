@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "language": "fr",
+    "title": "Trois heures, quatre minutes, une second",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "Zéro",
+          "Une",
+          "Deux",
+          "Trois",
+          "Quatre",
+          "Cinq",
+          "Six",
+          "Sept",
+          "Huit",
+          "Neuf",
+          "Dix",
+          "Onze",
+          "Douze",
+          "Treize",
+          "Quatorze",
+          "Quinze",
+          "Seize",
+          "Dix-sept",
+          "Dix-huit",
+          "Dix-neuf",
+          "Vingt",
+          "Vingt-et-une",
+          "Vingt-deux",
+          "Vingt-trois"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "hour<=1",
+            "text": "heure,"
+          },
+          {
+            "highlight": "hour>=2",
+            "text": "heures,"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "zéro",
+          "une",
+          "deux",
+          "trois",
+          "quatre",
+          "cinq",
+          "six",
+          "sept",
+          "huit",
+          "neuf",
+          "dix",
+          "onze",
+          "douze",
+          "treize",
+          "quatorze",
+          "quinze",
+          "seize",
+          "dix-sept",
+          "dix-huit",
+          "dix-neuf",
+          "vingt",
+          "vingt-et-une",
+          "vingt-deux",
+          "vingt-trois",
+          "vingt-quatre",
+          "vingt-cinq",
+          "vingt-six",
+          "vingt-sept",
+          "vingt-huit",
+          "vingt-neuf",
+          "trente",
+          "trente-et-une",
+          "trente-deux",
+          "trente-trois",
+          "trente-quatre",
+          "trente-cinq",
+          "trente-six",
+          "trente-sept",
+          "trente-huit",
+          "trente-neuf",
+          "quarante",
+          "quarante-et-une",
+          "quarante-deux",
+          "quarante-trois",
+          "quarante-quatre",
+          "quarante-cinq",
+          "quarante-six",
+          "quarante-sept",
+          "quarante-huit",
+          "quarante-neuf",
+          "cinquante",
+          "cinquante-et-une",
+          "cinquante-deux",
+          "cinquante-trois",
+          "cinquante-quatre",
+          "cinquante-cinq",
+          "cinquante-six",
+          "cinquante-sept",
+          "cinquante-huit",
+          "cinquante-neuf"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "minute<=1",
+            "text": "minute"
+          },
+          {
+            "highlight": "minute>=2",
+            "text": "minutes"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "zéro",
+          "une",
+          "deux",
+          "trois",
+          "quatre",
+          "cinq",
+          "six",
+          "sept",
+          "huit",
+          "neuf",
+          "dix",
+          "onze",
+          "douze",
+          "treize",
+          "quatorze",
+          "quinze",
+          "seize",
+          "dix-sept",
+          "dix-huit",
+          "dix-neuf",
+          "vingt",
+          "vingt-et-une",
+          "vingt-deux",
+          "vingt-trois",
+          "vingt-quatre",
+          "vingt-cinq",
+          "vingt-six",
+          "vingt-sept",
+          "vingt-huit",
+          "vingt-neuf",
+          "trente",
+          "trente-et-une",
+          "trente-deux",
+          "trente-trois",
+          "trente-quatre",
+          "trente-cinq",
+          "trente-six",
+          "trente-sept",
+          "trente-huit",
+          "trente-neuf",
+          "quarante",
+          "quarante-et-une",
+          "quarante-deux",
+          "quarante-trois",
+          "quarante-quatre",
+          "quarante-cinq",
+          "quarante-six",
+          "quarante-sept",
+          "quarante-huit",
+          "quarante-neuf",
+          "cinquante",
+          "cinquante-et-une",
+          "cinquante-deux",
+          "cinquante-trois",
+          "cinquante-quatre",
+          "cinquante-cinq",
+          "cinquante-six",
+          "cinquante-sept",
+          "cinquante-huit",
+          "cinquante-neuf"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second<=1",
+            "text": "seconde"
+          },
+          {
+            "highlight": "second>=2",
+            "text": "secondes"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "meta": {
+    "language": "hu",
+    "title": "Március huszonötödike, csütörtök, nulla óra tizenkilenc perc nulla másodperc.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "Január",
+          "Február",
+          "Március",
+          "Április",
+          "Május",
+          "Június",
+          "Július",
+          "Augusztus",
+          "Szeptember",
+          "Október",
+          "November",
+          "December"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "elseje",
+          "másodika",
+          "harmadika",
+          "negyedike",
+          "ötödike",
+          "hatodika",
+          "hetedike",
+          "nyolcadika",
+          "kilencedike",
+          "tizedike",
+          "tizenegyedike",
+          "tizenkettedike",
+          "tizenharmadika",
+          "tizennegyedike",
+          "tizenötödike",
+          "tizenhatodika",
+          "tizenhetedike",
+          "tizennyolcadika",
+          "tizenkilencedike",
+          "huszadika",
+          "huszonegyedike",
+          "huszonkettedike",
+          "huszonharmadika",
+          "huszonnegyedike",
+          "huszonötödike",
+          "huszonhatodika",
+          "huszonhetedike",
+          "huszonnyolcadika",
+          "huszonkilencedike",
+          "harmincadika",
+          "harmincegyedike"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "hétfő",
+          "kedd",
+          "szerda",
+          "csütörtök",
+          "péntek",
+          "szombat",
+          "vasárnap"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "nulla",
+          "egy",
+          "kettő",
+          "három",
+          "négy",
+          "öt",
+          "hat",
+          "hét",
+          "nyolc",
+          "kilenc",
+          "tíz",
+          "tizenegy",
+          "tizenkét",
+          "tizenhárom",
+          "tizennégy",
+          "tizenöt",
+          "tizenhat",
+          "tizenhét",
+          "tizennyolc",
+          "tizenkilenc",
+          "húsz",
+          "huszonegy",
+          "huszonkét",
+          "huszonhárom"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "óra"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "nulla",
+          "egy",
+          "kettő",
+          "három",
+          "négy",
+          "öt",
+          "hat",
+          "hét",
+          "nyolc",
+          "kilenc",
+          "tíz",
+          "tizenegy",
+          "tizenkét",
+          "tizenhárom",
+          "tizennégy",
+          "tizenöt",
+          "tizenhat",
+          "tizenhét",
+          "tizennyolc",
+          "tizenkilenc",
+          "húsz",
+          "huszonegy",
+          "huszonkét",
+          "huszonhárom",
+          "huszonnégy",
+          "huszonöt",
+          "huszonhat",
+          "huszonhét",
+          "huszonnyolc",
+          "huszonkilenc",
+          "harminc",
+          "harmincegy",
+          "harminckét",
+          "harminchárom",
+          "harmincnégy",
+          "harmincöt",
+          "harminchat",
+          "harminchét",
+          "harmincnyolc",
+          "harminckilenc",
+          "negyven",
+          "negyvenegy",
+          "negyvenkét",
+          "negyvenhárom",
+          "negyvennégy",
+          "negyvenöt",
+          "negyvenhat",
+          "negyvenhét",
+          "negyvennyolc",
+          "negyvenkilenc",
+          "ötven",
+          "ötvenegy",
+          "ötvenkét",
+          "ötvenhárom",
+          "ötvennégy",
+          "ötvenöt",
+          "ötvenhat",
+          "ötvenhét",
+          "ötvennyolc",
+          "ötvenkilenc"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "perc"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "nulla",
+          "egy",
+          "kettő",
+          "három",
+          "négy",
+          "öt",
+          "hat",
+          "hét",
+          "nyolc",
+          "kilenc",
+          "tíz",
+          "tizenegy",
+          "tizenkét",
+          "tizenhárom",
+          "tizennégy",
+          "tizenöt",
+          "tizenhat",
+          "tizenhét",
+          "tizennyolc",
+          "tizenkilenc",
+          "húsz",
+          "huszonegy",
+          "huszonkét",
+          "huszonhárom",
+          "huszonnégy",
+          "huszonöt",
+          "huszonhat",
+          "huszonhét",
+          "huszonnyolc",
+          "huszonkilenc",
+          "harminc",
+          "harmincegy",
+          "harminckét",
+          "harminchárom",
+          "harmincnégy",
+          "harmincöt",
+          "harminchat",
+          "harminchét",
+          "harmincnyolc",
+          "harminckilenc",
+          "negyven",
+          "negyvenegy",
+          "negyvenkét",
+          "negyvenhárom",
+          "negyvennégy",
+          "negyvenöt",
+          "negyvenhat",
+          "negyvenhét",
+          "negyvennyolc",
+          "negyvenkilenc",
+          "ötven",
+          "ötvenegy",
+          "ötvenkét",
+          "ötvenhárom",
+          "ötvennégy",
+          "ötvenöt",
+          "ötvenhat",
+          "ötvenhét",
+          "ötvennyolc",
+          "ötvenkilenc"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "másodperc"
+          }
+        ]
+      }
+    ]
+  ]
+}

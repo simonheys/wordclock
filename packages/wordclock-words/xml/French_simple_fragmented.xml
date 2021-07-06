@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wordclock language="fr">
+    <title>
+        <![CDATA[(Fragmented) Trois heures, quatre minutes, une second]]>
+    </title>
+    <author>
+        <name>
+            <![CDATA[Simon Heys]]>
+        </name>
+        <url>
+            <![CDATA[]]>
+        </url>
+        <email>
+            <![CDATA[]]>
+        </email>
+    </author>
+    <suitability>
+        <suitable style="linear"/>
+        <suitable style="rotary"/>
+    </suitability>
+    <group>
+        <sequence bind="twentyfourhour" first="0" delimeter=",">
+            <![CDATA[Zéro,Une,Deux,Trois,Quatre,Cinq,Six,Sept,Huit,Neuf,Dix,Onze,Douze,Treize,Quatorze,Quinze,Seize]]>
+            <item highlight="twentyfourhour&gt;=17&amp;&amp;twentyfourhour&lt;=19">
+                <![CDATA[Dix]]>
+            </item>
+            <item highlight="twentyfourhour&gt;=20">
+                <![CDATA[Vingt]]>
+            </item>
+        </sequence>
+    </group>
+    <group>
+        <item highlight="twentyfourhour&lt;=16">
+            <![CDATA[]]>
+        </item>
+        <item highlight="twentyfourhour==17">
+            <![CDATA[-sept]]>
+        </item>
+        <item highlight="twentyfourhour==18">
+            <![CDATA[-huit]]>
+        </item>
+        <item highlight="twentyfourhour==19">
+            <![CDATA[-neuf]]>
+        </item>
+        <item highlight="twentyfourhour==20">
+            <![CDATA[]]>
+        </item>
+        <item highlight="twentyfourhour==21">
+            <![CDATA[-et-une]]>
+        </item>
+        <item highlight="twentyfourhour==22">
+            <![CDATA[-deux]]>
+        </item>
+        <item highlight="twentyfourhour==23">
+            <![CDATA[-trois]]>
+        </item>
+    </group>
+    <group>
+        <item highlight="hour&lt;=1">
+            <![CDATA[heure,]]>
+        </item>
+        <item highlight="hour&gt;=2">
+            <![CDATA[heures,]]>
+        </item>
+        <space count="58"/>
+    </group>
+    <!-- start minutes -->
+    <group>
+        <sequence bind="minute" first="0" delimeter=",">
+            <![CDATA[zéro,une,deux,trois,quatre,cinq,six,sept,huit,neuf,dix,onze,douze,treize,quatorze,quinze,seize]]>
+        </sequence>
+        <item highlight="minute&lt;=16">
+            <![CDATA[]]>
+        </item>
+        <item highlight="(minute&gt;=17&amp;&amp;minute&lt;=19)">
+            <![CDATA[dix]]>
+        </item>
+        <item highlight="minute&gt;=20&amp;&amp;minute&lt;=29">
+            <![CDATA[vingt]]>
+        </item>
+        <item highlight="minute&gt;=30&amp;&amp;minute&lt;=39">
+            <![CDATA[trente]]>
+        </item>
+        <item highlight="minute&gt;=40&amp;&amp;minute&lt;=49">
+            <![CDATA[quarante]]>
+        </item>
+        <item highlight="minute&gt;=50&amp;&amp;minute&lt;=59">
+            <![CDATA[cinquante]]>
+        </item>
+    </group>
+    <group>
+        <item highlight="minute==21||minute==31||minute==41||minute==51">
+            <![CDATA[-et-une]]>
+        </item>
+        <item highlight="minute==22||minute==32||minute==42||minute==52">
+            <![CDATA[-deux]]>
+        </item>
+        <item highlight="minute==23||minute==33||minute==43||minute==53">
+            <![CDATA[-trois]]>
+        </item>
+        <item highlight="minute==24||minute==34||minute==44||minute==54">
+            <![CDATA[-quatre]]>
+        </item>
+        <item highlight="minute==25||minute==35||minute==45||minute==55">
+            <![CDATA[-cinq]]>
+        </item>
+        <item highlight="minute==26||minute==36||minute==46||minute==56">
+            <![CDATA[-six]]>
+        </item>
+        <item highlight="minute==17||minute==27||minute==37||minute==47||minute==57">
+            <![CDATA[-sept]]>
+        </item>
+        <item highlight="minute==18||minute==28||minute==38||minute==48||minute==58">
+            <![CDATA[-huit]]>
+        </item>
+        <item highlight="minute==19||minute==29||minute==39||minute==49||minute==59">
+            <![CDATA[-neuf]]>
+        </item>
+        <item highlight="else">
+            <![CDATA[]]>
+        </item>
+    </group>
+    <group>
+        <item highlight="minute&lt;=1">
+            <![CDATA[minute]]>
+        </item>
+        <item highlight="minute&gt;=2">
+            <![CDATA[minutes]]>
+        </item>
+        <space count="58"/>
+    </group>
+    <!-- end minutes -->
+    <!-- start seconds -->
+    <group>
+        <sequence bind="second" first="0" delimeter=",">
+            <![CDATA[zéro,une,deux,trois,quatre,cinq,six,sept,huit,neuf,dix,onze,douze,treize,quatorze,quinze,seize]]>
+        </sequence>
+        <item highlight="second&lt;=16">
+            <![CDATA[]]>
+        </item>
+        <item highlight="(second&gt;=17&amp;&amp;second&lt;=19)">
+            <![CDATA[dix]]>
+        </item>
+        <item highlight="second&gt;=20&amp;&amp;second&lt;=29">
+            <![CDATA[vingt]]>
+        </item>
+        <item highlight="second&gt;=30&amp;&amp;second&lt;=39">
+            <![CDATA[trente]]>
+        </item>
+        <item highlight="second&gt;=40&amp;&amp;second&lt;=49">
+            <![CDATA[quarante]]>
+        </item>
+        <item highlight="second&gt;=50&amp;&amp;second&lt;=59">
+            <![CDATA[cinquante]]>
+        </item>
+    </group>
+    <group>
+        <item highlight="second==21||second==31||second==41||second==51">
+            <![CDATA[-et-une]]>
+        </item>
+        <item highlight="second==22||second==32||second==42||second==52">
+            <![CDATA[-deux]]>
+        </item>
+        <item highlight="second==23||second==33||second==43||second==53">
+            <![CDATA[-trois]]>
+        </item>
+        <item highlight="second==24||second==34||second==44||second==54">
+            <![CDATA[-quatre]]>
+        </item>
+        <item highlight="second==25||second==35||second==45||second==55">
+            <![CDATA[-cinq]]>
+        </item>
+        <item highlight="second==26||second==36||second==46||second==56">
+            <![CDATA[-six]]>
+        </item>
+        <item highlight="second==17||second==27||second==37||second==47||second==57">
+            <![CDATA[-sept]]>
+        </item>
+        <item highlight="second==18||second==28||second==38||second==48||second==58">
+            <![CDATA[-huit]]>
+        </item>
+        <item highlight="second==19||second==29||second==39||second==49||second==59">
+            <![CDATA[-neuf]]>
+        </item>
+        <item highlight="else">
+            <![CDATA[]]>
+        </item>
+    </group>
+    <group>
+        <item highlight="second&lt;=1">
+            <![CDATA[seconde]]>
+        </item>
+        <item highlight="second&gt;=2">
+            <![CDATA[secondes]]>
+        </item>
+        <space count="58"/>
+    </group>
+    <!-- end seconds -->
+</wordclock>

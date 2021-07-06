@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "language": "en",
+    "title": "(24 hour) Twenty-two ten and twenty-one seconds.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "twentyfourhour",
+        "first": 0,
+        "text": [
+          "Zero",
+          "Oh one",
+          "Oh two",
+          "Oh three",
+          "Oh four",
+          "Oh five",
+          "Oh six",
+          "Oh seven",
+          "Oh eight",
+          "Oh nine",
+          "Ten",
+          "Eleven",
+          "Twelve",
+          "Thirteen",
+          "Fourteen",
+          "Fifteen",
+          "Sixteen",
+          "Seventeen",
+          "Eighteen",
+          "Nineteen",
+          "Twenty",
+          "Twenty-one",
+          "Twenty-two",
+          "Twenty-three"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "hundred",
+          "oh one",
+          "oh two",
+          "oh three",
+          "oh four",
+          "oh five",
+          "oh six",
+          "oh seven",
+          "oh eight",
+          "oh nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+          "twenty-one",
+          "twenty-two",
+          "twenty-three",
+          "twenty-four",
+          "twenty-five",
+          "twenty-six",
+          "twenty-seven",
+          "twenty-eight",
+          "twenty-nine",
+          "thirty",
+          "thirty-one",
+          "thirty-two",
+          "thirty-three",
+          "thirty-four",
+          "thirty-five",
+          "thirty-six",
+          "thirty-seven",
+          "thirty-eight",
+          "thirty-nine",
+          "forty",
+          "forty-one",
+          "forty-two",
+          "forty-three",
+          "forty-four",
+          "forty-five",
+          "forty-six",
+          "forty-seven",
+          "forty-eight",
+          "forty-nine",
+          "fifty",
+          "fifty-one",
+          "fifty-two",
+          "fifty-three",
+          "fifty-four",
+          "fifty-five",
+          "fifty-six",
+          "fifty-seven",
+          "fifty-eight",
+          "fifty-nine"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "and"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "",
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+          "ten",
+          "eleven",
+          "twelve",
+          "thirteen",
+          "fourteen",
+          "fifteen",
+          "sixteen",
+          "seventeen",
+          "eighteen",
+          "nineteen",
+          "twenty",
+          "twenty-one",
+          "twenty-two",
+          "twenty-three",
+          "twenty-four",
+          "twenty-five",
+          "twenty-six",
+          "twenty-seven",
+          "twenty-eight",
+          "twenty-nine",
+          "thirty",
+          "thirty-one",
+          "thirty-two",
+          "thirty-three",
+          "thirty-four",
+          "thirty-five",
+          "thirty-six",
+          "thirty-seven",
+          "thirty-eight",
+          "thirty-nine",
+          "forty",
+          "forty-one",
+          "forty-two",
+          "forty-three",
+          "forty-four",
+          "forty-five",
+          "forty-six",
+          "forty-seven",
+          "forty-eight",
+          "forty-nine",
+          "fifty",
+          "fifty-one",
+          "fifty-two",
+          "fifty-three",
+          "fifty-four",
+          "fifty-five",
+          "fifty-six",
+          "fifty-seven",
+          "fifty-eight",
+          "fifty-nine"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==0"
+          },
+          {
+            "highlight": "second==1",
+            "text": "second"
+          },
+          {
+            "highlight": "second>1",
+            "text": "seconds"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 57
+      }
+    ]
+  ]
+}

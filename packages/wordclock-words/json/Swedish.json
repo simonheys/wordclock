@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "language": "sv",
+    "title": "Tisdagen den tjugotredje juni kl fyra fyrtiofyra och trettioåtta sekunder.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Måndagen",
+          "Tisdagen",
+          "Onsdagen",
+          "Torsdagen",
+          "Fredagen",
+          "Lördagen",
+          "Söndagen"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "den"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "första",
+          "andra",
+          "tredje",
+          "fjärde",
+          "femte",
+          "sjätte",
+          "sjunde",
+          "åttonde",
+          "nionde",
+          "tionde",
+          "elfte",
+          "tolfte",
+          "trettonde",
+          "fjortonde",
+          "femtonde",
+          "sextonde",
+          "sjuttonde",
+          "artonde",
+          "nittonde",
+          "tjugonde",
+          "tjugoförsta",
+          "tjugoandra",
+          "tjugotredje",
+          "tjugofjärde",
+          "tjugofemte",
+          "tjugosjätte",
+          "tjugosjunde",
+          "tjugoåttonde",
+          "tjugonionde",
+          "trettionde",
+          "trettioförsta"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "januari",
+          "februari",
+          "mars",
+          "april",
+          "maj",
+          "juni",
+          "juli",
+          "augusti",
+          "september",
+          "oktober",
+          "november",
+          "december"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "kl"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "ett",
+          "två",
+          "tre",
+          "fyra",
+          "fem",
+          "sex",
+          "sju",
+          "åtta",
+          "nio",
+          "tio",
+          "elva",
+          "tolv"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "noll-noll",
+          "noll-ett",
+          "noll-två",
+          "noll-tre",
+          "noll-fyra",
+          "noll-fem",
+          "noll-sex",
+          "noll-sju",
+          "noll-åtta",
+          "noll-nio",
+          "tio",
+          "elva",
+          "tolv",
+          "tretton",
+          "fjorton",
+          "femton",
+          "sexton",
+          "sjutton",
+          "arton",
+          "nitton",
+          "tjugo",
+          "tjugoett",
+          "tjugotvå",
+          "tjugotre",
+          "tjugofyra",
+          "tjugofem",
+          "tjugosex",
+          "tjugosju",
+          "tjugoåtta",
+          "tjugonio",
+          "trettio",
+          "trettioett",
+          "trettiotvå",
+          "trettiotre",
+          "trettiofyra",
+          "trettiofem",
+          "trettiosex",
+          "trettiosju",
+          "trettioåtta",
+          "trettionio",
+          "fyrtio",
+          "fyrtioett",
+          "fyrtiotvå",
+          "fyrtiotre",
+          "fyrtiofyra",
+          "fyrtiofem",
+          "fyrtiosex",
+          "fyrtiosju",
+          "fyrtioåtta",
+          "fyrtionio",
+          "femtio",
+          "femtioett",
+          "femtiotvå",
+          "femtiotre",
+          "femtiofyra",
+          "femtiofem",
+          "femtiosex",
+          "femtiosju",
+          "femtioåtta",
+          "femtionio"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "och"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "noll-noll",
+          "noll-ett",
+          "noll-två",
+          "noll-tre",
+          "noll-fyra",
+          "noll-fem",
+          "noll-sex",
+          "noll-sju",
+          "noll-åtta",
+          "noll-nio",
+          "tio",
+          "elva",
+          "tolv",
+          "tretton",
+          "fjorton",
+          "femton",
+          "sexton",
+          "sjutton",
+          "arton",
+          "nitton",
+          "tjugo",
+          "tjugoett",
+          "tjugotvå",
+          "tjugotre",
+          "tjugofyra",
+          "tjugofem",
+          "tjugosex",
+          "tjugosju",
+          "tjugoåtta",
+          "tjugonio",
+          "trettio",
+          "trettioett",
+          "trettiotvå",
+          "trettiotre",
+          "trettiofyra",
+          "trettiofem",
+          "trettiosex",
+          "trettiosju",
+          "trettioåtta",
+          "trettionio",
+          "fyrtio",
+          "fyrtioett",
+          "fyrtiotvå",
+          "fyrtiotre",
+          "fyrtiofyra",
+          "fyrtiofem",
+          "fyrtiosex",
+          "fyrtiosju",
+          "fyrtioåtta",
+          "fyrtionio",
+          "femtio",
+          "femtioett",
+          "femtiotvå",
+          "femtiotre",
+          "femtiofyra",
+          "femtiofem",
+          "femtiosex",
+          "femtiosju",
+          "femtioåtta",
+          "femtionio"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "sekunder"
+          }
+        ]
+      }
+    ]
+  ]
+}

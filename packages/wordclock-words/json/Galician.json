@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "language": "gl",
+    "title": "Xoves vinteseis de Outubro, nove vinteseis am con dous segundos.",
+    "suitability": ["linear"]
+  },
+  "groups": [
+    [
+      {
+        "type": "sequence",
+        "bind": "daystartingmonday",
+        "first": 0,
+        "text": [
+          "Luns",
+          "Martes",
+          "Mércores",
+          "Xoves",
+          "Venres",
+          "Sabado",
+          "Domingo"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "date",
+        "first": 1,
+        "text": [
+          "primeiro",
+          "dous",
+          "tres",
+          "catro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "quince",
+          "dezaseis",
+          "dezasete",
+          "dezaoito",
+          "dezanove",
+          "vinte",
+          "vinteún",
+          "vintedous",
+          "vintetrés",
+          "vintecatro",
+          "vintecinco",
+          "vinteseis",
+          "vintesete",
+          "vinteoito",
+          "vintenove",
+          "trinta",
+          "trinta e un"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "de"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "month",
+        "first": 0,
+        "text": [
+          "Xaneiro",
+          "Febreiro",
+          "Marzal",
+          "Abril",
+          "Maio",
+          "Xuño",
+          "Xullo",
+          "Agosto",
+          "Setembro",
+          "Outubro",
+          "Novembro",
+          "Decembro"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": ","
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "hour",
+        "first": 1,
+        "text": [
+          "unha",
+          "dous",
+          "tres",
+          "catro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "once",
+          "doce"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "minute",
+        "first": 0,
+        "text": [
+          "en punto",
+          "un",
+          "dous",
+          "tres",
+          "catro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "e cuarto",
+          "dezaseis",
+          "dezasete",
+          "dezaoito",
+          "dezanove",
+          "vinte",
+          "vinteún",
+          "vintedous",
+          "vintetrés",
+          "vintecatro",
+          "vintecinco",
+          "vinteseis",
+          "vintesete",
+          "vinteoito",
+          "vintenove",
+          "e media",
+          "trinta e un",
+          "trinta e dous",
+          "trinta e tres",
+          "trinta e catro",
+          "trinta e cinco",
+          "trinta e seis",
+          "trinta e sete",
+          "trinta e oito",
+          "trinta e nove",
+          "corenta",
+          "corenta e un",
+          "corenta e dous",
+          "corenta e tres",
+          "corenta e catro",
+          "corenta e cinco",
+          "corenta e seis",
+          "corenta e sete",
+          "corenta e oito",
+          "corenta e nove",
+          "cincuenta",
+          "cincuenta e un",
+          "cincuenta e dous",
+          "cincuenta e tres",
+          "cincuenta e catro",
+          "cincuenta e cinco",
+          "cincuenta e seis",
+          "cincuenta e sete",
+          "cincuenta e oito",
+          "cincuenta e nove"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "twentyfourhour<12",
+            "text": "am"
+          },
+          {
+            "highlight": "twentyfourhour>=12",
+            "text": "pm"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "true",
+            "text": "con"
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "type": "sequence",
+        "bind": "second",
+        "first": 0,
+        "text": [
+          "cero",
+          "un",
+          "dous",
+          "tres",
+          "catro",
+          "cinco",
+          "seis",
+          "sete",
+          "oito",
+          "nove",
+          "dez",
+          "once",
+          "doce",
+          "trece",
+          "catorce",
+          "quince",
+          "dezaseis",
+          "dezasete",
+          "dezaoito",
+          "dezanove",
+          "veinte",
+          "vinteún",
+          "vintedous",
+          "vintetrés",
+          "vintecatro",
+          "vintecinco",
+          "vinteseis",
+          "vintesete",
+          "vinteoito",
+          "vintenove",
+          "trinta",
+          "trinta e un",
+          "trinta e dous",
+          "trinta e tres",
+          "trinta e catro",
+          "trinta e cinco",
+          "trinta e seis",
+          "trinta e sete",
+          "trinta e oito",
+          "trinta e nove",
+          "corenta",
+          "corenta e un",
+          "corenta e dous",
+          "corenta e tres",
+          "corenta e catro",
+          "corenta e cinco",
+          "corenta e seis",
+          "corenta e sete",
+          "corenta e oito",
+          "corenta e nove",
+          "cincuenta",
+          "cincuenta e un",
+          "cincuenta e dous",
+          "cincuenta e tres",
+          "cincuenta e catro",
+          "cincuenta e cinco",
+          "cincuenta e seis",
+          "cincuenta e sete",
+          "cincuenta e oito",
+          "cincuenta e nove"
+        ]
+      }
+    ],
+    [
+      {
+        "type": "item",
+        "items": [
+          {
+            "highlight": "second==1",
+            "text": "segundo"
+          },
+          {
+            "highlight": "second!=1",
+            "text": "segundos"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "count": 58
+      }
+    ]
+  ]
+}

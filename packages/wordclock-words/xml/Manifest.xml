@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<file>Albanian_12_hour_clock.xml</file>
+	<file>Albanian.xml</file>
+	<file>Arabic.xml</file>
+	<file>Brazilian.xml</file>
+	<file>Catalan.xml</file>
+	<file>Chinese.xml</file>
+	<file>Croatian.xml</file>
+	<file>Czech.xml</file>
+	<file>Danish.xml</file>
+	<file>Dutch.xml</file>
+	<file>English.xml</file>
+	<file>English_24_hour.xml</file>
+	<file>English_original.xml</file>
+	<file>English_simple.xml</file>
+	<file>English_simple_fragmented.xml</file>
+	<file>Estonian.xml</file>
+	<file>Estonian_fragmented.xml</file>
+	<file>Finnish.xml</file>
+	<file>French.xml</file>
+	<file>French_original.xml</file>
+	<file>French_simple.xml</file>
+	<file>French_simple_fragmented.xml</file>
+	<file>Galician.xml</file>
+	<file>German.xml</file>
+	<file>German_simple.xml</file>
+	<file>Greek.xml</file>
+	<file>Hindi.xml</file>
+	<file>Hungarian.xml</file>
+	<file>Icelandic.xml</file>
+	<file>Indonesian.xml</file>
+	<file>Italian.xml</file>
+	<file>Italian2.xml</file>
+	<file>Italian3.xml</file>
+	<file>Japanese.xml</file>
+	<file>Japanese_classic.xml</file>
+	<file>Korean.xml</file>
+	<file>Latvian.xml</file>
+	<file>Macedonian.xml</file>
+	<file>Norwegian.xml</file>
+	<file>Polish.xml</file>
+	<file>Portuguese.xml</file>
+	<file>Russian.xml</file>
+	<file>Slovak.xml</file>
+	<file>Slovenian.xml</file>
+	<file>Slovenian_24_hour.xml</file>
+	<file>Slovenian_24_hour_rotary.xml</file>
+	<file>Spanish.xml</file>
+	<file>Swedish.xml</file>
+	<file>Thai.xml</file>
+	<file>Thai_formal.xml</file>
+	<file>Turkish.xml</file>
+	<file>Ukrainian.xml</file>
+	<language code="aa" title="Afar" />
+	<language code="ab" title="Abkhazian" />	
+	<language code="af" title="Afrikaans" />
+	<language code="am" title="Amharic" />
+	<language code="ar" title="Arabic" />
+	<language code="as" title="Assamese" />
+	<language code="ay" title="Aymara" />
+	<language code="az" title="Azerbaijani" />	
+	<language code="ba" title="Bashkir" />
+	<language code="be" title="Byelorussian" />
+	<language code="bg" title="Bulgarian" />
+	<language code="bh" title="Bihari" />
+	<language code="bi" title="Bislama" />
+	<language code="bn" title="Bengali" />	
+	<language code="bo" title="Tibetan" />
+	<language code="br" title="Breton" />
+	<language code="ca" title="Catalan" />
+	<language code="co" title="Corsican" />
+	<language code="cs" title="Czech" />
+	<language code="cy" title="Welsh" />	
+	<language code="da" title="Danish" />
+	<language code="de" title="German" />
+	<language code="dz" title="Bhutani" />
+	<language code="el" title="Greek" />
+	<language code="en" title="English" />
+	<language code="eo" title="Esperanto" />	
+	<language code="es" title="Spanish" />
+	<language code="et" title="Estonian" />
+	<language code="eu" title="Basque" />
+	<language code="fa" title="Persian" />
+	<language code="fi" title="Finnish" />
+	<language code="fj" title="Fiji" />	
+	<language code="fo" title="Faeroese" />
+	<language code="fr" title="French" />
+	<language code="fy" title="Frisian" />
+	<language code="ga" title="Irish" />
+	<language code="gd" title="Scots Gaelic" />
+	<language code="gl" title="Galician" />	
+	<language code="gn" title="Guarani" />
+	<language code="gu" title="Gujarati" />
+	<language code="ha" title="Hausa" />
+	<language code="hi" title="Hindi" />
+	<language code="he" title="Hebrew" />
+	<language code="hr" title="Croatian" />	
+	<language code="hu" title="Hungarian" />
+	<language code="hy" title="Armenian" />
+	<language code="ia" title="Interlingua" />	
+	<language code="id" title="Indonesian" />
+	<language code="ie" title="Interlingue" />
+	<language code="ik" title="Inupiak" />
+	<language code="in" title="former Indonesian" />
+	<language code="is" title="Icelandic" />
+	<language code="it" title="Italian" />	
+	<language code="iu" title="Inuktitut (Eskimo)" />
+	<language code="iw" title="former Hebrew" />
+	<language code="ja" title="Japanese" />
+	<language code="ji" title="former Yiddish" />
+	<language code="jw" title="Javanese" />
+	<language code="ka" title="Georgian" />	
+	<language code="kk" title="Kazakh" />
+	<language code="kl" title="Greenlandic" />
+	<language code="km" title="Cambodian" />
+	<language code="kn" title="Kannada" />
+	<language code="ko" title="Korean" />
+	<language code="ks" title="Kashmiri" />	
+	<language code="ku" title="Kurdish" />
+	<language code="ky" title="Kirghiz" />
+	<language code="la" title="Latin" />
+	<language code="ln" title="Lingala" />
+	<language code="lo" title="Laothian" />
+	<language code="lt" title="Lithuanian" />	
+	<language code="lv" title="Latvian" />
+	<language code="mg" title="Malagasy" />
+	<language code="mi" title="Maori" />
+	<language code="mk" title="Macedonian" />
+	<language code="ml" title="Malayalam" />
+	<language code="mn" title="Mongolian" />	
+	<language code="mo" title="Moldavian" />
+	<language code="mr" title="Marathi" />
+	<language code="ms" title="Malay" />
+	<language code="mt" title="Maltese" />
+	<language code="my" title="Burmese" />
+	<language code="na" title="Nauru" />	
+	<language code="ne" title="Nepali" />
+	<language code="nl" title="Dutch" />
+	<language code="no" title="Norwegian" />
+	<language code="oc" title="Occitan" />
+	<language code="om" title="(Afan) Oromo" />
+	<language code="or" title="Oriya" />	
+	<language code="pa" title="Punjabi" />
+	<language code="pl" title="Polish" />
+	<language code="ps" title="Pashto, Pushto" />
+	<language code="pt" title="Portuguese" />
+	<language code="qu" title="Quechua" />	
+	<language code="rm" title="Rhaeto-Romance" />
+	<language code="rn" title="Kirundi" />
+	<language code="ro" title="Romanian" />
+	<language code="ru" title="Russian" />	
+	<language code="rw" title="Kinyarwanda" />
+	<language code="sa" title="Sanskrit" />
+	<language code="sd" title="Sindhi" />
+	<language code="sg" title="Sangro" />
+	<language code="sh" title="Serbo-Croatian" />
+	<language code="si" title="Singhalese" />	
+	<language code="sk" title="Slovak" />
+	<language code="sl" title="Slovenian" />
+	<language code="sm" title="Samoan" />
+	<language code="sn" title="Shona" />
+	<language code="so" title="Somali" />
+	<language code="sq" title="Albanian" />	
+	<language code="sr" title="Serbian" />
+	<language code="ss" title="Siswati" />
+	<language code="st" title="Sesotho" />
+	<language code="su" title="Sudanese" />
+	<language code="sv" title="Swedish" />
+	<language code="sw" title="Swahili" />	
+	<language code="ta" title="Tamil" />
+	<language code="te" title="Tegulu" />
+	<language code="tg" title="Tajik" />
+	<language code="th" title="Thai" />
+	<language code="ti" title="Tigrinya" />
+	<language code="tk" title="Turkmen" />	
+	<language code="tl" title="Tagalog" />
+	<language code="tn" title="Setswana" />
+	<language code="to" title="Tonga" />
+	<language code="tr" title="Turkish" />
+	<language code="ts" title="Tsonga" />
+	<language code="tt" title="Tatar" />	
+	<language code="tw" title="Twi" />
+	<language code="ug" title="Uigur" />
+	<language code="uk" title="Ukrainian" />
+	<language code="ur" title="Urdu" />
+	<language code="uz" title="Uzbek" />
+	<language code="vi" title="Vietnamese" />	
+	<language code="vo" title="Volapuk" />
+	<language code="wo" title="Wolof" />
+	<language code="xh" title="Xhosa" />
+	<language code="yi" title="Yiddish" />
+	<language code="yo" title="Yoruba" />
+	<language code="za" title="Zhuang" />	
+	<language code="zh" title="Chinese" />
+	<language code="zu" title="Zulu" />
+</manifest>
