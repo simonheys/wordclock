@@ -890,7 +890,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying xml...\"\ncp ${PROJECT_DIR}/../wordclock-words/xml/*.xml \"${TARGET_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}\"\necho \"Done\"";
+			shellScript = "echo \"Copying xml...\"\ncp \"${PROJECT_DIR}\"/../wordclock-words/xml/*.xml \"${TARGET_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}\"\necho \"Done\"\n";
 		};
 		F4778CB6110C54710064FDCE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -916,7 +916,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ACTION == \"build\" ] && [ $BUILD_STYLE == \"Release\" ] ; then \n\n/Developer/usr/bin/agvtool next-version -all\n\nfi";
+			shellScript = "if [ $ACTION == \"build\" ] && [ $BUILD_STYLE == \"Release\" ] ; then \n\n/Developer/usr/bin/agvtool next-version -all\n\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

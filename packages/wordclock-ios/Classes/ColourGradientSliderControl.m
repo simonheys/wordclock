@@ -43,7 +43,7 @@
 	_trackImage = nil;
 	
 	self.backgroundColor = [UIColor clearColor];
-	_stencilImage = [UIImage imageNamed:@"track_stencil.png"];
+	_stencilImage = [[UIImage imageNamed:@"track_stencil.png"] retain];
 	_min = self.frame.size.height / 2;
 	_max = CGRectGetMaxX(self.bounds)-_min;
 

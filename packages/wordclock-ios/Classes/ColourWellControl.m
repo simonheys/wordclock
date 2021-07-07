@@ -32,8 +32,8 @@
 - (void)customSetup
 {
 	[self setColour:[UIColor redColor]];
-	_colourWellEmboss = [UIImage imageNamed:@"colour_well_emboss.png"];
-	_colourWellHighlight = [UIImage imageNamed:@"colour_well_highlight.png"];
+	_colourWellEmboss = [[UIImage imageNamed:@"colour_well_emboss.png"] retain];
+	_colourWellHighlight = [[UIImage imageNamed:@"colour_well_highlight.png"] retain];
 }
 
 - (void) dealloc
