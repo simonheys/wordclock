@@ -1,0 +1,15 @@
+//
+// Prefix header for all source files of the 'iphone_word_clock' target in the 'iphone_word_clock' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+#endif
+
+//#define DEBUG_CULL
+//#define ENABLE_CULL
+//#define ENABLE_TEXTURE_SCALING
+
+#define ENABLE_16_BIT_TEXTURES
+#define ENABLE_MIPMAPPING
