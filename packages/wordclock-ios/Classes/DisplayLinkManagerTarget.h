@@ -1,9 +1,9 @@
 //
 //  DisplayLinkManagerTarget.h
-//  iphone_word_clock_open_gl
+//  WordClock-iOS
 //
-//  Created by Simon on 17/01/2010.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

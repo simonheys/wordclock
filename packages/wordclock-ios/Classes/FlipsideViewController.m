@@ -1,9 +1,9 @@
 //
 //  FlipsideViewController.m
-//  iphone_word_clock
+//  WordClock-iOS
 //
-//  Created by Simon on 22/07/2008.
-//  Copyright 2008 Simon Heys. All rights reserved.
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import "FlipsideViewController.h"

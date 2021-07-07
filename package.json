@@ -14,7 +14,18 @@
     "prettier": "prettier --write './**/*.{js,json,css,scss}'"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/node": "^7.8.0",
+    "@babel/plugin-proposal-decorators": "^7.8.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.8.0",
+    "@babel/plugin-transform-runtime": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@babel/runtime": "^7.8.2",
     "husky": "^0.14.3",
+    "lodash": "^4.17.21",
     "prettier": "^2.3.2"
   }
 }

@@ -1,9 +1,9 @@
 //
-//  ThirdTabViewController.m
-//  iphone_word_clock
+//  TypographyTabViewController.m
+//  WordClock-iOS
 //
-//  Created by Simon on 17/08/2008.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import "TypographyTabViewController.h"

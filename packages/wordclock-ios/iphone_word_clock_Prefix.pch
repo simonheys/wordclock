@@ -1,5 +1,9 @@
 //
-// Prefix header for all source files of the 'iphone_word_clock' target in the 'iphone_word_clock' project
+//  iphone_word_clock_Prefix.pch
+//  WordClock-iOS
+//
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #ifdef __OBJC__

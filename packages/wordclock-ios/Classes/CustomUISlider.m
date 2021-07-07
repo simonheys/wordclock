@@ -1,9 +1,9 @@
 //
 //  CustomUISlider.m
-//  iphone_untility_app
+//  WordClock-iOS
 //
-//  Created by Simon on 08/03/2009.
-//  Copyright 2009 Simon Heys. All rights reserved.
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import "CustomUISlider.h"

@@ -1,9 +1,9 @@
 //
 //  WordClockViewControls.h
-//  iphone_word_clock_open_gl
+//  WordClock-iOS
 //
-//  Created by Simon on 21/02/2009.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import "Dlog.h"

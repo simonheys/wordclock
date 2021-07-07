@@ -1,9 +1,9 @@
 //
 //  DLog.h
-//  Screensavr
+//  WordClock-iOS
 //
-//  Created by Simon on 04/03/2007.
-//  Copyright 2007 __MyCompanyName__. All rights reserved.
+//  Created by Simon Heys on 07/07/2021.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
