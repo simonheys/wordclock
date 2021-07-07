@@ -5,14 +5,7 @@
 //  Created by Simon Heys on 07/07/2021.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-/*
- *  easing_functions.h
- *  iphone_word_clock_open_gl
- *
- *  Created by Simon on 22/02/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
- *
- */
+
 //time, begin, change, duration
 
 #define kWCEaseOvershoot 1.70158f // 2.0f;// 1.70158f;

@@ -5,14 +5,6 @@
 //  Created by Simon Heys on 07/07/2021.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-/*
- *  image_utilities.c
- *  iphone_custom_button
- *
- *  Created by Simon on 10/03/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
- *
- */
 
 #include "image_utilities.h"
 	

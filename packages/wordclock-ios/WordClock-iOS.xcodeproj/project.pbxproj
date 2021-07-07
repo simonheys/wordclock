@@ -117,7 +117,6 @@
 		F4BFD0E10E350B7300FEF341 /* WordClockGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BFD0E00E350B7300FEF341 /* WordClockGLView.m */; };
 		F4CA9E110F65538B00980DFB /* RotaryCoordinateProviderGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CA9E100F65538B00980DFB /* RotaryCoordinateProviderGroup.m */; };
 		F4CDB1670F90FF120088085F /* UITableViewControllerBlack.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CDB1660F90FF120088085F /* UITableViewControllerBlack.m */; };
-		F4E0A0A40F9B0BFC00864C09 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4E0A0A30F9B0BFC00864C09 /* Localizable.strings */; };
 		F4E0A1690F9B232000864C09 /* NSDictionaryAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E0A1680F9B232000864C09 /* NSDictionaryAdditions.m */; };
 		F4E42CE40E588126001DA050 /* WordsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E42CE30E588126001DA050 /* WordsTabViewController.m */; };
 		F4E42CE90E58818F001DA050 /* FontTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E42CE80E58818F001DA050 /* FontTabViewController.m */; };
@@ -133,7 +132,6 @@
 		F4F721B80E61578900535F2C /* FlipsideColourPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F721B70E61578900535F2C /* FlipsideColourPickerView.xib */; };
 		F4F721FD0E6161AE00535F2C /* FlipsideColourPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F721FC0E6161AE00535F2C /* FlipsideColourPickerView.m */; };
 		F4F722BD0E61692B00535F2C /* FlipsideColourPickerCursorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F722BC0E61692B00535F2C /* FlipsideColourPickerCursorView.m */; };
-		F4FF066412310A2600597609 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4FF066312310A2600597609 /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,9 +281,6 @@
 		F4CA9E100F65538B00980DFB /* RotaryCoordinateProviderGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotaryCoordinateProviderGroup.m; sourceTree = "<group>"; };
 		F4CDB1650F90FF120088085F /* UITableViewControllerBlack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewControllerBlack.h; sourceTree = "<group>"; };
 		F4CDB1660F90FF120088085F /* UITableViewControllerBlack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewControllerBlack.m; sourceTree = "<group>"; };
-		F4E0A09E0F9B0BE100864C09 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F4E0A0A50F9B0C1A00864C09 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F4E0A0A60F9B0C1F00864C09 /* German */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = German; path = German.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4E0A1670F9B232000864C09 /* NSDictionaryAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryAdditions.h; sourceTree = "<group>"; };
 		F4E0A1680F9B232000864C09 /* NSDictionaryAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryAdditions.m; sourceTree = "<group>"; };
 		F4E42CE20E588126001DA050 /* WordsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsTabViewController.h; sourceTree = "<group>"; };
@@ -315,7 +310,6 @@
 		F4F721FC0E6161AE00535F2C /* FlipsideColourPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipsideColourPickerView.m; sourceTree = "<group>"; };
 		F4F722BB0E61692B00535F2C /* FlipsideColourPickerCursorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipsideColourPickerCursorView.h; sourceTree = "<group>"; };
 		F4F722BC0E61692B00535F2C /* FlipsideColourPickerCursorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipsideColourPickerCursorView.m; sourceTree = "<group>"; };
-		F4FF066312310A2600597609 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,8 +405,6 @@
 				F4E948BE0E792DDC001EB7FC /* TableLoadingView.xib */,
 				2899E5210DE3E06400AC0155 /* WordClockView.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				F4FF066312310A2600597609 /* Entitlements.plist */,
-				F4E0A0A30F9B0BFC00864C09 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -775,9 +767,6 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
-				Japanese,
-				French,
-				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -800,8 +789,6 @@
 				F4E948BF0E792DDC001EB7FC /* TableLoadingView.xib in Resources */,
 				F439B9030E9B67E300FB3047 /* FlipsideAboutView.xib in Resources */,
 				F439B90A0E9B68BA00FB3047 /* about.html in Resources */,
-				F4E0A0A40F9B0BFC00864C09 /* Localizable.strings in Resources */,
-				F4FF066412310A2600597609 /* Entitlements.plist in Resources */,
 				F43EA6901646CD0B004B88A4 /* Default-568h@2x.png in Resources */,
 				F4663E4A1657857B004B09EC /* Icon-72.png in Resources */,
 				F4663E4C1657857B004B09EC /* Icon-144.png in Resources */,
@@ -985,19 +972,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F4E0A0A30F9B0BFC00864C09 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4E0A09E0F9B0BE100864C09 /* English */,
-				F4E0A0A50F9B0C1A00864C09 /* French */,
-				F4E0A0A60F9B0C1F00864C09 /* German */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

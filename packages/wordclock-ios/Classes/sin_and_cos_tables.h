@@ -5,14 +5,6 @@
 //  Created by Simon Heys on 07/07/2021.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-/*
- *  sin_and_cos_tables.h
- *  iphone_word_clock_open_gl
- *
- *  Created by Simon on 22/02/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
- *
- */
 
 #import "math.h"
 
