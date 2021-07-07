@@ -9,7 +9,7 @@ export const cwd = path.join(__dirname, "../");
 export const getSourceFiles = async () => {
   return new Promise((resolve, reject) => {
     multiGlob.glob(
-      ["**/*.pch", "**/*.h", "**/*.m"],
+      ["**/*.pch", "**/*.c", "**/*.h", "**/*.m"],
       {
         cwd: cwd,
         ignore: ["node_modules/**/*", "Pods/**/*"],
