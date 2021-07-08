@@ -8,46 +8,43 @@
 
 #import "FlipsideTabViewController.h"
 
+@interface FlipsideTabViewController ()
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIBarButtonItem *activityButton;
+@property (nonatomic, strong) UIBarButtonItem *doneButton;
+@end
+
 @implementation FlipsideTabViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
 {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        _doneButton = [[UIBarButtonItem alloc] 
+        self.doneButton = [[UIBarButtonItem alloc]
 			initWithTitle:NSLocalizedString(@"Done", @"")
 			style:UIBarButtonItemStyleDone
 			target:self 
 			action:@selector(doneSelected)
 		];
-        self.navigationItem.rightBarButtonItem = _doneButton;
-		_activityIndicator = [[UIActivityIndicatorView alloc] 
-			initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite
+        self.navigationItem.rightBarButtonItem = self.doneButton;
+		self.activityIndicator = [[UIActivityIndicatorView alloc]
+			initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium
 		];
-        _activityButton = [[UIBarButtonItem alloc] 
-			initWithCustomView:_activityIndicator
+        self.activityButton = [[UIBarButtonItem alloc]
+			initWithCustomView:self.activityIndicator
 		];
 	}
 	return self;
 }
 
-- (void) dealloc
-{
-	[_doneButton release];
-	[_activityIndicator release];
-	[_activityButton release];	
-	[super dealloc];
-}
-
-
 -(void)setActivity:(BOOL)value
 {
 	if ( value ) {
-		[_activityIndicator startAnimating];
-		self.navigationItem.rightBarButtonItem = _activityButton;
+		[self.activityIndicator startAnimating];
+		self.navigationItem.rightBarButtonItem = self.activityButton;
 	}
 	else {
-		[_activityIndicator stopAnimating];	
-        self.navigationItem.rightBarButtonItem = _doneButton;
+		[self.activityIndicator stopAnimating];
+        self.navigationItem.rightBarButtonItem = self.doneButton;
 	}
 }
 

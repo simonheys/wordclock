@@ -26,10 +26,13 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 @synthesize currentFile;
 @synthesize currentIndexPath;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
-{
-	DLog(@"initWithNibName");
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+- (instancetype)init {
+    return [self initWithNibName:nil bundle:nil];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
         self.title = NSLocalizedString(@"Words", @"");
 		self.tabBarItem.image = [UIImage imageNamed:@"format.png"];
 		_state = kWordsTabViewControllerNotLoadedState;

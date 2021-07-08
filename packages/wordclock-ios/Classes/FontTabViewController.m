@@ -14,10 +14,13 @@
 @synthesize currentFont;
 @synthesize currentIndexPath;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
-{
-	DLog(@"*** INIT ****");
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+- (instancetype)init {
+    return [self initWithNibName:nil bundle:nil];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
 		self.title = NSLocalizedString(@"Font", @"");
 		self.tabBarItem.image = [UIImage imageNamed:@"font.png"];
 		_dataLoaded = NO;

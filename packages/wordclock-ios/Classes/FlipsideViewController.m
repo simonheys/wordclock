@@ -10,7 +10,11 @@
 
 //@synthesize myTableViewController, mySecondTableViewController;
 
-
+@interface FlipsideViewController ()
+@property (nonatomic, strong) UIViewController *currentSelectedViewController;
+@property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) UIImageView *gradientBackground;
+@end
 
 @implementation FlipsideViewController
 /*
@@ -28,10 +32,6 @@
 	DLog(@"shouldAutorotateToInterfaceOrientation");
 	return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
-
-
-@synthesize delegate;
-
 
 - (void)viewDidLoad {
 	DLog(@"viewDidLoad");
@@ -52,10 +52,10 @@
 */
 
 
-	_tabBarController = [[UITabBarController alloc] init];
+	self.tabBarController = [[UITabBarController alloc] init];
 	
 	/*
-	_tabBarController.view.frame = CGRectMake(
+	self.tabBarController.view.frame = CGRectMake(
 		0, 
 		[UIApplication sharedApplication].statusBarFrame.size.height, 
 		[UIApplication sharedApplication].keyWindow.bounds.size.width, 
@@ -71,14 +71,12 @@
 //	
 
 	WordsTabViewController *wordsTabViewController = [[WordsTabViewController alloc] init];
-	UINavigationController *wordsNavController = [[[UINavigationController alloc] initWithRootViewController:wordsTabViewController] autorelease];
+	UINavigationController *wordsNavController = [[UINavigationController alloc] initWithRootViewController:wordsTabViewController];
 	wordsNavController.navigationBar.barStyle = UIBarStyleBlack;
-	[wordsTabViewController release];
 
 	FontTabViewController *fontTabViewController = [[FontTabViewController alloc] init];
-	UINavigationController *fontNavController = [[[UINavigationController alloc] initWithRootViewController:fontTabViewController] autorelease];
+	UINavigationController *fontNavController = [[UINavigationController alloc] initWithRootViewController:fontTabViewController];
 	fontNavController.navigationBar.barStyle = UIBarStyleBlack;
-	[fontTabViewController release];
 
 	TypographyTabViewController *typographyTabViewController = [
 		[TypographyTabViewController alloc] 
@@ -86,9 +84,8 @@
 		bundle:nil
 	];
 	
-	UINavigationController *typographyNavController = [[[UINavigationController alloc] initWithRootViewController:typographyTabViewController] autorelease];
-	typographyNavController.navigationBar.barStyle = UIBarStyleBlack; 
-		[typographyTabViewController release];
+	UINavigationController *typographyNavController = [[UINavigationController alloc] initWithRootViewController:typographyTabViewController];
+	typographyNavController.navigationBar.barStyle = UIBarStyleBlack;
 
 	FlipsideColourPickerViewController *colourTabViewController = [
 		[FlipsideColourPickerViewController alloc] 
@@ -96,9 +93,8 @@
 		bundle:nil
 	];
 	
-	UINavigationController *colourNavController = [[[UINavigationController alloc] initWithRootViewController:colourTabViewController] autorelease];
+	UINavigationController *colourNavController = [[UINavigationController alloc] initWithRootViewController:colourTabViewController];
 	colourNavController.navigationBar.barStyle = UIBarStyleBlack;
-	[colourTabViewController release];
 	
 	/*
 	AboutTabViewController *aboutTabViewController = [[AboutTabViewController alloc] initWithNibName:@"FlipsideAboutView" bundle:nil];
@@ -108,20 +104,19 @@
 	[aboutTabViewController release];
 */
 
-	_tabBarController.viewControllers = [NSArray arrayWithObjects:
-		typographyNavController, 
-		wordsNavController, 
+	self.tabBarController.viewControllers = @[
+		typographyNavController,
+		wordsNavController,
 		fontNavController, 
-		colourNavController, 
+		colourNavController,
 		/*
 		aboutNavController, 
 		*/
-		nil
 	];
-	_tabBarController.delegate = self;
+	self.tabBarController.delegate = self;
 	
-	_currentSelectedViewController = [_tabBarController.viewControllers objectAtIndex:0];
-//	[_currentSelectedViewController viewWillAppear:NO];
+	self.currentSelectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
+//	[self.currentSelectedViewController viewWillAppear:NO];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 		selector:@selector(flipsideViewDone:)
@@ -130,25 +125,25 @@
 	self.view.backgroundColor = [UIColor blackColor];
 	
 //	if (!isRunningOnPad) {
-		_gradientBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flipside_background.png"]];
+	self.gradientBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"flipside_background.png"]];
     CGRect f;
-    f = _gradientBackground.frame;
+    f = self.gradientBackground.frame;
     f.size.width = self.view.bounds.size.width;
-    _gradientBackground.frame = f;
-    _gradientBackground.contentMode = UIViewContentModeTopLeft;
-    _gradientBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//		_gradientBackground.center = CGPointMake(CGRectGetMidX(screenBounds), 480.0f/2-11);//+9
+    self.gradientBackground.frame = f;
+    self.gradientBackground.contentMode = UIViewContentModeTopLeft;
+    self.gradientBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//		self.gradientBackground.center = CGPointMake(CGRectGetMidX(screenBounds), 480.0f/2-11);//+9
 //	}
-	[self.view addSubview:_gradientBackground];
+	[self.view addSubview:self.gradientBackground];
 
-_tabBarController.view.frame = self.view.bounds;
-_tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-	[self.view addSubview:_tabBarController.view];
+    self.tabBarController.view.frame = self.view.bounds;
+    self.tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	[self.view addSubview:self.tabBarController.view];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    UINavigationController *n = (UINavigationController *)_currentSelectedViewController;
+    UINavigationController *n = (UINavigationController *)self.currentSelectedViewController;
     CGRect f = n.navigationBar.frame;
     f.size.height = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 32.0f : 44.0f;
     n.navigationBar.frame = f;
@@ -157,29 +152,29 @@ _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIV
 - (void)viewWillAppear:(BOOL)animated
 {
 	DLog(@"viewWillAppear");
-	DLog(@"_currentSelectedViewController:%@",_currentSelectedViewController);
-	[_currentSelectedViewController viewWillAppear:animated];
+	DLog(@"self.currentSelectedViewController:%@",self.currentSelectedViewController);
+	[self.currentSelectedViewController viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	DLog(@"viewWillDisappear");
-	[_currentSelectedViewController viewWillDisappear:animated];
+	[self.currentSelectedViewController viewWillDisappear:animated];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
 	DLog(@"didSelectViewController:%@",tabBarController.selectedViewController);
-	DLog(@"_currentSelectedViewController:%@",_currentSelectedViewController);
-	[_currentSelectedViewController viewWillDisappear:NO];
-	_currentSelectedViewController = tabBarController.selectedViewController;
-	[_currentSelectedViewController viewWillAppear:NO];
+	DLog(@"self.currentSelectedViewController:%@",self.currentSelectedViewController);
+	[self.currentSelectedViewController viewWillDisappear:NO];
+	self.currentSelectedViewController = tabBarController.selectedViewController;
+	[self.currentSelectedViewController viewWillAppear:NO];
 }
 
 -(void)flipsideViewDone:(NSNotification *)notification
 {
 	DLog(@"doneSelected");
-	[_currentSelectedViewController viewWillDisappear:NO];   
+	[self.currentSelectedViewController viewWillDisappear:NO];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -205,10 +200,7 @@ _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIV
 }
 
 
-- (void)dealloc {
-	[_gradientBackground release];
-	[super dealloc];
-}
+
 
 
 @end

@@ -17,24 +17,10 @@
 
 @protocol FlipsideViewControllerDelegate;
 
-@interface FlipsideViewController : UIViewController <UITabBarControllerDelegate> {
-	UIViewController *_currentSelectedViewController;
-	UITabBarController *_tabBarController;
-	UIImageView *_gradientBackground;
-
-	id <FlipsideViewControllerDelegate> delegate;
-
-}
+@interface FlipsideViewController : UIViewController <UITabBarControllerDelegate>
 -(void)flipsideViewDone:(NSNotification *)notification;
-
-
-
-
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-//- (IBAction)done;
-
 @end
-
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;

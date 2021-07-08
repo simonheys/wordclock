@@ -11,9 +11,7 @@
 
 @interface FlipsideTabViewController : UIViewController 
 {
-	UIActivityIndicatorView *_activityIndicator;
-	UIBarButtonItem *_activityButton;
-	UIBarButtonItem *_doneButton;
+
 }
 
 @end
