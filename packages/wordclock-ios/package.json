@@ -1,16 +1,6 @@
 {
   "name": "wordclock-ios",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Simon Heys <si@simonheys.com>",
-  "license": "MIT",
-  "scripts": {
-    "update-copyright": "babel-node _scripts/update-copyright"
-  },
-  "devDependencies": {
-    "fs-extra": "^8.0.1",
-    "moment": "^2.24.0",
-    "multi-glob": "^1.0.2",
-    "readline": "^1.3.0"
-  }
+  "license": "MIT"
 }

@@ -1,9 +1,9 @@
 //
 //  WordClockXmlFileParser.m
-//  iphoneself.wordself.clock
+//  WordClock-iOS
 //
-//  Created by Simon on 23/08/2008.
-//  Copyright 2008 self.self.MyCompanyNameself.self.. All rights reserved.
+//  Created by Simon Heys on 21/07/2008.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import "WordClockXmlFileParser.h"
