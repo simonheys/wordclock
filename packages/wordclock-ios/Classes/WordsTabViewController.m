@@ -20,6 +20,10 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 	return nil;
 }
 
+@interface WordsTabViewController ()
+@property (nonatomic, retain) WordClockXmlFileParser *wordClockXmlFileParser;
+@end
+
 @implementation WordsTabViewController
 
 @synthesize displayList;
@@ -88,12 +92,18 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 {
 	DLog(@"loadData");
 	
-	NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];	
-	([WordClockXmlFileParser sharedInstance] ).manifestFile = [thisBundle pathForResource:@"Manifest" ofType:@"xml"];
+	NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
+ NSString *manifestFile =[thisBundle pathForResource:@"Manifest" ofType:@"xml"];
+// DLog(@"manifestFile:%@",manifestFile);
+//	([WordClockXmlFileParser sharedInstance] ).manifestFile = manifestFile;
 //	[thisBundle release];
+    self.wordClockXmlFileParser = [[[WordClockXmlFileParser alloc] init] autorelease];
+    self.wordClockXmlFileParser.delegate = self;
+    self.wordClockXmlFileParser.manifestFile = manifestFile;
 
 
-	[[WordClockXmlFileParser sharedInstance] setDelegate:self];
+
+//	[[WordClockXmlFileParser sharedInstance] setDelegate:self];
 	
 	[self performSelectorInBackground:@selector(loadDataThread)
 		withObject:nil
@@ -113,7 +123,7 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 {
 	NSAutoreleasePool *apool = [[NSAutoreleasePool alloc] init];
 	DLog(@"loadDataThread");
-	[[WordClockXmlFileParser sharedInstance] parseManifestFile];
+	[self.wordClockXmlFileParser parseManifestFile];
 	DLog(@"loadDataThread 2");
 	[self setupDisplayList];
 	DLog(@"loadDataThread 3");
@@ -262,7 +272,7 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 	// language sections contains the language section dictionary items
 	NSMutableArray *languageSections = [[NSMutableArray alloc] init];
 	
-	NSArray *xmlFiles = [[WordClockXmlFileParser sharedInstance] xmlFiles];
+	NSArray *xmlFiles = [self.wordClockXmlFileParser xmlFiles];
 	
 	NSDictionary *xmlFileDictionary;
 	NSString *sectionName;

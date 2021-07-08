@@ -108,6 +108,7 @@
 		F4663F3A165785A4004B09EC /* tracking_min@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4663F01165785A4004B09EC /* tracking_min@2x.png */; };
 		F4663F3E16578A78004B09EC /* flipside_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4663F3C16578A78004B09EC /* flipside_background.png */; };
 		F4663F3F16578A78004B09EC /* flipside_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4663F3D16578A78004B09EC /* flipside_background@2x.png */; };
+		F46B82EF2697166E00A7F640 /* NSXMLParser+App.m in Sources */ = {isa = PBXBuildFile; fileRef = F46B82EE2697166D00A7F640 /* NSXMLParser+App.m */; };
 		F47132A30F6401BA00EF7F93 /* CustomUISlider.m in Sources */ = {isa = PBXBuildFile; fileRef = F47132A10F6401BA00EF7F93 /* CustomUISlider.m */; };
 		F4778CC2110C54AB0064FDCE /* LogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4778CC1110C54AB0064FDCE /* LogicTests.m */; };
 		F4778D9B110C581B0064FDCE /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C188F0E57265F00373191 /* LogicParserStringUtil.m */; };
@@ -265,6 +266,8 @@
 		F4663F01165785A4004B09EC /* tracking_min@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracking_min@2x.png"; sourceTree = "<group>"; };
 		F4663F3C16578A78004B09EC /* flipside_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipside_background.png; sourceTree = "<group>"; };
 		F4663F3D16578A78004B09EC /* flipside_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flipside_background@2x.png"; sourceTree = "<group>"; };
+		F46B82ED2697166D00A7F640 /* NSXMLParser+App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+App.h"; sourceTree = "<group>"; };
+		F46B82EE2697166D00A7F640 /* NSXMLParser+App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+App.m"; sourceTree = "<group>"; };
 		F47132A10F6401BA00EF7F93 /* CustomUISlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISlider.m; sourceTree = "<group>"; };
 		F47132A20F6401BA00EF7F93 /* CustomUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISlider.h; sourceTree = "<group>"; };
 		F4778CB8110C54710064FDCE /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -485,6 +488,8 @@
 		F433221A0E5FE8BE00797A7E /* Words */ = {
 			isa = PBXGroup;
 			children = (
+				F46B82ED2697166D00A7F640 /* NSXMLParser+App.h */,
+				F46B82EE2697166D00A7F640 /* NSXMLParser+App.m */,
 				F4E42CE20E588126001DA050 /* WordsTabViewController.h */,
 				F4E42CE30E588126001DA050 /* WordsTabViewController.m */,
 				F43322220E5FE98C00797A7E /* WordClockXmlFileParser.h */,
@@ -952,6 +957,7 @@
 				F4432EA70F6815D5006585FB /* ShowableWordClockPreview.m in Sources */,
 				F45958150F6D4D7800BB0A9E /* culling.c in Sources */,
 				F4CDB1670F90FF120088085F /* UITableViewControllerBlack.m in Sources */,
+				F46B82EF2697166E00A7F640 /* NSXMLParser+App.m in Sources */,
 				F42DA0F70F99F20900B95CDD /* uptime.c in Sources */,
 				F4E0A1690F9B232000864C09 /* NSDictionaryAdditions.m in Sources */,
 				F426A9251094355300E3265F /* ColourGradientSliderControl.m in Sources */,
