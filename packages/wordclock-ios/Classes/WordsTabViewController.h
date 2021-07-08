@@ -21,7 +21,7 @@ typedef enum _WordsTabViewControllerState {
 } WordsTabViewControllerState;
 
 
-@interface WordsTabViewController : UITableViewControllerBlack
+@interface WordsTabViewController : UITableViewControllerBlack<WordClockXmlFileParserDelegate>
 {
 	NSArray *displayList;
 	NSDictionary *currentFile;
