@@ -6,7 +6,7 @@ WordClock versions of various vintages, for various platforms.
 
 - [WordClock iOS](/packages/wordlock-ios)
 
-  This was written for the original iPod Touch running iPhoneOS 3 back in 2008, and achieved my goal of running at 60fps
+  This was written for the original iPod Touch running iPhoneOS 2 back in 2008, and achieved my goal of running at 60fps
 
 - [WordClock Words](/packages/wordlock-words)
 
