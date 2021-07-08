@@ -1,10 +1,10 @@
-# WordClock
+# WordClock
 
-Versions of WordClock of various vintages, for various platforms.
+WordClock versions of various vintages, for various platforms.
 
 ## Packages
 
-- [WordClock for iOS](/packages/wordlock-ios)
+- [WordClock iOS](/packages/wordlock-ios)
 
   This was written for the original iPod Touch running iPhoneOS 3 back in 2008, and achieved my goal of running at 60fps
 
