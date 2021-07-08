@@ -16,9 +16,13 @@
 
 @implementation FlipsideTabViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
-{
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+- (instancetype)init {
+    return [self initWithNibName:nil bundle:nil];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
         self.doneButton = [[UIBarButtonItem alloc]
 			initWithTitle:NSLocalizedString(@"Done", @"")
 			style:UIBarButtonItemStyleDone

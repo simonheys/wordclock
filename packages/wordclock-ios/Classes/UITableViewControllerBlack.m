@@ -13,9 +13,13 @@
 
 @synthesize loadingViewController;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
-{
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+- (instancetype)init {
+    return [self initWithNibName:nil bundle:nil];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
 		_accessorySelected = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"table_accessory_checked.png"]];
 		[_accessorySelected retain];
         _doneButton = [[UIBarButtonItem alloc] 
@@ -141,6 +145,7 @@
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:MyIdentifier] autorelease];
 		cell.textLabel.font = [UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]];
 		cell.textLabel.textColor = [UIColor whiteColor];
+        cell.backgroundColor = [UIColor clearColor];
 	}
 
 	return cell;
