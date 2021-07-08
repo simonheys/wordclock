@@ -10,4 +10,4 @@ WordClock versions of various vintages, for various platforms.
 
 - [WordClock Words](/packages/wordlock-words)
 
-  The words and logic that determine how the time is displayed in different variations or languages.
+  The words and expressions that influence how time is displayed in different variations or languages.
