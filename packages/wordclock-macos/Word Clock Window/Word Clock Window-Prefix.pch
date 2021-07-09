@@ -1,0 +1,27 @@
+//
+//  Word Clock Window-Prefix.pch
+//  WordClock macOS
+//
+//  Created by Simon Heys on 25/11/2012.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #define FORCE_LOGGING
+    #define TEST_STORE
+
+    #import <Cocoa/Cocoa.h>
+    #import "Constants.h"
+    #import "EXTScope.h"
+
+    #import "DDLog.h"
+    #import "DDASLLogger.h"
+    #import "DDTTYLogger.h"
+
+    #ifdef DEBUG
+      static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+    #else
+      static const int ddLogLevel = LOG_LEVEL_ERROR;
+    #endif
+
+#endif

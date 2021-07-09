@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Word Clock</title>
+    <link>https://www.simonheys.com/files/appcast/wordclock.xml</link>
+    <description>Most recent changes with links to updates.</description>
+    <language>en</language>
+    <item>
+      <title>Version 1.0.7</title>
+      <description>- Word Clock fulfils updated 10.15.4 notarize requirements
+- Improved font picker
+- Requires Mac OS 10.7 or later</description>
+      <pubDate/>
+      <enclosure url="https://www.simonheys.com/files/Word Clock 1.0.7.dmg" sparkle:version="1.0.7" sparkle:dsaSignature="MCwCFGMAqa0qO4ON22Y53ZFXRoDlByKFAhRKhZTbTo11QpLnoGxsKP9ksS1T9Q==&#xA;" length="2691388"/>
+    </item>
+  </channel>
+</rss>
