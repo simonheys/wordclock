@@ -1,13 +1,13 @@
-const path = require('path');
-const fs = require('fs-extra');
+const path = require("path");
+const fs = require("fs-extra");
 
-import { spawnCommand } from './util';
-import { getDmgInfo } from './meta';
-import settings from './settings';
+import { spawnCommand } from "./util";
+import { getDmgInfo } from "./meta";
+import settings from "./settings";
 
 const { BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME } = settings;
 
-console.log('Packaging DMG');
+console.log("Packaging DMG");
 
 (async () => {
   const sourceFolder = path.join(BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME);

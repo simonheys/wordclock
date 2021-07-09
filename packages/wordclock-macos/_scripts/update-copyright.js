@@ -1,13 +1,13 @@
-import readline from 'readline';
-import fs from 'fs-extra';
-import path from 'path';
-import moment from 'moment';
+import readline from "readline";
+import fs from "fs-extra";
+import path from "path";
+import moment from "moment";
 
-import { cwd, getSourceFiles, executeCommand } from './util';
+import { cwd, getSourceFiles, executeCommand } from "./util";
 
-const PROJECT_NAME = 'WordClock macOS';
-const AUTHOR_NAME = 'Simon Heys';
-const COPYRIGHT_HOLDER = 'Studio Heys Limited';
+const PROJECT_NAME = "WordClock macOS";
+const AUTHOR_NAME = "Simon Heys";
+const COPYRIGHT_HOLDER = "Studio Heys Limited";
 
 export const makeComment = ({ fileName, creationDate }) => {
   return `\
@@ -23,27 +23,27 @@ export const makeComment = ({ fileName, creationDate }) => {
 
 export const setFileComment = async ({ filePath, comment }) => {
   return new Promise((resolve) => {
-    const newFilePath = filePath + '.new';
+    const newFilePath = filePath + ".new";
     let startOfFile = true;
     fs.removeSync(newFilePath);
     fs.copyFileSync(filePath, newFilePath);
     const outputStream = fs.createWriteStream(newFilePath);
-    outputStream.write(comment + '\n');
+    outputStream.write(comment + "\n");
     try {
       readline
         .createInterface({
           input: fs.createReadStream(filePath),
           terminal: false,
         })
-        .on('line', function (line) {
-          if (startOfFile && line.startsWith('//')) {
-            console.log('Line: ' + line);
+        .on("line", function (line) {
+          if (startOfFile && line.startsWith("//")) {
+            console.log("Line: " + line);
           } else {
             startOfFile = false;
-            outputStream.write(line + '\n');
+            outputStream.write(line + "\n");
           }
         })
-        .on('close', function () {
+        .on("close", function () {
           outputStream.end();
           // delete original file
           fs.removeSync(filePath);
@@ -70,7 +70,7 @@ export const setFileComment = async ({ filePath, comment }) => {
     );
     // moment doesn't like the format, so convert to Date first
     const date = moment(new Date(result));
-    const creationDate = date.format('DD/MM/YYYY');
+    const creationDate = date.format("DD/MM/YYYY");
     const fileName = path.basename(filePath);
 
     const comment = makeComment({ fileName, creationDate });

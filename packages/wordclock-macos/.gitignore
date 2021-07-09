@@ -22,5 +22,6 @@ DerivedData
 node_modules
 npm-debug.log
 
+_certificates
 _dist
 .env

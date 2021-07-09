@@ -1,11 +1,11 @@
-import { spawnCommand } from './util';
-import { getDmgInfo } from './meta';
+import { spawnCommand } from "./util";
+import { getDmgInfo } from "./meta";
 import {
   ascPrimaryBundleId,
   ascUsername,
   ascPassword,
   ascProvider,
-} from './config';
+} from "./config";
 
 // https://stackoverflow.com/questions/136505/searching-for-uuids-in-text-with-regex;
 
@@ -18,7 +18,7 @@ export const getIdFromString = (stringToCheck) => {
     /([0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12})/gi;
   let match, result;
   while ((match = uuidv4Regex.exec(stringToCheck)) !== null) {
-    console.log('match', JSON.stringify(match, null, 2));
+    console.log("match", JSON.stringify(match, null, 2));
     result = match[0];
   }
   return result;
@@ -47,20 +47,20 @@ export const checkVerificationStatusForUploadId = async (id) => {
       ascProvider,
     ]);
     console.log(
-      'checkVerificationStatusForUploadId altoolResult',
+      "checkVerificationStatusForUploadId altoolResult",
       JSON.stringify(altoolResult, null, 2)
     );
     const { stdout } = altoolResult;
     result = stdout;
   } catch (e) {
     console.log(
-      'checkVerificationStatusForUploadId altoolResult e',
+      "checkVerificationStatusForUploadId altoolResult e",
       JSON.stringify(e, null, 2)
     );
     const { stderr } = e;
     result = stderr;
   }
-  console.log('result', result);
+  console.log("result", result);
   return getStatusFromString(result);
 };
 
@@ -71,7 +71,7 @@ export const checkVerificationStatusForUploadId = async (id) => {
   let result;
 
   try {
-    console.log('Notarizing - this can take a while...');
+    console.log("Notarizing - this can take a while...");
     const altoolResult = await spawnCommand(`xcrun`, [
       `altool`,
       `--notarize-app`,
@@ -86,7 +86,7 @@ export const checkVerificationStatusForUploadId = async (id) => {
       `-f`,
       dmgPath,
     ]);
-    console.log('altoolResult', JSON.stringify(altoolResult, null, 2));
+    console.log("altoolResult", JSON.stringify(altoolResult, null, 2));
     const { stdout } = altoolResult;
     result = stdout;
     /*
@@ -94,36 +94,36 @@ export const checkVerificationStatusForUploadId = async (id) => {
     RequestUUID = <UUID>
     */
   } catch (e) {
-    console.log('altoolResult e', JSON.stringify(e, null, 2));
+    console.log("altoolResult e", JSON.stringify(e, null, 2));
     const { stderr } = e;
     // huge debug log, may include the phrase
     // ERROR: ERROR ITMS-90732: "The software asset has already been uploaded. The upload ID is <UUID>" at SoftwareAssets/EnigmaSoftwareAsset
     result = stderr;
   }
 
-  console.log('result', result);
+  console.log("result", result);
 
   if (result) {
     const id = getIdFromString(result);
-    console.log('upload ID', id);
+    console.log("upload ID", id);
     let pollForStatus = true;
     let status;
     while (pollForStatus) {
       status = await checkVerificationStatusForUploadId(id);
-      console.log('Status', status);
-      if (status !== 'in progress') {
+      console.log("Status", status);
+      if (status !== "in progress") {
         pollForStatus = false;
       }
       if (pollForStatus) {
-        console.log('Checking again in 30 seconds...');
+        console.log("Checking again in 30 seconds...");
         await delayInSeconds(30);
       }
     }
-    if (status === 'success') {
+    if (status === "success") {
       await spawnCommand(`xcrun`, [`stapler`, `staple`, `-v`, dmgPath]);
-      console.log('Done');
+      console.log("Done");
     } else {
-      console.log('Status is not success, not stapling');
+      console.log("Status is not success, not stapling");
     }
   }
 })();

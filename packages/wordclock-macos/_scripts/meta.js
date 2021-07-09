@@ -1,8 +1,8 @@
-const path = require('path');
-const fs = require('fs');
-const xml2js = require('xml2js');
+const path = require("path");
+const fs = require("fs");
+const xml2js = require("xml2js");
 
-import settings from './settings';
+import settings from "./settings";
 
 const { BUILT_PRODUCTS_DIR, PRODUCT_NAME, FULL_PRODUCT_NAME } = settings;
 
@@ -13,7 +13,7 @@ export const getDmgName = async () => {
 
 export const getDmgInfo = async () => {
   const dmgVolumeName = await getDmgName();
-  const dmgFolderPath = path.join(__dirname, '../_dist');
+  const dmgFolderPath = path.join(__dirname, "../_dist");
   const dmgPath = path.join(dmgFolderPath, `${dmgVolumeName}.dmg`);
   const dmgTmpPath = path.join(dmgFolderPath, `${dmgVolumeName}.tmp.dmg`);
   return {
@@ -29,9 +29,9 @@ export const getVersion = async () => {
     const plistPath = path.join(
       BUILT_PRODUCTS_DIR,
       FULL_PRODUCT_NAME,
-      'Contents/Info.plist'
+      "Contents/Info.plist"
     );
-    fs.readFile(plistPath, 'utf8', function (err, data) {
+    fs.readFile(plistPath, "utf8", function (err, data) {
       if (err) {
         reject(err);
       }
@@ -41,7 +41,7 @@ export const getVersion = async () => {
           reject(err);
         }
         const i = result.plist.dict[0].key.indexOf(
-          'CFBundleShortVersionString'
+          "CFBundleShortVersionString"
         );
         const version = result.plist.dict[0].string[i];
         resolve(version);

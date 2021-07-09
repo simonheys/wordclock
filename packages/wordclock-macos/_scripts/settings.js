@@ -1,6 +1,6 @@
-import { executeCommand } from './util';
+import { executeCommand } from "./util";
 
-import { workspace, scheme, configuration } from './config';
+import { workspace, scheme, configuration } from "./config";
 
 const buildSettings = executeCommand(
   `xcodebuild -workspace "${workspace}" -scheme "${scheme}" -configuration "${configuration}" -showBuildSettings`
