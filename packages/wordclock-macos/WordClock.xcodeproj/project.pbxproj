@@ -1,0 +1,1156 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B62AFFE6EA466C121E67480 /* libPods-Word Clock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FAC7AD9C3DB40CEFDB0CB7 /* libPods-Word Clock.a */; };
+		96A050A43BD6A028FB57B434 /* libPods-Word Clock Window.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5EE60C85775C0983630F13 /* libPods-Word Clock Window.a */; };
+		F41404B219F0256C0017EEBA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */; };
+		F41404B319F026390017EEBA /* NSXMLParser+App.m in Sources */ = {isa = PBXBuildFile; fileRef = F46A599319E3BF3D00E1CDBD /* NSXMLParser+App.m */; };
+		F4324F7F1663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4324F7C1663BA5800EA4DC5 /* WordClockOptionsWindowController.m */; };
+		F4324F801663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4324F7C1663BA5800EA4DC5 /* WordClockOptionsWindowController.m */; };
+		F4324F811663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4324F7D1663BA5800EA4DC5 /* WordClockOptionsWindowController.xib */; };
+		F4324F821663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4324F7D1663BA5800EA4DC5 /* WordClockOptionsWindowController.xib */; };
+		F43A16651661F7AD007A0716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47F9402132B9632002A4965 /* QuartzCore.framework */; };
+		F43A16661661F7B5007A0716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47F9402132B9632002A4965 /* QuartzCore.framework */; };
+		F4405FBE2289D58200700EC6 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F44D11F0165951CE003A3557 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A3E23E150537CF0066B357 /* Cocoa.framework */; };
+		F44D11FA165951CE003A3557 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F44D11F8165951CE003A3557 /* InfoPlist.strings */; };
+		F44D11FC165951CE003A3557 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F44D11FB165951CE003A3557 /* main.m */; };
+		F44D1203165951CE003A3557 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F44D1202165951CE003A3557 /* AppDelegate.m */; };
+		F44D1206165951CF003A3557 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44D1204165951CF003A3557 /* MainMenu.xib */; };
+		F44D120A165952A0003A3557 /* CoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D611318EF730038C801 /* CoordinateProvider.m */; };
+		F44D120B165952A0003A3557 /* RotaryCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D701318EF730038C801 /* RotaryCoordinateProvider.m */; };
+		F44D120C165952A0003A3557 /* RotaryCoordinateProviderGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D721318EF730038C801 /* RotaryCoordinateProviderGroup.m */; };
+		F44D120D165952A0003A3557 /* LinearCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D681318EF730038C801 /* LinearCoordinateProvider.m */; };
+		F44D120E165952B9003A3557 /* LogicParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6A1318EF730038C801 /* LogicParser.m */; };
+		F44D120F165952B9003A3557 /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */; };
+		F44D1210165952B9003A3557 /* LogicXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */; };
+		F44D1211165952B9003A3557 /* sin_and_cos_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = F4902D731318EF730038C801 /* sin_and_cos_tables.c */; };
+		F44D1212165952B9003A3557 /* Tween.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D761318EF730038C801 /* Tween.m */; };
+		F44D1213165952B9003A3557 /* TweenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D781318EF730038C801 /* TweenManager.m */; };
+		F44D1214165952B9003A3557 /* WordClockPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D7B1318EF730038C801 /* WordClockPreferences.m */; };
+		F44D1215165952B9003A3557 /* WordClockWord.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D7D1318EF730038C801 /* WordClockWord.m */; };
+		F44D1216165952B9003A3557 /* WordClockWordGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D7F1318EF730038C801 /* WordClockWordGroup.m */; };
+		F44D1217165952B9003A3557 /* WordClockWordLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D811318EF730038C801 /* WordClockWordLayout.m */; };
+		F44D1218165952B9003A3557 /* WordClockWordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D831318EF730038C801 /* WordClockWordManager.m */; };
+		F44D1219165952B9003A3557 /* WordClockXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D851318EF730038C801 /* WordClockXmlFileParser.m */; };
+		F44D121A165952B9003A3557 /* culling.c in Sources */ = {isa = PBXBuildFile; fileRef = F4F0FB65131A4BBE00B8D814 /* culling.c */; };
+		F44D121C1659531C003A3557 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4902D591318EF450038C801 /* OpenGL.framework */; };
+		F44D121D16595331003A3557 /* WordClockGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46786D21319081E002F899B /* WordClockGLViewController.m */; };
+		F44D121E16595334003A3557 /* WordClockGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F467866A131902F6002F899B /* WordClockGLView.m */; };
+		F44D12201659536F003A3557 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E22713190C0200893386 /* Scene.m */; };
+		F453416216745FF700D24819 /* GuidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582A8132CEACE006D9CAA /* GuidesView.m */; };
+		F453416316745FF700D24819 /* GuidesViewLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */; };
+		F453416416745FF700D24819 /* GuidesViewRotary.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582AB132CEDCF006D9CAA /* GuidesViewRotary.m */; };
+		F453416516745FF700D24819 /* GuidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582A8132CEACE006D9CAA /* GuidesView.m */; };
+		F453416616745FF700D24819 /* GuidesViewLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */; };
+		F453416716745FF700D24819 /* GuidesViewRotary.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582AB132CEDCF006D9CAA /* GuidesViewRotary.m */; };
+		F455AAFA1670CC5E00F41C22 /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAF91670CC5E00F41C22 /* linear.png */; };
+		F455AAFB1670CC6200F41C22 /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAF91670CC5E00F41C22 /* linear.png */; };
+		F455AAFD1670CD5E00F41C22 /* rotary.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFC1670CD5E00F41C22 /* rotary.png */; };
+		F455AAFE1670CD5E00F41C22 /* rotary.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFC1670CD5E00F41C22 /* rotary.png */; };
+		F455AB011670CE1E00F41C22 /* linear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFF1670CE1E00F41C22 /* linear@2x.png */; };
+		F455AB021670CE1E00F41C22 /* linear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFF1670CE1E00F41C22 /* linear@2x.png */; };
+		F455AB031670CE1E00F41C22 /* rotary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AB001670CE1E00F41C22 /* rotary@2x.png */; };
+		F455AB041670CE1E00F41C22 /* rotary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AB001670CE1E00F41C22 /* rotary@2x.png */; };
+		F455AB5D1670DBEF00F41C22 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F455AB5C1670DBEF00F41C22 /* WebKit.framework */; };
+		F455AB5E1670DBFA00F41C22 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F455AB5C1670DBEF00F41C22 /* WebKit.framework */; };
+		F45EFDE5167C3C0400D60C46 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = F45EFDE3167C3C0400D60C46 /* thumbnail.png */; };
+		F45EFDE6167C3C0400D60C46 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F45EFDE4167C3C0400D60C46 /* thumbnail@2x.png */; };
+		F46A599419E3BF3D00E1CDBD /* NSXMLParser+App.m in Sources */ = {isa = PBXBuildFile; fileRef = F46A599319E3BF3D00E1CDBD /* NSXMLParser+App.m */; };
+		F46D496D16A3E6BB002D0A71 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */; };
+		F46D496E16A3E6BB002D0A71 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */; };
+		F4798146166F964C00477D24 /* WordClockSUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */; };
+		F48D90E426989A85005F1E95 /* WCFileFunctionLevelFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */; };
+		F48D90E526989A85005F1E95 /* WCFileFunctionLevelFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */; };
+		F493A1FA166F63F500D43F6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D11F4165951CE003A3557 /* Foundation.framework */; };
+		F493A1FB166F63F500D43F6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D11F4165951CE003A3557 /* Foundation.framework */; };
+		F493A1FF166F6E1B00D43F6E /* NSView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */; };
+		F493A200166F6E1B00D43F6E /* NSView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */; };
+		F4B15D2316730CAF007F7E61 /* pubkey.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4B15D2216730CAF007F7E61 /* pubkey.pem */; };
+		F4B15D2416730CAF007F7E61 /* pubkey.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4B15D2216730CAF007F7E61 /* pubkey.pem */; };
+		F4B7B66B19CDCE65008EE3B5 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */; };
+		F4CCDA1E16665975001F88B5 /* WordClockSUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */; };
+		F4E8F502165FD0B60019987F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A3E23E150537CF0066B357 /* Cocoa.framework */; };
+		F4E8F504165FD0B60019987F /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E8F503165FD0B60019987F /* ScreenSaver.framework */; };
+		F4E8F50A165FD0B60019987F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4E8F508165FD0B60019987F /* InfoPlist.strings */; };
+		F4E8F50E165FD0B60019987F /* WordClockScreenSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E8F50D165FD0B60019987F /* WordClockScreenSaverView.m */; };
+		F4E8F513165FD0FC0019987F /* CoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D611318EF730038C801 /* CoordinateProvider.m */; };
+		F4E8F514165FD0FC0019987F /* RotaryCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D701318EF730038C801 /* RotaryCoordinateProvider.m */; };
+		F4E8F515165FD0FC0019987F /* RotaryCoordinateProviderGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D721318EF730038C801 /* RotaryCoordinateProviderGroup.m */; };
+		F4E8F516165FD0FC0019987F /* LinearCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D681318EF730038C801 /* LinearCoordinateProvider.m */; };
+		F4E8F517165FD10A0019987F /* LogicParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6A1318EF730038C801 /* LogicParser.m */; };
+		F4E8F518165FD10A0019987F /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */; };
+		F4E8F519165FD10A0019987F /* LogicXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */; };
+		F4E8F51A165FD10A0019987F /* sin_and_cos_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = F4902D731318EF730038C801 /* sin_and_cos_tables.c */; };
+		F4E8F51B165FD10A0019987F /* Tween.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D761318EF730038C801 /* Tween.m */; };
+		F4E8F51C165FD10A0019987F /* TweenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D781318EF730038C801 /* TweenManager.m */; };
+		F4E8F51D165FD10A0019987F /* WordClockPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D7B1318EF730038C801 /* WordClockPreferences.m */; };
+		F4E8F51E165FD10A0019987F /* WordClockWord.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D7D1318EF730038C801 /* WordClockWord.m */; };
+		F4E8F51F165FD10A0019987F /* WordClockWordGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D7F1318EF730038C801 /* WordClockWordGroup.m */; };
+		F4E8F520165FD10A0019987F /* WordClockWordLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D811318EF730038C801 /* WordClockWordLayout.m */; };
+		F4E8F521165FD10A0019987F /* WordClockWordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D831318EF730038C801 /* WordClockWordManager.m */; };
+		F4E8F522165FD10A0019987F /* WordClockXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D851318EF730038C801 /* WordClockXmlFileParser.m */; };
+		F4E8F523165FD10A0019987F /* culling.c in Sources */ = {isa = PBXBuildFile; fileRef = F4F0FB65131A4BBE00B8D814 /* culling.c */; };
+		F4E8F524165FD1120019987F /* WordClockGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46786D21319081E002F899B /* WordClockGLViewController.m */; };
+		F4E8F525165FD1120019987F /* WordClockGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F467866A131902F6002F899B /* WordClockGLView.m */; };
+		F4E8F526165FD1120019987F /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E22713190C0200893386 /* Scene.m */; };
+		F4E8F528165FD1ED0019987F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4902D591318EF450038C801 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4CCDA18166658A7001F88B5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F4405FBE2289D58200700EC6 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		33E847F582FA45528503B529 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		58183543DA4765AC67F8E145 /* Pods-Word Clock Window.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word Clock Window.debug.xcconfig"; path = "Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window.debug.xcconfig"; sourceTree = "<group>"; };
+		7A80E2DBE527FCEC754883C3 /* Pods-Word Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word Clock.debug.xcconfig"; path = "Target Support Files/Pods-Word Clock/Pods-Word Clock.debug.xcconfig"; sourceTree = "<group>"; };
+		9FD11FDB14EC3910053E4C7E /* Pods-Word Clock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word Clock.release.xcconfig"; path = "Target Support Files/Pods-Word Clock/Pods-Word Clock.release.xcconfig"; sourceTree = "<group>"; };
+		B470A58F1ED10070411B759D /* Pods-Word Clock Window.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word Clock Window.release.xcconfig"; path = "Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window.release.xcconfig"; sourceTree = "<group>"; };
+		CD5EE60C85775C0983630F13 /* libPods-Word Clock Window.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Word Clock Window.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2FAC7AD9C3DB40CEFDB0CB7 /* libPods-Word Clock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Word Clock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4324F7B1663BA5800EA4DC5 /* WordClockOptionsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordClockOptionsWindowController.h; path = ../WordClockOptionsWindowController.h; sourceTree = "<group>"; };
+		F4324F7C1663BA5800EA4DC5 /* WordClockOptionsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordClockOptionsWindowController.m; path = ../WordClockOptionsWindowController.m; sourceTree = "<group>"; };
+		F4324F7D1663BA5800EA4DC5 /* WordClockOptionsWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordClockOptionsWindowController.xib; path = ../WordClockOptionsWindowController.xib; sourceTree = "<group>"; };
+		F4394F061343A92C00DED394 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F44D11EE165951CE003A3557 /* Word Clock Window.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Word Clock Window.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44D11F2165951CE003A3557 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F44D11F4165951CE003A3557 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F44D11F7165951CE003A3557 /* Word Clock Window-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Word Clock Window-Info.plist"; sourceTree = "<group>"; };
+		F44D11F9165951CE003A3557 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F44D11FB165951CE003A3557 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F44D11FD165951CE003A3557 /* Word Clock Window-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Word Clock Window-Prefix.pch"; sourceTree = "<group>"; };
+		F44D1201165951CE003A3557 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F44D1202165951CE003A3557 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F44D1205165951CF003A3557 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F455AAF91670CC5E00F41C22 /* linear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linear.png; path = _resources/Icons/linear.png; sourceTree = "<group>"; };
+		F455AAFC1670CD5E00F41C22 /* rotary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rotary.png; path = _resources/Icons/rotary.png; sourceTree = "<group>"; };
+		F455AAFF1670CE1E00F41C22 /* linear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linear@2x.png"; path = "_resources/Icons/linear@2x.png"; sourceTree = "<group>"; };
+		F455AB001670CE1E00F41C22 /* rotary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rotary@2x.png"; path = "_resources/Icons/rotary@2x.png"; sourceTree = "<group>"; };
+		F455AB5C1670DBEF00F41C22 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F45EFDE3167C3C0400D60C46 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = _resources/thumbnail.png; sourceTree = "<group>"; };
+		F45EFDE4167C3C0400D60C46 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thumbnail@2x.png"; path = "_resources/thumbnail@2x.png"; sourceTree = "<group>"; };
+		F4678669131902F6002F899B /* WordClockGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockGLView.h; sourceTree = "<group>"; };
+		F467866A131902F6002F899B /* WordClockGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockGLView.m; sourceTree = "<group>"; };
+		F46786D11319081E002F899B /* WordClockGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockGLViewController.h; sourceTree = "<group>"; };
+		F46786D21319081E002F899B /* WordClockGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockGLViewController.m; sourceTree = "<group>"; };
+		F46A599219E3BF3D00E1CDBD /* NSXMLParser+App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+App.h"; sourceTree = "<group>"; };
+		F46A599319E3BF3D00E1CDBD /* NSXMLParser+App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+App.m"; sourceTree = "<group>"; };
+		F46C65D722880F3400EBFD10 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F46D496A16A3E6BB002D0A71 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = SOURCE_ROOT; };
+		F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = SOURCE_ROOT; };
+		F47F9402132B9632002A4965 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCFileFunctionLevelFormatter.m; sourceTree = "<group>"; };
+		F48D90E326989A85005F1E95 /* WCFileFunctionLevelFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCFileFunctionLevelFormatter.h; sourceTree = "<group>"; };
+		F4902D591318EF450038C801 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		F4902D601318EF730038C801 /* CoordinateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateProvider.h; sourceTree = "<group>"; };
+		F4902D611318EF730038C801 /* CoordinateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateProvider.m; sourceTree = "<group>"; };
+		F4902D661318EF730038C801 /* easing_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easing_functions.h; sourceTree = "<group>"; };
+		F4902D671318EF730038C801 /* LinearCoordinateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearCoordinateProvider.h; sourceTree = "<group>"; };
+		F4902D681318EF730038C801 /* LinearCoordinateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearCoordinateProvider.m; sourceTree = "<group>"; };
+		F4902D691318EF730038C801 /* LogicParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicParser.h; sourceTree = "<group>"; };
+		F4902D6A1318EF730038C801 /* LogicParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicParser.m; sourceTree = "<group>"; };
+		F4902D6B1318EF730038C801 /* LogicParserStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicParserStringUtil.h; sourceTree = "<group>"; };
+		F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicParserStringUtil.m; sourceTree = "<group>"; };
+		F4902D6D1318EF730038C801 /* LogicXmlFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicXmlFileParser.h; sourceTree = "<group>"; };
+		F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicXmlFileParser.m; sourceTree = "<group>"; };
+		F4902D6F1318EF730038C801 /* RotaryCoordinateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotaryCoordinateProvider.h; sourceTree = "<group>"; };
+		F4902D701318EF730038C801 /* RotaryCoordinateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotaryCoordinateProvider.m; sourceTree = "<group>"; };
+		F4902D711318EF730038C801 /* RotaryCoordinateProviderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotaryCoordinateProviderGroup.h; sourceTree = "<group>"; };
+		F4902D721318EF730038C801 /* RotaryCoordinateProviderGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotaryCoordinateProviderGroup.m; sourceTree = "<group>"; };
+		F4902D731318EF730038C801 /* sin_and_cos_tables.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sin_and_cos_tables.c; sourceTree = "<group>"; };
+		F4902D741318EF730038C801 /* sin_and_cos_tables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sin_and_cos_tables.h; sourceTree = "<group>"; };
+		F4902D751318EF730038C801 /* Tween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tween.h; sourceTree = "<group>"; };
+		F4902D761318EF730038C801 /* Tween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tween.m; sourceTree = "<group>"; };
+		F4902D771318EF730038C801 /* TweenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweenManager.h; sourceTree = "<group>"; };
+		F4902D781318EF730038C801 /* TweenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweenManager.m; sourceTree = "<group>"; };
+		F4902D791318EF730038C801 /* WordClockCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockCore.h; sourceTree = "<group>"; };
+		F4902D7A1318EF730038C801 /* WordClockPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockPreferences.h; sourceTree = "<group>"; };
+		F4902D7B1318EF730038C801 /* WordClockPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockPreferences.m; sourceTree = "<group>"; };
+		F4902D7C1318EF730038C801 /* WordClockWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWord.h; sourceTree = "<group>"; };
+		F4902D7D1318EF730038C801 /* WordClockWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWord.m; sourceTree = "<group>"; };
+		F4902D7E1318EF730038C801 /* WordClockWordGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWordGroup.h; sourceTree = "<group>"; };
+		F4902D7F1318EF730038C801 /* WordClockWordGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWordGroup.m; sourceTree = "<group>"; };
+		F4902D801318EF730038C801 /* WordClockWordLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWordLayout.h; sourceTree = "<group>"; };
+		F4902D811318EF730038C801 /* WordClockWordLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWordLayout.m; sourceTree = "<group>"; };
+		F4902D821318EF730038C801 /* WordClockWordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWordManager.h; sourceTree = "<group>"; };
+		F4902D831318EF730038C801 /* WordClockWordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWordManager.m; sourceTree = "<group>"; };
+		F4902D841318EF730038C801 /* WordClockXmlFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockXmlFileParser.h; sourceTree = "<group>"; };
+		F4902D851318EF730038C801 /* WordClockXmlFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockXmlFileParser.m; sourceTree = "<group>"; };
+		F493A1FC166F6E1B00D43F6E /* NSView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Additions.h"; sourceTree = "<group>"; };
+		F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Additions.m"; sourceTree = "<group>"; };
+		F4A3E23E150537CF0066B357 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F4A54ADF132BD68E009221A8 /* GuidesViewLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidesViewLinear.h; sourceTree = "<group>"; };
+		F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidesViewLinear.m; sourceTree = "<group>"; };
+		F4B15D2216730CAF007F7E61 /* pubkey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubkey.pem; path = _certificates/Sparkle/pubkey.pem; sourceTree = SOURCE_ROOT; };
+		F4B582A7132CEACE006D9CAA /* GuidesView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = GuidesView.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		F4B582A8132CEACE006D9CAA /* GuidesView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = GuidesView.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		F4B582AA132CEDCF006D9CAA /* GuidesViewRotary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidesViewRotary.h; sourceTree = "<group>"; };
+		F4B582AB132CEDCF006D9CAA /* GuidesViewRotary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidesViewRotary.m; sourceTree = "<group>"; };
+		F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Pods/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
+		F4C7E22613190C0200893386 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		F4C7E22713190C0200893386 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
+		F4CCDA1B16665975001F88B5 /* WordClockSUUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockSUUpdater.h; sourceTree = "<group>"; };
+		F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockSUUpdater.m; sourceTree = "<group>"; };
+		F4D78807132D206F003F7416 /* NSColorWellWithAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorWellWithAlpha.h; sourceTree = "<group>"; };
+		F4D78808132D206F003F7416 /* NSColorWellWithAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorWellWithAlpha.m; sourceTree = "<group>"; };
+		F4D78809132D2070003F7416 /* NSColorWellWithoutAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorWellWithoutAlpha.h; sourceTree = "<group>"; };
+		F4D7880A132D2070003F7416 /* NSColorWellWithoutAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorWellWithoutAlpha.m; sourceTree = "<group>"; };
+		F4E8F501165FD0B50019987F /* Word Clock.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Word Clock.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4E8F503165FD0B60019987F /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
+		F4E8F507165FD0B60019987F /* Word Clock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Word Clock-Info.plist"; sourceTree = "<group>"; };
+		F4E8F509165FD0B60019987F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4E8F50B165FD0B60019987F /* Word Clock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Word Clock-Prefix.pch"; sourceTree = "<group>"; };
+		F4E8F50C165FD0B60019987F /* WordClockScreenSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordClockScreenSaverView.h; sourceTree = "<group>"; };
+		F4E8F50D165FD0B60019987F /* WordClockScreenSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordClockScreenSaverView.m; sourceTree = "<group>"; };
+		F4F0FB65131A4BBE00B8D814 /* culling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = culling.c; sourceTree = "<group>"; };
+		F4F0FB66131A4BBE00B8D814 /* culling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = culling.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F44D11EB165951CE003A3557 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4B7B66B19CDCE65008EE3B5 /* Sparkle.framework in Frameworks */,
+				F455AB5D1670DBEF00F41C22 /* WebKit.framework in Frameworks */,
+				F43A16651661F7AD007A0716 /* QuartzCore.framework in Frameworks */,
+				F44D121C1659531C003A3557 /* OpenGL.framework in Frameworks */,
+				F44D11F0165951CE003A3557 /* Cocoa.framework in Frameworks */,
+				F493A1FB166F63F500D43F6E /* Foundation.framework in Frameworks */,
+				96A050A43BD6A028FB57B434 /* libPods-Word Clock Window.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8F4FC165FD0B50019987F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F455AB5E1670DBFA00F41C22 /* WebKit.framework in Frameworks */,
+				F43A16661661F7B5007A0716 /* QuartzCore.framework in Frameworks */,
+				F4E8F528165FD1ED0019987F /* OpenGL.framework in Frameworks */,
+				F4E8F502165FD0B60019987F /* Cocoa.framework in Frameworks */,
+				F4E8F504165FD0B60019987F /* ScreenSaver.framework in Frameworks */,
+				F41404B219F0256C0017EEBA /* Sparkle.framework in Frameworks */,
+				F493A1FA166F63F500D43F6E /* Foundation.framework in Frameworks */,
+				5B62AFFE6EA466C121E67480 /* libPods-Word Clock.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F4A54ADE132BD625009221A8 /* Guides */,
+				F4144130133926C700E06793 /* Options */,
+				F46786D11319081E002F899B /* WordClockGLViewController.h */,
+				F46786D21319081E002F899B /* WordClockGLViewController.m */,
+				F4678669131902F6002F899B /* WordClockGLView.h */,
+				F467866A131902F6002F899B /* WordClockGLView.m */,
+				F4C7E22613190C0200893386 /* Scene.h */,
+				F4C7E22713190C0200893386 /* Scene.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F44D11EE165951CE003A3557 /* Word Clock Window.app */,
+				F4E8F501165FD0B50019987F /* Word Clock.saver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* TESTWORDCLOCK */ = {
+			isa = PBXGroup;
+			children = (
+				F46C65D722880F3400EBFD10 /* Podfile */,
+				F4CCDA1A16665955001F88B5 /* Sparkle */,
+				F4902D5F1318EF730038C801 /* WordClockCoreMac */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				F44D11F5165951CE003A3557 /* Word Clock Window */,
+				F4E8F505165FD0B60019987F /* Word Clock Screen Saver */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				3157BF5A41858865B6A667BF /* Pods */,
+			);
+			name = TESTWORDCLOCK;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				F4394F061343A92C00DED394 /* Constants.h */,
+				F493A1FC166F6E1B00D43F6E /* NSView+Additions.h */,
+				F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */,
+				F48D90E326989A85005F1E95 /* WCFileFunctionLevelFormatter.h */,
+				F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F45EFDE3167C3C0400D60C46 /* thumbnail.png */,
+				F45EFDE4167C3C0400D60C46 /* thumbnail@2x.png */,
+				F4CE22E0132575E300F2D4B6 /* UI */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */,
+				F44D11F2165951CE003A3557 /* AppKit.framework */,
+				F4A3E23E150537CF0066B357 /* Cocoa.framework */,
+				F44D11F4165951CE003A3557 /* Foundation.framework */,
+				F4902D591318EF450038C801 /* OpenGL.framework */,
+				F47F9402132B9632002A4965 /* QuartzCore.framework */,
+				F4E8F503165FD0B60019987F /* ScreenSaver.framework */,
+				F455AB5C1670DBEF00F41C22 /* WebKit.framework */,
+				33E847F582FA45528503B529 /* libPods.a */,
+				F2FAC7AD9C3DB40CEFDB0CB7 /* libPods-Word Clock.a */,
+				CD5EE60C85775C0983630F13 /* libPods-Word Clock Window.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3157BF5A41858865B6A667BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A80E2DBE527FCEC754883C3 /* Pods-Word Clock.debug.xcconfig */,
+				9FD11FDB14EC3910053E4C7E /* Pods-Word Clock.release.xcconfig */,
+				58183543DA4765AC67F8E145 /* Pods-Word Clock Window.debug.xcconfig */,
+				B470A58F1ED10070411B759D /* Pods-Word Clock Window.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F4144130133926C700E06793 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				F4D78807132D206F003F7416 /* NSColorWellWithAlpha.h */,
+				F4D78808132D206F003F7416 /* NSColorWellWithAlpha.m */,
+				F4D78809132D2070003F7416 /* NSColorWellWithoutAlpha.h */,
+				F4D7880A132D2070003F7416 /* NSColorWellWithoutAlpha.m */,
+			);
+			name = Options;
+			sourceTree = "<group>";
+		};
+		F44D11F5165951CE003A3557 /* Word Clock Window */ = {
+			isa = PBXGroup;
+			children = (
+				F44D1201165951CE003A3557 /* AppDelegate.h */,
+				F44D1202165951CE003A3557 /* AppDelegate.m */,
+				F44D1204165951CF003A3557 /* MainMenu.xib */,
+				F44D11F6165951CE003A3557 /* Supporting Files */,
+			);
+			path = "Word Clock Window";
+			sourceTree = "<group>";
+		};
+		F44D11F6165951CE003A3557 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F44D11F8165951CE003A3557 /* InfoPlist.strings */,
+				F44D11F7165951CE003A3557 /* Word Clock Window-Info.plist */,
+				F44D11FB165951CE003A3557 /* main.m */,
+				F44D11FD165951CE003A3557 /* Word Clock Window-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4902D5F1318EF730038C801 /* WordClockCoreMac */ = {
+			isa = PBXGroup;
+			children = (
+				F4B582AD132CF38C006D9CAA /* Coordinates */,
+				F4902D791318EF730038C801 /* WordClockCore.h */,
+				F4902D691318EF730038C801 /* LogicParser.h */,
+				F4902D6A1318EF730038C801 /* LogicParser.m */,
+				F4902D6B1318EF730038C801 /* LogicParserStringUtil.h */,
+				F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */,
+				F4902D6D1318EF730038C801 /* LogicXmlFileParser.h */,
+				F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */,
+				F4902D741318EF730038C801 /* sin_and_cos_tables.h */,
+				F4902D731318EF730038C801 /* sin_and_cos_tables.c */,
+				F4902D751318EF730038C801 /* Tween.h */,
+				F4902D761318EF730038C801 /* Tween.m */,
+				F4902D771318EF730038C801 /* TweenManager.h */,
+				F4902D781318EF730038C801 /* TweenManager.m */,
+				F4902D7A1318EF730038C801 /* WordClockPreferences.h */,
+				F4902D7B1318EF730038C801 /* WordClockPreferences.m */,
+				F4902D7C1318EF730038C801 /* WordClockWord.h */,
+				F4902D7D1318EF730038C801 /* WordClockWord.m */,
+				F4902D7E1318EF730038C801 /* WordClockWordGroup.h */,
+				F4902D7F1318EF730038C801 /* WordClockWordGroup.m */,
+				F4902D801318EF730038C801 /* WordClockWordLayout.h */,
+				F4902D811318EF730038C801 /* WordClockWordLayout.m */,
+				F4902D821318EF730038C801 /* WordClockWordManager.h */,
+				F4902D831318EF730038C801 /* WordClockWordManager.m */,
+				F4902D841318EF730038C801 /* WordClockXmlFileParser.h */,
+				F4902D851318EF730038C801 /* WordClockXmlFileParser.m */,
+				F4902D661318EF730038C801 /* easing_functions.h */,
+				F4F0FB65131A4BBE00B8D814 /* culling.c */,
+				F4F0FB66131A4BBE00B8D814 /* culling.h */,
+				F46A599219E3BF3D00E1CDBD /* NSXMLParser+App.h */,
+				F46A599319E3BF3D00E1CDBD /* NSXMLParser+App.m */,
+			);
+			path = WordClockCoreMac;
+			sourceTree = "<group>";
+		};
+		F4A54ADE132BD625009221A8 /* Guides */ = {
+			isa = PBXGroup;
+			children = (
+				F4B582A7132CEACE006D9CAA /* GuidesView.h */,
+				F4B582A8132CEACE006D9CAA /* GuidesView.m */,
+				F4A54ADF132BD68E009221A8 /* GuidesViewLinear.h */,
+				F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */,
+				F4B582AA132CEDCF006D9CAA /* GuidesViewRotary.h */,
+				F4B582AB132CEDCF006D9CAA /* GuidesViewRotary.m */,
+			);
+			name = Guides;
+			sourceTree = "<group>";
+		};
+		F4B582AD132CF38C006D9CAA /* Coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				F4902D601318EF730038C801 /* CoordinateProvider.h */,
+				F4902D611318EF730038C801 /* CoordinateProvider.m */,
+				F4902D6F1318EF730038C801 /* RotaryCoordinateProvider.h */,
+				F4902D701318EF730038C801 /* RotaryCoordinateProvider.m */,
+				F4902D711318EF730038C801 /* RotaryCoordinateProviderGroup.h */,
+				F4902D721318EF730038C801 /* RotaryCoordinateProviderGroup.m */,
+				F4902D671318EF730038C801 /* LinearCoordinateProvider.h */,
+				F4902D681318EF730038C801 /* LinearCoordinateProvider.m */,
+			);
+			name = Coordinates;
+			sourceTree = "<group>";
+		};
+		F4CCDA1A16665955001F88B5 /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				F4B15D2216730CAF007F7E61 /* pubkey.pem */,
+				F4CCDA1B16665975001F88B5 /* WordClockSUUpdater.h */,
+				F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */,
+			);
+			name = Sparkle;
+			path = "Word Clock Screen Saver";
+			sourceTree = "<group>";
+		};
+		F4CE22E0132575E300F2D4B6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F455AAF91670CC5E00F41C22 /* linear.png */,
+				F455AAFF1670CE1E00F41C22 /* linear@2x.png */,
+				F455AAFC1670CD5E00F41C22 /* rotary.png */,
+				F455AB001670CE1E00F41C22 /* rotary@2x.png */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		F4E8F505165FD0B60019987F /* Word Clock Screen Saver */ = {
+			isa = PBXGroup;
+			children = (
+				F4324F7B1663BA5800EA4DC5 /* WordClockOptionsWindowController.h */,
+				F4324F7C1663BA5800EA4DC5 /* WordClockOptionsWindowController.m */,
+				F4324F7D1663BA5800EA4DC5 /* WordClockOptionsWindowController.xib */,
+				F4E8F50C165FD0B60019987F /* WordClockScreenSaverView.h */,
+				F4E8F50D165FD0B60019987F /* WordClockScreenSaverView.m */,
+				F4E8F506165FD0B60019987F /* Supporting Files */,
+			);
+			path = "Word Clock Screen Saver";
+			sourceTree = "<group>";
+		};
+		F4E8F506165FD0B60019987F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4E8F507165FD0B60019987F /* Word Clock-Info.plist */,
+				F4E8F508165FD0B60019987F /* InfoPlist.strings */,
+				F4E8F50B165FD0B60019987F /* Word Clock-Prefix.pch */,
+				F46D496A16A3E6BB002D0A71 /* NSString+Additions.h */,
+				F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F44D11ED165951CE003A3557 /* Word Clock Window */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F44D1209165951CF003A3557 /* Build configuration list for PBXNativeTarget "Word Clock Window" */;
+			buildPhases = (
+				49BDA850D1E46AA483BE99A3 /* [CP] Check Pods Manifest.lock */,
+				F49DA2BD217C69D700D80EA5 /* ShellScript */,
+				F44D11EA165951CE003A3557 /* Sources */,
+				F44D11EB165951CE003A3557 /* Frameworks */,
+				F44D11EC165951CE003A3557 /* Resources */,
+				F44D1221165953FD003A3557 /* ShellScript */,
+				37766AC82590A689C33D52DC /* [CP] Embed Pods Frameworks */,
+				F4F7CFFF19CDD21D00BF6C6A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Word Clock Window";
+			productName = "Word Clock Window";
+			productReference = F44D11EE165951CE003A3557 /* Word Clock Window.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4E8F500165FD0B50019987F /* Word Clock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4E8F511165FD0B60019987F /* Build configuration list for PBXNativeTarget "Word Clock" */;
+			buildPhases = (
+				172E5329EDDA0F50A8B63B6B /* [CP] Check Pods Manifest.lock */,
+				F49DA2BC217C698000D80EA5 /* ShellScript */,
+				F4E8F4FB165FD0B50019987F /* Sources */,
+				F4E8F4FC165FD0B50019987F /* Frameworks */,
+				F4E8F4FE165FD0B50019987F /* Resources */,
+				F4E8F512165FD0C30019987F /* ShellScript */,
+				F4CCDA18166658A7001F88B5 /* CopyFiles */,
+				F47FD720228F033000F06D9E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Word Clock";
+			productName = "Word Clock Screen Saver";
+			productReference = F4E8F501165FD0B50019987F /* Word Clock.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				TargetAttributes = {
+					F44D11ED165951CE003A3557 = {
+						DevelopmentTeam = 4YADBGMM88;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
+					};
+					F4E8F500165FD0B50019987F = {
+						DevelopmentTeam = 4YADBGMM88;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "WordClock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* TESTWORDCLOCK */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F44D11ED165951CE003A3557 /* Word Clock Window */,
+				F4E8F500165FD0B50019987F /* Word Clock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F44D11EC165951CE003A3557 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44D11FA165951CE003A3557 /* InfoPlist.strings in Resources */,
+				F44D1206165951CF003A3557 /* MainMenu.xib in Resources */,
+				F4324F811663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */,
+				F455AAFA1670CC5E00F41C22 /* linear.png in Resources */,
+				F455AAFD1670CD5E00F41C22 /* rotary.png in Resources */,
+				F455AB011670CE1E00F41C22 /* linear@2x.png in Resources */,
+				F455AB031670CE1E00F41C22 /* rotary@2x.png in Resources */,
+				F4B15D2316730CAF007F7E61 /* pubkey.pem in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8F4FE165FD0B50019987F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4E8F50A165FD0B60019987F /* InfoPlist.strings in Resources */,
+				F4324F821663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */,
+				F455AAFB1670CC6200F41C22 /* linear.png in Resources */,
+				F455AAFE1670CD5E00F41C22 /* rotary.png in Resources */,
+				F455AB021670CE1E00F41C22 /* linear@2x.png in Resources */,
+				F455AB041670CE1E00F41C22 /* rotary@2x.png in Resources */,
+				F4B15D2416730CAF007F7E61 /* pubkey.pem in Resources */,
+				F45EFDE5167C3C0400D60C46 /* thumbnail.png in Resources */,
+				F45EFDE6167C3C0400D60C46 /* thumbnail@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		172E5329EDDA0F50A8B63B6B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Word Clock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37766AC82590A689C33D52DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49BDA850D1E46AA483BE99A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Word Clock Window-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F44D1221165953FD003A3557 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "/opt/homebrew/bin/yarn copy-xml\n";
+		};
+		F47FD720228F033000F06D9E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/homebrew/bin/yarn code-sign\n";
+		};
+		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/homebrew/bin/yarn update-build-number\n";
+		};
+		F49DA2BD217C69D700D80EA5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "/opt/homebrew/bin/yarn update-build-number\n";
+		};
+		F4E8F512165FD0C30019987F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/homebrew/bin/yarn copy-xml\n";
+		};
+		F4F7CFFF19CDD21D00BF6C6A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "/opt/homebrew/bin/yarn code-sign\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F44D11EA165951CE003A3557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44D11FC165951CE003A3557 /* main.m in Sources */,
+				F44D1203165951CE003A3557 /* AppDelegate.m in Sources */,
+				F44D120A165952A0003A3557 /* CoordinateProvider.m in Sources */,
+				F44D120B165952A0003A3557 /* RotaryCoordinateProvider.m in Sources */,
+				F44D120C165952A0003A3557 /* RotaryCoordinateProviderGroup.m in Sources */,
+				F44D120D165952A0003A3557 /* LinearCoordinateProvider.m in Sources */,
+				F44D120E165952B9003A3557 /* LogicParser.m in Sources */,
+				F44D120F165952B9003A3557 /* LogicParserStringUtil.m in Sources */,
+				F44D1210165952B9003A3557 /* LogicXmlFileParser.m in Sources */,
+				F46A599419E3BF3D00E1CDBD /* NSXMLParser+App.m in Sources */,
+				F44D1211165952B9003A3557 /* sin_and_cos_tables.c in Sources */,
+				F44D1212165952B9003A3557 /* Tween.m in Sources */,
+				F44D1213165952B9003A3557 /* TweenManager.m in Sources */,
+				F44D1214165952B9003A3557 /* WordClockPreferences.m in Sources */,
+				F44D1215165952B9003A3557 /* WordClockWord.m in Sources */,
+				F48D90E526989A85005F1E95 /* WCFileFunctionLevelFormatter.m in Sources */,
+				F44D1216165952B9003A3557 /* WordClockWordGroup.m in Sources */,
+				F44D1217165952B9003A3557 /* WordClockWordLayout.m in Sources */,
+				F44D1218165952B9003A3557 /* WordClockWordManager.m in Sources */,
+				F44D1219165952B9003A3557 /* WordClockXmlFileParser.m in Sources */,
+				F44D121A165952B9003A3557 /* culling.c in Sources */,
+				F44D121D16595331003A3557 /* WordClockGLViewController.m in Sources */,
+				F44D121E16595334003A3557 /* WordClockGLView.m in Sources */,
+				F44D12201659536F003A3557 /* Scene.m in Sources */,
+				F4324F7F1663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */,
+				F493A1FF166F6E1B00D43F6E /* NSView+Additions.m in Sources */,
+				F4798146166F964C00477D24 /* WordClockSUUpdater.m in Sources */,
+				F453416516745FF700D24819 /* GuidesView.m in Sources */,
+				F453416616745FF700D24819 /* GuidesViewLinear.m in Sources */,
+				F453416716745FF700D24819 /* GuidesViewRotary.m in Sources */,
+				F46D496D16A3E6BB002D0A71 /* NSString+Additions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E8F4FB165FD0B50019987F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4E8F50E165FD0B60019987F /* WordClockScreenSaverView.m in Sources */,
+				F4E8F513165FD0FC0019987F /* CoordinateProvider.m in Sources */,
+				F4E8F514165FD0FC0019987F /* RotaryCoordinateProvider.m in Sources */,
+				F4E8F515165FD0FC0019987F /* RotaryCoordinateProviderGroup.m in Sources */,
+				F4E8F516165FD0FC0019987F /* LinearCoordinateProvider.m in Sources */,
+				F4E8F517165FD10A0019987F /* LogicParser.m in Sources */,
+				F4E8F518165FD10A0019987F /* LogicParserStringUtil.m in Sources */,
+				F4E8F519165FD10A0019987F /* LogicXmlFileParser.m in Sources */,
+				F4E8F51A165FD10A0019987F /* sin_and_cos_tables.c in Sources */,
+				F4E8F51B165FD10A0019987F /* Tween.m in Sources */,
+				F4E8F51C165FD10A0019987F /* TweenManager.m in Sources */,
+				F4E8F51D165FD10A0019987F /* WordClockPreferences.m in Sources */,
+				F4E8F51E165FD10A0019987F /* WordClockWord.m in Sources */,
+				F4E8F51F165FD10A0019987F /* WordClockWordGroup.m in Sources */,
+				F4E8F520165FD10A0019987F /* WordClockWordLayout.m in Sources */,
+				F48D90E426989A85005F1E95 /* WCFileFunctionLevelFormatter.m in Sources */,
+				F4E8F521165FD10A0019987F /* WordClockWordManager.m in Sources */,
+				F4E8F522165FD10A0019987F /* WordClockXmlFileParser.m in Sources */,
+				F4E8F523165FD10A0019987F /* culling.c in Sources */,
+				F4E8F524165FD1120019987F /* WordClockGLViewController.m in Sources */,
+				F4E8F525165FD1120019987F /* WordClockGLView.m in Sources */,
+				F4E8F526165FD1120019987F /* Scene.m in Sources */,
+				F4324F801663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */,
+				F4CCDA1E16665975001F88B5 /* WordClockSUUpdater.m in Sources */,
+				F493A200166F6E1B00D43F6E /* NSView+Additions.m in Sources */,
+				F453416216745FF700D24819 /* GuidesView.m in Sources */,
+				F41404B319F026390017EEBA /* NSXMLParser+App.m in Sources */,
+				F453416316745FF700D24819 /* GuidesViewLinear.m in Sources */,
+				F453416416745FF700D24819 /* GuidesViewRotary.m in Sources */,
+				F46D496E16A3E6BB002D0A71 /* NSString+Additions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F44D11F8165951CE003A3557 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44D11F9165951CE003A3557 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F44D1204165951CF003A3557 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44D1205165951CF003A3557 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F4E8F508165FD0B60019987F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4E8F509165FD0B60019987F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		26FC0A890875C7B200E6366F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application: Simon Heys Limited";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		26FC0A8A0875C7B200E6366F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application: Simon Heys Limited";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F44D1207165951CF003A3557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58183543DA4765AC67F8E145 /* Pods-Word Clock Window.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Word Clock Window/Word Clock Window-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/include,
+				);
+				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-L/usr/local/opt/openssl/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F44D1208165951CF003A3557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B470A58F1ED10070411B759D /* Pods-Word Clock Window.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Word Clock Window/Word Clock Window-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/include,
+				);
+				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MARKETING_VERSION = 1.1;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-L/usr/local/opt/openssl/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F4E8F50F165FD0B60019987F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A80E2DBE527FCEC754883C3 /* Pods-Word Clock.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(inherited)";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4YADBGMM88;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Word Clock Screen Saver/Word Clock-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/include,
+				);
+				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.1;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-L/usr/local/opt/openssl/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		F4E8F510165FD0B60019987F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FD11FDB14EC3910053E4C7E /* Pods-Word Clock.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(inherited)";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4YADBGMM88;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Word Clock Screen Saver/Word Clock-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/include,
+				);
+				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/openssl/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MARKETING_VERSION = 1.1;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-L/usr/local/opt/openssl/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "WordClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26FC0A890875C7B200E6366F /* Debug */,
+				26FC0A8A0875C7B200E6366F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F44D1209165951CF003A3557 /* Build configuration list for PBXNativeTarget "Word Clock Window" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44D1207165951CF003A3557 /* Debug */,
+				F44D1208165951CF003A3557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4E8F511165FD0B60019987F /* Build configuration list for PBXNativeTarget "Word Clock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4E8F50F165FD0B60019987F /* Debug */,
+				F4E8F510165FD0B60019987F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "wordclock-macos",
+  "version": "1.0.0",
+  "author": "Simon Heys <si@simonheys.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint:eslint": "eslint ./_scripts/",
+    "lint:prettier": "prettier -l './_scripts/**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "prettier": "prettier --write './_scripts/**/*.{js,json,css,scss}'",
+    "build": "babel-node ./_scripts/build",
+    "code-sign": "babel-node ./_scripts/code-sign",
+    "sparkle-sign": "babel-node ./_scripts/sparkle-sign",
+    "update-build-number": "babel-node ./_scripts/update-build-number",
+    "copy-xml": "babel-node ./_scripts/copy-xml",
+    "package-dmg": "babel-node ./_scripts/package-dmg",
+    "make-dist": "babel-node ./_scripts/make-dist",
+    "settings": "babel-node ./_scripts/settings",
+    "update-copyright": "babel-node ./_scripts/update-copyright",
+    "notarize": "babel-node ./_scripts/notarize"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "execSync": "^1.0.2",
+    "fs-extra": "^8.0.1",
+    "moment": "^2.24.0",
+    "multi-glob": "^1.0.2",
+    "xml2js": "^0.4.19"
+  }
+}
