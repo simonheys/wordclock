@@ -60,6 +60,14 @@ NSString *WordClockRotaryDisplayType = @"rotary";
         DDLogError(@"error:%@",error);
     }
     DDLogVerbose(@"model:%@",model);
+    NSDictionary *languages = model[@"languages"];
+
+    [languages enumerateKeysAndObjectsUsingBlock:^(NSString *code, NSString *languageTitle, BOOL * _Nonnull stop) {
+        DDLogVerbose(@"code:%@ languageTitle:%@",code,languageTitle);
+//        [self.xmlManifestLanguageCode addObject:code];
+//        [self.xmlManifestLanguageTitle addObject:languageTitle];
+    }];
+    
     
 	self.xmlManifestFiles = [[NSMutableArray new] autorelease];
 	self.xmlManifestLanguageCode = [[NSMutableArray new] autorelease];
