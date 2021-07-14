@@ -18,10 +18,32 @@ const convertNumeric = (obj) => {
   });
 };
 
+const xmlFileNameToJson = (file) =>
+  file.substr(0, file.lastIndexOf(".")) + ".json";
+
+const manifestXmlToJson = async () => {
+  const fileContents = fs
+    .readFileSync(path.join(SOURCE_DIRECTORY, "Manifest.xml"))
+    .toString();
+  const parsed = await xml2js.parseStringPromise(fileContents);
+  const json = {
+    files: parsed.manifest.file.map((file) => xmlFileNameToJson(file)),
+    languages: {},
+  };
+  parsed.manifest.language.forEach((entry) => {
+    const code = _.get(entry, "$.code");
+    const title = _.get(entry, "$.title");
+    json.languages[code] = title;
+  });
+  const newFileContents = JSON.stringify(json, null, 2);
+  const fileJson = "Manifest.json";
+  fs.writeFileSync(path.join(DESTINATION_DIRECTORY, fileJson), newFileContents);
+};
+
 const xmlToJson = async () => {
   const files = fs
     .readdirSync(SOURCE_DIRECTORY)
-    .filter((file) => !file.startsWith("."));
+    .filter((file) => !file.startsWith(".") && !file.startsWith("Manifest"));
 
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
@@ -94,7 +116,7 @@ const xmlToJson = async () => {
     }
 
     const newFileContents = JSON.stringify(json, null, 2);
-    const fileJson = file.substr(0, file.lastIndexOf(".")) + ".json";
+    const fileJson = xmlFileNameToJson(file);
     fs.writeFileSync(
       path.join(DESTINATION_DIRECTORY, fileJson),
       newFileContents
@@ -105,6 +127,7 @@ const xmlToJson = async () => {
 (async () => {
   try {
     await xmlToJson();
+    await manifestXmlToJson();
   } catch (error) {
     console.error(error);
   }

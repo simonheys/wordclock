@@ -2,7 +2,9 @@
   "meta": {
     "language": "cs",
     "title": "pátek dvacátéhoprvního prosince dvě hodiny dvacetjedna po půlnoci třicetpět sekund.",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

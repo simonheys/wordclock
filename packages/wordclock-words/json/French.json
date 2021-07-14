@@ -2,7 +2,9 @@
   "meta": {
     "language": "fr",
     "title": "jeudi treize mai, et il est trois heure, quatre minutes et cinq secondes",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

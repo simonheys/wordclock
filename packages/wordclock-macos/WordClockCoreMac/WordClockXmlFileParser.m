@@ -48,7 +48,19 @@ NSString *WordClockRotaryDisplayType = @"rotary";
 - (void)parseManifestFile
 {
 //    __block NSURL *xmlURL = [NSURL fileURLWithPath:self.manifestFile];
-	
+
+    NSBundle *thisBundle = [self bundle];
+    NSString *path = [thisBundle pathForResource:@"Manifest" ofType:@"json" inDirectory:@"json"];
+    
+    DDLogVerbose(@"path:%@",path);
+	NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *error = nil;
+    id model = [NSJSONSerialization JSONObjectWithData:data options:nil error:&error];
+    if ( nil != error ) {
+        DDLogError(@"error:%@",error);
+    }
+    DDLogVerbose(@"model:%@",model);
+    
 	self.xmlManifestFiles = [[NSMutableArray new] autorelease];
 	self.xmlManifestLanguageCode = [[NSMutableArray new] autorelease];
 	self.xmlManifestLanguageTitle = [[NSMutableArray new] autorelease];

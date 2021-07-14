@@ -2,7 +2,9 @@
   "meta": {
     "language": "sq",
     "title": "E Premte, Nëntë Tetor, Ora Dy, e Gjashtë minuta e Shtatë sekonda.",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

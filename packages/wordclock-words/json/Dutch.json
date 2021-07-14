@@ -2,7 +2,9 @@
   "meta": {
     "language": "nl",
     "title": "Vandaag is het woensdag, drie februari, en de juiste tijd is vijf uur, drieëndertig minuten en drieëndertig seconde.",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

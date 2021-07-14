@@ -2,7 +2,9 @@
   "meta": {
     "language": "fi",
     "title": "Perjantai yhdeksäs elokuuta, yksitoista viisikymmentä ja seitsemän sekunttia.",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

@@ -2,7 +2,9 @@
   "meta": {
     "language": "fr",
     "title": "Trois heures, quatre minutes, une second",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

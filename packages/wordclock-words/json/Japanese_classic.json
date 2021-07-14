@@ -2,7 +2,9 @@
   "meta": {
     "language": "ja",
     "title": "長月 六 日 水 曜日 七 時 二十一 分 四十七 秒。",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [
@@ -82,7 +84,15 @@
         "type": "sequence",
         "bind": "day",
         "first": 0,
-        "text": ["日", "月", "火", "水", "木", "金", "土"]
+        "text": [
+          "日",
+          "月",
+          "火",
+          "水",
+          "木",
+          "金",
+          "土"
+        ]
       }
     ],
     [

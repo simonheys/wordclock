@@ -2,7 +2,9 @@
   "meta": {
     "language": "de",
     "title": "Drei Uhr achtunddreißig und siebenundzwanzig Sekunden.",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

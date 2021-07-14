@@ -2,7 +2,9 @@
   "meta": {
     "language": "ja",
     "title": "現在の時刻は ...... です。",
-    "suitability": ["linear"]
+    "suitability": [
+      "linear"
+    ]
   },
   "groups": [
     [

@@ -2,7 +2,9 @@
   "meta": {
     "language": "sl",
     "title": "Četrt na pet in dvaintrideset sekund",
-    "suitability": ["rotary"]
+    "suitability": [
+      "rotary"
+    ]
   },
   "groups": [
     [
