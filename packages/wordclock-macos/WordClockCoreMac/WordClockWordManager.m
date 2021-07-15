@@ -118,17 +118,6 @@ NSString *const kWordClockWordManagerLogicaAndLabelsWillChangeNotification = @"k
 // preview
 
 - (NSArray *)longestLabelArray {
-    /*
-        int mostWordsSoFar = 0;
-        WordClockWordGroup *result;
-        for ( WordClockWordGroup *group in self.group) {
-            if ( group.numberOfWords > mostWordsSoFar ) {
-                mostWordsSoFar = group.numberOfWords;
-                result = group;
-            }
-        }
-
-        return result;*/
     return (self.label)[_longestLabelIndex];
 }
 

@@ -44,12 +44,12 @@ typedef struct _WordClockOrientationVector {
 - (instancetype)initWithWordClockWordManager:(WordClockWordManager *)wordClockWordManager tweenManager:(TweenManager *)tweenManager;
 - (void)update;
 - (void)shake;
-@property(NS_NONATOMIC_IOSONLY, readonly, strong) CoordinateProvider *clone;
 - (void)setupForOrientation:(WCDeviceOrientation)orientation andBounds:(WCRect)screenBounds;
 - (BOOL)needsSetupForOrientation:(WCDeviceOrientation)orientation;
 - (void)setupForDefaultOrientation;
 - (void)texturesDidChange;
 
+@property(NS_NONATOMIC_IOSONLY, readonly, strong) CoordinateProvider *clone;
 @property WordClockWordCoordinates *coordinates;
 @property float scale;
 @property float translateX;

@@ -1,11 +1,10 @@
-/*
- *  sin_and_cos_tables.c
- *  iphone_word_clock_open_gl
- *
- *  Created by Simon on 22/02/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
- *
- */
+//
+//  sin_and_cos_tables.c
+//  WordClock macOS
+//
+//  Created by Simon Heys on 16/04/2011.
+//  Copyright (c) Studio Heys Limited. All rights reserved.
+//
 
 #include "sin_and_cos_tables.h"
 

@@ -5,13 +5,6 @@
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-//
-//  WordClockGLView.m
-//  TESTWORDCLOCK
-//
-//  Created by Simon on 26/02/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "WordClockGLView.h"
 
@@ -54,8 +47,8 @@
 
 - (void)dealloc {
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"style"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"backgroundColour"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCStyleKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCBackgroundColourKey];
     } @catch (NSException *exception) {
     }
     [self stopAnimation];
@@ -107,7 +100,6 @@
     // There is no autorelease pool when this method is called because it will
     // be called from a background thread It's important to create one or you
     // will leak objects
-    //	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     @autoreleasepool {
         // Update the animation
         CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
@@ -116,8 +108,6 @@
 
         [self.tweenManager update];
         [self drawView];
-
-        //	[pool release];
     }
     return kCVReturnSuccess;
 }
@@ -178,8 +168,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
         self.layout = [[[WordClockWordLayout alloc] initWithWordClockWordManager:self.wordClockWordManager tweenManager:self.tweenManager] autorelease];
 
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"style" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"backgroundColour" options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCStyleKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCBackgroundColourKey options:NSKeyValueObservingOptionNew context:NULL];
     }
 
     return self;
@@ -216,8 +206,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    DDLogVerbose(@"thred main?:%@", [NSThread isMainThread] ? @"YES" : @"NO");
-    if ([keyPath isEqual:@"style"]) {
+    if ([keyPath isEqual:WCStyleKey]) {
         switch ([WordClockPreferences sharedInstance].style) {
             case WCStyleLinear:
                 [self.layout linearSelected:self];
@@ -227,7 +216,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
                 break;
         }
         [self updateGuidesView];
-    } else if ([keyPath isEqual:@"backgroundColour"]) {
+    } else if ([keyPath isEqual:WCBackgroundColourKey]) {
         [self updateBackgroundColor];
     }
 }
@@ -310,18 +299,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     CGLUnlockContext([self.openGLContext CGLContextObj]);
 }
 
-//#ifndef SCREENSAVER
-//- (BOOL)acceptsFirstResponder {
-//    // We want this view to be able to receive key events
-//    return YES;
-//}
-//
-//- (void)keyDown:(NSEvent *)theEvent {
-//    // Delegate to the controller object for handling key events
-//    [self.controller keyDown:theEvent];
-//}
-//#endif
-
 - (void)startAnimation {
     if (!displayLink) {
         [self setupDisplayLink];
@@ -349,7 +326,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 // ____________________________________________________________________________________________________
 // preferences
 
-// TODO not sure thsi realy belongs here
+// TODO not sure this realy belongs here
 
 - (void)updateFromPreferences {
     DDLogVerbose(@"updateFromPreferences");
@@ -558,7 +535,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     //	double startTimeInSeconds = getUpTime();
     glClear(GL_COLOR_BUFFER_BIT);
 
-    if (!_numberOfWords > 0) {
+    if (!(_numberOfWords > 0)) {
         return;
     }
 

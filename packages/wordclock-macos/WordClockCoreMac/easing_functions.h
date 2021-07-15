@@ -5,14 +5,7 @@
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-/*
- *  easing_functions.h
- *  iphone_word_clock_open_gl
- *
- *  Created by Simon on 22/02/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
- *
- */
+
 // time, begin, change, duration
 
 #define kWCEaseOvershoot 1.70158f  // 2.0f;// 1.70158f;
@@ -42,9 +35,5 @@ static inline float quad_ease_in_out(float t) {
  * @return		The correct value.
  */
 static inline float ease_out_back(float t) {
-    // var s:Number = !Boolean(p_params) || isNaN(p_params.overshoot) ? 1.70158
-    // : p_params.overshoot;
-    //	return c*((t=t/d-1)*t*((kWCEaseOvershoot+1)*t + kWCEaseOvershoot) + 1) +
-    // b;
     return 1.0f * ((t = t / 1.0f - 1.0f) * t * ((kWCEaseOvershoot + 1) * t + kWCEaseOvershoot) + 1.0f) + 0;
 }

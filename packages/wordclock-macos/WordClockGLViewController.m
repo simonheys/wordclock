@@ -38,8 +38,8 @@
     DDLogVerbose(@"dealloc");
     [self stopAnimation];
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"xmlFile"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"fontName"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCWordsFileKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCFontNameKey];
     } @catch (NSException *exception) {
     }
     [_parser release];
@@ -57,18 +57,18 @@
 - (void)setView:(NSView *)view {
     [super setView:view];
     [self updateFromPreferences];
-    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"xmlFile" options:NSKeyValueObservingOptionNew context:NULL];
-    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
+    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCWordsFileKey options:NSKeyValueObservingOptionNew context:NULL];
+    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCFontNameKey options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 // ____________________________________________________________________________________________________
 // kvo
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqual:@"xmlFile"]) {
+    if ([keyPath isEqual:WCWordsFileKey]) {
         //		[self stopAnimation];
         [self updateFromPreferences];
-    } else if ([keyPath isEqual:@"fontName"]) {
+    } else if ([keyPath isEqual:WCFontNameKey]) {
         //		[self stopAnimation];
         [self updateFromPreferences];
     }
@@ -123,7 +123,7 @@
     self.parser = [[[WordClockWordsFileParser alloc] init] autorelease];
     [self.parser setDelegate:self];
 
-    NSString *xmlFile = [WordClockPreferences sharedInstance].xmlFile;
+    NSString *xmlFile = [WordClockPreferences sharedInstance].wordsFile;
 #ifdef SCREENSAVER
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 #else

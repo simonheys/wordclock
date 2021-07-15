@@ -49,8 +49,8 @@
 
 - (void)dealloc {
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"style"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"fontName"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCStyleKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCFontNameKey];
     } @catch (NSException *exception) {
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -96,8 +96,8 @@
 
     DDLogVerbose(@"self.customView:%@", self.customView);
 
-    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"style" options:NSKeyValueObservingOptionNew context:NULL];
-    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
+    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCStyleKey options:NSKeyValueObservingOptionNew context:NULL];
+    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCFontNameKey options:NSKeyValueObservingOptionNew context:NULL];
 
     DDLogVerbose(@"self.wordClockGLViewController:%@", self.wordClockGLViewController);
     //    [self performSelector:@selector(setup) withObject:nil
@@ -133,9 +133,9 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqual:@"style"]) {
+    if ([keyPath isEqual:WCStyleKey]) {
         [self updateButtons];
-    } else if ([keyPath isEqual:@"fontName"]) {
+    } else if ([keyPath isEqual:WCFontNameKey]) {
         [self updateButtons];
     }
 }
@@ -333,7 +333,7 @@
 }
 
 - (IBAction)filePopUpButtonChanged:(id)sender {
-    [WordClockPreferences sharedInstance].xmlFile = [[self.xmlFilePopUpButton selectedItem] representedObject];
+    [WordClockPreferences sharedInstance].wordsFile = [[self.xmlFilePopUpButton selectedItem] representedObject];
 }
 
 - (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser *)parser {
@@ -350,7 +350,7 @@
     NSString *sectionName;
     NSString *fileTitle;
     NSString *fileName;
-    NSString *currentXmlFile = [WordClockPreferences sharedInstance].xmlFile;
+    NSString *currentXmlFile = [WordClockPreferences sharedInstance].wordsFile;
 
     [newMenu removeAllItems];
     [newMenu setAutoenablesItems:NO];
@@ -476,6 +476,11 @@
     DDLogVerbose(@"defaultsSelected");
     [[WordClockPreferences sharedInstance] reset];
     [self resetUI];
+}
+
+- (IBAction)textTapped:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"https://www.simonheys.com/wordclock/"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 @end

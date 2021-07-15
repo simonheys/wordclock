@@ -5,13 +5,6 @@
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-//
-//  WordClockWordLayout.m
-//  iphone_word_clock_open_gl
-//
-//  Created by Simon on 14/02/2009.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
 
 #import "WordClockWordLayout.h"
 

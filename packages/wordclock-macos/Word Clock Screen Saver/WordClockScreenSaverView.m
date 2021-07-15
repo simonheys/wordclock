@@ -35,7 +35,7 @@
 
 - (void)dealloc {
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"style"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCStyleKey];
     } @catch (NSException *exception) {
     }
     [self stopTransitionTimer];
@@ -53,7 +53,7 @@
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
         self.optionsWindowController = [[WordClockOptionsWindowController new] autorelease];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"style" options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCStyleKey options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
@@ -110,7 +110,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqual:@"style"]) {
+    if ([keyPath isEqual:WCStyleKey]) {
         self.dateOfLastTransition = [NSDate date];
     }
 }

@@ -261,6 +261,13 @@ DQ
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnX-Yh-0Wm">
                         <rect key="frame" x="388" y="23" width="241" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <gestureRecognizers>
+                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="LTj-7x-FJr">
+                                <connections>
+                                    <action selector="textTapped:" target="-2" id="yzH-Xs-qH7"/>
+                                </connections>
+                            </clickGestureRecognizer>
+                        </gestureRecognizers>
                         <textFieldCell key="cell" enabled="NO" alignment="left" title="Copyright Studio Heys Limited 2003–present" usesSingleLineMode="YES" id="jAH-lW-0Xv">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>

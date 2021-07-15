@@ -20,9 +20,9 @@
 - (void)dealloc {
     DDLogVerbose(@"dealloc");
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"rotaryScale"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"rotaryTranslateX"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"rotaryTranslateY"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCRotaryScaleKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCRotaryTranslateXKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCRotaryTranslateYKey];
     } @catch (NSException *exception) {
     }
     [_rotaryCoordinateProviderGroup release];
@@ -36,15 +36,15 @@
         [self updateLayout];
         //		_orientationVector.vx = 1.0f;
         //		_orientationVector.vy = 0.0f;
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"rotaryScale" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"rotaryTranslateX" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"rotaryTranslateY" options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCRotaryScaleKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCRotaryTranslateXKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCRotaryTranslateYKey options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"rotaryScale"] || [keyPath isEqualToString:@"rotaryTranslateX"] || [keyPath isEqualToString:@"rotaryTranslateY"]) {
+    if ([keyPath isEqualToString:WCRotaryScaleKey] || [keyPath isEqualToString:WCRotaryTranslateXKey] || [keyPath isEqualToString:WCRotaryTranslateYKey]) {
         [self updateLayout];
     }
 }

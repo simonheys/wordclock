@@ -32,8 +32,8 @@ static inline GLsizei nextHighestPowerOfTwo(float value) {
     [self.tweenManager removeTweensWithTarget:self];
     [_tweenManager release];
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"foregroundColour"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"highlightColour"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCForegroundColourKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCHighlightColourKey];
     } @catch (NSException *exception) {
     }
 
@@ -59,20 +59,17 @@ static inline GLsizei nextHighestPowerOfTwo(float value) {
             _label = [_originalLabel retain];
         }
         self.highlighted = NO;
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"foregroundColour" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"highlightColour" options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCForegroundColourKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCHighlightColourKey options:NSKeyValueObservingOptionNew context:NULL];
     }
 
     return self;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //	DDLogVerbose(@"_colours:%d",_colours);
-    if ([keyPath isEqual:@"foregroundColour"]) {
-        //		[self performSelectorOnMainThread:@selector(updateColour)
-        // withObject:nil waitUntilDone:NO];// updateColour];
+    if ([keyPath isEqual:WCForegroundColourKey]) {
         [self updateColour];
-    } else if ([keyPath isEqual:@"highlightColour"]) {
+    } else if ([keyPath isEqual:WCHighlightColourKey]) {
         [self updateColour];
     }
 }

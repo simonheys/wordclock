@@ -5,14 +5,6 @@
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-/*
- *  WordClockCore.h
- *  WordClockCore
- *
- *  Created by Simon on 05/04/2010.
- *  Copyright 2010 __MyCompanyName__. All rights reserved.
- *
- */
 
 typedef NS_ENUM(NSInteger, WCDeviceOrientation) {
     WCDeviceOrientationUnknown,

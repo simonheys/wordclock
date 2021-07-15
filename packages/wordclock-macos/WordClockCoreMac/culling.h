@@ -5,14 +5,6 @@
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
-/*
- *  culling.h
- *  iphone_word_clock_open_gl
- *
- *  Created by Simon on 15/03/2009.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
- *
- */
 
 #import <ApplicationServices/ApplicationServices.h>
 

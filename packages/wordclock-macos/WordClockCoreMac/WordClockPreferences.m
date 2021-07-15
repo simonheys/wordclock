@@ -11,16 +11,16 @@
 #endif
 #import "WordClockPreferences.h"
 
-NSString *WCXMLFileKey = @"xmlFile";
-NSString *WCFontNameKey = @"fontName";
-NSString *WCHighlightColourKey = @"highlightColour";
-NSString *WCForegroundColourKey = @"foregroundColour";
-NSString *WCBackgroundColourKey = @"backgroundColour";
-NSString *WCLeadingKey = @"leading";
-NSString *WCTrackingKey = @"tracking";
-NSString *WCJustificationKey = @"justification";
-NSString *WCCaseAdjustmentKey = @"caseAdjustment";
-NSString *WCStyleKey = @"style";
+NSString *const WCWordsFileKey = @"wordsFile";
+NSString *const WCFontNameKey = @"fontName";
+NSString *const WCHighlightColourKey = @"highlightColour";
+NSString *const WCForegroundColourKey = @"foregroundColour";
+NSString *const WCBackgroundColourKey = @"backgroundColour";
+NSString *const WCLeadingKey = @"leading";
+NSString *const WCTrackingKey = @"tracking";
+NSString *const WCJustificationKey = @"justification";
+NSString *const WCCaseAdjustmentKey = @"caseAdjustment";
+NSString *const WCStyleKey = @"style";
 
 NSString *const WCLinearTranslateXKey = @"linearTranslateX";
 NSString *const WCLinearTranslateYKey = @"linearTranslateY";
@@ -40,7 +40,7 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 
 @implementation WordClockPreferences
 
-@synthesize xmlFile = _xmlFile;
+@synthesize wordsFile = _wordsFile;
 @synthesize fontName = _fontName;
 @synthesize highlightColour = _highlightColour;
 @synthesize foregroundColour = _foregroundColour;
@@ -83,7 +83,7 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 }
 
 + (NSDictionary *)factoryDefaults {
-    NSDictionary *factoryDefaults = @{WCXMLFileKey : @"English.xml", WCFontNameKey : @"Helvetica-Bold", WCHighlightColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0]], WCForegroundColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0]], WCBackgroundColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:0.0f alpha:1.0]], WCLeadingKey : @0.0f, WCTrackingKey : @0.0f, WCJustificationKey : @(WCJustificationLeft), WCStyleKey : @(WCStyleLinear), WCLinearTranslateXKey : @0.0f, WCLinearTranslateYKey : @0.0f, WCLinearScaleKey : @1.0f, WCRotaryTranslateXKey : @0.0f, WCRotaryTranslateYKey : @0.0f, WCRotaryScaleKey : @0.8f, WCLinearMarginLeftKey : @50.0f, WCLinearMarginRightKey : @50.0f, WCLinearMarginTopKey : @50.0f, WCLinearMarginBottomKey : @50.0f, WCTransitionTimeKey : @60, WCTransitionStyleKey : @(WCTransitionStyleSlow)};
+    NSDictionary *factoryDefaults = @{WCWordsFileKey : @"English.json", WCFontNameKey : @"Helvetica-Bold", WCHighlightColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0]], WCForegroundColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0]], WCBackgroundColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:0.0f alpha:1.0]], WCLeadingKey : @0.0f, WCTrackingKey : @0.0f, WCJustificationKey : @(WCJustificationLeft), WCStyleKey : @(WCStyleLinear), WCLinearTranslateXKey : @0.0f, WCLinearTranslateYKey : @0.0f, WCLinearScaleKey : @1.0f, WCRotaryTranslateXKey : @0.0f, WCRotaryTranslateYKey : @0.0f, WCRotaryScaleKey : @0.8f, WCLinearMarginLeftKey : @50.0f, WCLinearMarginRightKey : @50.0f, WCLinearMarginTopKey : @50.0f, WCLinearMarginBottomKey : @50.0f, WCTransitionTimeKey : @60, WCTransitionStyleKey : @(WCTransitionStyleSlow)};
     return factoryDefaults;
 }
 
@@ -92,12 +92,12 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
     [_foregroundColour release];
     [_highlightColour release];
     [_fontName release];
-    [_xmlFile release];
+    [_wordsFile release];
     [super dealloc];
 }
 
 - (void)reset {
-    self.xmlFile = @"English.xml";
+    self.wordsFile = @"English.xml";
     self.fontName = @"Helvetica-Bold";
     self.highlightColour = [NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0];
     self.foregroundColour = [NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0];
@@ -123,13 +123,13 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 // ____________________________________________________________________________________________________
 // xml file
 
-- (void)setXmlFile:(NSString *)value {
-    [[WordClockPreferences defaults] setObject:value forKey:WCXMLFileKey];
+- (void)setWordsFile:(NSString *)value {
+    [[WordClockPreferences defaults] setObject:value forKey:WCWordsFileKey];
     [[WordClockPreferences defaults] synchronize];
 }
 
-- (NSString *)xmlFile {
-    return [[WordClockPreferences defaults] stringForKey:WCXMLFileKey];
+- (NSString *)wordsFile {
+    return [[WordClockPreferences defaults] stringForKey:WCWordsFileKey];
 }
 
 // ____________________________________________________________________________________________________

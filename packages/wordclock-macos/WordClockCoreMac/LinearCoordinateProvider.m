@@ -44,16 +44,16 @@ static inline CGRect CGRectFromArray(NSArray *a) {
         _translateY = [WordClockPreferences sharedInstance].linearTranslateY;
         _scale = [WordClockPreferences sharedInstance].linearScale;
 
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"linearMarginLeft" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"linearMarginRight" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"linearMarginTop" options:NSKeyValueObservingOptionNew context:NULL];
-        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"linearMarginBottom" options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCLinearMarginLeftKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCLinearMarginRightKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCLinearMarginTopKey options:NSKeyValueObservingOptionNew context:NULL];
+        [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCLinearMarginBottomKey options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"linearMarginLeft"] || [keyPath isEqualToString:@"linearMarginRight"] || [keyPath isEqualToString:@"linearMarginTop"] || [keyPath isEqualToString:@"linearMarginBottom"]) {
+    if ([keyPath isEqualToString:WCLinearMarginLeftKey] || [keyPath isEqualToString:WCLinearMarginRightKey] || [keyPath isEqualToString:WCLinearMarginTopKey] || [keyPath isEqualToString:WCLinearMarginBottomKey]) {
         [self updateLayout];
     }
 }
@@ -61,10 +61,10 @@ static inline CGRect CGRectFromArray(NSArray *a) {
 - (void)dealloc {
     DDLogVerbose(@"dealloc");
     @try {
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"linearMarginLeft"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"linearMarginRight"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"linearMarginTop"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"linearMarginBottom"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCLinearMarginLeftKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCLinearMarginRightKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCLinearMarginTopKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCLinearMarginBottomKey];
     } @catch (NSException *exception) {
     }
     [_sizeCache release];
@@ -88,10 +88,7 @@ static inline CGRect CGRectFromArray(NSArray *a) {
 - (void)updateLayout {
     NSSize screenSize = [[NSScreen mainScreen] visibleFrame].size;
 
-    [self setupForOrientation:WCDeviceOrientationPortrait
-                    andBounds:WCRectMake([WordClockPreferences sharedInstance].linearMarginLeft, [WordClockPreferences sharedInstance].linearMarginTop, screenSize.width - ([WordClockPreferences sharedInstance].linearMarginRight + [WordClockPreferences sharedInstance].linearMarginLeft), screenSize.height - ([WordClockPreferences sharedInstance].linearMarginBottom + [WordClockPreferences sharedInstance].linearMarginTop)
-
-                                             )];
+    [self setupForOrientation:WCDeviceOrientationPortrait andBounds:WCRectMake([WordClockPreferences sharedInstance].linearMarginLeft, [WordClockPreferences sharedInstance].linearMarginTop, screenSize.width - ([WordClockPreferences sharedInstance].linearMarginRight + [WordClockPreferences sharedInstance].linearMarginLeft), screenSize.height - ([WordClockPreferences sharedInstance].linearMarginBottom + [WordClockPreferences sharedInstance].linearMarginTop))];
 }
 
 // values to adjust when orientation changes
