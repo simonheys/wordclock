@@ -13,8 +13,6 @@ NSString *WordClockRotaryDisplayType = @"rotary";
 
 @interface WordClockWordsManifestFileParser () <NSXMLParserDelegate>
 @property (nonatomic, retain) NSXMLParser *parser;
-@property (nonatomic, retain) NSMutableArray *xmlManifestLanguageCode;
-@property (nonatomic, retain) NSMutableArray *xmlManifestLanguageTitle;
 @end
 
 @implementation WordClockWordsManifestFileParser
@@ -23,9 +21,7 @@ NSString *WordClockRotaryDisplayType = @"rotary";
 
 - (void)dealloc
 {
-    [_xmlFiles release];
-    [_xmlManifestLanguageCode release];
-    [_xmlManifestLanguageTitle release];
+    [_wordsFiles release];
 	[super dealloc];
 }
 
@@ -33,30 +29,20 @@ NSString *WordClockRotaryDisplayType = @"rotary";
 
 - (void)parseManifestFile
 {
-	self.xmlFiles = [[NSMutableArray new] autorelease];
-	self.xmlManifestLanguageCode = [[NSMutableArray new] autorelease];
-	self.xmlManifestLanguageTitle = [[NSMutableArray new] autorelease];
+	self.wordsFiles = [[NSMutableArray new] autorelease];
 
     NSBundle *thisBundle = [self bundle];
     NSString *path = [thisBundle pathForResource:@"Manifest" ofType:@"json" inDirectory:@"json"];
-    
-    DDLogVerbose(@"path:%@",path);
 	NSData *data = [NSData dataWithContentsOfFile:path];
     NSError *error = nil;
     id model = [NSJSONSerialization JSONObjectWithData:data options:nil error:&error];
     if ( nil != error ) {
         DDLogError(@"error:%@",error);
     }
-    DDLogVerbose(@"model:%@",model);
     
     NSDictionary *languages = model[@"languages"];
-    [languages enumerateKeysAndObjectsUsingBlock:^(NSString *code, NSString *languageTitle, BOOL * _Nonnull stop) {
-        DDLogVerbose(@"code:%@ languageTitle:%@",code,languageTitle);
-        [self.xmlManifestLanguageCode addObject:code];
-        [self.xmlManifestLanguageTitle addObject:languageTitle];
-    }];
-    
     NSArray *files = model[@"files"];
+    
     [files enumerateObjectsUsingBlock:^(NSString *fileName, NSUInteger idx, BOOL * _Nonnull stop) {
         @try {
             NSString *path = [thisBundle pathForResource:fileName ofType:nil inDirectory:@"json"];
@@ -71,7 +57,7 @@ NSString *WordClockRotaryDisplayType = @"rotary";
                     @"fileLanguageCode": meta[@"language"],
                     @"fileLanguageTitle": languages[meta[@"language"]]
                 };
-                [self.xmlFiles addObject:fileDictionary];
+                [self.wordsFiles addObject:fileDictionary];
             }
         } @catch (NSException *exception) {
             DDLogError(@"Error parsing:%@",exception);

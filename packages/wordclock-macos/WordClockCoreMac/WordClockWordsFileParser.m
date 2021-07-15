@@ -1,19 +1,19 @@
 //
-//  LogicXmlFileParser.m
+//  WordClockWordsFileParser.m
 //  WordClock macOS
 //
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-#import "LogicXmlFileParser.h"
+#import "WordClockWordsFileParser.h"
 
-@interface LogicXmlFileParser ()
+@interface WordClockWordsFileParser ()
 @property (nonatomic, retain) NSMutableArray *logic;
 @property (nonatomic, retain) NSMutableArray *label;
 @end
 
-@implementation LogicXmlFileParser
+@implementation WordClockWordsFileParser
 
 // ____________________________________________________________________________________________________ delloc
 
@@ -26,9 +26,6 @@
 
 -(void)parseFile:(NSString *)pathToFile
 {  
-    DDLogVerbose(@"pathToFile:%@",pathToFile);
-	
-	
 	self.logic = [[NSMutableArray new] autorelease];
 	self.label = [[NSMutableArray new] autorelease];
  
@@ -72,9 +69,9 @@
         [self.label addObject:groupLabel];
     }];
   
-    if ([self.delegate respondsToSelector:@selector(logicXmlFileParserDidCompleteParsing:)]) {
+    if ([self.delegate respondsToSelector:@selector(wordClockWordsFileParserDidCompleteParsing:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate logicXmlFileParserDidCompleteParsing:self];
+            [self.delegate wordClockWordsFileParserDidCompleteParsing:self];
         });
 	}
 }

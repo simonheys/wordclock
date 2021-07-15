@@ -123,7 +123,7 @@
     }
     self.scene = nil;
     self.glView = nil;
-	self.parser = [[[LogicXmlFileParser alloc] init] autorelease];
+	self.parser = [[[WordClockWordsFileParser alloc] init] autorelease];
 	[self.parser setDelegate:self];
 
 	NSString *xmlFile = [WordClockPreferences sharedInstance].xmlFile;
@@ -139,9 +139,9 @@
 
 // ____________________________________________________________________________________________________ startup
 
-- (void)logicXmlFileParserDidCompleteParsing:(LogicXmlFileParser*)logicParser
+- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser*)logicParser
 {
-    DDLogVerbose(@"logicXmlFileParserDidCompleteParsing");
+    DDLogVerbose(@"wordClockWordsFileParserDidCompleteParsing");
 	self.glView = [[[WordClockGLView alloc] initWithFrame:self.view.bounds] autorelease];
 	self.scene = [[Scene new] autorelease];
     self.scene.wordClockWordManager = self.glView.wordClockWordManager;

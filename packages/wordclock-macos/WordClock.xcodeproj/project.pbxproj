@@ -26,7 +26,7 @@
 		F44D120D165952A0003A3557 /* LinearCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D681318EF730038C801 /* LinearCoordinateProvider.m */; };
 		F44D120E165952B9003A3557 /* LogicParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6A1318EF730038C801 /* LogicParser.m */; };
 		F44D120F165952B9003A3557 /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */; };
-		F44D1210165952B9003A3557 /* LogicXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */; };
+		F44D1210165952B9003A3557 /* WordClockWordsFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6E1318EF730038C801 /* WordClockWordsFileParser.m */; };
 		F44D1211165952B9003A3557 /* sin_and_cos_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = F4902D731318EF730038C801 /* sin_and_cos_tables.c */; };
 		F44D1212165952B9003A3557 /* Tween.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D761318EF730038C801 /* Tween.m */; };
 		F44D1213165952B9003A3557 /* TweenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D781318EF730038C801 /* TweenManager.m */; };
@@ -77,7 +77,7 @@
 		F4E8F516165FD0FC0019987F /* LinearCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D681318EF730038C801 /* LinearCoordinateProvider.m */; };
 		F4E8F517165FD10A0019987F /* LogicParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6A1318EF730038C801 /* LogicParser.m */; };
 		F4E8F518165FD10A0019987F /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */; };
-		F4E8F519165FD10A0019987F /* LogicXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */; };
+		F4E8F519165FD10A0019987F /* WordClockWordsFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D6E1318EF730038C801 /* WordClockWordsFileParser.m */; };
 		F4E8F51A165FD10A0019987F /* sin_and_cos_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = F4902D731318EF730038C801 /* sin_and_cos_tables.c */; };
 		F4E8F51B165FD10A0019987F /* Tween.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D761318EF730038C801 /* Tween.m */; };
 		F4E8F51C165FD10A0019987F /* TweenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D781318EF730038C801 /* TweenManager.m */; };
@@ -145,8 +145,8 @@
 		F4902D6A1318EF730038C801 /* LogicParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicParser.m; sourceTree = "<group>"; };
 		F4902D6B1318EF730038C801 /* LogicParserStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicParserStringUtil.h; sourceTree = "<group>"; };
 		F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicParserStringUtil.m; sourceTree = "<group>"; };
-		F4902D6D1318EF730038C801 /* LogicXmlFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicXmlFileParser.h; sourceTree = "<group>"; };
-		F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicXmlFileParser.m; sourceTree = "<group>"; };
+		F4902D6D1318EF730038C801 /* WordClockWordsFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWordsFileParser.h; sourceTree = "<group>"; };
+		F4902D6E1318EF730038C801 /* WordClockWordsFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWordsFileParser.m; sourceTree = "<group>"; };
 		F4902D6F1318EF730038C801 /* RotaryCoordinateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotaryCoordinateProvider.h; sourceTree = "<group>"; };
 		F4902D701318EF730038C801 /* RotaryCoordinateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotaryCoordinateProvider.m; sourceTree = "<group>"; };
 		F4902D711318EF730038C801 /* RotaryCoordinateProviderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotaryCoordinateProviderGroup.h; sourceTree = "<group>"; };
@@ -357,19 +357,20 @@
 			isa = PBXGroup;
 			children = (
 				F4B582AD132CF38C006D9CAA /* Coordinates */,
-				F4902D791318EF730038C801 /* WordClockCore.h */,
+				F4F0FB65131A4BBE00B8D814 /* culling.c */,
+				F4F0FB66131A4BBE00B8D814 /* culling.h */,
+				F4902D661318EF730038C801 /* easing_functions.h */,
 				F4902D691318EF730038C801 /* LogicParser.h */,
 				F4902D6A1318EF730038C801 /* LogicParser.m */,
 				F4902D6B1318EF730038C801 /* LogicParserStringUtil.h */,
 				F4902D6C1318EF730038C801 /* LogicParserStringUtil.m */,
-				F4902D6D1318EF730038C801 /* LogicXmlFileParser.h */,
-				F4902D6E1318EF730038C801 /* LogicXmlFileParser.m */,
-				F4902D741318EF730038C801 /* sin_and_cos_tables.h */,
 				F4902D731318EF730038C801 /* sin_and_cos_tables.c */,
+				F4902D741318EF730038C801 /* sin_and_cos_tables.h */,
 				F4902D751318EF730038C801 /* Tween.h */,
 				F4902D761318EF730038C801 /* Tween.m */,
 				F4902D771318EF730038C801 /* TweenManager.h */,
 				F4902D781318EF730038C801 /* TweenManager.m */,
+				F4902D791318EF730038C801 /* WordClockCore.h */,
 				F4902D7A1318EF730038C801 /* WordClockPreferences.h */,
 				F4902D7B1318EF730038C801 /* WordClockPreferences.m */,
 				F4902D7C1318EF730038C801 /* WordClockWord.h */,
@@ -380,11 +381,10 @@
 				F4902D811318EF730038C801 /* WordClockWordLayout.m */,
 				F4902D821318EF730038C801 /* WordClockWordManager.h */,
 				F4902D831318EF730038C801 /* WordClockWordManager.m */,
+				F4902D6D1318EF730038C801 /* WordClockWordsFileParser.h */,
+				F4902D6E1318EF730038C801 /* WordClockWordsFileParser.m */,
 				F4902D841318EF730038C801 /* WordClockWordsManifestFileParser.h */,
 				F4902D851318EF730038C801 /* WordClockWordsManifestFileParser.m */,
-				F4902D661318EF730038C801 /* easing_functions.h */,
-				F4F0FB65131A4BBE00B8D814 /* culling.c */,
-				F4F0FB66131A4BBE00B8D814 /* culling.h */,
 			);
 			path = WordClockCoreMac;
 			sourceTree = "<group>";
@@ -693,7 +693,7 @@
 				F44D120D165952A0003A3557 /* LinearCoordinateProvider.m in Sources */,
 				F44D120E165952B9003A3557 /* LogicParser.m in Sources */,
 				F44D120F165952B9003A3557 /* LogicParserStringUtil.m in Sources */,
-				F44D1210165952B9003A3557 /* LogicXmlFileParser.m in Sources */,
+				F44D1210165952B9003A3557 /* WordClockWordsFileParser.m in Sources */,
 				F44D1211165952B9003A3557 /* sin_and_cos_tables.c in Sources */,
 				F44D1212165952B9003A3557 /* Tween.m in Sources */,
 				F44D1213165952B9003A3557 /* TweenManager.m in Sources */,
@@ -728,7 +728,7 @@
 				F4E8F516165FD0FC0019987F /* LinearCoordinateProvider.m in Sources */,
 				F4E8F517165FD10A0019987F /* LogicParser.m in Sources */,
 				F4E8F518165FD10A0019987F /* LogicParserStringUtil.m in Sources */,
-				F4E8F519165FD10A0019987F /* LogicXmlFileParser.m in Sources */,
+				F4E8F519165FD10A0019987F /* WordClockWordsFileParser.m in Sources */,
 				F4E8F51A165FD10A0019987F /* sin_and_cos_tables.c in Sources */,
 				F4E8F51B165FD10A0019987F /* Tween.m in Sources */,
 				F4E8F51C165FD10A0019987F /* TweenManager.m in Sources */,

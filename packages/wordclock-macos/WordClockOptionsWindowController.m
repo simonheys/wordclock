@@ -348,7 +348,7 @@
     
 	int i;
 	
-	NSMutableArray *xmlFiles = [[self.wordClockXmlFileParser xmlFiles] mutableCopy];
+	NSMutableArray *xmlFiles = [[self.wordClockXmlFileParser wordsFiles] mutableCopy];
     NSMenu* newMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Word Clock"];
 	
 	NSDictionary *xmlFileDictionary;

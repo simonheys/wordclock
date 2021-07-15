@@ -7,19 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "LogicXmlFileParser.h"
+#import "WordClockWordsFileParser.h"
 
 @class WordClockGLView;
 @class HudViewController;
 @class Scene;
 @class WordClockWordManager;
 
-@interface WordClockGLViewController : NSViewController <LogicXmlFileParserDelegate> {
+@interface WordClockGLViewController : NSViewController <WordClockWordsFileParserDelegate> {
 @private
     WordClockGLView *_glView;
     WordClockWordManager *_wordClockWordManager;
 	HudViewController *_hudViewController;
-	LogicXmlFileParser *_parser;
+	WordClockWordsFileParser *_parser;
 //	NSWindow *fullScreenWindow;
 //	WordClockGLView *fullScreenView;	
 	Scene *_scene;
@@ -32,7 +32,7 @@
     BOOL _tracksMouseEvents;
 }
 
-@property (nonatomic, retain) LogicXmlFileParser *parser;
+@property (nonatomic, retain) WordClockWordsFileParser *parser;
 @property (nonatomic, retain) Scene *scene;
 @property (nonatomic, assign) HudViewController *hudViewController;
 @property (nonatomic, retain, readonly) WordClockGLView *glView;

@@ -14,7 +14,7 @@ extern NSString *WordClockRotaryDisplayType;
 @protocol WordClockWordsManifestFileParserDelegate;
 
 @interface WordClockWordsManifestFileParser : NSObject
-@property (nonatomic, retain) NSMutableArray *xmlFiles;
+@property (nonatomic, retain) NSMutableArray *wordsFiles;
 @property (nonatomic, assign) id <WordClockWordsManifestFileParserDelegate> delegate;
 - (void)parseManifestFile;
 @end
@@ -22,5 +22,3 @@ extern NSString *WordClockRotaryDisplayType;
 @protocol WordClockWordsManifestFileParserDelegate <NSObject>
 - (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser*)parser;
 @end
-
-
