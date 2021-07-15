@@ -12,7 +12,6 @@
 #import "WordClockGLViewController.h"
 #import "WordClockGLView.h"
 #import "NSView+Additions.h"
-#import "WordClockSUUpdater.h"
 
 @interface WordClockOptionsWindowController () <WordClockXmlFileParserDelegate,NSWindowDelegate>
 @property (nonatomic, retain) WordClockXmlFileParser *wordClockXmlFileParser;
@@ -31,7 +30,6 @@
 @property (nonatomic, assign) IBOutlet NSButton *rotaryButton;
 @property (nonatomic, assign) IBOutlet NSView *customView;
 @property (assign) IBOutlet NSView *settingsContainer;
-@property (assign) IBOutlet NSButton *updatesButton;
 
 @property (assign) IBOutlet NSPopUpButton *fontFamilyPopUpButton;
 @property (assign) IBOutlet NSPopUpButton *fontVariantPopUpButton;
@@ -47,11 +45,6 @@
 	NSBundle *bundle = [NSBundle mainBundle];
 #endif
     return bundle;
-}
-
-- (IBAction)updatesPressed:(id)sender {
-    DDLogVerbose(@"updatesPressed");
-    [[WordClockSUUpdater sharedUpdater] checkForUpdates:self];
 }
 
 - (void)dealloc
@@ -117,16 +110,13 @@
 //    [self performSelector:@selector(setup) withObject:nil afterDelay:5.0f];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeKey:) name:NSWindowDidBecomeKeyNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRestart:) name:SUUpdaterWillRestartNotification object:nil];
-    
+
     NSRect screenFrame = [[NSScreen mainScreen] frame];
     NSRect f = self.customView.frame;
     CGFloat newHeight = roundf(f.size.width * screenFrame.size.height / screenFrame.size.width);
     f.origin.y = f.origin.y + roundf(0.5f * (f.size.height - newHeight));
     f.size.height = newHeight;
     self.customView.frame = f;
-    
-    [self.updatesButton setHidden:YES];
 }
 
 - (void)willRestart:(NSNotification *)notification

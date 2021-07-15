@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B62AFFE6EA466C121E67480 /* libPods-Word Clock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FAC7AD9C3DB40CEFDB0CB7 /* libPods-Word Clock.a */; };
-		96A050A43BD6A028FB57B434 /* libPods-Word Clock Window.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5EE60C85775C0983630F13 /* libPods-Word Clock Window.a */; };
-		F41404B219F0256C0017EEBA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */; };
+		01DB2D17FC107AA6C3DF36D2 /* libPods-Word Clock Window.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5EE60C85775C0983630F13 /* libPods-Word Clock Window.a */; };
+		595FBDEACC48DBA54D41DD4E /* libPods-Word Clock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2FAC7AD9C3DB40CEFDB0CB7 /* libPods-Word Clock.a */; };
 		F41404B319F026390017EEBA /* NSXMLParser+App.m in Sources */ = {isa = PBXBuildFile; fileRef = F46A599319E3BF3D00E1CDBD /* NSXMLParser+App.m */; };
 		F4324F7F1663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4324F7C1663BA5800EA4DC5 /* WordClockOptionsWindowController.m */; };
 		F4324F801663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4324F7C1663BA5800EA4DC5 /* WordClockOptionsWindowController.m */; };
@@ -17,7 +16,6 @@
 		F4324F821663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4324F7D1663BA5800EA4DC5 /* WordClockOptionsWindowController.xib */; };
 		F43A16651661F7AD007A0716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47F9402132B9632002A4965 /* QuartzCore.framework */; };
 		F43A16661661F7B5007A0716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47F9402132B9632002A4965 /* QuartzCore.framework */; };
-		F4405FBE2289D58200700EC6 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F44D11F0165951CE003A3557 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A3E23E150537CF0066B357 /* Cocoa.framework */; };
 		F44D11FA165951CE003A3557 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F44D11F8165951CE003A3557 /* InfoPlist.strings */; };
 		F44D11FC165951CE003A3557 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F44D11FB165951CE003A3557 /* main.m */; };
@@ -65,17 +63,12 @@
 		F46A599419E3BF3D00E1CDBD /* NSXMLParser+App.m in Sources */ = {isa = PBXBuildFile; fileRef = F46A599319E3BF3D00E1CDBD /* NSXMLParser+App.m */; };
 		F46D496D16A3E6BB002D0A71 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */; };
 		F46D496E16A3E6BB002D0A71 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */; };
-		F4798146166F964C00477D24 /* WordClockSUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */; };
 		F48D90E426989A85005F1E95 /* WCFileFunctionLevelFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */; };
 		F48D90E526989A85005F1E95 /* WCFileFunctionLevelFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */; };
 		F493A1FA166F63F500D43F6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D11F4165951CE003A3557 /* Foundation.framework */; };
 		F493A1FB166F63F500D43F6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D11F4165951CE003A3557 /* Foundation.framework */; };
 		F493A1FF166F6E1B00D43F6E /* NSView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */; };
 		F493A200166F6E1B00D43F6E /* NSView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */; };
-		F4B15D2316730CAF007F7E61 /* pubkey.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4B15D2216730CAF007F7E61 /* pubkey.pem */; };
-		F4B15D2416730CAF007F7E61 /* pubkey.pem in Resources */ = {isa = PBXBuildFile; fileRef = F4B15D2216730CAF007F7E61 /* pubkey.pem */; };
-		F4B7B66B19CDCE65008EE3B5 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */; };
-		F4CCDA1E16665975001F88B5 /* WordClockSUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */; };
 		F4E8F502165FD0B60019987F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A3E23E150537CF0066B357 /* Cocoa.framework */; };
 		F4E8F504165FD0B60019987F /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E8F503165FD0B60019987F /* ScreenSaver.framework */; };
 		F4E8F50A165FD0B60019987F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4E8F508165FD0B60019987F /* InfoPlist.strings */; };
@@ -102,19 +95,6 @@
 		F4E8F526165FD1120019987F /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E22713190C0200893386 /* Scene.m */; };
 		F4E8F528165FD1ED0019987F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4902D591318EF450038C801 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		F4CCDA18166658A7001F88B5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F4405FBE2289D58200700EC6 /* Sparkle.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -199,16 +179,12 @@
 		F4A3E23E150537CF0066B357 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F4A54ADF132BD68E009221A8 /* GuidesViewLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidesViewLinear.h; sourceTree = "<group>"; };
 		F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidesViewLinear.m; sourceTree = "<group>"; };
-		F4B15D2216730CAF007F7E61 /* pubkey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubkey.pem; path = _certificates/Sparkle/pubkey.pem; sourceTree = SOURCE_ROOT; };
 		F4B582A7132CEACE006D9CAA /* GuidesView.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = GuidesView.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		F4B582A8132CEACE006D9CAA /* GuidesView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = GuidesView.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		F4B582AA132CEDCF006D9CAA /* GuidesViewRotary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidesViewRotary.h; sourceTree = "<group>"; };
 		F4B582AB132CEDCF006D9CAA /* GuidesViewRotary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidesViewRotary.m; sourceTree = "<group>"; };
-		F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Pods/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		F4C7E22613190C0200893386 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		F4C7E22713190C0200893386 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
-		F4CCDA1B16665975001F88B5 /* WordClockSUUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockSUUpdater.h; sourceTree = "<group>"; };
-		F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockSUUpdater.m; sourceTree = "<group>"; };
 		F4D78807132D206F003F7416 /* NSColorWellWithAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorWellWithAlpha.h; sourceTree = "<group>"; };
 		F4D78808132D206F003F7416 /* NSColorWellWithAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorWellWithAlpha.m; sourceTree = "<group>"; };
 		F4D78809132D2070003F7416 /* NSColorWellWithoutAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorWellWithoutAlpha.h; sourceTree = "<group>"; };
@@ -229,13 +205,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4B7B66B19CDCE65008EE3B5 /* Sparkle.framework in Frameworks */,
 				F455AB5D1670DBEF00F41C22 /* WebKit.framework in Frameworks */,
 				F43A16651661F7AD007A0716 /* QuartzCore.framework in Frameworks */,
 				F44D121C1659531C003A3557 /* OpenGL.framework in Frameworks */,
 				F44D11F0165951CE003A3557 /* Cocoa.framework in Frameworks */,
 				F493A1FB166F63F500D43F6E /* Foundation.framework in Frameworks */,
-				96A050A43BD6A028FB57B434 /* libPods-Word Clock Window.a in Frameworks */,
+				01DB2D17FC107AA6C3DF36D2 /* libPods-Word Clock Window.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +223,8 @@
 				F4E8F528165FD1ED0019987F /* OpenGL.framework in Frameworks */,
 				F4E8F502165FD0B60019987F /* Cocoa.framework in Frameworks */,
 				F4E8F504165FD0B60019987F /* ScreenSaver.framework in Frameworks */,
-				F41404B219F0256C0017EEBA /* Sparkle.framework in Frameworks */,
 				F493A1FA166F63F500D43F6E /* Foundation.framework in Frameworks */,
-				5B62AFFE6EA466C121E67480 /* libPods-Word Clock.a in Frameworks */,
+				595FBDEACC48DBA54D41DD4E /* libPods-Word Clock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				F46C65D722880F3400EBFD10 /* Podfile */,
-				F4CCDA1A16665955001F88B5 /* Sparkle */,
 				F4902D5F1318EF730038C801 /* WordClockCoreMac */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -326,7 +299,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F4B7B66A19CDCE65008EE3B5 /* Sparkle.framework */,
 				F44D11F2165951CE003A3557 /* AppKit.framework */,
 				F4A3E23E150537CF0066B357 /* Cocoa.framework */,
 				F44D11F4165951CE003A3557 /* Foundation.framework */,
@@ -451,17 +423,6 @@
 			name = Coordinates;
 			sourceTree = "<group>";
 		};
-		F4CCDA1A16665955001F88B5 /* Sparkle */ = {
-			isa = PBXGroup;
-			children = (
-				F4B15D2216730CAF007F7E61 /* pubkey.pem */,
-				F4CCDA1B16665975001F88B5 /* WordClockSUUpdater.h */,
-				F4CCDA1C16665975001F88B5 /* WordClockSUUpdater.m */,
-			);
-			name = Sparkle;
-			path = "Word Clock Screen Saver";
-			sourceTree = "<group>";
-		};
 		F4CE22E0132575E300F2D4B6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,8 +472,6 @@
 				F44D11EB165951CE003A3557 /* Frameworks */,
 				F44D11EC165951CE003A3557 /* Resources */,
 				F44D1221165953FD003A3557 /* ShellScript */,
-				37766AC82590A689C33D52DC /* [CP] Embed Pods Frameworks */,
-				F4F7CFFF19CDD21D00BF6C6A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -533,8 +492,6 @@
 				F4E8F4FC165FD0B50019987F /* Frameworks */,
 				F4E8F4FE165FD0B50019987F /* Resources */,
 				F4E8F512165FD0C30019987F /* ShellScript */,
-				F4CCDA18166658A7001F88B5 /* CopyFiles */,
-				F47FD720228F033000F06D9E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -602,7 +559,6 @@
 				F455AAFD1670CD5E00F41C22 /* rotary.png in Resources */,
 				F455AB011670CE1E00F41C22 /* linear@2x.png in Resources */,
 				F455AB031670CE1E00F41C22 /* rotary@2x.png in Resources */,
-				F4B15D2316730CAF007F7E61 /* pubkey.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +572,6 @@
 				F455AAFE1670CD5E00F41C22 /* rotary.png in Resources */,
 				F455AB021670CE1E00F41C22 /* linear@2x.png in Resources */,
 				F455AB041670CE1E00F41C22 /* rotary@2x.png in Resources */,
-				F4B15D2416730CAF007F7E61 /* pubkey.pem in Resources */,
 				F45EFDE5167C3C0400D60C46 /* thumbnail.png in Resources */,
 				F45EFDE6167C3C0400D60C46 /* thumbnail@2x.png in Resources */,
 			);
@@ -645,24 +600,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		37766AC82590A689C33D52DC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window-frameworks.sh",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		49BDA850D1E46AA483BE99A3 /* [CP] Check Pods Manifest.lock */ = {
@@ -699,23 +636,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
 			shellScript = "/opt/homebrew/bin/yarn copy-xml\n";
-		};
-		F47FD720228F033000F06D9E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/yarn code-sign\n";
 		};
 		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -764,19 +684,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/opt/homebrew/bin/yarn copy-xml\n";
 		};
-		F4F7CFFF19CDD21D00BF6C6A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/yarn code-sign\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -810,7 +717,6 @@
 				F44D12201659536F003A3557 /* Scene.m in Sources */,
 				F4324F7F1663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */,
 				F493A1FF166F6E1B00D43F6E /* NSView+Additions.m in Sources */,
-				F4798146166F964C00477D24 /* WordClockSUUpdater.m in Sources */,
 				F453416516745FF700D24819 /* GuidesView.m in Sources */,
 				F453416616745FF700D24819 /* GuidesViewLinear.m in Sources */,
 				F453416716745FF700D24819 /* GuidesViewRotary.m in Sources */,
@@ -845,7 +751,6 @@
 				F4E8F525165FD1120019987F /* WordClockGLView.m in Sources */,
 				F4E8F526165FD1120019987F /* Scene.m in Sources */,
 				F4324F801663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */,
-				F4CCDA1E16665975001F88B5 /* WordClockSUUpdater.m in Sources */,
 				F493A200166F6E1B00D43F6E /* NSView+Additions.m in Sources */,
 				F453416216745FF700D24819 /* GuidesView.m in Sources */,
 				F41404B319F026390017EEBA /* NSXMLParser+App.m in Sources */,
@@ -932,11 +837,11 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4YADBGMM88;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -952,22 +857,10 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/include,
-				);
 				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/lib,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 1.1;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-L/usr/local/opt/openssl/lib",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -983,12 +876,12 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4YADBGMM88;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -997,22 +890,10 @@
 				GCC_PREFIX_HEADER = "Word Clock Window/Word Clock Window-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/include,
-				);
 				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/lib,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 1.1;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-L/usr/local/opt/openssl/lib",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -1049,24 +930,12 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/include,
-				);
 				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/lib,
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 1.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-L/usr/local/opt/openssl/lib",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = saver;
@@ -1096,24 +965,12 @@
 				GCC_PREFIX_HEADER = "Word Clock Screen Saver/Word Clock-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/include,
-				);
 				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/opt/openssl/lib,
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 1.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-L/usr/local/opt/openssl/lib",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = saver;
