@@ -38,8 +38,8 @@ NSString *WordClockRotaryDisplayType = @"rotary";
     [_xmlManifestFiles release];
     [_xmlManifestLanguageCode release];
     [_xmlManifestLanguageTitle release];
-//    [_xmlFilesRotary release];
-//    [_xmlFilesLinear release];
+    [_currentlyParsingTag release];
+    [_language release];
 	[super dealloc];
 }
 
@@ -103,19 +103,6 @@ NSString *WordClockRotaryDisplayType = @"rotary";
             [self.delegate wordClockXmlFileParserDidCompleteParsingManifest:self];
         });
     }
-    
-    
-//    dispatch_async([NSXMLParser sharedQueue], ^{
-//        NSURL *xmlURL = [NSURL fileURLWithPath:self.manifestFile];
-//        NSXMLParser *manifestParser = [[[NSXMLParser alloc] initWithContentsOfURL:xmlURL] autorelease];
-//        self.manifestParser = manifestParser;
-//        manifestParser.delegate = self;
-//        manifestParser.shouldResolveExternalEntities = NO;
-//        [manifestParser parse];
-//    });
-//
-//	DDLogVerbose(@"parseManifestFile:done");
-//	[apool release];
 }
 
 //____________________________________________________________________________________________________ xml files

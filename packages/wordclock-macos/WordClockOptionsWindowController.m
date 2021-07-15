@@ -216,10 +216,10 @@
         NSArray *familyNames = [[NSFontManager sharedFontManager] availableFontFamilies];
         CGFloat fontSize = [NSFont systemFontSize];
         [familyNames enumerateObjectsUsingBlock:^(NSString *familyName, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:familyName];
+            NSMutableAttributedString *attrStr = [[[NSMutableAttributedString alloc] initWithString:familyName] autorelease];
             NSFont *font = [NSFont fontWithName:familyName size:fontSize];
             [attrStr addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, familyName.length)];
-            NSMenuItem *menuItem = [NSMenuItem new];
+            NSMenuItem *menuItem = [[NSMenuItem new] autorelease];
             [menuItem setAttributedTitle:attrStr];
             [_fontFamilyMenu addItem:menuItem];
         }];
@@ -249,10 +249,10 @@
         NSString *fontName = member[0];
         NSString *variantName = member[1];
         DDLogVerbose(@"variantName:%@",variantName);
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:variantName];
+        NSMutableAttributedString *attrStr = [[[NSMutableAttributedString alloc] initWithString:variantName] autorelease];
         NSFont *font = [NSFont fontWithName:fontName size:fontSize];
         [attrStr addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, variantName.length)];
-        NSMenuItem *menuItem = [NSMenuItem new];
+        NSMenuItem *menuItem = [[NSMenuItem new] autorelease];
         [menuItem setAttributedTitle:attrStr];
         [fontFamilyVariantMenu addItem:menuItem];
         if ( [fontName isEqualToString:selectedFont.fontName]) {

@@ -38,7 +38,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    WCFileFunctionLevelFormatter *fileFunctionLevelFormatter = [WCFileFunctionLevelFormatter new];
+    WCFileFunctionLevelFormatter *fileFunctionLevelFormatter = [[WCFileFunctionLevelFormatter new] autorelease];
     [[DDTTYLogger sharedInstance] setLogFormatter:fileFunctionLevelFormatter];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 }
