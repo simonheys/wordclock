@@ -8,13 +8,13 @@
 
 #import "WordClockOptionsWindowController.h"
 #import "WordClockPreferences.h"
-#import "WordClockXmlFileParser.h"
+#import "WordClockWordsManifestFileParser.h"
 #import "WordClockGLViewController.h"
 #import "WordClockGLView.h"
 #import "NSView+Additions.h"
 
-@interface WordClockOptionsWindowController () <WordClockXmlFileParserDelegate,NSWindowDelegate>
-@property (nonatomic, retain) WordClockXmlFileParser *wordClockXmlFileParser;
+@interface WordClockOptionsWindowController () <WordClockWordsManifestFileParserDelegate,NSWindowDelegate>
+@property (nonatomic, retain) WordClockWordsManifestFileParser *wordClockXmlFileParser;
 @property (nonatomic, retain) WordClockGLViewController *wordClockGLViewController;
 
 @property (nonatomic, retain) NSMenu *fontFamilyMenu;
@@ -89,7 +89,7 @@
 }
 
 - (void)updateXmlFileMenu {
-    self.wordClockXmlFileParser = [[[WordClockXmlFileParser alloc] init] autorelease];
+    self.wordClockXmlFileParser = [[[WordClockWordsManifestFileParser alloc] init] autorelease];
     self.wordClockXmlFileParser.delegate = self;
     [self.wordClockXmlFileParser parseManifestFile];
 }
@@ -342,9 +342,9 @@
 	[WordClockPreferences sharedInstance].xmlFile = [[self.xmlFilePopUpButton selectedItem] representedObject];
 }
 
-- (void)wordClockXmlFileParserDidCompleteParsingManifest:(WordClockXmlFileParser *)parser {
+- (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser *)parser {
 //	[self.xmlFilePopUpButton addItemsWithTitles:[self.wordClockXmlFileParser xmlFiles]];
-    DDLogVerbose(@"wordClockXmlFileParserDidCompleteParsingManifest");
+    DDLogVerbose(@"wordClockWordsManifestFileParserDidCompleteParsingManifest");
     
 	int i;
 	

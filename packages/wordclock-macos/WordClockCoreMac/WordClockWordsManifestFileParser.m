@@ -6,18 +6,18 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-#import "WordClockXmlFileParser.h"
+#import "WordClockWordsManifestFileParser.h"
 
 NSString *WordClockLinearDisplayType = @"linear";
 NSString *WordClockRotaryDisplayType = @"rotary";
 
-@interface WordClockXmlFileParser () <NSXMLParserDelegate>
+@interface WordClockWordsManifestFileParser () <NSXMLParserDelegate>
 @property (nonatomic, retain) NSXMLParser *parser;
 @property (nonatomic, retain) NSMutableArray *xmlManifestLanguageCode;
 @property (nonatomic, retain) NSMutableArray *xmlManifestLanguageTitle;
 @end
 
-@implementation WordClockXmlFileParser
+@implementation WordClockWordsManifestFileParser
 
 // ____________________________________________________________________________________________________ delloc
 
@@ -78,9 +78,9 @@ NSString *WordClockRotaryDisplayType = @"rotary";
         }
     }];
     
-    if ([self.delegate respondsToSelector:@selector(wordClockXmlFileParserDidCompleteParsingManifest:)]) {
+    if ([self.delegate respondsToSelector:@selector(wordClockWordsManifestFileParserDidCompleteParsingManifest:)]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate wordClockXmlFileParserDidCompleteParsingManifest:self];
+            [self.delegate wordClockWordsManifestFileParserDidCompleteParsingManifest:self];
         });
     }
 }
