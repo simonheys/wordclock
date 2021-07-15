@@ -10,7 +10,7 @@
     "prettier": "prettier --write './_scripts/**/*.{js,json,css,scss}'",
     "build": "babel-node ./_scripts/build",
     "update-build-number": "babel-node ./_scripts/update-build-number",
-    "copy-xml": "babel-node ./_scripts/copy-xml",
+    "copy-words": "babel-node ./_scripts/copy-words",
     "package-dmg": "babel-node ./_scripts/package-dmg",
     "make-dist": "babel-node ./_scripts/make-dist",
     "settings": "babel-node ./_scripts/settings",

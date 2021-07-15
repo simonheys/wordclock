@@ -635,7 +635,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/yarn copy-xml\n";
+			shellScript = "/opt/homebrew/bin/yarn copy-words\n";
 		};
 		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -682,7 +682,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/yarn copy-xml\n";
+			shellScript = "/opt/homebrew/bin/yarn copy-words\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
