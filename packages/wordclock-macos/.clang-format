@@ -1,0 +1,15 @@
+# Defines the Chromium style for automatic reformatting.
+# http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+BasedOnStyle: Chromium
+ColumnLimit: 10000
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+ObjCBlockIndentWidth: 4
+PointerAlignment: Right
+BinPackParameters: true
+BinPackArguments: true
+ObjCBinPackProtocolList: Always
+IncludeBlocks: Regroup

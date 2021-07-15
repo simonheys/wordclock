@@ -2,12 +2,11 @@
 
 ## Steps to build a release
 
-Build and sign the app; Bundle it into a DMG to preserve the signature; Notarize and staple the DMG; Update the Sparkle signature for uploading...
+Build and sign the app; Bundle it into a DMG to preserve the signature; Notarize and staple the DMG;
 
 - `yarn build`
 - `yarn package-dmg`
 - `yarn notarize`
-- `yarn sparkle-sign`
 
 ## macOS sign and Notarize
 

@@ -7,18 +7,19 @@
 //
 
 #import "WordClockGLViewController.h"
-#import "WordClockGLView.h"
-#import "Scene.h"
-#import "WordClockPreferences.h"
-#import "TweenManager.h"
+
 #import "GuidesView.h"
+#import "Scene.h"
+#import "TweenManager.h"
+#import "WordClockGLView.h"
+#import "WordClockPreferences.h"
 #import "WordClockWordManager.h"
 
 @interface WordClockGLViewController ()
-@property (nonatomic, retain) WordClockGLView *glView;
-@property (nonatomic, retain) WordClockWordManager *wordClockWordManager;
+@property(nonatomic, retain) WordClockGLView *glView;
+@property(nonatomic, retain) WordClockWordManager *wordClockWordManager;
 - (void)updateFromPreferences;
-@property (NS_NONATOMIC_IOSONLY, readonly) NSRect resizeRect;
+@property(NS_NONATOMIC_IOSONLY, readonly) NSRect resizeRect;
 @end
 
 @implementation WordClockGLViewController
@@ -33,20 +34,18 @@
 @synthesize hudViewController = _hudViewController;
 @synthesize tracksMouseEvents = _tracksMouseEvents;
 
-- (void)dealloc
-{
+- (void)dealloc {
     DDLogVerbose(@"dealloc");
     [self stopAnimation];
     @try {
-    	[[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"xmlFile"];
-        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:@"fontName"];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCWordsFileKey];
+        [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCFontNameKey];
+    } @catch (NSException *exception) {
     }
-    @catch (NSException *exception) {
-    }
-	[_parser release];
-	[_scene release];
+    [_parser release];
+    [_scene release];
     [_glView release];
-	[super dealloc];
+    [super dealloc];
 }
 
 //- (void)loadView
@@ -55,126 +54,119 @@
 //    [super loadView];
 //}
 
-- (void)setView:(NSView *)view
-{
+- (void)setView:(NSView *)view {
     [super setView:view];
-	[self updateFromPreferences];
-	[[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"xmlFile" options:NSKeyValueObservingOptionNew context:NULL];
-	[[WordClockPreferences sharedInstance] addObserver:self forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
+    [self updateFromPreferences];
+    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCWordsFileKey options:NSKeyValueObservingOptionNew context:NULL];
+    [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCFontNameKey options:NSKeyValueObservingOptionNew context:NULL];
 }
 
-// ____________________________________________________________________________________________________ kvo
+// ____________________________________________________________________________________________________
+// kvo
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ( [keyPath isEqual:@"xmlFile"] ) {
-//		[self stopAnimation];
-		[self updateFromPreferences];
-	}
-	else if ( [keyPath isEqual:@"fontName"] ) {
-//		[self stopAnimation];
-		[self updateFromPreferences];
-	}
+    if ([keyPath isEqual:WCWordsFileKey]) {
+        //		[self stopAnimation];
+        [self updateFromPreferences];
+    } else if ([keyPath isEqual:WCFontNameKey]) {
+        //		[self stopAnimation];
+        [self updateFromPreferences];
+    }
 }
 
-// ____________________________________________________________________________________________________ animation
+// ____________________________________________________________________________________________________
+// animation
 
 - (void)startAnimation {
     DDLogVerbose(@"startAnimation");
 #ifdef SCREENSAVER
-	if (!_isAnimating ) {
-        if ( nil != self.glView ) {
+    if (!_isAnimating) {
+        if (nil != self.glView) {
             [[self glView] reshape];
             [[self glView] startAnimation];
         }
-		_isAnimating = YES;
-	}    
+        _isAnimating = YES;
+    }
 #else
-	if (!_isAnimating && ![NSApp isHidden]) {
-        if ( nil != self.glView ) {
+    if (!_isAnimating && ![NSApp isHidden]) {
+        if (nil != self.glView) {
             DDLogVerbose(@"doing it");
             [[self glView] startAnimation];
         }
-		_isAnimating = YES;
-	}
-    else {
-    
-         DDLogVerbose(@"not doing it");
-   }
+        _isAnimating = YES;
+    } else {
+        DDLogVerbose(@"not doing it");
+    }
 #endif
 }
 
 - (void)stopAnimation {
     DDLogVerbose(@"stopAnimation");
-	if (_isAnimating) {
-        if ( nil != self.glView ) {
+    if (_isAnimating) {
+        if (nil != self.glView) {
             [self.glView stopAnimation];
         }
-		_isAnimating = NO;
-	}
+        _isAnimating = NO;
+    }
 }
 
-// ____________________________________________________________________________________________________ preferences
+// ____________________________________________________________________________________________________
+// preferences
 
-- (void)updateFromPreferences
-{
+- (void)updateFromPreferences {
     DDLogVerbose(@"updateFromPreferences");
-    if ( nil != _glView ) {
+    if (nil != _glView) {
         [self.glView stopAnimation];
     }
     self.scene = nil;
     self.glView = nil;
-	self.parser = [[[LogicXmlFileParser alloc] init] autorelease];
-	[self.parser setDelegate:self];
+    self.parser = [[[WordClockWordsFileParser alloc] init] autorelease];
+    [self.parser setDelegate:self];
 
-	NSString *xmlFile = [WordClockPreferences sharedInstance].xmlFile;
+    NSString *xmlFile = [WordClockPreferences sharedInstance].wordsFile;
 #ifdef SCREENSAVER
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 #else
-	NSBundle *bundle = [NSBundle mainBundle];
+    NSBundle *bundle = [NSBundle mainBundle];
 #endif
     _currentXmlFile = xmlFile;
-	NSString *fileName = [bundle pathForResource:_currentXmlFile ofType:nil inDirectory:@"xml"];
-	[self.parser parseFile:fileName];
+    NSString *fileName = [bundle pathForResource:_currentXmlFile ofType:nil inDirectory:@"json"];
+    [self.parser parseFile:fileName];
 }
 
-// ____________________________________________________________________________________________________ startup
+// ____________________________________________________________________________________________________
+// startup
 
-- (void)logicXmlFileParserDidCompleteParsing:(LogicXmlFileParser*)logicParser
-{
-    DDLogVerbose(@"logicXmlFileParserDidCompleteParsing");
-	self.glView = [[[WordClockGLView alloc] initWithFrame:self.view.bounds] autorelease];
-	self.scene = [[Scene new] autorelease];
+- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser *)logicParser {
+    DDLogVerbose(@"wordClockWordsFileParserDidCompleteParsing");
+    self.glView = [[[WordClockGLView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.scene = [[Scene new] autorelease];
     self.scene.wordClockWordManager = self.glView.wordClockWordManager;
-	self.glView.controller = self;
+    self.glView.controller = self;
     self.glView.focusView = self.view;
-	[self.glView setLogic:logicParser.logic label:logicParser.label];
-	[self.glView updateFromPreferences];
+    [self.glView setLogic:logicParser.logic label:logicParser.label];
+    [self.glView updateFromPreferences];
     [self.glView reshape];
     self.glView.tracksMouseEvents = self.tracksMouseEvents;
-    if ( _isAnimating ) {
+    if (_isAnimating) {
         [self.glView startAnimation];
     }
     self.parser = nil;
-//	[self startAnimation];
+    //	[self startAnimation];
 }
 
-- (void)setTracksMouseEvents:(BOOL)tracksMouseEvents
-{
+- (void)setTracksMouseEvents:(BOOL)tracksMouseEvents {
     _tracksMouseEvents = tracksMouseEvents;
     self.glView.tracksMouseEvents = _tracksMouseEvents;
 }
 
 - (NSRect)resizeRect {
-	const CGFloat resizeBoxSize = 16.0;
-	
-	NSRect contentViewRect = [[self.view window] contentRectForFrameRect:[[self.view window] frame]];
-	NSRect resizeRect = NSMakeRect(
-		NSMaxX(contentViewRect) - resizeBoxSize,
-		NSMinY(contentViewRect),
-		resizeBoxSize,
-		resizeBoxSize);
-	
-	return resizeRect;
+    const CGFloat resizeBoxSize = 16.0;
+
+    NSRect contentViewRect = [[self.view window] contentRectForFrameRect:[[self.view window] frame]];
+    NSRect resizeRect = NSMakeRect(NSMaxX(contentViewRect) - resizeBoxSize, NSMinY(contentViewRect), resizeBoxSize, resizeBoxSize);
+
+    return resizeRect;
 }
 
 @end

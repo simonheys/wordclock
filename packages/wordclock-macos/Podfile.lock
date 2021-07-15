@@ -7,24 +7,20 @@ PODS:
   - libextobjc/EXTScope (0.6):
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.6)
-  - Sparkle (1.26.0)
 
 DEPENDENCIES:
   - CocoaLumberjack (~> 1.8)
   - libextobjc/EXTScope (~> 0.4)
-  - Sparkle (~> 1.26.0)
 
 SPEC REPOS:
   trunk:
     - CocoaLumberjack
     - libextobjc
-    - Sparkle
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
-  Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
 
-PODFILE CHECKSUM: 848905473a4430804b8c2b09ed021ad7f03ed73f
+PODFILE CHECKSUM: 0b369d746bbe102f2bc221c3648668e5285bf034
 
 COCOAPODS: 1.10.1

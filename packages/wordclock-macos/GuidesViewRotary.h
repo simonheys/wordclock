@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/OpenGL.h>
+
 #import "GuidesView.h"
 
 @interface GuidesViewRotary : GuidesView {

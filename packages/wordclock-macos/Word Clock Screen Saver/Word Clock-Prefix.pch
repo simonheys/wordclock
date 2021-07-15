@@ -9,19 +9,19 @@
 #ifdef __OBJC__
 //    #define FORCE_LOGGING
 
-    #import <Cocoa/Cocoa.h>
-    #import "Constants.h"
-    #import "EXTScope.h"
+#import <Cocoa/Cocoa.h>
 
-    #import "DDLog.h"
-    #import "DDASLLogger.h"
-    #import "DDTTYLogger.h"
+#import "Constants.h"
+#import "DDASLLogger.h"
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+#import "EXTScope.h"
 
-    #ifdef DEBUG
-      static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-    #else
-      static const int ddLogLevel = LOG_LEVEL_ERROR;
-    #endif
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_ERROR;
+#endif
 
-    #define SCREENSAVER
+#define SCREENSAVER
 #endif

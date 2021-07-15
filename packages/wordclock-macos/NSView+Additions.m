@@ -10,26 +10,21 @@
 
 @implementation NSView (Additions)
 
-- (void)disableSubViews
-{
+- (void)disableSubViews {
     [self setSubViewsEnabled:NO];
 }
 
-- (void)enableSubViews
-{
+- (void)enableSubViews {
     [self setSubViewsEnabled:YES];
 }
 
-- (void)setSubViewsEnabled:(BOOL)enabled
-{
+- (void)setSubViewsEnabled:(BOOL)enabled {
     NSView *currentView = NULL;
     NSEnumerator *viewEnumerator = [[self subviews] objectEnumerator];
 
-    while( currentView = [viewEnumerator nextObject] )
-    {
-        if( [currentView respondsToSelector:@selector(setEnabled:)] )
-        {
-            [(NSControl*)currentView setEnabled:enabled];
+    while (currentView = [viewEnumerator nextObject]) {
+        if ([currentView respondsToSelector:@selector(setEnabled:)]) {
+            [(NSControl *)currentView setEnabled:enabled];
         }
         [currentView setSubViewsEnabled:enabled];
 

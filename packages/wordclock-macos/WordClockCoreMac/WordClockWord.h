@@ -8,8 +8,8 @@
 
 #import <OpenGL/OpenGL.h>
 
-#import "WordClockPreferences.h"
 #import "Tween.h"
+#import "WordClockPreferences.h"
 
 #define kWordClockWordUnscaledFontSize 24.0f
 #define kWordClockWordScaleMaximum 20.0f
@@ -23,42 +23,41 @@
 // 512 x 256 = 10223616 = more than 24Mb
 // 512 x 512 = 10223616
 
-@interface WordClockWord : NSObject 
-{
-@private
+@interface WordClockWord : NSObject {
+   @private
     TweenManager *_tweenManager;
-	NSString *_label;
-	NSString *_originalLabel;
-	BOOL _highlighted;
-	NSColor *_foregroundColour;
-	NSColor *_highlightColour;
-	NSMutableArray *_labelCharacterStringArray;
-	float _tracking;
-	BOOL _isSpace;
-	
-	BOOL _isMipmapRendered;
-	
-	NSFont *_font;
-//	CGSize _baseFontSizeForCalculation;
-	NSSize _unscaledSize;
-	NSSize _size;
-	NSSize _spaceSize;
-	
-	size_t _textureWidth;
-	size_t _textureHeight;
-	float _unscaledTextureWidth;
-	float _unscaledTextureHeight;
-	
-	GLuint *_targetTexturePointer;
-	GLfloat *_colours;
-	BOOL *_highlightedPointer;
-	float _scale;	
-	
-	GLfloat _colourComponentRed;
-	GLfloat _colourComponentGreen;
-	GLfloat _colourComponentBlue;
-	GLfloat _colourComponentAlpha;
-	
+    NSString *_label;
+    NSString *_originalLabel;
+    BOOL _highlighted;
+    NSColor *_foregroundColour;
+    NSColor *_highlightColour;
+    NSMutableArray *_labelCharacterStringArray;
+    float _tracking;
+    BOOL _isSpace;
+
+    BOOL _isMipmapRendered;
+
+    NSFont *_font;
+    //	CGSize _baseFontSizeForCalculation;
+    NSSize _unscaledSize;
+    NSSize _size;
+    NSSize _spaceSize;
+
+    size_t _textureWidth;
+    size_t _textureHeight;
+    float _unscaledTextureWidth;
+    float _unscaledTextureHeight;
+
+    GLuint *_targetTexturePointer;
+    GLfloat *_colours;
+    BOOL *_highlightedPointer;
+    float _scale;
+
+    GLfloat _colourComponentRed;
+    GLfloat _colourComponentGreen;
+    GLfloat _colourComponentBlue;
+    GLfloat _colourComponentAlpha;
+
     float tweenValue;
 }
 
@@ -72,27 +71,26 @@
 //- (void)renderInCurrentGraphicsContentAtPoint:(NSPoint)point;
 - (void)rerenderToOpenGlTexture:(GLuint *)targetTexturePointer withScale:(float)scale;
 
-@property (readonly) NSString *label;
-@property (readonly) NSString *originalLabel;
-@property (nonatomic, retain) NSColor *foregroundColour;
-@property (assign) NSColor *highlightColour;
-@property (nonatomic) BOOL highlighted;
+@property(readonly) NSString *label;
+@property(readonly) NSString *originalLabel;
+@property(nonatomic, retain) NSColor *foregroundColour;
+@property(assign) NSColor *highlightColour;
+@property(nonatomic) BOOL highlighted;
 
-@property (readonly) size_t textureWidth;
-@property (readonly) size_t textureHeight;
-@property (readonly) float unscaledTextureWidth;
-@property (readonly) float unscaledTextureHeight;
-@property (readonly) BOOL isSpace;
-@property (readonly) NSSize size;
-@property (readonly) NSSize unscaledSize;
-@property (readonly) NSSize spaceSize;
+@property(readonly) size_t textureWidth;
+@property(readonly) size_t textureHeight;
+@property(readonly) float unscaledTextureWidth;
+@property(readonly) float unscaledTextureHeight;
+@property(readonly) BOOL isSpace;
+@property(readonly) NSSize size;
+@property(readonly) NSSize unscaledSize;
+@property(readonly) NSSize spaceSize;
 @property GLuint *targetTexturePointer;
-@property (nonatomic) GLfloat colourComponentRed;
-@property (nonatomic) GLfloat colourComponentGreen;
-@property (nonatomic) GLfloat colourComponentBlue;
-@property (nonatomic) GLfloat colourComponentAlpha;
+@property(nonatomic) GLfloat colourComponentRed;
+@property(nonatomic) GLfloat colourComponentGreen;
+@property(nonatomic) GLfloat colourComponentBlue;
+@property(nonatomic) GLfloat colourComponentAlpha;
 
 @property float tweenValue;
 
 @end
-

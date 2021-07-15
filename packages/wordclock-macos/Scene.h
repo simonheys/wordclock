@@ -12,8 +12,8 @@
 @class WordClockWordManager;
 
 @interface Scene : NSObject {
-@private
-	NSInteger _previousSecond;
+   @private
+    NSInteger _previousSecond;
     WordClockWordManager *_wordClockWordManager;
     CGFloat _scale;
 }
@@ -22,6 +22,6 @@
 - (void)render;
 - (void)advanceTimeBy:(float)seconds;
 
-@property (nonatomic, retain) WordClockWordManager *wordClockWordManager;
-@property (nonatomic, readonly) CGFloat scale;
+@property(nonatomic, retain) WordClockWordManager *wordClockWordManager;
+@property(nonatomic, readonly) CGFloat scale;
 @end

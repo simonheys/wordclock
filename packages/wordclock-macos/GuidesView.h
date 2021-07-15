@@ -10,14 +10,7 @@
 
 #define MINIMUM_DRAG_DISTANCE 5.0f
 
-typedef NS_ENUM(NSInteger, WCGuideType) {
-    WCGuideTypeMarginLeft,
-    WCGuideTypeMarginRight,
-    WCGuideTypeMarginTop,
-	WCGuideTypeMarginBottom,
-    WCGuideTypeMarginAll,
-    WCGuideTypeRadius
-} ;
+typedef NS_ENUM(NSInteger, WCGuideType) { WCGuideTypeMarginLeft, WCGuideTypeMarginRight, WCGuideTypeMarginTop, WCGuideTypeMarginBottom, WCGuideTypeMarginAll, WCGuideTypeRadius };
 
 @interface GuidesView : NSObject {
     WCGuideType _draggingGuideType;
@@ -29,14 +22,14 @@ typedef NS_ENUM(NSInteger, WCGuideType) {
 - (void)updateWithMouseDragEvent:(NSEvent *)theEvent;
 - (void)updateWithMouseUpEvent:(NSEvent *)theEvent;
 - (void)updateWithMouseDownEvent:(NSEvent *)theEvent;
-@property (NS_NONATOMIC_IOSONLY, readonly) BOOL shouldDrawWithLightGuideColor;
+@property(NS_NONATOMIC_IOSONLY, readonly) BOOL shouldDrawWithLightGuideColor;
 - (void)drawGlView;
 - (void)mouseMoved:(NSEvent *)theEvent;
 - (void)mouseExited:(NSEvent *)theEvent;
 - (NSPoint)localPointForEvent:(NSEvent *)event;
 
-@property (nonatomic) BOOL mouseInside;
-@property (nonatomic) CGFloat scale;
-@property (nonatomic, assign) NSView *view;
+@property(nonatomic) BOOL mouseInside;
+@property(nonatomic) CGFloat scale;
+@property(nonatomic, assign) NSView *view;
 
 @end

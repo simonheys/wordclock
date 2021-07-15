@@ -6,6 +6,17 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
+extern NSString *const WCWordsFileKey;
+extern NSString *const WCFontNameKey;
+extern NSString *const WCHighlightColourKey;
+extern NSString *const WCForegroundColourKey;
+extern NSString *const WCBackgroundColourKey;
+extern NSString *const WCLeadingKey;
+extern NSString *const WCTrackingKey;
+extern NSString *const WCJustificationKey;
+extern NSString *const WCCaseAdjustmentKey;
+extern NSString *const WCStyleKey;
+
 extern NSString *const WCLinearTranslateXKey;
 extern NSString *const WCLinearTranslateYKey;
 extern NSString *const WCLinearScaleKey;
@@ -14,70 +25,37 @@ extern NSString *const WCRotaryTranslateXKey;
 extern NSString *const WCRotaryTranslateYKey;
 extern NSString *const WCRotaryScaleKey;
 
-typedef NS_ENUM(NSInteger, WCJustification) {
-    WCJustificationLeft,
-    WCJustificationCentre,
-    WCJustificationRight,
-	WCJustificationFull
-} ;
+extern NSString *const WCLinearMarginLeftKey;
+extern NSString *const WCLinearMarginRightKey;
+extern NSString *const WCLinearMarginTopKey;
+extern NSString *const WCLinearMarginBottomKey;
 
-typedef NS_ENUM(NSInteger, WCCaseAdjustment) {
-    WCCaseAdjustmentNone,
-	WCCaseAdjustmentUpper,
-    WCCaseAdjustmentLower
-} ;
+extern NSString *const WCTransitionTimeKey;
+extern NSString *const WCTransitionStyleKey;
 
-typedef NS_ENUM(NSInteger, WCStyle) {
-    WCStyleLinear,
-	WCStyleRotary
-} ;
+typedef NS_ENUM(NSInteger, WCJustification) { WCJustificationLeft, WCJustificationCentre, WCJustificationRight, WCJustificationFull };
+
+typedef NS_ENUM(NSInteger, WCCaseAdjustment) { WCCaseAdjustmentNone, WCCaseAdjustmentUpper, WCCaseAdjustmentLower };
+
+typedef NS_ENUM(NSInteger, WCStyle) { WCStyleLinear, WCStyleRotary };
 
 typedef NS_ENUM(NSInteger, WCTransitionStyle) {
     WCTransitionStyleSlow,
     WCTransitionStyleMedium,
     WCTransitionStyleFast,
-} ;
+};
 
 @interface WordClockPreferences : NSObject {
-@private
-    NSString *_xmlFile;
-    NSString *_fontName;
-    NSColor *_highlightColour;
-    NSColor *_foregroundColour;
-    NSColor *_backgroundColour;
-
-    float _leading;
-    float _tracking;
-    WCJustification _justification;
-    WCCaseAdjustment _caseAdjustment;
-    WCStyle _style;
-
-    float _linearTranslateX;
-    float _linearTranslateY;
-    float _linearScale;
-
-    float _rotaryTranslateX;
-    float _rotaryTranslateY;
-    float _rotaryScale;
-
-    float _linearMarginLeft;
-    float _linearMarginRight;
-    float _linearMarginTop;
-    float _linearMarginBottom;
-
-    NSInteger _transitionTime;
-    WCTransitionStyle _transitionStyle;
-
 }
-+ (WordClockPreferences*)sharedInstance;
++ (WordClockPreferences *)sharedInstance;
 + (NSDictionary *)factoryDefaults;
 - (void)reset;
 
-@property (nonatomic, retain) NSString *xmlFile;
-@property (nonatomic, retain) NSString *fontName;
-@property (nonatomic, retain) NSColor *highlightColour;
-@property (nonatomic, retain) NSColor *foregroundColour;
-@property (nonatomic, retain) NSColor *backgroundColour;
+@property(nonatomic, retain) NSString *wordsFile;
+@property(nonatomic, retain) NSString *fontName;
+@property(nonatomic, retain) NSColor *highlightColour;
+@property(nonatomic, retain) NSColor *foregroundColour;
+@property(nonatomic, retain) NSColor *backgroundColour;
 
 @property float leading;
 @property float tracking;

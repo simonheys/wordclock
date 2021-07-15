@@ -10,15 +10,10 @@
 
 @class TweenManager;
 
-typedef NS_ENUM(NSInteger, TweenEasing) {
-	kTweenQuadEaseInOut,
-	kTweenQuadEaseIn,
-	kTweenQuadEaseOut,
-	kTweenEaseOutBack
-} ;
+typedef NS_ENUM(NSInteger, TweenEasing) { kTweenQuadEaseInOut, kTweenQuadEaseIn, kTweenQuadEaseOut, kTweenEaseOutBack };
 
 @interface Tween : NSObject {
-@private
+   @private
     NSString *_keyPath;
     NSDate *_startTime;
     TweenManager *_tweenManager;
@@ -31,22 +26,15 @@ typedef NS_ENUM(NSInteger, TweenEasing) {
     TweenEasing _ease;
 }
 
-- (instancetype)initWithTarget:(id)aTarget
-		keyPath:(NSString *)aKeyPath
-		toFloatValue:(float)targetValue 
-		delay:(NSTimeInterval)delay 
-		duration:(NSTimeInterval)duration
-		ease:(TweenEasing)ease 
-		onComplete:(SEL)onComplete
-		onCompleteTarget:(id)aOnCompleteTarget;
-		
+- (instancetype)initWithTarget:(id)aTarget keyPath:(NSString *)aKeyPath toFloatValue:(float)targetValue delay:(NSTimeInterval)delay duration:(NSTimeInterval)duration ease:(TweenEasing)ease onComplete:(SEL)onComplete onCompleteTarget:(id)aOnCompleteTarget;
+
 - (void)update;
 - (void)cancel;
 
-@property (nonatomic, assign) TweenManager *tweenManager;
-@property (retain) NSString *keyPath;
-@property (retain) NSDate *startTime;
-@property (assign) id onCompleteTarget;
-@property (assign) id target;
+@property(nonatomic, assign) TweenManager *tweenManager;
+@property(retain) NSString *keyPath;
+@property(retain) NSDate *startTime;
+@property(assign) id onCompleteTarget;
+@property(assign) id target;
 
 @end

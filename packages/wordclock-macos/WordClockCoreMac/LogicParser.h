@@ -15,22 +15,22 @@ NSArray *LogicParserBooleanOperators;
 NSArray *LogicParserConversionOperators;
 
 @interface LogicParser : NSObject {
-	NSInteger _day;
-	NSInteger _daystartingmonday;
-	NSInteger _date;
-	NSInteger _month;
-	NSInteger _hour;
-	NSInteger _twentyfourhour;
-	NSInteger _minute;
-	NSInteger _second;
+    NSInteger _day;
+    NSInteger _daystartingmonday;
+    NSInteger _date;
+    NSInteger _month;
+    NSInteger _hour;
+    NSInteger _twentyfourhour;
+    NSInteger _minute;
+    NSInteger _second;
 }
-+ (LogicParser*)sharedInstance;
--(NSInteger)parse:(NSString *)source;
--(NSInteger) processTerm:(NSString *)source;
--(NSString *)performOperationOnTermOne:(NSString *)aString termTwo:(NSString *)bString operator:(NSString *)operator;
--(NSString *)term:(NSString *)source;
++ (LogicParser *)sharedInstance;
+- (NSInteger)parse:(NSString *)source;
+- (NSInteger)processTerm:(NSString *)source;
+- (NSString *)performOperationOnTermOne:(NSString *)aString termTwo:(NSString *)bString operator:(NSString *)operator;
+- (NSString *)term:(NSString *)source;
 
-@property (nonatomic) NSInteger day;
+@property(nonatomic) NSInteger day;
 @property NSInteger daystartingmonday;
 @property NSInteger date;
 @property NSInteger month;
