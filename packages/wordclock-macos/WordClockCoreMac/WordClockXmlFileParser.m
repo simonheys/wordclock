@@ -60,13 +60,44 @@ NSString *WordClockRotaryDisplayType = @"rotary";
         DDLogError(@"error:%@",error);
     }
     DDLogVerbose(@"model:%@",model);
+    
     NSDictionary *languages = model[@"languages"];
-
     [languages enumerateKeysAndObjectsUsingBlock:^(NSString *code, NSString *languageTitle, BOOL * _Nonnull stop) {
         DDLogVerbose(@"code:%@ languageTitle:%@",code,languageTitle);
 //        [self.xmlManifestLanguageCode addObject:code];
 //        [self.xmlManifestLanguageTitle addObject:languageTitle];
     }];
+    
+    NSArray *files = model[@"files"];
+    [files enumerateObjectsUsingBlock:^(NSString *fileName, NSUInteger idx, BOOL * _Nonnull stop) {
+        @try {
+            NSString *path = [thisBundle pathForResource:fileName ofType:nil inDirectory:@"json"];
+            NSData *data = [NSData dataWithContentsOfFile:path];
+            NSError *error = nil;
+            id model = [NSJSONSerialization JSONObjectWithData:data options:nil error:&error];
+            id meta = model[@"meta"];
+            NSDictionary *fileDictionary = [@{
+                @"fileName": fileName,
+                @"fileTitle": meta[@"title"],
+                @"fileLanguageCode": meta[@"language"],
+                @"fileLanguageTitle": languages[meta[@"language"]]
+            } autorelease];
+            DDLogVerbose(@"fileDictionary:%@",fileDictionary);
+            
+//            [[[NSDictionary alloc] initWithObjectsAndKeys:
+//                self.xmlManifestFiles[self.currentXmlFile], @"fileName",
+//                cdataString, @"fileTitle",
+//                self.language, @"fileLanguageCode",
+//                [self languageTitleForCode:self.language], @"fileLanguageTitle",
+//                nil
+//            ] autorelease];
+//            [self.xmlFiles addObject:fileDictionary];
+        } @catch (NSException *exception) {
+            DDLogError(@"Error parsing:%@",exception);
+        }
+        
+    }];
+    
     
     
 	self.xmlManifestFiles = [[NSMutableArray new] autorelease];
