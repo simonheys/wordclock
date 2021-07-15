@@ -84,13 +84,15 @@ NSString *WordClockRotaryDisplayType = @"rotary";
             NSError *error = nil;
             id model = [NSJSONSerialization JSONObjectWithData:data options:nil error:&error];
             id meta = model[@"meta"];
-            NSDictionary *fileDictionary = @{
-                @"fileName": fileName,
-                @"fileTitle": meta[@"title"],
-                @"fileLanguageCode": meta[@"language"],
-                @"fileLanguageTitle": languages[meta[@"language"]]
-            };
-            [self.xmlFiles addObject:fileDictionary];
+            if ( meta) {
+                NSDictionary *fileDictionary = @{
+                    @"fileName": fileName,
+                    @"fileTitle": meta[@"title"],
+                    @"fileLanguageCode": meta[@"language"],
+                    @"fileLanguageTitle": languages[meta[@"language"]]
+                };
+                [self.xmlFiles addObject:fileDictionary];
+            }
         } @catch (NSException *exception) {
             DDLogError(@"Error parsing:%@",exception);
         }
