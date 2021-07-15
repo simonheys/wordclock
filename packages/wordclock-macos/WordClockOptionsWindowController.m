@@ -90,8 +90,6 @@
 
 - (void)updateXmlFileMenu {
     self.wordClockXmlFileParser = [[[WordClockXmlFileParser alloc] init] autorelease];
-    NSBundle *thisBundle = [self bundle];
-    self.wordClockXmlFileParser.manifestFile = [thisBundle pathForResource:@"Manifest" ofType:@"xml" inDirectory:@"xml"];
     self.wordClockXmlFileParser.delegate = self;
     [self.wordClockXmlFileParser parseManifestFile];
 }
