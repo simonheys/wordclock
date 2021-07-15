@@ -133,7 +133,7 @@
 	NSBundle *bundle = [NSBundle mainBundle];
 #endif
     _currentXmlFile = xmlFile;
-	NSString *fileName = [bundle pathForResource:_currentXmlFile ofType:nil inDirectory:@"xml"];
+	NSString *fileName = [bundle pathForResource:_currentXmlFile ofType:nil inDirectory:@"json"];
 	[self.parser parseFile:fileName];
 }
 

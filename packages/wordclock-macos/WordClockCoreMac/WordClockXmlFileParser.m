@@ -17,8 +17,8 @@ NSString *WordClockRotaryDisplayType = @"rotary";
 @property (nonatomic, retain) NSMutableArray *xmlManifestFiles;
 @property (nonatomic, retain) NSMutableArray *xmlManifestLanguageCode;
 @property (nonatomic, retain) NSMutableArray *xmlManifestLanguageTitle;
-@property (nonatomic, retain) NSMutableArray *xmlFilesRotary;
-@property (nonatomic, retain) NSMutableArray *xmlFilesLinear;
+//@property (nonatomic, retain) NSMutableArray *xmlFilesRotary;
+//@property (nonatomic, retain) NSMutableArray *xmlFilesLinear;
 @property (nonatomic, retain) NSString *currentlyParsingTag;
 @property (nonatomic, retain) NSString *language;
 @property (nonatomic, retain) NSXMLParser *manifestParser;
@@ -38,8 +38,8 @@ NSString *WordClockRotaryDisplayType = @"rotary";
     [_xmlManifestFiles release];
     [_xmlManifestLanguageCode release];
     [_xmlManifestLanguageTitle release];
-    [_xmlFilesRotary release];
-    [_xmlFilesLinear release];
+//    [_xmlFilesRotary release];
+//    [_xmlFilesLinear release];
 	[super dealloc];
 }
 
@@ -48,6 +48,14 @@ NSString *WordClockRotaryDisplayType = @"rotary";
 - (void)parseManifestFile
 {
 //    __block NSURL *xmlURL = [NSURL fileURLWithPath:self.manifestFile];
+
+	self.xmlManifestFiles = [[NSMutableArray new] autorelease];
+	self.xmlManifestLanguageCode = [[NSMutableArray new] autorelease];
+	self.xmlManifestLanguageTitle = [[NSMutableArray new] autorelease];
+//	self.xmlFilesRotary = [[NSMutableArray new] autorelease];
+//	self.xmlFilesLinear = [[NSMutableArray new] autorelease];
+	
+	self.xmlFiles = [[NSMutableArray new] autorelease];
 
     NSBundle *thisBundle = [self bundle];
     NSString *path = [thisBundle pathForResource:@"Manifest" ofType:@"json" inDirectory:@"json"];
@@ -64,8 +72,8 @@ NSString *WordClockRotaryDisplayType = @"rotary";
     NSDictionary *languages = model[@"languages"];
     [languages enumerateKeysAndObjectsUsingBlock:^(NSString *code, NSString *languageTitle, BOOL * _Nonnull stop) {
         DDLogVerbose(@"code:%@ languageTitle:%@",code,languageTitle);
-//        [self.xmlManifestLanguageCode addObject:code];
-//        [self.xmlManifestLanguageTitle addObject:languageTitle];
+        [self.xmlManifestLanguageCode addObject:code];
+        [self.xmlManifestLanguageTitle addObject:languageTitle];
     }];
     
     NSArray *files = model[@"files"];
@@ -76,48 +84,35 @@ NSString *WordClockRotaryDisplayType = @"rotary";
             NSError *error = nil;
             id model = [NSJSONSerialization JSONObjectWithData:data options:nil error:&error];
             id meta = model[@"meta"];
-            NSDictionary *fileDictionary = [@{
+            NSDictionary *fileDictionary = @{
                 @"fileName": fileName,
                 @"fileTitle": meta[@"title"],
                 @"fileLanguageCode": meta[@"language"],
                 @"fileLanguageTitle": languages[meta[@"language"]]
-            } autorelease];
-            DDLogVerbose(@"fileDictionary:%@",fileDictionary);
-            
-//            [[[NSDictionary alloc] initWithObjectsAndKeys:
-//                self.xmlManifestFiles[self.currentXmlFile], @"fileName",
-//                cdataString, @"fileTitle",
-//                self.language, @"fileLanguageCode",
-//                [self languageTitleForCode:self.language], @"fileLanguageTitle",
-//                nil
-//            ] autorelease];
-//            [self.xmlFiles addObject:fileDictionary];
+            };
+            [self.xmlFiles addObject:fileDictionary];
         } @catch (NSException *exception) {
             DDLogError(@"Error parsing:%@",exception);
         }
-        
     }];
     
+    if ([self.delegate respondsToSelector:@selector(wordClockXmlFileParserDidCompleteParsingManifest:)]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate wordClockXmlFileParserDidCompleteParsingManifest:self];
+        });
+    }
     
     
-	self.xmlManifestFiles = [[NSMutableArray new] autorelease];
-	self.xmlManifestLanguageCode = [[NSMutableArray new] autorelease];
-	self.xmlManifestLanguageTitle = [[NSMutableArray new] autorelease];
-	self.xmlFilesRotary = [[NSMutableArray new] autorelease];
-	self.xmlFilesLinear = [[NSMutableArray new] autorelease];
-	
-	self.xmlFiles = [[NSMutableArray new] autorelease];
-    
-    dispatch_async([NSXMLParser sharedQueue], ^{
-        NSURL *xmlURL = [NSURL fileURLWithPath:self.manifestFile];
-        NSXMLParser *manifestParser = [[[NSXMLParser alloc] initWithContentsOfURL:xmlURL] autorelease];
-        self.manifestParser = manifestParser;
-        manifestParser.delegate = self;
-        manifestParser.shouldResolveExternalEntities = NO;
-        [manifestParser parse];
-    });
-    
-	DDLogVerbose(@"parseManifestFile:done");			
+//    dispatch_async([NSXMLParser sharedQueue], ^{
+//        NSURL *xmlURL = [NSURL fileURLWithPath:self.manifestFile];
+//        NSXMLParser *manifestParser = [[[NSXMLParser alloc] initWithContentsOfURL:xmlURL] autorelease];
+//        self.manifestParser = manifestParser;
+//        manifestParser.delegate = self;
+//        manifestParser.shouldResolveExternalEntities = NO;
+//        [manifestParser parse];
+//    });
+//
+//	DDLogVerbose(@"parseManifestFile:done");
 //	[apool release];
 }
 
