@@ -12,9 +12,9 @@
 @class TweenManager;
 
 @interface WordClockWordGroup : NSObject {
-@private
-	WordClockWordGroup *_parent;
-	WordClockWordGroup *_child;
+   @private
+    WordClockWordGroup *_parent;
+    WordClockWordGroup *_child;
     TweenManager *_tweenManager;
     NSMutableArray *_word;
     NSArray *_logic;
@@ -28,8 +28,8 @@
 - (void)highlightForIndex:(NSInteger)value;
 //- (WordClockWord *)createWordWithLabel:(NSString *)label;
 
-@property (readonly) NSInteger numberOfWords;
-@property (nonatomic, retain, readonly) NSMutableArray *word;
+@property(readonly) NSInteger numberOfWords;
+@property(nonatomic, retain, readonly) NSMutableArray *word;
 @property NSInteger selectedIndex;
 
 @end

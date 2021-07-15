@@ -11,11 +11,11 @@
 @interface WordClockWordsFileParser : NSObject <NSXMLParserDelegate> {
 }
 - (void)parseFile:(NSString *)pathToFile;
-@property (nonatomic, assign) id<WordClockWordsFileParserDelegate> delegate;
-@property (nonatomic, retain, readonly) NSMutableArray *logic;
-@property (nonatomic, retain, readonly) NSMutableArray *label;
+@property(nonatomic, assign) id<WordClockWordsFileParserDelegate> delegate;
+@property(nonatomic, retain, readonly) NSMutableArray *logic;
+@property(nonatomic, retain, readonly) NSMutableArray *label;
 @end
 
 @protocol WordClockWordsFileParserDelegate <NSObject>
-- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser*)parser;
+- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser *)parser;
 @end

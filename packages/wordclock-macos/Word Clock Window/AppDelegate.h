@@ -12,7 +12,7 @@
 @class WordClockOptionsWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-@private
+   @private
     WordClockGLViewController *_rootViewController;
     WordClockOptionsWindowController *_optionsWindowController;
     NSWindow *_window;
@@ -22,10 +22,10 @@
     NSButton *_optionsButton;
 }
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSView *customView;
-@property (assign) IBOutlet NSButton *createButton;
-@property (assign) IBOutlet NSButton *destroyButton;
-@property (assign) IBOutlet NSButton *optionsButton;
+@property(assign) IBOutlet NSWindow *window;
+@property(assign) IBOutlet NSView *customView;
+@property(assign) IBOutlet NSButton *createButton;
+@property(assign) IBOutlet NSButton *destroyButton;
+@property(assign) IBOutlet NSButton *optionsButton;
 
 @end

@@ -14,11 +14,11 @@ extern NSString *WordClockRotaryDisplayType;
 @protocol WordClockWordsManifestFileParserDelegate;
 
 @interface WordClockWordsManifestFileParser : NSObject
-@property (nonatomic, retain) NSMutableArray *wordsFiles;
-@property (nonatomic, assign) id <WordClockWordsManifestFileParserDelegate> delegate;
+@property(nonatomic, retain) NSMutableArray *wordsFiles;
+@property(nonatomic, assign) id<WordClockWordsManifestFileParserDelegate> delegate;
 - (void)parseManifestFile;
 @end
 
 @protocol WordClockWordsManifestFileParserDelegate <NSObject>
-- (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser*)parser;
+- (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser *)parser;
 @end

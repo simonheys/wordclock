@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Additions)
-@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *stringByRemovingWhiteSpaceAndNewlines;
+@property(NS_NONATOMIC_IOSONLY, readonly, copy) NSString *stringByRemovingWhiteSpaceAndNewlines;
 @end

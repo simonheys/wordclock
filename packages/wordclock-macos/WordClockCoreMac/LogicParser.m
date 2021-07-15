@@ -7,19 +7,22 @@
 //
 
 #import "LogicParser.h"
+
 #import "LogicParserStringUtil.h"
 
 NSString *LogicParserOperators = @"!%&*()-+=|/<>";
 
 @implementation LogicParser
 
-// ____________________________________________________________________________________________________ Singleton
+// ____________________________________________________________________________________________________
+// Singleton
 
-+ (LogicParser*)sharedInstance
-{
++ (LogicParser *)sharedInstance {
     static dispatch_once_t once;
     static LogicParser *sharedInstance;
-    dispatch_once(&once, ^{ sharedInstance = [[self alloc] init]; });
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
     return sharedInstance;
 }
 /*
@@ -40,7 +43,8 @@ static LogicParser *shareNSLogicParserInstance = nil;
     @synchronized(self) {
         if (shareNSLogicParserInstance == nil) {
             shareNSLogicParserInstance = [super allocWithZone:zone];
-            return shareNSLogicParserInstance;  // assignment and return on first allocation
+            return shareNSLogicParserInstance;  // assignment and return on
+first allocation
         }
     }
     return nil; //on subsequent allocation attempts return nil
@@ -73,72 +77,61 @@ static LogicParser *shareNSLogicParserInstance = nil;
 }
 */
 
-// ____________________________________________________________________________________________________ Init
+// ____________________________________________________________________________________________________
+// Init
 
-+ (void)initialize
-{
-	LogicParserEqualityOperators = [@[@"==", @"!=", @">=", @"<=", @">", @"<"] retain];
-	LogicParserMathOperators = [@[@"%", @"*", @"/", @"+", @"-"] retain];
-	LogicParserBooleanOperators = [@[@"&&", @"||"] retain];
-	LogicParserConversionOperators = [@[@"-", @"!"] retain];
++ (void)initialize {
+    LogicParserEqualityOperators = [@[ @"==", @"!=", @">=", @"<=", @">", @"<" ] retain];
+    LogicParserMathOperators = [@[ @"%", @"*", @"/", @"+", @"-" ] retain];
+    LogicParserBooleanOperators = [@[ @"&&", @"||" ] retain];
+    LogicParserConversionOperators = [@[ @"-", @"!" ] retain];
 }
 
--(NSInteger)parse:(NSString *)source
-{
-//	DDLogVerbose(@"------------------------");
-//	DDLogVerbose(@"parse:<<<<%@>>>>",source);
-	if ( ![LogicParserStringUtil checkBalancedBraces:source]) {
-		DDLogVerbose(@"Syntax Error: mismatching braces: %@",source);
-		return 0;
-	}
-	return [self processTerm:[self term:source]];
+- (NSInteger)parse:(NSString *)source {
+    //	DDLogVerbose(@"------------------------");
+    //	DDLogVerbose(@"parse:<<<<%@>>>>",source);
+    if (![LogicParserStringUtil checkBalancedBraces:source]) {
+        DDLogVerbose(@"Syntax Error: mismatching braces: %@", source);
+        return 0;
+    }
+    return [self processTerm:[self term:source]];
 }
 
-// ____________________________________________________________________________________________________ delloc
+// ____________________________________________________________________________________________________
+// delloc
 
-- (void) dealloc {
-	[LogicParserEqualityOperators release];
-	[LogicParserMathOperators release];
-	[LogicParserBooleanOperators release];
-	[LogicParserConversionOperators release];
-	[super dealloc];
+- (void)dealloc {
+    [LogicParserEqualityOperators release];
+    [LogicParserMathOperators release];
+    [LogicParserBooleanOperators release];
+    [LogicParserConversionOperators release];
+    [super dealloc];
 }
 
+// ____________________________________________________________________________________________________
+// Term
 
-// ____________________________________________________________________________________________________ Term
+- (NSString *)term:(NSString *)source {
+    NSArray *terms;
+    BOOL parsing;
+    NSInteger result;
 
--(NSString *)term:(NSString *)source
-{
-	NSArray *terms;
-	BOOL parsing;
-	NSInteger result;
-			
-//	DDLogVerbose(@"term input:<%@>",source);
-		
-	parsing = YES;
-			
-	while ( parsing )
-	{
-		// parse brackets
-		if ( [LogicParserStringUtil containsBraces:source]) {
-			terms = [LogicParserStringUtil extractStringContainedInOutermostBraces:source];
-//			DDLogVerbose(@"extracted braces:%@",terms);
-			source = [NSString 
-				stringWithFormat:@"%@%@%@",
-				terms[0], 
-				[self term:terms[1]],
-				terms[2]
-			];
-		}
-		else {
-			// parse math operators
-			result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserMathOperators];
-			if ( result !=-1 ) {
-				terms = [LogicParserStringUtil 
-					extractTermsAroundPivot:source 
-					pivot:LogicParserMathOperators[result]
-				];//  MATH_OPERATORS[result]);
-				source = [NSString
+    //	DDLogVerbose(@"term input:<%@>",source);
+
+    parsing = YES;
+
+    while (parsing) {
+        // parse brackets
+        if ([LogicParserStringUtil containsBraces:source]) {
+            terms = [LogicParserStringUtil extractStringContainedInOutermostBraces:source];
+            //			DDLogVerbose(@"extracted braces:%@",terms);
+            source = [NSString stringWithFormat:@"%@%@%@", terms[0], [self term:terms[1]], terms[2]];
+        } else {
+            // parse math operators
+            result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserMathOperators];
+            if (result != -1) {
+                terms = [LogicParserStringUtil extractTermsAroundPivot:source pivot:LogicParserMathOperators[result]];  //  MATH_OPERATORS[result]);
+                source = [NSString
 					stringWithFormat:@"%@%@%@",
 					terms[0], 
 					[self 
@@ -148,18 +141,14 @@ static LogicParser *shareNSLogicParserInstance = nil;
 					],
 					terms[3]
 				];
-				//  terms[0]+performOperation(terms[1],terms[2],MATH_OPERATORS[result])+terms[3];
-				//trace(terms);				
-			}
-			else {
-				// parse equality operators	
-				result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserEqualityOperators];
-				if ( result !=-1 ) {
-					terms = [LogicParserStringUtil 
-						extractTermsAroundPivot:source
-						pivot:LogicParserEqualityOperators[result]
-					];
-					source = [NSString
+                //  terms[0]+performOperation(terms[1],terms[2],MATH_OPERATORS[result])+terms[3];
+                // trace(terms);
+            } else {
+                // parse equality operators
+                result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserEqualityOperators];
+                if (result != -1) {
+                    terms = [LogicParserStringUtil extractTermsAroundPivot:source pivot:LogicParserEqualityOperators[result]];
+                    source = [NSString
 						stringWithFormat:@"%@%@%@",
 						terms[0], 
 						[self 
@@ -169,21 +158,15 @@ static LogicParser *shareNSLogicParserInstance = nil;
 						],
 						terms[3]
 					];
-					//source = terms[0]+performOperation(terms[1],terms[2],EQUALITY_OPERATORS[result])+terms[3];
-					//trace(terms);				
-				}
-				else {
-					// parse boolean operators	
-					result = [LogicParserStringUtil 
-						scanForInstanceOf:source
-						inArray:LogicParserBooleanOperators
-					];
-					if ( result !=-1 ) {
-						terms = [LogicParserStringUtil
-							extractTermsAroundPivot:source 
-							pivot:LogicParserBooleanOperators[result]
-						];
-						source = [NSString
+                    // source =
+                    // terms[0]+performOperation(terms[1],terms[2],EQUALITY_OPERATORS[result])+terms[3];
+                    // trace(terms);
+                } else {
+                    // parse boolean operators
+                    result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserBooleanOperators];
+                    if (result != -1) {
+                        terms = [LogicParserStringUtil extractTermsAroundPivot:source pivot:LogicParserBooleanOperators[result]];
+                        source = [NSString
 							stringWithFormat:@"%@%@%@",
 							terms[0], 
 							[self 
@@ -193,146 +176,136 @@ static LogicParser *shareNSLogicParserInstance = nil;
 							],
 							terms[3]
 						];
-					}
-					else {
-						parsing = NO;
-					}
-				}
-			}
-		}	
-	}
-//	DDLogVerbose(@"term output:<%@>",source);
-	return source;
+                    } else {
+                        parsing = NO;
+                    }
+                }
+            }
+        }
+    }
+    //	DDLogVerbose(@"term output:<%@>",source);
+    return source;
 }
 
-
-// ____________________________________________________________________________________________________ Process
+// ____________________________________________________________________________________________________
+// Process
 
 // check for var names, - and !
--(NSInteger)processTerm:(NSString *)source
-{
-//	DDLogVerbose(@"processTerm:%@",source);
-	NSInteger result;
-	source = [LogicParserStringUtil trim:source];// StringUtils.trim(source);
-	
-	
-	if ( [source length] == 1 ) {
-//		DDLogVerbose(@"returning:%d",[source intValue]);
-		return [source intValue];
-	}
-	
-	// FIXME a minus sign causes infinite recursion at present
-	// because we repeatedly have a term starting "-"
-	// and recursively subtract it from 0
-	// a hack might just be to have a flag checking for this special case
-	if ( [source characterAtIndex:0] == '-') { 
-		return 0-[self processTerm:[source substringFromIndex:1]];
-	}
-	if ( [source characterAtIndex:1] == '!' ) {
-		result = [self processTerm:[source substringFromIndex:1]];
-		// invert result
-		return result ? FALSE : TRUE;
-	}
-	// TODO re-order these in terms of probability; 'seconds' is most frequent, then minutes etc.
-	//swap out variable names here
-	if ( [source isEqualToString:@"else"] ) {
-		// 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
-		return TRUE;
-	}
-	else if ( [source isEqualToString:@"false"] ) {
-		return FALSE;
-	}
-	else if ( [source isEqualToString:@"true"] ) {
-		return TRUE;
-	}
-	else if ( [source isEqualToString:@"day"] ) {
-//		DDLogVerbose(@"returning day:%d",_day);
-		return _day;
-	}
-	else if ( [source isEqualToString:@"daystartingmonday"] ) {
-		return _daystartingmonday;
-	}
-	else if ( [source isEqualToString:@"date"] ) {
-		return _date;
-	}	
-	else if ( [source isEqualToString:@"month"] ) {
-		return _month;
-	}	
-	else if ( [source isEqualToString:@"hour"] ) {
-//		DDLogVerbose(@"returning hour:%d",_hour);
-		return _hour;
-	}	
-	else if ( [source isEqualToString:@"twentyfourhour"] ) {
-		return _twentyfourhour;
-	}	
-	else if ( [source isEqualToString:@"minute"] ) {
-		return _minute;
-	}	
-	else if ( [source isEqualToString:@"second"] ) {
-		return _second;
-	}
-//	DDLogVerbose(@"returning:%d",[source intValue]);
-	return [source intValue];
+- (NSInteger)processTerm:(NSString *)source {
+    //	DDLogVerbose(@"processTerm:%@",source);
+    NSInteger result;
+    source = [LogicParserStringUtil trim:source];  // StringUtils.trim(source);
+
+    if ([source length] == 1) {
+        //		DDLogVerbose(@"returning:%d",[source intValue]);
+        return [source intValue];
+    }
+
+    // FIXME a minus sign causes infinite recursion at present
+    // because we repeatedly have a term starting "-"
+    // and recursively subtract it from 0
+    // a hack might just be to have a flag checking for this special case
+    if ([source characterAtIndex:0] == '-') {
+        return 0 - [self processTerm:[source substringFromIndex:1]];
+    }
+    if ([source characterAtIndex:1] == '!') {
+        result = [self processTerm:[source substringFromIndex:1]];
+        // invert result
+        return result ? FALSE : TRUE;
+    }
+    // TODO re-order these in terms of probability; 'seconds' is most frequent,
+    // then minutes etc. swap out variable names here
+    if ([source isEqualToString:@"else"]) {
+        // 'else' is used as a convenient phrase for the xml, logically it's the
+        // equivalent of 'true'
+        return TRUE;
+    } else if ([source isEqualToString:@"false"]) {
+        return FALSE;
+    } else if ([source isEqualToString:@"true"]) {
+        return TRUE;
+    } else if ([source isEqualToString:@"day"]) {
+        //		DDLogVerbose(@"returning day:%d",_day);
+        return _day;
+    } else if ([source isEqualToString:@"daystartingmonday"]) {
+        return _daystartingmonday;
+    } else if ([source isEqualToString:@"date"]) {
+        return _date;
+    } else if ([source isEqualToString:@"month"]) {
+        return _month;
+    } else if ([source isEqualToString:@"hour"]) {
+        //		DDLogVerbose(@"returning hour:%d",_hour);
+        return _hour;
+    } else if ([source isEqualToString:@"twentyfourhour"]) {
+        return _twentyfourhour;
+    } else if ([source isEqualToString:@"minute"]) {
+        return _minute;
+    } else if ([source isEqualToString:@"second"]) {
+        return _second;
+    }
+    //	DDLogVerbose(@"returning:%d",[source intValue]);
+    return [source intValue];
 }
 
-// ____________________________________________________________________________________________________ Operate
+// ____________________________________________________________________________________________________
+// Operate
 
+- (NSString *)performOperationOnTermOne:(NSString *)aString termTwo:(NSString *)bString operator:(NSString *)operator{
+    // trace("performOperation:"+aString+operator+bString);
+    // replace variable names where appropriate
+    NSInteger a = [self processTerm:aString];
+    NSInteger b = [self processTerm:bString];
+    NSInteger result = 0;
 
--(NSString *)performOperationOnTermOne:(NSString *)aString termTwo:(NSString *)bString operator:(NSString *)operator
-{
-	//trace("performOperation:"+aString+operator+bString);
-	// replace variable names where appropriate
-	NSInteger a = [self processTerm:aString];
-	NSInteger b = [self processTerm:bString];
-	NSInteger result = 0;
-	
-	if ( [operator isEqualToString:@"*"] ) {
-		result = a*b;
-	}
+    if ( [operator isEqualToString:@"*"] ) {
+        result = a * b;
+    }
 	else if ( [operator isEqualToString:@"/"] ) {
-		result = a/b;
-	}
+        result = a / b;
+    }
 	else if ( [operator isEqualToString:@"+"] ) {
-		result = a+b;
-	}
+        result = a + b;
+    }
 	else if ( [operator isEqualToString:@"-"] ) {
-		// FIXME need to fix negative logic (cases with - sign) see above
-		DDLogVerbose(@"MINUS! a=%@",@(a));
-		if ( [[LogicParserStringUtil trim:aString] length] == 0) { DDLogVerbose(@"DSDDASDS"); }
-		result = a-b;
-	}
+        // FIXME need to fix negative logic (cases with - sign) see above
+        DDLogVerbose(@"MINUS! a=%@", @(a));
+        if ([[LogicParserStringUtil trim:aString] length] == 0) {
+            DDLogVerbose(@"DSDDASDS");
+        }
+        result = a - b;
+    }
 	else if ( [operator isEqualToString:@"%"] ) {
-		result = a%b;
-	}
+        result = a % b;
+    }
 	else if ( [operator isEqualToString:@"&&"] ) {
-		result = ( a && b ) ? TRUE : FALSE;
-	}			
+        result = (a && b) ? TRUE : FALSE;
+    }			
 	else if ( [operator isEqualToString:@"||"] ) {
-		result = ( a || b ) ? TRUE : FALSE;
-	}		
+        result = (a || b) ? TRUE : FALSE;
+    }		
 	else if ( [operator isEqualToString:@"!="] ) {
-		result = ( a != b ) ? TRUE : FALSE;
-	}			
+        result = (a != b) ? TRUE : FALSE;
+    }			
 	else if ( [operator isEqualToString:@"=="] ) {
-		result = ( a == b ) ? TRUE : FALSE;
-	}		
+        result = (a == b) ? TRUE : FALSE;
+    }		
 	else if ( [operator isEqualToString:@">"] ) {
-		result = ( a > b ) ? TRUE : FALSE;
-	}			
+        result = (a > b) ? TRUE : FALSE;
+    }			
 	else if ( [operator isEqualToString:@"<"] ) {
-		result = ( a < b ) ? TRUE : FALSE;
-	}		
+        result = (a < b) ? TRUE : FALSE;
+    }		
 	else if ( [operator isEqualToString:@">="] ) {
-		result = ( a >= b ) ? TRUE : FALSE;
-	}			
+        result = (a >= b) ? TRUE : FALSE;
+    }			
 	else if ( [operator isEqualToString:@"<="] ) {
-		result = ( a <= b ) ? TRUE : FALSE;
-	}		
-		
-	return [NSString stringWithFormat:@"%@",@(result)];
+        result = (a <= b) ? TRUE : FALSE;
+    }
+
+    return [NSString stringWithFormat:@"%@", @(result)];
 }
 
-// ____________________________________________________________________________________________________ Getters / Setters
+// ____________________________________________________________________________________________________
+// Getters / Setters
 
 @synthesize day = _day;
 @synthesize daystartingmonday = _daystartingmonday;
@@ -341,16 +314,15 @@ static LogicParser *shareNSLogicParserInstance = nil;
 @synthesize hour = _hour;
 @synthesize twentyfourhour = _twentyfourhour;
 @synthesize minute = _minute;
-@synthesize second = _second;	
+@synthesize second = _second;
 
 // 0 for Sunday, 1 for Monday, and so on
--(void)setDay:(NSInteger)value
-{
-//	DDLogVerbose(@"SetDay!");
-	_day = value;
-	_daystartingmonday = value - 1;
-	if ( _daystartingmonday < 0 ) {
-		_daystartingmonday += 7;	
-	}
+- (void)setDay:(NSInteger)value {
+    //	DDLogVerbose(@"SetDay!");
+    _day = value;
+    _daystartingmonday = value - 1;
+    if (_daystartingmonday < 0) {
+        _daystartingmonday += 7;
+    }
 }
 @end

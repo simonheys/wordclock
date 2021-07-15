@@ -12,7 +12,7 @@
 @class WordClockOptionsWindowController;
 
 @interface WordClockScreenSaverView : ScreenSaverView {
-@private
+   @private
     WordClockGLViewController *_rootViewController;
     NSOpenGLContext *_mGLContext;
     WordClockOptionsWindowController *_optionsWindowController;

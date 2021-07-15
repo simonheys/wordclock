@@ -6,17 +6,18 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
+#import "AppDelegate.h"
+
 #import <QuartzCore/QuartzCore.h>
 
-#import "AppDelegate.h"
-#import "WordClockGLViewController.h"
-#import "WordClockGLView.h"
-#import "WordClockOptionsWindowController.h"
 #import "WCFileFunctionLevelFormatter.h"
+#import "WordClockGLView.h"
+#import "WordClockGLViewController.h"
+#import "WordClockOptionsWindowController.h"
 
 @interface AppDelegate ()
-@property (nonatomic, retain) WordClockGLViewController *rootViewController;
-@property (nonatomic, retain) WordClockOptionsWindowController *optionsWindowController;
+@property(nonatomic, retain) WordClockGLViewController *rootViewController;
+@property(nonatomic, retain) WordClockOptionsWindowController *optionsWindowController;
 @end
 
 @implementation AppDelegate
@@ -29,47 +30,42 @@
 @synthesize destroyButton = _destroyButton;
 @synthesize optionsButton = _optionsButton;
 
-- (void)dealloc
-{
+- (void)dealloc {
     [_optionsWindowController release];
     [_rootViewController release];
     [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     WCFileFunctionLevelFormatter *fileFunctionLevelFormatter = [[WCFileFunctionLevelFormatter new] autorelease];
     [[DDTTYLogger sharedInstance] setLogFormatter:fileFunctionLevelFormatter];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 }
 
-- (IBAction)destroyButtonPressed:(id)sender
-{
+- (IBAction)destroyButtonPressed:(id)sender {
     DDLogVerbose(@"destroyButtonPressed");
-    if ( nil == self.rootViewController ) {
+    if (nil == self.rootViewController) {
         return;
     }
     DDLogVerbose(@"destroying");
     self.rootViewController = nil;
 }
 
-- (IBAction)createButtonPressed:(id)sender
-{
+- (IBAction)createButtonPressed:(id)sender {
     DDLogVerbose(@"createButtonPressed");
-    if ( nil != self.rootViewController ) {
+    if (nil != self.rootViewController) {
         return;
     }
     DDLogVerbose(@"creating");
     self.rootViewController = [[WordClockGLViewController new] autorelease];
     self.rootViewController.view = self.customView;
     self.rootViewController.userInteracitionEnabled = NO;
-   
+
     [self.rootViewController startAnimation];
 }
 
-- (WordClockOptionsWindowController *)optionsWindowController
-{
-    if ( nil == _optionsWindowController ) {
+- (WordClockOptionsWindowController *)optionsWindowController {
+    if (nil == _optionsWindowController) {
         _optionsWindowController = [WordClockOptionsWindowController new];
     }
     return _optionsWindowController;
@@ -78,8 +74,8 @@
 - (IBAction)optionsButtonPressed:(id)sender {
     DDLogVerbose(@"optionsButtonPressed");
     [self.optionsWindowController.window makeKeyAndOrderFront:self];
-    DDLogVerbose(@"self.optionsWindowController:%@",self.optionsWindowController);
-    DDLogVerbose(@"self.optionsWindowController.window:%@",self.optionsWindowController.window);
+    DDLogVerbose(@"self.optionsWindowController:%@", self.optionsWindowController);
+    DDLogVerbose(@"self.optionsWindowController.window:%@", self.optionsWindowController.window);
 }
 
 @end

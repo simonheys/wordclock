@@ -6,28 +6,26 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-#import "WordClockCore.h"
 #import "CoordinateProvider.h"
+#import "WordClockCore.h"
 
 #define FONT_SIZE_TOLERANCE 0.05
 
+@interface LinearCoordinateProvider : CoordinateProvider {
+   @private
+    NSMutableArray *_sizeCache;
+    NSMutableArray *_rectCache;
 
-@interface LinearCoordinateProvider : CoordinateProvider 
-{
-@private
-	NSMutableArray *_sizeCache;
-	NSMutableArray *_rectCache;
+    //	float _tracking;
+    float _leading;
 
-//	float _tracking;
-	float _leading;
-
-	float _width;
-	float _height;
+    float _width;
+    float _height;
     float _x;
     float _y;
-	float _wordScale;
-	float _widthUsedInPreviousUpdate;
-	float _heightUsedInPreviousUpdate;
+    float _wordScale;
+    float _widthUsedInPreviousUpdate;
+    float _heightUsedInPreviousUpdate;
 }
 
 @property float width;

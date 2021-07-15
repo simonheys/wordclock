@@ -7,14 +7,14 @@
 //
 
 #import "CoordinateProvider.h"
-#import "sin_and_cos_tables.h"
-#import "WordClockWordGroup.h"
 #import "RotaryCoordinateProviderGroup.h"
+#import "WordClockWordGroup.h"
+#import "sin_and_cos_tables.h"
 
 @interface RotaryCoordinateProvider : CoordinateProvider {
-@private
-	NSMutableArray *_rotaryCoordinateProviderGroup;
-	float _orientationScale;
+   @private
+    NSMutableArray *_rotaryCoordinateProviderGroup;
+    float _orientationScale;
 }
 
 @end

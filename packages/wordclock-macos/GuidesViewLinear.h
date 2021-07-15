@@ -8,16 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/OpenGL.h>
+
 #import "GuidesView.h"
 
-
 @interface GuidesViewLinear : GuidesView {
-   CGFloat _draggingOffset;
+    CGFloat _draggingOffset;
     CGFloat _draggingOffsetLeft;
     CGFloat _draggingOffsetRight;
     CGFloat _draggingOffsetTop;
     CGFloat _draggingOffsetBottom;
 }
-
 
 @end

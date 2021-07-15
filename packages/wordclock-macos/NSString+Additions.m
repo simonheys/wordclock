@@ -10,8 +10,7 @@
 
 @implementation NSString (Additions)
 
-- (NSString *)stringByRemovingWhiteSpaceAndNewlines
-{
+- (NSString *)stringByRemovingWhiteSpaceAndNewlines {
     return [[self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
 }
 

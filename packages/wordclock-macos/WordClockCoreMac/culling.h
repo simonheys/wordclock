@@ -15,16 +15,17 @@
  */
 
 #import <ApplicationServices/ApplicationServices.h>
+
+#import "assert.h"
 #import "stdio.h"
 #import "stdlib.h"
-#import "assert.h"
 
 typedef struct _WordClockVerticesForCulling {
-	float xl;
-	float yt; 
-	float xr;
-	float yb;  
-	int i;
+    float xl;
+    float yt;
+    float xr;
+    float yb;
+    int i;
 } WordClockRectsForCulling;
 
-int cull_rects(WordClockRectsForCulling *rects, int numberOfRects, CGRect rect, void *resultPointer );
+int cull_rects(WordClockRectsForCulling *rects, int numberOfRects, CGRect rect, void *resultPointer);

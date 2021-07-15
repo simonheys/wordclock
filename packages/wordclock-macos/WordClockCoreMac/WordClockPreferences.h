@@ -14,32 +14,20 @@ extern NSString *const WCRotaryTranslateXKey;
 extern NSString *const WCRotaryTranslateYKey;
 extern NSString *const WCRotaryScaleKey;
 
-typedef NS_ENUM(NSInteger, WCJustification) {
-    WCJustificationLeft,
-    WCJustificationCentre,
-    WCJustificationRight,
-	WCJustificationFull
-} ;
+typedef NS_ENUM(NSInteger, WCJustification) { WCJustificationLeft, WCJustificationCentre, WCJustificationRight, WCJustificationFull };
 
-typedef NS_ENUM(NSInteger, WCCaseAdjustment) {
-    WCCaseAdjustmentNone,
-	WCCaseAdjustmentUpper,
-    WCCaseAdjustmentLower
-} ;
+typedef NS_ENUM(NSInteger, WCCaseAdjustment) { WCCaseAdjustmentNone, WCCaseAdjustmentUpper, WCCaseAdjustmentLower };
 
-typedef NS_ENUM(NSInteger, WCStyle) {
-    WCStyleLinear,
-	WCStyleRotary
-} ;
+typedef NS_ENUM(NSInteger, WCStyle) { WCStyleLinear, WCStyleRotary };
 
 typedef NS_ENUM(NSInteger, WCTransitionStyle) {
     WCTransitionStyleSlow,
     WCTransitionStyleMedium,
     WCTransitionStyleFast,
-} ;
+};
 
 @interface WordClockPreferences : NSObject {
-@private
+   @private
     NSString *_xmlFile;
     NSString *_fontName;
     NSColor *_highlightColour;
@@ -67,17 +55,16 @@ typedef NS_ENUM(NSInteger, WCTransitionStyle) {
 
     NSInteger _transitionTime;
     WCTransitionStyle _transitionStyle;
-
 }
-+ (WordClockPreferences*)sharedInstance;
++ (WordClockPreferences *)sharedInstance;
 + (NSDictionary *)factoryDefaults;
 - (void)reset;
 
-@property (nonatomic, retain) NSString *xmlFile;
-@property (nonatomic, retain) NSString *fontName;
-@property (nonatomic, retain) NSColor *highlightColour;
-@property (nonatomic, retain) NSColor *foregroundColour;
-@property (nonatomic, retain) NSColor *backgroundColour;
+@property(nonatomic, retain) NSString *xmlFile;
+@property(nonatomic, retain) NSString *fontName;
+@property(nonatomic, retain) NSColor *highlightColour;
+@property(nonatomic, retain) NSColor *foregroundColour;
+@property(nonatomic, retain) NSColor *backgroundColour;
 
 @property float leading;
 @property float tracking;

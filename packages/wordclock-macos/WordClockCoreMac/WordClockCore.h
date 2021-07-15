@@ -16,13 +16,17 @@
 
 typedef NS_ENUM(NSInteger, WCDeviceOrientation) {
     WCDeviceOrientationUnknown,
-    WCDeviceOrientationPortrait,            // Device oriented vertically, home button on the bottom
-    WCDeviceOrientationPortraitUpsideDown,  // Device oriented vertically, home button on the top
-    WCDeviceOrientationLandscapeLeft,       // Device oriented horizontally, home button on the right
-    WCDeviceOrientationLandscapeRight,      // Device oriented horizontally, home button on the left
+    WCDeviceOrientationPortrait,            // Device oriented vertically, home button on
+                                            // the bottom
+    WCDeviceOrientationPortraitUpsideDown,  // Device oriented vertically, home
+                                            // button on the top
+    WCDeviceOrientationLandscapeLeft,       // Device oriented horizontally, home
+                                            // button on the right
+    WCDeviceOrientationLandscapeRight,      // Device oriented horizontally, home
+                                            // button on the left
     WCDeviceOrientationFaceUp,              // Device oriented flat, face up
     WCDeviceOrientationFaceDown             // Device oriented flat, face down
-} ;
+};
 
 #if defined(__LP64__) && __LP64__
 typedef double WCFloat;
@@ -39,46 +43,46 @@ typedef float WCFloat;
 /* Points. */
 
 struct WCPoint {
-  WCFloat x;
-  WCFloat y;
+    WCFloat x;
+    WCFloat y;
 };
 typedef struct WCPoint WCPoint;
 
 /* Sizes. */
 
 struct WCSize {
-  WCFloat width;
-  WCFloat height;
+    WCFloat width;
+    WCFloat height;
 };
 typedef struct WCSize WCSize;
 
 /* Rectangles. */
 
 struct WCRect {
-  WCPoint origin;
-  WCSize size;
+    WCPoint origin;
+    WCSize size;
 };
 typedef struct WCRect WCRect;
 
-
-
-static __inline__ WCPoint
-WCPointMake(WCFloat x, WCFloat y)
-{
-  WCPoint p; p.x = x; p.y = y; return p;
+static __inline__ WCPoint WCPointMake(WCFloat x, WCFloat y) {
+    WCPoint p;
+    p.x = x;
+    p.y = y;
+    return p;
 }
 
-static __inline__ WCSize
-WCSizeMake(WCFloat width, WCFloat height)
-{
-  WCSize size; size.width = width; size.height = height; return size;
+static __inline__ WCSize WCSizeMake(WCFloat width, WCFloat height) {
+    WCSize size;
+    size.width = width;
+    size.height = height;
+    return size;
 }
 
-static __inline__ WCRect
-WCRectMake(WCFloat x, WCFloat y, WCFloat width, WCFloat height)
-{
-  WCRect rect;
-  rect.origin.x = x; rect.origin.y = y;
-  rect.size.width = width; rect.size.height = height;
-  return rect;
+static __inline__ WCRect WCRectMake(WCFloat x, WCFloat y, WCFloat width, WCFloat height) {
+    WCRect rect;
+    rect.origin.x = x;
+    rect.origin.y = y;
+    rect.size.width = width;
+    rect.size.height = height;
+    return rect;
 }

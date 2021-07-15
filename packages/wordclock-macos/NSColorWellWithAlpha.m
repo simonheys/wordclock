@@ -9,9 +9,8 @@
 #import "NSColorWellWithAlpha.h"
 
 @implementation NSColorWellWithAlpha
-- (void)activate:(BOOL)exclusive
-{
+- (void)activate:(BOOL)exclusive {
     [[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
-    [super activate: exclusive];
+    [super activate:exclusive];
 }
 @end
