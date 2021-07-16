@@ -1,0 +1,19 @@
+.container {
+  font-size: 32px;
+  // display: block;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.label {
+  display: flex;
+}
+
+.labelHighlighted {
+  composes: label;
+  color: red;
+}
