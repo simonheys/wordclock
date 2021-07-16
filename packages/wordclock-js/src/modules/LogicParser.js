@@ -1,7 +1,7 @@
 import * as LogicParserStringUtil from "./LogicParserStringUtil";
 
 export const OPERATORS = {
-  EQUALITY: ["==", "!=", ">=", "<=", ">", "<"],
+  EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
   MATH: ["%", "*", "/", "+", "-"],
   BOOLEAN: ["&&", "||"],
   CONVERSION: ["-", "!"],
@@ -13,18 +13,14 @@ export const term = (source, props) => {
   let terms;
   let parsing = false;
   let result;
-
   parsing = true;
-  console.log("term", source);
   while (parsing) {
     // parse brackets
     if (LogicParserStringUtil.containsBraces(source)) {
       terms =
         LogicParserStringUtil.extractStringContainedInOutermostBraces(source);
-      const termResult1 = term(terms[1]);
-      const termResult2 = term(terms[2]);
-      source = `${terms[0]}${termResult1}${termResult2}`;
-      console.log("source", source);
+      const termResult = term(terms[1], props);
+      source = `${terms[0]}${termResult}${terms[2]}`;
     } else {
       // parse math operators
       result = LogicParserStringUtil.scanForInstanceOf({
@@ -86,7 +82,7 @@ export const term = (source, props) => {
       }
     }
   }
-  return source;
+  return processTerm(source, props);
 };
 
 // ____________________________________________________________________________________________________ Process
@@ -100,10 +96,10 @@ export const processTerm = (source = "", props = {}) => {
   }
   const isNumeric = LogicParserStringUtil.isNumericString(source);
   if (isString && source.startsWith("-")) {
-    result = processTerm(source.substr(1));
+    result = processTerm(source.substr(1), props);
     return 0 - result;
   } else if (isString && source.startsWith("!")) {
-    result = processTerm(source.substr(1));
+    result = processTerm(source.substr(1), props);
     // invert result
     return !result;
   } else if (isNumeric) {
@@ -119,11 +115,10 @@ export const processTerm = (source = "", props = {}) => {
 
   // return from props
   if (props[source] !== undefined) {
-    return processTerm(props[source]);
+    return processTerm(props[source], props);
   }
 
   return source;
-  //   throw `Unable to determine result for '${source}' - not a number and missing in supplied props`;
 };
 
 // ____________________________________________________________________________________________________ operation
@@ -145,7 +140,6 @@ export const performOperation = ({
   } else if (operator === "+") {
     result = a + b;
   } else if (operator === "-") {
-    // FIXME need to fix negative logic (cases with - sign) see above
     result = a - b;
   } else if (operator === "%") {
     result = a % b;
@@ -153,6 +147,10 @@ export const performOperation = ({
     result = a && b;
   } else if (operator === "||") {
     result = a || b;
+  } else if (operator === "!==") {
+    result = a !== b;
+  } else if (operator === "===") {
+    result = a === b;
   } else if (operator === "!=") {
     result = a != b;
   } else if (operator === "==") {
@@ -167,5 +165,5 @@ export const performOperation = ({
     result = a <= b;
   }
 
-  return parseInt(result);
+  return result;
 };

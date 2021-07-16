@@ -16,11 +16,11 @@ describe("LogicParser", () => {
         });
       });
     });
-    // describe("when invalid", () => {
-    //   it("throws an error", () => {
-    //     expect(() => processTerm()).toThrow();
-    //   });
-    // });
+    describe("when invalid", () => {
+      it("returns empty string", () => {
+        expect(processTerm()).toEqual("");
+      });
+    });
   });
 
   describe("performOperation", () => {
@@ -42,27 +42,47 @@ describe("LogicParser", () => {
         ).toEqual(5);
       });
     });
-    // describe("when invalid", () => {
-    //   it("throws an error", () => {
-    //     expect(() => performOperation()).toThrow();
-    //   });
-    // });
+    describe("when invalid", () => {
+      it("returns zero", () => {
+        expect(performOperation()).toEqual(0);
+      });
+    });
   });
 
   describe("term", () => {
     describe("when valid", () => {
-      it("returns the expected result", () => {
-        expect(term("2*3")).toEqual("6");
-        expect(term("2*3")).toEqual("6");
-        expect(term("24/3*2")).toEqual("4");
-        expect(term("(24/3)*2")).toEqual("16");
-        expect(term("(27*3+(5+10))%(7*2)")).toEqual("12");
+      describe("when using only numbers", () => {
+        it("returns the expected result", () => {
+          expect(term("2*3")).toEqual(6);
+          expect(term("2*3")).toEqual(6);
+          expect(term("24/3*2")).toEqual(4);
+          expect(term("(24/3)*2")).toEqual(16);
+          expect(term("(27*3+(5+10))%(7*2)")).toEqual(12);
+        });
+      });
+      describe("when using numbers and props", () => {
+        it("returns the expected result", () => {
+          const props = {
+            day: 2,
+            month: 3,
+          };
+          expect(term("day", props)).toEqual(2);
+          expect(term("month", props)).toEqual(3);
+          expect(term("day*month", props)).toEqual(6);
+          expect(term("day%2", props)).toEqual(0);
+          expect(term("day*2", props)).toEqual(4);
+          expect(term("day==2", props)).toEqual(true);
+          expect(term("day===2", props)).toEqual(true);
+          expect(term("day!==month", props)).toEqual(true);
+          expect(term("day===month", props)).toEqual(false);
+          expect(term("(day*month)===(1+day+month)", props)).toEqual(true);
+        });
       });
     });
-    // describe("when invalid", () => {
-    //   it("throws an error", () => {
-    //     expect(() => term()).toThrow();
-    //   });
-    // });
+    describe("when invalid", () => {
+      it("returns empty string", () => {
+        expect(term()).toEqual("");
+      });
+    });
   });
 });
