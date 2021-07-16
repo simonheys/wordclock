@@ -127,28 +127,25 @@ export const countInstancesOf = ({ source, instance } = {}) => {
   return count;
 };
 
-// + (int)countInstancesOf:(NSString *)source instance:(char)instance {
-//     int count = 0;
-//     int i = 0;
-//     while (i < [source length]) {
-//         if ([source characterAtIndex:i] == instance) {
-//             count++;
-//         }
-//         i++;
-//     }
-//     //	DDLogVerbose(@"countInstancesOf:%@ - %c = %d",source,instance,count);
-//     return count;
-// }
+export const checkBalancedBraces = (source) => {
+  if (!containsBraces(source)) {
+    return false;
+  }
+  const leftInstances = countInstancesOf({ source, instance: "(" });
+  const rightInstances = countInstancesOf({ source, instance: ")" });
+  return leftInstances === rightInstances;
+};
 
-// + (BOOL)checkBalancedBraces:(NSString *)source {
-//     return ([LogicParserStringUtil countInstancesOf:source instance:'('] == [LogicParserStringUtil countInstancesOf:source instance:')']);
-// }
+export const contains = ({ source, instance } = {}) => {
+  if (typeof source !== "string") {
+    return false;
+  }
+  return source.indexOf(instance) !== -1;
+};
 
-// + (BOOL)containsBraces:(NSString *)source {
-//     return ([LogicParserStringUtil contains:source instance:'('] || [LogicParserStringUtil contains:source instance:')']);
-// }
-
-// + (BOOL)contains:(NSString *)source instance:(char)instance {
-//     return ([LogicParserStringUtil countInstancesOf:source instance:instance] > 0);
-// }
-// @end
+export const containsBraces = (source) => {
+  return (
+    contains({ source, instance: "(" }) > 0 ||
+    contains({ source, instance: ")" }) > 0
+  );
+};

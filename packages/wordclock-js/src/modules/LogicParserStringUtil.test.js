@@ -2,6 +2,9 @@ import {
   extractStringContainedInOutermostBraces,
   extractTermsAroundPivot,
   countInstancesOf,
+  checkBalancedBraces,
+  contains,
+  containsBraces,
 } from "./LogicParserStringUtil";
 
 describe("LogicParserStringUtil", () => {
@@ -55,6 +58,27 @@ describe("LogicParserStringUtil", () => {
     describe("when invalid", () => {
       it("return 0", () => {
         expect(countInstancesOf()).toEqual(0);
+      });
+    });
+  });
+
+  describe("checkBalancedBraces", () => {
+    describe("when valid", () => {
+      describe("when braces are balanced", () => {
+        it("returns true", () => {
+          expect(checkBalancedBraces("((foo))")).toBeTruthy();
+        });
+      });
+
+      describe("when braces are unbalanced", () => {
+        it("returns false", () => {
+          expect(checkBalancedBraces("(((foo))")).toBeFalsy();
+        });
+      });
+    });
+    describe("when invalid", () => {
+      it("return false", () => {
+        expect(checkBalancedBraces()).toBeFalsy();
       });
     });
   });
