@@ -1,6 +1,7 @@
 import {
   extractStringContainedInOutermostBraces,
   extractTermsAroundPivot,
+  countInstancesOf,
 } from "./LogicParserStringUtil";
 
 describe("LogicParserStringUtil", () => {
@@ -39,6 +40,21 @@ describe("LogicParserStringUtil", () => {
     describe("when invalid", () => {
       it("throws an error", () => {
         expect(() => extractTermsAroundPivot()).toThrow();
+      });
+    });
+  });
+
+  describe("countInstancesOf", () => {
+    describe("when valid", () => {
+      it("returns the count of instance in source", () => {
+        expect(
+          countInstancesOf({ source: "123456789009000", instance: "0" })
+        ).toEqual(5);
+      });
+    });
+    describe("when invalid", () => {
+      it("return 0", () => {
+        expect(countInstancesOf()).toEqual(0);
       });
     });
   });

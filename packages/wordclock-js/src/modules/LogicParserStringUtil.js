@@ -112,6 +112,21 @@ export const extractTermsAroundPivot = ({ source, pivot }) => {
 //     return [source stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 // }
 
+export const countInstancesOf = ({ source, instance } = {}) => {
+  if (typeof source !== "string" || typeof instance !== "string") {
+    return 0;
+  }
+  let count = 0;
+  let i = 0;
+  while (i < source.length) {
+    if (source.substr(i, 1) === instance) {
+      count++;
+    }
+    i++;
+  }
+  return count;
+};
+
 // + (int)countInstancesOf:(NSString *)source instance:(char)instance {
 //     int count = 0;
 //     int i = 0;
