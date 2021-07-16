@@ -89,13 +89,16 @@ export const OPERATORS = {
 // check for var names, - and !
 export const processTerm = (source = "", props = {}) => {
   let result;
-  source = source.trim();
+  const isString = typeof source === "string";
+  if (isString) {
+    source = source.trim();
+  }
   const intValue = parseInt(source);
   const isNumeric = !isNaN(intValue);
-  if (source.startsWith("-")) {
+  if (isString && source.startsWith("-")) {
     result = processTerm(source.substr(1));
     return 0 - result;
-  } else if (source.startsWith("!")) {
+  } else if (isString && source.startsWith("!")) {
     result = processTerm(source.substr(1));
     // invert result
     return !result;
@@ -112,7 +115,7 @@ export const processTerm = (source = "", props = {}) => {
 
   // return from props
   if (props[source] !== undefined) {
-    return props[source];
+    return processTerm(props[source]);
   }
 
   throw `Unable to determine result for '${source}' - not a number and missing in supplied props`;
@@ -120,10 +123,15 @@ export const processTerm = (source = "", props = {}) => {
 
 // ____________________________________________________________________________________________________ operation
 
-export const performOperation = ({ termOne, termTwo, operator } = {}) => {
+export const performOperation = ({
+  termOne,
+  termTwo,
+  operator,
+  props,
+} = {}) => {
   // replace variable names where appropriate
-  let a = processTerm(termOne);
-  let b = processTerm(termTwo);
+  let a = processTerm(termOne, props);
+  let b = processTerm(termTwo, props);
   let result = 0;
   if (operator === "*") {
     result = a * b;
