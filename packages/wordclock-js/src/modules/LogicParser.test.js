@@ -1,4 +1,4 @@
-import { processTerm, performOperation } from "./LogicParser";
+import { term, processTerm, performOperation } from "./LogicParser";
 
 describe("LogicParser", () => {
   describe("processTerm", () => {
@@ -42,10 +42,10 @@ describe("LogicParser", () => {
         ).toEqual(5);
       });
     });
-    // describe("when invalid", () => {
-    //   it("throws an error", () => {
-    //     expect(() => processTerm()).toThrow();
-    //   });
-    // });
+    describe("when invalid", () => {
+      it("throws an error", () => {
+        expect(() => performOperation()).toThrow();
+      });
+    });
   });
 });

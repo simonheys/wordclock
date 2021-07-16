@@ -9,80 +9,84 @@ export const OPERATORS = {
 
 // ____________________________________________________________________________________________________ term
 
-// export const term = source => {
-//     const terms = [];
-//     let parsing = false;
-//     let result;
+export const term = (source, props) => {
+  const terms = [];
+  let parsing = false;
+  let result;
 
-//     //	DDLogVerbose(@"term input:<%@>",source);
+  parsing = true;
 
-//     parsing = true;
-
-//     while (parsing) {
-//         // parse brackets
-//         if (LogicParserStringUtil.containsBraces(source)) {
-//             terms = LogicParserStringUtil.extractStringContainedInOutermostBraces(source);
-//             source = `${terms[0]${term(terms[1])}${term(terms[2])}}`;
-//         } else {
-//             // parse math operators
-//             result = LogicParserStringUtil.scanForInstanceOf({source, array:OPERATORS.MATH});
-//             if (result !== -1) {
-//                 terms = LogicParserStringUtil.extractTermsAroundPivot({source, pivot:OPERATORS.MATH[result]});
-//                 source = [NSString
-// 					stringWithFormat:@"%@%@%@",
-// 					terms[0],
-// 					[self
-// 						performOperationOnTermOne:terms[1]
-// 						termTwo:terms[2]
-// 						operator:LogicParserMathOperators[result]
-// 					],
-// 					terms[3]
-// 				];
-//                 //  terms[0]+performOperation(terms[1],terms[2],MATH_OPERATORS[result])+terms[3];
-//                 // trace(terms);
-//             } else {
-//                 // parse equality operators
-//                 result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserEqualityOperators];
-//                 if (result != -1) {
-//                     terms = [LogicParserStringUtil extractTermsAroundPivot:source pivot:LogicParserEqualityOperators[result]];
-//                     source = [NSString
-// 						stringWithFormat:@"%@%@%@",
-// 						terms[0],
-// 						[self
-// 							performOperationOnTermOne:terms[1]
-// 							termTwo:terms[2]
-// 							operator:LogicParserEqualityOperators[result]
-// 						],
-// 						terms[3]
-// 					];
-//                     // source =
-//                     // terms[0]+performOperation(terms[1],terms[2],EQUALITY_OPERATORS[result])+terms[3];
-//                     // trace(terms);
-//                 } else {
-//                     // parse boolean operators
-//                     result = [LogicParserStringUtil scanForInstanceOf:source inArray:LogicParserBooleanOperators];
-//                     if (result != -1) {
-//                         terms = [LogicParserStringUtil extractTermsAroundPivot:source pivot:LogicParserBooleanOperators[result]];
-//                         source = [NSString
-// 							stringWithFormat:@"%@%@%@",
-// 							terms[0],
-// 							[self
-// 								performOperationOnTermOne:terms[1]
-// 								termTwo:terms[2]
-// 								operator:LogicParserBooleanOperators[result]
-// 							],
-// 							terms[3]
-// 						];
-//                     } else {
-//                         parsing = NO;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     //	DDLogVerbose(@"term output:<%@>",source);
-//     return source;
-// }
+  while (parsing) {
+    // parse brackets
+    if (LogicParserStringUtil.containsBraces(source)) {
+      terms =
+        LogicParserStringUtil.extractStringContainedInOutermostBraces(source);
+      const termResult1 = term(terms[1]);
+      const termResult2 = term(terms[2]);
+      source = `${terms[0]}${termResult1}${termResult2}`;
+    } else {
+      // parse math operators
+      result = LogicParserStringUtil.scanForInstanceOf({
+        source,
+        array: OPERATORS.MATH,
+      });
+      if (result !== -1) {
+        terms = LogicParserStringUtil.extractTermsAroundPivot({
+          source,
+          pivot: OPERATORS.MATH[result],
+        });
+        const operationResult = performOperation({
+          termOne: terms[1],
+          termTwo: terms[2],
+          operator: OPERATORS.MATH[result],
+          props,
+        });
+        source = `${terms[0]}${operationResult}${terms[3]}`;
+      } else {
+        // parse equality operators
+        result = LogicParserStringUtil.scanForInstanceOf({
+          source,
+          array: OPERATORS.EQUALITY,
+        });
+        if (result !== -1) {
+          terms = LogicParserStringUtil.extractTermsAroundPivot({
+            source,
+            pivot: OPERATORS.EQUALITY[result],
+          });
+          const operationResult = performOperation({
+            termOne: terms[1],
+            termTwo: terms[2],
+            operator: OPERATORS.EQUALITY[result],
+            props,
+          });
+          source = `${terms[0]}${operationResult}${terms[3]}`;
+        } else {
+          // parse boolean operators
+          result = LogicParserStringUtil.scanForInstanceOf({
+            source,
+            array: OPERATORS.BOOLEAN,
+          });
+          if (result !== -1) {
+            terms = LogicParserStringUtil.extractTermsAroundPivot({
+              source,
+              pivot: OPERATORS.BOOLEAN[result],
+            });
+            const operationResult = performOperation({
+              termOne: terms[1],
+              termTwo: terms[2],
+              operator: OPERATORS.BOOLEAN[result],
+              props,
+            });
+            source = `${terms[0]}${operationResult}${terms[3]}`;
+          } else {
+            parsing = false;
+          }
+        }
+      }
+    }
+  }
+  return source;
+};
 
 // ____________________________________________________________________________________________________ Process
 
