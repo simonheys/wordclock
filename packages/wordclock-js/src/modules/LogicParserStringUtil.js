@@ -106,7 +106,7 @@ export const extractTermsAroundPivot = ({ source, pivot }) => {
     afterRightTerm = "";
   }
 
-  return { beforeLeftTerm, leftTerm, rightTerm, afterRightTerm };
+  return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
 };
 
 export const countInstancesOf = ({ source, instance } = {}) => {

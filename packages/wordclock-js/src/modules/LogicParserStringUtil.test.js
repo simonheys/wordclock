@@ -33,7 +33,7 @@ describe("LogicParserStringUtil", () => {
   describe("extractTermsAroundPivot", () => {
     describe("when valid", () => {
       it("returns the expected terms", () => {
-        const { beforeLeftTerm, leftTerm, rightTerm, afterRightTerm } =
+        const [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm] =
           extractTermsAroundPivot({ source: "23-foo*25+6", pivot: "*" });
         expect(beforeLeftTerm).toEqual("23-");
         expect(leftTerm).toEqual("foo");
