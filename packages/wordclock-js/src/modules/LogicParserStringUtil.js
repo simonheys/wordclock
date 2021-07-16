@@ -1,11 +1,3 @@
-//
-//  LogicParserStringUtil.m
-//  WordClock macOS
-//
-//  Created by Simon Heys on 16/04/2011.
-//  Copyright (c) Studio Heys Limited. All rights reserved.
-//
-
 export const OPERATORS = "!%&*()-+=|/<>";
 
 export const extractStringContainedInOutermostBraces = (source) => {
@@ -91,32 +83,27 @@ export const extractTermsAroundPivot = ({ source, pivot }) => {
     beforeLeftTerm = leftOfPivot.substr(0, i);
   }
 
-  // rightTerm = @"";
-  // if ([rightOfPivot length] > 0) {
-  //     i = 0;
-  //     c = [rightOfPivot characterAtIndex:i];  //.substr(i,1);
-  //     //		while ( OPERATORS.indexOf(c) == -1 && i < rightOfPivot.length )
-  //     while (([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]]).location == NSNotFound && i < [rightOfPivot length]) {
-  //         i++;
-  //         if (i < [rightOfPivot length]) {
-  //             c = [rightOfPivot characterAtIndex:i];
-  //         }
-  //     }
-  //     //		rightTerm = rightOfPivot.substr(0,i);
-  //     //		afterRightTerm = rightOfPivot.substr(i);
-  // }
+  // right term
+  rightTerm = "";
+  if (rightOfPivot.length > 0) {
+    i = 0;
+    c = rightOfPivot.substr(i, 1);
 
-  // if (i < [rightOfPivot length]) {
-  //     rightTerm = [rightOfPivot substringToIndex:i];
-  //     afterRightTerm = [rightOfPivot substringFromIndex:i];
-  // } else {
-  //     rightTerm = rightOfPivot;
-  //     afterRightTerm = @"";
-  // }
+    while (i < rightOfPivot.length && OPERATORS.indexOf(c) === -1) {
+      i++;
+      if (i < rightOfPivot.length) {
+        c = rightOfPivot.substr(i, 1);
+      }
+    }
+  }
 
-  //	DDLogVerbose(@"rightTerm:%@",rightTerm);
-  //	DDLogVerbose(@"afterRightTerm:%@",afterRightTerm);
-  // return [beforeLeftTerm,leftTerm,rightTerm,afterRightTerm];
+  if (i < rightOfPivot.length) {
+    rightTerm = rightOfPivot.substr(0, i);
+    afterRightTerm = rightOfPivot.substr(i);
+  } else {
+    rightTerm = rightOfPivot;
+    afterRightTerm = "";
+  }
 
   return { beforeLeftTerm, leftTerm, rightTerm, afterRightTerm };
 };
