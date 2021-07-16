@@ -5,6 +5,7 @@ import {
   checkBalancedBraces,
   contains,
   containsBraces,
+  scanForInstanceOf,
 } from "./LogicParserStringUtil";
 
 describe("LogicParserStringUtil", () => {
@@ -69,7 +70,6 @@ describe("LogicParserStringUtil", () => {
           expect(checkBalancedBraces("((foo))")).toBeTruthy();
         });
       });
-
       describe("when braces are unbalanced", () => {
         it("returns false", () => {
           expect(checkBalancedBraces("(((foo))")).toBeFalsy();
@@ -79,6 +79,28 @@ describe("LogicParserStringUtil", () => {
     describe("when invalid", () => {
       it("return false", () => {
         expect(checkBalancedBraces()).toBeFalsy();
+      });
+    });
+  });
+
+  describe("scanForInstanceOf", () => {
+    describe("when array contains instance", () => {
+      it("returns the index of the instance in the array", () => {
+        expect(
+          scanForInstanceOf({ source: "foo=bar", array: ["*", "="] })
+        ).toEqual(1);
+      });
+    });
+    describe("when array does not contains instance", () => {
+      it("returns -1", () => {
+        expect(
+          scanForInstanceOf({ source: "foo=bar", array: ["/", "*"] })
+        ).toEqual(-1);
+      });
+    });
+    describe("when invalid", () => {
+      it("return -1", () => {
+        expect(scanForInstanceOf()).toEqual(-1);
       });
     });
   });

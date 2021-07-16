@@ -39,16 +39,17 @@ export const extractStringContainedInOutermostBraces = (source) => {
   return { leftOfBraces, insideBraces, rightOfBraces };
 };
 
-// + (int)scanForInstanceOf:(NSString *)source inArray:(NSArray *)arrayOfStrings {
-//     //	DDLogVerbose(@"scanForInstanceOf:%@",source);
-//     //	DDLogVerbose(@"inArray:%@",arrayOfStrings);
-//     for (int i = 0; i < [arrayOfStrings count]; i++) {
-//         if ([source rangeOfString:arrayOfStrings[i]].location != NSNotFound) {
-//             return i;
-//         }
-//     }
-//     return -1;
-// }
+export const scanForInstanceOf = ({ source, array } = {}) => {
+  if (typeof source !== "string" || !Array.isArray(array)) {
+    return -1;
+  }
+  for (let i = 0; i < array.length; i++) {
+    if (source.indexOf(array[i]) !== -1) {
+      return i;
+    }
+  }
+  return -1;
+};
 
 export const extractTermsAroundPivot = ({ source, pivot }) => {
   let leftTerm;
@@ -107,10 +108,6 @@ export const extractTermsAroundPivot = ({ source, pivot }) => {
 
   return { beforeLeftTerm, leftTerm, rightTerm, afterRightTerm };
 };
-
-// + (NSString *)trim:(NSString *)source {
-//     return [source stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-// }
 
 export const countInstancesOf = ({ source, instance } = {}) => {
   if (typeof source !== "string" || typeof instance !== "string") {
