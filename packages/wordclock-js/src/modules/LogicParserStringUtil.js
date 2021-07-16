@@ -58,83 +58,68 @@ export const extractStringContainedInOutermostBraces = (source) => {
 //     return -1;
 // }
 
-// + (NSArray *)extractTermsAroundPivot:(NSString *)source pivot:(NSString *)pivot {
-//     NSString *leftTerm;
-//     NSString *rightTerm;
-//     NSString *leftOfPivot;
-//     NSString *rightOfPivot;
-//     NSString *beforeLeftTerm;
-//     NSString *afterRightTerm;
-//     char c;
-//     NSInteger i;
+export const extractTermsAroundPivot = ({ source, pivot }) => {
+  let leftTerm;
+  let rightTerm;
+  let leftOfPivot;
+  let rightOfPivot;
+  let beforeLeftTerm;
+  let afterRightTerm;
+  let c;
+  let i;
 
-//     // trace("---");
-//     // trace("extractTermsAroundPivot:"+source);
-//     // trace("pivot:"+pivot);
-//     // leftOfPivot = source.substr(0,source.indexOf(pivot));
-//     leftOfPivot = [source substringToIndex:[source rangeOfString:pivot].location];
-//     // rightOfPivot = source.substr(source.indexOf(pivot)+pivot.length);
-//     rightOfPivot = [source substringFromIndex:[source rangeOfString:pivot].location + [pivot length]];
-//     //	DDLogVerbose(@"leftOfPivot:%@",leftOfPivot);
-//     //	DDLogVerbose(@"rightOfPivot:%@",rightOfPivot);
+  const pivotLocation = source.indexOf(pivot);
 
-//     // left term
-//     leftTerm = @"";
-//     i = [leftOfPivot length] - 1;
-//     // c = leftOfPivot.substr(i,1);
-//     c = [leftOfPivot characterAtIndex:i];
+  leftOfPivot = source.substr(0, pivotLocation);
+  rightOfPivot = source.substr(pivotLocation + pivot.length);
 
-//     while (([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]]).location == NSNotFound && i > 0) {
-//         i--;
-//         c = [leftOfPivot characterAtIndex:i];
-//     }
+  // left term
+  leftTerm = "";
+  i = leftOfPivot.length - 1;
+  c = leftOfPivot.substr(i, 1);
 
-//     if ([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]].location != NSNotFound) {
-//         //		if ( OPERATORS.indexOf(c) != -1 ) {
-//         leftTerm = [leftOfPivot substringFromIndex:i + 1];  // .substr(i+1);
-//         // beforeLeftTerm = leftOfPivot.substr(0,i+1);
-//         beforeLeftTerm = [leftOfPivot substringToIndex:i + 1];
-//     } else {
-//         //		leftTerm = leftOfPivot.substr(i);
-//         leftTerm = [leftOfPivot substringFromIndex:i];
-//         //		beforeLeftTerm = leftOfPivot.substr(0,i);
-//         beforeLeftTerm = [leftOfPivot substringToIndex:i];
-//     }
-//     //	DDLogVerbose(@"leftTerm:%@",leftTerm);
-//     //	DDLogVerbose(@"beforeLeftTerm:%@",beforeLeftTerm);
+  while (i > 0 && OPERATORS.indexOf(c) === -1) {
+    i--;
+    c = leftOfPivot.substr(i, 1);
+  }
 
-//     //	DDLogVerbose(@"rightOfPivot length:%d",[rightOfPivot length]);
-//     //	DDLogVerbose(@"rightOfPivot:%@",rightOfPivot);
-//     // right term
-//     rightTerm = @"";
-//     if ([rightOfPivot length] > 0) {
-//         i = 0;
-//         c = [rightOfPivot characterAtIndex:i];  //.substr(i,1);
-//         //		while ( OPERATORS.indexOf(c) == -1 && i < rightOfPivot.length )
-//         while (([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]]).location == NSNotFound && i < [rightOfPivot length]) {
-//             i++;
-//             if (i < [rightOfPivot length]) {
-//                 c = [rightOfPivot characterAtIndex:i];
-//             }
-//         }
-//         //		rightTerm = rightOfPivot.substr(0,i);
-//         //		afterRightTerm = rightOfPivot.substr(i);
-//     }
+  if (OPERATORS.indexOf(c) !== -1) {
+    leftTerm = leftOfPivot.substr(i + 1);
+    beforeLeftTerm = leftOfPivot.substr(0, i + 1);
+  } else {
+    leftTerm = leftOfPivot.substr(i);
+    beforeLeftTerm = leftOfPivot.substr(0, i);
+  }
 
-//     if (i < [rightOfPivot length]) {
-//         rightTerm = [rightOfPivot substringToIndex:i];
-//         afterRightTerm = [rightOfPivot substringFromIndex:i];
-//     } else {
-//         rightTerm = rightOfPivot;
-//         afterRightTerm = @"";
-//     }
+  // rightTerm = @"";
+  // if ([rightOfPivot length] > 0) {
+  //     i = 0;
+  //     c = [rightOfPivot characterAtIndex:i];  //.substr(i,1);
+  //     //		while ( OPERATORS.indexOf(c) == -1 && i < rightOfPivot.length )
+  //     while (([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]]).location == NSNotFound && i < [rightOfPivot length]) {
+  //         i++;
+  //         if (i < [rightOfPivot length]) {
+  //             c = [rightOfPivot characterAtIndex:i];
+  //         }
+  //     }
+  //     //		rightTerm = rightOfPivot.substr(0,i);
+  //     //		afterRightTerm = rightOfPivot.substr(i);
+  // }
 
-//     //	DDLogVerbose(@"rightTerm:%@",rightTerm);
-//     //	DDLogVerbose(@"afterRightTerm:%@",afterRightTerm);
-//     // return [beforeLeftTerm,leftTerm,rightTerm,afterRightTerm];
+  // if (i < [rightOfPivot length]) {
+  //     rightTerm = [rightOfPivot substringToIndex:i];
+  //     afterRightTerm = [rightOfPivot substringFromIndex:i];
+  // } else {
+  //     rightTerm = rightOfPivot;
+  //     afterRightTerm = @"";
+  // }
 
-//     return @[ beforeLeftTerm, leftTerm, rightTerm, afterRightTerm ];
-// }
+  //	DDLogVerbose(@"rightTerm:%@",rightTerm);
+  //	DDLogVerbose(@"afterRightTerm:%@",afterRightTerm);
+  // return [beforeLeftTerm,leftTerm,rightTerm,afterRightTerm];
+
+  return { beforeLeftTerm, leftTerm, rightTerm, afterRightTerm };
+};
 
 // + (NSString *)trim:(NSString *)source {
 //     return [source stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
