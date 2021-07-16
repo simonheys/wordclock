@@ -1,5 +1,9 @@
 export const OPERATORS = "!%&*()-+=|/<>";
 
+export const isNumericString = (string) => {
+  return /^-?\d+$/.test(string);
+};
+
 export const extractStringContainedInOutermostBraces = (source) => {
   if (typeof source !== "string") {
     return "";
@@ -36,7 +40,7 @@ export const extractStringContainedInOutermostBraces = (source) => {
   }
 
   insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
-  return { leftOfBraces, insideBraces, rightOfBraces };
+  return [leftOfBraces, insideBraces, rightOfBraces];
 };
 
 export const scanForInstanceOf = ({ source, array } = {}) => {

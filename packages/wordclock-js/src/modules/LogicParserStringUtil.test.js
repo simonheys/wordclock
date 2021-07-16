@@ -1,4 +1,5 @@
 import {
+  isNumericString,
   extractStringContainedInOutermostBraces,
   extractTermsAroundPivot,
   countInstancesOf,
@@ -9,18 +10,33 @@ import {
 } from "./LogicParserStringUtil";
 
 describe("LogicParserStringUtil", () => {
+  describe("isNumericString", () => {
+    describe("when valid", () => {
+      describe("when string contains only digits", () => {
+        it("returns true", () => {
+          expect(isNumericString("123")).toBeTruthy();
+        });
+      });
+      describe("when string contains characters other than digits", () => {
+        it("returns false", () => {
+          expect(isNumericString("24/3")).toBeFalsy();
+        });
+      });
+    });
+  });
+
   describe("extractStringContainedInOutermostBraces", () => {
     describe("when valid", () => {
       it("returns the string contained in outermost braces", () => {
         expect(
-          extractStringContainedInOutermostBraces("foo(((bar)))").insideBraces
+          extractStringContainedInOutermostBraces("foo(((bar)))")[1]
         ).toEqual("((bar))");
         expect(
-          extractStringContainedInOutermostBraces("foo((bar))foo").insideBraces
+          extractStringContainedInOutermostBraces("foo((bar))foo")[1]
         ).toEqual("(bar)");
-        expect(
-          extractStringContainedInOutermostBraces("(bar)foo").insideBraces
-        ).toEqual("bar");
+        expect(extractStringContainedInOutermostBraces("(bar)foo")[1]).toEqual(
+          "bar"
+        );
       });
     });
     describe("when invalid", () => {

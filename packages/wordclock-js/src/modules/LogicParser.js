@@ -10,12 +10,12 @@ export const OPERATORS = {
 // ____________________________________________________________________________________________________ term
 
 export const term = (source, props) => {
-  const terms = [];
+  let terms;
   let parsing = false;
   let result;
 
   parsing = true;
-
+  console.log("term", source);
   while (parsing) {
     // parse brackets
     if (LogicParserStringUtil.containsBraces(source)) {
@@ -24,6 +24,7 @@ export const term = (source, props) => {
       const termResult1 = term(terms[1]);
       const termResult2 = term(terms[2]);
       source = `${terms[0]}${termResult1}${termResult2}`;
+      console.log("source", source);
     } else {
       // parse math operators
       result = LogicParserStringUtil.scanForInstanceOf({
@@ -97,8 +98,7 @@ export const processTerm = (source = "", props = {}) => {
   if (isString) {
     source = source.trim();
   }
-  const intValue = parseInt(source);
-  const isNumeric = !isNaN(intValue);
+  const isNumeric = LogicParserStringUtil.isNumericString(source);
   if (isString && source.startsWith("-")) {
     result = processTerm(source.substr(1));
     return 0 - result;
@@ -107,7 +107,7 @@ export const processTerm = (source = "", props = {}) => {
     // invert result
     return !result;
   } else if (isNumeric) {
-    return intValue;
+    return parseInt(source);
   } else if (source === "else") {
     // 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
     return true;
@@ -122,7 +122,8 @@ export const processTerm = (source = "", props = {}) => {
     return processTerm(props[source]);
   }
 
-  throw `Unable to determine result for '${source}' - not a number and missing in supplied props`;
+  return source;
+  //   throw `Unable to determine result for '${source}' - not a number and missing in supplied props`;
 };
 
 // ____________________________________________________________________________________________________ operation

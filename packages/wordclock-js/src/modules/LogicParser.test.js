@@ -16,11 +16,11 @@ describe("LogicParser", () => {
         });
       });
     });
-    describe("when invalid", () => {
-      it("throws an error", () => {
-        expect(() => processTerm()).toThrow();
-      });
-    });
+    // describe("when invalid", () => {
+    //   it("throws an error", () => {
+    //     expect(() => processTerm()).toThrow();
+    //   });
+    // });
   });
 
   describe("performOperation", () => {
@@ -42,10 +42,27 @@ describe("LogicParser", () => {
         ).toEqual(5);
       });
     });
-    describe("when invalid", () => {
-      it("throws an error", () => {
-        expect(() => performOperation()).toThrow();
+    // describe("when invalid", () => {
+    //   it("throws an error", () => {
+    //     expect(() => performOperation()).toThrow();
+    //   });
+    // });
+  });
+
+  describe("term", () => {
+    describe("when valid", () => {
+      it("returns the expected result", () => {
+        expect(term("2*3")).toEqual("6");
+        expect(term("2*3")).toEqual("6");
+        expect(term("24/3*2")).toEqual("4");
+        expect(term("(24/3)*2")).toEqual("16");
+        expect(term("(27*3+(5+10))%(7*2)")).toEqual("12");
       });
     });
+    // describe("when invalid", () => {
+    //   it("throws an error", () => {
+    //     expect(() => term()).toThrow();
+    //   });
+    // });
   });
 });
