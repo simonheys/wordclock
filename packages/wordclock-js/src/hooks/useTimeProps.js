@@ -30,7 +30,7 @@ export const getTimeProps = (dateInstance) => {
   };
 };
 
-export const useTimeProps = () => {
+const useTimeProps = () => {
   const [timeProps, setTimeProps] = React.useState(getTimeProps());
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -40,3 +40,5 @@ export const useTimeProps = () => {
   }, []);
   return timeProps;
 };
+
+export default useTimeProps;

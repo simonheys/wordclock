@@ -1,7 +1,7 @@
 import * as React from "react";
-import ResizeObserver from "resize-observer-polyfill";
 
-import { useTimeProps } from "../hooks/useTimeProps";
+import useTimeProps from "../hooks/useTimeProps";
+import useAnimationFrame from "../hooks/useAnimationFrame";
 import * as WordsFileParser from "../modules/WordsFileParser";
 import * as LogicParser from "../modules/LogicParser";
 
@@ -32,37 +32,31 @@ const WordClock = () => {
   const timeProps = useTimeProps();
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
-  const [fontSize, setFontSize] = React.useState(32);
+  const [fontSize, setFontSize] = React.useState(12);
+
   const loadJson = async () => {
     const parsed = await WordsFileParser.parseJsonUrl("/English.json");
     setLogic(parsed.logic);
     setLabel(parsed.label);
   };
+
   React.useEffect(() => {
     loadJson();
   }, []);
-  const resizeObserver = React.useRef(
-    new ResizeObserver((entries) => {
-      console.log("entries", entries);
-    })
-  );
 
-  const resizedContainerRef = React.useCallback((container) => {
-    if (container !== null) {
-      resizeObserver.current.observe(container);
-    } else {
-      if (resizeObserver.current) {
-        resizeObserver.current.disconnect();
+  const canvasRef = React.useRef();
+  const elapsedMilliseconds = useAnimationFrame();
+
+  React.useEffect(() => {
+    if (canvasRef.current) {
+      const boundingClientRect = canvasRef.current.getBoundingClientRect();
+      if (boundingClientRect.height < 800) {
+        setFontSize(fontSize + 1);
       }
     }
-  }, []);
-
+  }, [elapsedMilliseconds, fontSize]);
   return (
-    <div
-      ref={resizedContainerRef}
-      className={styles.container}
-      style={{ fontSize }}
-    >
+    <div ref={canvasRef} className={styles.container} style={{ fontSize }}>
       <WordClockInner logic={logic} label={label} timeProps={timeProps} />
     </div>
   );
