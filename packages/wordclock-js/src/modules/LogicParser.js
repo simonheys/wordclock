@@ -87,17 +87,20 @@ export const OPERATORS = {
 // ____________________________________________________________________________________________________ Process
 
 // check for var names, - and !
-export const processTerm = (source, props = {}) => {
+export const processTerm = (source = "", props = {}) => {
   let result;
   source = source.trim();
-  if (source.length == 1) {
-    return parseInt(source);
-  } else if (source.startsWith("-")) {
-    return 0 - processTerm(source.substr(1));
+  const intValue = parseInt(source);
+  const isNumeric = !isNaN(intValue);
+  if (source.startsWith("-")) {
+    result = processTerm(source.substr(1));
+    return 0 - result;
   } else if (source.startsWith("!")) {
     result = processTerm(source.substr(1));
     // invert result
     return !result;
+  } else if (isNumeric) {
+    return intValue;
   } else if (source === "else") {
     // 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
     return true;
@@ -110,11 +113,6 @@ export const processTerm = (source, props = {}) => {
   // return from props
   if (props[source] !== undefined) {
     return props[source];
-  }
-
-  result = parseInt(source);
-  if (!isNaN(result)) {
-    return result;
   }
 
   throw `Unable to determine result for '${source}' - not a number and missing in supplied props`;
