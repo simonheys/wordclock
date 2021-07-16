@@ -8,7 +8,11 @@
 
 export const OPERATORS = "!%&*()-+=|/<>";
 
-const extractStringContainedInOutermostBraces = (source) => {
+export const extractStringContainedInOutermostBraces = (source) => {
+  if (typeof source !== "string") {
+    return "";
+  }
+
   let leftOfBraces;
   let rightOfBraces;
   let insideBraces;
@@ -24,7 +28,7 @@ const extractStringContainedInOutermostBraces = (source) => {
   count = 1;
 
   while (count > 0 && i < source.length) {
-    c = sourse.substr(i, 1);
+    c = source.substr(i, 1);
     if (c == "(") {
       count++;
     }
