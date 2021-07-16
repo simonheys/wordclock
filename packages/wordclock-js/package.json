@@ -1,0 +1,13 @@
+{
+  "name": "wordclock-js",
+  "version": "1.0.0",
+  "author": "Simon Heys <si@simonheys.com>",
+  "license": "MIT",
+  "scripts":{
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:debug": "echo 'Open chrome://inspect and inspect the address shown below' && node --inspect-brk node_modules/.bin/jest"
+  },
+  "devDependencies": {
+  }
+}
