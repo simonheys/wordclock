@@ -36,7 +36,7 @@ const FIT = {
 };
 
 const targetHeight = 800;
-const targetHeightTolerance = 4;
+const minimumFontSizeAdjustment = 0.1;
 
 const WordClock = () => {
   const timeProps = useTimeProps();
@@ -68,15 +68,12 @@ const WordClock = () => {
       const boundingClientRect = canvasRef.current.getBoundingClientRect();
       const height = boundingClientRect.height;
       if (height > 0) {
-        const tolerance = Math.abs(height - targetHeight);
-        const isWithinTolerance = tolerance <= targetHeightTolerance;
         const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
         const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
         // console.log(JSON.stringify({ height, sizeState }, null, 2));
         // favour smaller but within tolerance
-        if (boundingClientRect.height <= targetHeight && isWithinTolerance) {
+        if (sizeState.previousFit === FIT.OK) {
           // currently FIT.OK - do nothing
-          debugger;
         } else if (boundingClientRect.height < targetHeight) {
           // currently FIT.SMALL
           // increase size
@@ -89,8 +86,10 @@ const WordClock = () => {
           });
         } else {
           // currently FIT.LARGE
-          if (sizeState.previousFit === FIT.SMALL && fontSizeDifference < 0.1) {
-            debugger;
+          if (
+            sizeState.previousFit === FIT.SMALL &&
+            fontSizeDifference <= minimumFontSizeAdjustment
+          ) {
             // use previous size
             setSizeState({
               fontSize: sizeState.previousFontSize,
