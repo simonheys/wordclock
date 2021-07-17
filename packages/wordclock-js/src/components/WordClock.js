@@ -10,12 +10,21 @@ import styles from "./WordClock.module.scss";
 const WordClockInner = ({ logic, label, timeProps, fontSize }) => {
   return label.map((labelGroup, labelIndex) => {
     const logicGroup = logic[labelIndex];
+    let highlighted;
+    let hasPreviousHighlight = false;
+    // only allow a single highlight per group
     return labelGroup.map((label, labelGroupIndex) => {
+      highlighted = false;
+      if (!hasPreviousHighlight) {
+        const logic = logicGroup[labelGroupIndex];
+        highlighted = LogicParser.term(logic, timeProps);
+        if (highlighted) {
+          hasPreviousHighlight = true;
+        }
+      }
       if (!label.length) {
         return null;
       }
-      const logic = logicGroup[labelGroupIndex];
-      const highlighted = LogicParser.term(logic, timeProps);
       return (
         <div
           className={highlighted ? styles.labelHighlighted : styles.label}
@@ -48,11 +57,13 @@ const WordClock = () => {
     fontSizeLow: 1,
     fontSizeHigh: 256,
     previousFit: FIT.UNKNOWN,
-    previousHeight: 0,
+    previousWidth: 0,
   });
 
   const loadJson = async () => {
-    const parsed = await WordsFileParser.parseJsonUrl("/English.json");
+    const parsed = await WordsFileParser.parseJsonUrl(
+      "/English_simple_fragmented.json"
+    );
     setLogic(parsed.logic);
     setLabel(parsed.label);
   };
@@ -67,12 +78,12 @@ const WordClock = () => {
   React.useEffect(() => {
     if (canvasRef.current) {
       const boundingClientRect = canvasRef.current.getBoundingClientRect();
-      const height = boundingClientRect.height;
+      const { width, height } = boundingClientRect;
       if (height > 0) {
         if (
           false &&
-          sizeState.previousHeight !== 0 &&
-          height !== sizeState.previousHeight
+          sizeState.previousWidth !== 0 &&
+          width !== sizeState.previousWidth
         ) {
           // reset adjustment
           setSizeState({
@@ -81,7 +92,7 @@ const WordClock = () => {
             fontSizeLow: 1,
             fontSizeHigh: 256,
             previousFit: FIT.UNKNOWN,
-            previousHeight: height,
+            previousWidth: width,
           });
         } else {
           const nextFontSize =
@@ -100,7 +111,7 @@ const WordClock = () => {
               fontSizeLow: sizeState.fontSize,
               fontSizeHigh: sizeState.fontSizeHigh,
               previousFit: FIT.SMALL,
-              previousHeight: height,
+              previousWidth: width,
             });
           } else {
             // currently FIT.LARGE
@@ -115,7 +126,7 @@ const WordClock = () => {
                 fontSizeLow: sizeState.previousFontSize,
                 fontSizeHigh: sizeState.previousFontSize,
                 previousFit: FIT.OK,
-                previousHeight: height,
+                previousWidth: width,
               });
             } else {
               // decrease size
@@ -125,7 +136,7 @@ const WordClock = () => {
                 fontSizeLow: sizeState.fontSizeLow,
                 fontSizeHigh: sizeState.fontSize,
                 previousFit: FIT.LARGE,
-                previousHeight: height,
+                previousWidth: width,
               });
             }
           }

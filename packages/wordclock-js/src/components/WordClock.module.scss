@@ -6,11 +6,13 @@
 .label {
   display: flex;
   margin-right: 0.25em;
-  color: black;
+  color: #999;
+  font-weight: bold;
+  line-height: 1;
   transition: color 0.15s;
 }
 
 .labelHighlighted {
   composes: label;
-  color: red;
+  color: #cc0000;
 }
