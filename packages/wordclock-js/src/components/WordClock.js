@@ -48,6 +48,7 @@ const WordClock = () => {
     fontSizeLow: 1,
     fontSizeHigh: 256,
     previousFit: FIT.UNKNOWN,
+    previousHeight: 0,
   });
 
   const loadJson = async () => {
@@ -68,45 +69,65 @@ const WordClock = () => {
       const boundingClientRect = canvasRef.current.getBoundingClientRect();
       const height = boundingClientRect.height;
       if (height > 0) {
-        const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-        const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
-        // console.log(JSON.stringify({ height, sizeState }, null, 2));
-        // favour smaller but within tolerance
-        if (sizeState.previousFit === FIT.OK) {
-          // currently FIT.OK - do nothing
-        } else if (boundingClientRect.height < targetHeight) {
-          // currently FIT.SMALL
-          // increase size
+        if (
+          false &&
+          sizeState.previousHeight !== 0 &&
+          height !== sizeState.previousHeight
+        ) {
+          // reset adjustment
           setSizeState({
-            fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
-            previousFontSize: sizeState.fontSize,
-            fontSizeLow: sizeState.fontSize,
-            fontSizeHigh: sizeState.fontSizeHigh,
-            previousFit: FIT.SMALL,
+            fontSize: 12,
+            previousFontSize: 12,
+            fontSizeLow: 1,
+            fontSizeHigh: 256,
+            previousFit: FIT.UNKNOWN,
+            previousHeight: height,
           });
         } else {
-          // currently FIT.LARGE
-          if (
-            sizeState.previousFit === FIT.SMALL &&
-            fontSizeDifference <= minimumFontSizeAdjustment
-          ) {
-            // use previous size
+          const nextFontSize =
+            0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+          const fontSizeDifference = Math.abs(
+            sizeState.fontSize - nextFontSize
+          );
+          if (sizeState.previousFit === FIT.OK) {
+            // currently FIT.OK - do nothing
+          } else if (height < targetHeight) {
+            // currently FIT.SMALL
+            // increase size
             setSizeState({
-              fontSize: sizeState.previousFontSize,
-              previousFontSize: sizeState.previousFontSize,
-              fontSizeLow: sizeState.previousFontSize,
-              fontSizeHigh: sizeState.previousFontSize,
-              previousFit: FIT.OK,
+              fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+              previousFontSize: sizeState.fontSize,
+              fontSizeLow: sizeState.fontSize,
+              fontSizeHigh: sizeState.fontSizeHigh,
+              previousFit: FIT.SMALL,
+              previousHeight: height,
             });
           } else {
-            // decrease size
-            setSizeState({
-              fontSize: nextFontSize,
-              previousFontSize: sizeState.fontSize,
-              fontSizeLow: sizeState.fontSizeLow,
-              fontSizeHigh: sizeState.fontSize,
-              previousFit: FIT.LARGE,
-            });
+            // currently FIT.LARGE
+            if (
+              sizeState.previousFit === FIT.SMALL &&
+              fontSizeDifference <= minimumFontSizeAdjustment
+            ) {
+              // use previous size
+              setSizeState({
+                fontSize: sizeState.previousFontSize,
+                previousFontSize: sizeState.previousFontSize,
+                fontSizeLow: sizeState.previousFontSize,
+                fontSizeHigh: sizeState.previousFontSize,
+                previousFit: FIT.OK,
+                previousHeight: height,
+              });
+            } else {
+              // decrease size
+              setSizeState({
+                fontSize: nextFontSize,
+                previousFontSize: sizeState.fontSize,
+                fontSizeLow: sizeState.fontSizeLow,
+                fontSizeHigh: sizeState.fontSize,
+                previousFit: FIT.LARGE,
+                previousHeight: height,
+              });
+            }
           }
         }
       }
