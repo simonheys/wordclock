@@ -28,11 +28,27 @@ const WordClockInner = ({ logic, label, timeProps, fontSize }) => {
   });
 };
 
+const FIT = {
+  UNKNOWN: "UNKNOWN",
+  SMALL: "SMALL",
+  OK: "OK",
+  LARGE: "LARGE",
+};
+
+const targetHeight = 800;
+const targetHeightTolerance = 4;
+
 const WordClock = () => {
   const timeProps = useTimeProps();
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
-  const [fontSize, setFontSize] = React.useState(12);
+  const [sizeState, setSizeState] = React.useState({
+    fontSize: 12,
+    previousFontSize: 12,
+    fontSizeLow: 1,
+    fontSizeHigh: 256,
+    previousFit: FIT.UNKNOWN,
+  });
 
   const loadJson = async () => {
     const parsed = await WordsFileParser.parseJsonUrl("/English.json");
@@ -50,13 +66,65 @@ const WordClock = () => {
   React.useEffect(() => {
     if (canvasRef.current) {
       const boundingClientRect = canvasRef.current.getBoundingClientRect();
-      if (boundingClientRect.height < 800) {
-        setFontSize(fontSize + 1);
+      const height = boundingClientRect.height;
+      if (height > 0) {
+        const tolerance = Math.abs(height - targetHeight);
+        const isWithinTolerance = tolerance <= targetHeightTolerance;
+        const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+        const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
+        // console.log(JSON.stringify({ height, sizeState }, null, 2));
+        // favour smaller but within tolerance
+        if (boundingClientRect.height <= targetHeight && isWithinTolerance) {
+          // currently FIT.OK - do nothing
+          debugger;
+        } else if (boundingClientRect.height < targetHeight) {
+          // currently FIT.SMALL
+          // increase size
+          setSizeState({
+            fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+            previousFontSize: sizeState.fontSize,
+            fontSizeLow: sizeState.fontSize,
+            fontSizeHigh: sizeState.fontSizeHigh,
+            previousFit: FIT.SMALL,
+          });
+        } else {
+          // currently FIT.LARGE
+          if (sizeState.previousFit === FIT.SMALL && fontSizeDifference < 0.1) {
+            debugger;
+            // use previous size
+            setSizeState({
+              fontSize: sizeState.previousFontSize,
+              previousFontSize: sizeState.previousFontSize,
+              fontSizeLow: sizeState.previousFontSize,
+              fontSizeHigh: sizeState.previousFontSize,
+              previousFit: FIT.OK,
+            });
+          } else {
+            // decrease size
+            setSizeState({
+              fontSize: nextFontSize,
+              previousFontSize: sizeState.fontSize,
+              fontSizeLow: sizeState.fontSizeLow,
+              fontSizeHigh: sizeState.fontSize,
+              previousFit: FIT.LARGE,
+            });
+          }
+        }
       }
+
+      // if (boundingClientRect.height < 800) {
+      //   const nextFontSize =
+      //   setFontSize(fontSize + 1);
+      // }
     }
-  }, [elapsedMilliseconds, fontSize]);
+  }, [elapsedMilliseconds, sizeState]);
+  const style = React.useMemo(() => {
+    return {
+      fontSize: sizeState.fontSize,
+    };
+  }, [sizeState]);
   return (
-    <div ref={canvasRef} className={styles.container} style={{ fontSize }}>
+    <div ref={canvasRef} className={styles.container} style={style}>
       <WordClockInner logic={logic} label={label} timeProps={timeProps} />
     </div>
   );
