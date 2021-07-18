@@ -45,7 +45,7 @@ const FIT = {
   LARGE: "LARGE",
 };
 
-const minimumFontSizeAdjustment = 0.01;
+const minimumFontSizeAdjustment = 0.1;
 
 const WordClock = () => {
   const containerRef = React.useRef();
@@ -94,7 +94,7 @@ const WordClock = () => {
       ro?.current?.observe(containerRef.current);
     }
     return () => ro.current.disconnect();
-  }, [setTargetHeight]);
+  }, [setTargetHeight, setSizeState, sizeState]);
 
   const setContainerRef = React.useCallback((ref) => {
     if (containerRef.current) {
