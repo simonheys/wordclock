@@ -1,7 +1,13 @@
 import WordClock from "./components/WordClock";
 
-function App() {
-  return <WordClock />;
-}
+import styles from "./App.module.scss";
+
+const App = () => {
+  return (
+    <div className={styles.container}>
+      <WordClock />
+    </div>
+  );
+};
 
 export default App;

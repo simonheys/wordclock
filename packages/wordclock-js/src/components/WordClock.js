@@ -44,11 +44,15 @@ const FIT = {
   LARGE: "LARGE",
 };
 
-const targetHeight = 800;
-const minimumFontSizeAdjustment = 0.1;
+// const targetHeight = 800;
+const minimumFontSizeAdjustment = 0.01;
 
 const WordClock = () => {
   const timeProps = useTimeProps();
+  const containerRef = React.useRef();
+  const innerRef = React.useRef();
+  const elapsedMilliseconds = useAnimationFrame();
+
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
   const [sizeState, setSizeState] = React.useState({
@@ -72,12 +76,10 @@ const WordClock = () => {
     loadJson();
   }, []);
 
-  const canvasRef = React.useRef();
-  const elapsedMilliseconds = useAnimationFrame();
-
   React.useEffect(() => {
-    if (canvasRef.current) {
-      const boundingClientRect = canvasRef.current.getBoundingClientRect();
+    if (containerRef.current && innerRef.current) {
+      const targetHeight = containerRef.current.getBoundingClientRect().height;
+      const boundingClientRect = innerRef.current.getBoundingClientRect();
       const { width, height } = boundingClientRect;
       if (height > 0) {
         if (
@@ -142,11 +144,6 @@ const WordClock = () => {
           }
         }
       }
-
-      // if (boundingClientRect.height < 800) {
-      //   const nextFontSize =
-      //   setFontSize(fontSize + 1);
-      // }
     }
   }, [elapsedMilliseconds, sizeState]);
   const style = React.useMemo(() => {
@@ -155,8 +152,10 @@ const WordClock = () => {
     };
   }, [sizeState]);
   return (
-    <div ref={canvasRef} className={styles.container} style={style}>
-      <WordClockInner logic={logic} label={label} timeProps={timeProps} />
+    <div ref={containerRef} className={styles.container}>
+      <div ref={innerRef} className={styles.inner} style={style}>
+        <WordClockInner logic={logic} label={label} timeProps={timeProps} />
+      </div>
     </div>
   );
 };
