@@ -1,4 +1,5 @@
 import * as React from "react";
+import ResizeObserver from "resize-observer-polyfill";
 
 import useTimeProps from "../hooks/useTimeProps";
 import useAnimationFrame from "../hooks/useAnimationFrame";
@@ -48,10 +49,9 @@ const FIT = {
 const minimumFontSizeAdjustment = 0.01;
 
 const WordClock = () => {
-  const timeProps = useTimeProps();
   const containerRef = React.useRef();
   const innerRef = React.useRef();
-  const elapsedMilliseconds = useAnimationFrame();
+  const ro = React.useRef();
 
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
@@ -64,6 +64,9 @@ const WordClock = () => {
     previousWidth: 0,
   });
 
+  const elapsedMilliseconds = useAnimationFrame();
+  const timeProps = useTimeProps();
+
   const loadJson = async () => {
     const parsed = await WordsFileParser.parseJsonUrl(
       "/English_simple_fragmented.json"
@@ -73,7 +76,28 @@ const WordClock = () => {
   };
 
   React.useEffect(() => {
-    loadJson();
+    ro.current = new ResizeObserver((entries) => {
+      const currentRefEntry = entries.find(
+        ({ target }) => target === containerRef.current
+      );
+      if (currentRefEntry) {
+        console.log({ currentRefEntry });
+      }
+    });
+    if (containerRef.current) {
+      ro?.current?.observe(containerRef.current);
+    }
+    return () => ro.current.disconnect();
+  }, []);
+
+  const setContainerRef = React.useCallback((ref) => {
+    if (containerRef.current) {
+      ro?.current?.unobserve(containerRef.current);
+    }
+    containerRef.current = ref;
+    if (containerRef.current) {
+      ro?.current?.observe(containerRef.current);
+    }
   }, []);
 
   React.useEffect(() => {
@@ -146,13 +170,19 @@ const WordClock = () => {
       }
     }
   }, [elapsedMilliseconds, sizeState]);
+
   const style = React.useMemo(() => {
     return {
       fontSize: sizeState.fontSize,
     };
-  }, [sizeState]);
+  }, [sizeState.fontSize]);
+
+  React.useEffect(() => {
+    loadJson();
+  }, []);
+
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div ref={setContainerRef} className={styles.container}>
       <div ref={innerRef} className={styles.inner} style={style}>
         <WordClockInner logic={logic} label={label} timeProps={timeProps} />
       </div>
