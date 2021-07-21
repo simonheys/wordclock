@@ -28,7 +28,7 @@ const WordClockInner = ({ logic, label, timeProps, fontSize }) => {
       }
       return (
         <div
-          className={highlighted ? styles.labelHighlighted : styles.label}
+          className={highlighted ? styles.wordHighlighted : styles.word}
           key={`${labelIndex}-${labelGroupIndex}`}
         >
           {label}
@@ -47,7 +47,7 @@ const FIT = {
 
 const minimumFontSizeAdjustment = 0.1;
 
-const WordClock = () => {
+const WordClock = ({ words }) => {
   const containerRef = React.useRef();
   const innerRef = React.useRef();
   const ro = React.useRef();
@@ -65,14 +65,6 @@ const WordClock = () => {
 
   const elapsedMilliseconds = useAnimationFrame();
   const timeProps = useTimeProps();
-
-  const loadJson = async () => {
-    const parsed = await WordsFileParser.parseJsonUrl(
-      "/English_simple_fragmented.json"
-    );
-    setLogic(parsed.logic);
-    setLabel(parsed.label);
-  };
 
   React.useEffect(() => {
     ro.current = new ResizeObserver((entries) => {
@@ -161,12 +153,17 @@ const WordClock = () => {
   }, [sizeState.fontSize]);
 
   React.useEffect(() => {
-    loadJson();
-  }, []);
+    if (!words) {
+      return;
+    }
+    const parsed = WordsFileParser.parseJson(words);
+    setLogic(parsed.logic);
+    setLabel(parsed.label);
+  }, [words]);
 
   return (
     <div ref={setContainerRef} className={styles.container}>
-      <div ref={innerRef} className={styles.inner} style={style}>
+      <div ref={innerRef} className={styles.words} style={style}>
         <WordClockInner logic={logic} label={label} timeProps={timeProps} />
       </div>
     </div>

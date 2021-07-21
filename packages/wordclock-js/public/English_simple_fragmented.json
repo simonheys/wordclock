@@ -30,7 +30,7 @@
         "type": "item",
         "items": [
           {
-            "highlight": "minute===0",
+            "highlight": "minute==0",
             "text": "o’clock"
           },
           {
@@ -78,42 +78,42 @@
         "type": "item",
         "items": [
           {
-            "highlight": "(minute%10)===0 || (minute>10 && minute<21)"
+            "highlight": "(minute%10)==0 || (minute>10 && minute<21)"
           },
           {
-            "highlight": "(minute%10)===1",
+            "highlight": "(minute%10)==1",
             "text": "one"
           },
           {
-            "highlight": "(minute%10)===2",
+            "highlight": "(minute%10)==2",
             "text": "two"
           },
           {
-            "highlight": "(minute%10)===3",
+            "highlight": "(minute%10)==3",
             "text": "three"
           },
           {
-            "highlight": "(minute%10)===4",
+            "highlight": "(minute%10)==4",
             "text": "four"
           },
           {
-            "highlight": "(minute%10)===5",
+            "highlight": "(minute%10)==5",
             "text": "five"
           },
           {
-            "highlight": "(minute%10)===6",
+            "highlight": "(minute%10)==6",
             "text": "six"
           },
           {
-            "highlight": "(minute%10)===7",
+            "highlight": "(minute%10)==7",
             "text": "seven"
           },
           {
-            "highlight": "(minute%10)===8",
+            "highlight": "(minute%10)==8",
             "text": "eight"
           },
           {
-            "highlight": "(minute%10)===9",
+            "highlight": "(minute%10)==9",
             "text": "nine"
           }
         ]
@@ -124,10 +124,10 @@
         "type": "item",
         "items": [
           {
-            "highlight": "second===0"
+            "highlight": "second==0"
           },
           {
-            "highlight": "second!==0",
+            "highlight": "second!=0",
             "text": "and"
           }
         ]
@@ -142,7 +142,7 @@
         "type": "item",
         "items": [
           {
-            "highlight": "second===0",
+            "highlight": "second==0",
             "text": "precisely"
           },
           {
@@ -189,42 +189,42 @@
         "type": "item",
         "items": [
           {
-            "highlight": "(second%10)===0 || (second>10 && second<21)"
+            "highlight": "(second%10)==0 || (second>10 && second<21)"
           },
           {
-            "highlight": "(second%10)===1",
+            "highlight": "(second%10)==1",
             "text": "one"
           },
           {
-            "highlight": "(second%10)===2",
+            "highlight": "(second%10)==2",
             "text": "two"
           },
           {
-            "highlight": "(second%10)===3",
+            "highlight": "(second%10)==3",
             "text": "three"
           },
           {
-            "highlight": "(second%10)===4",
+            "highlight": "(second%10)==4",
             "text": "four"
           },
           {
-            "highlight": "(second%10)===5",
+            "highlight": "(second%10)==5",
             "text": "five"
           },
           {
-            "highlight": "(second%10)===6",
+            "highlight": "(second%10)==6",
             "text": "six"
           },
           {
-            "highlight": "(second%10)===7",
+            "highlight": "(second%10)==7",
             "text": "seven"
           },
           {
-            "highlight": "(second%10)===8",
+            "highlight": "(second%10)==8",
             "text": "eight"
           },
           {
-            "highlight": "(second%10)===9",
+            "highlight": "(second%10)==9",
             "text": "nine"
           }
         ]
@@ -238,7 +238,7 @@
             "highlight": "second<1"
           },
           {
-            "highlight": "second===1",
+            "highlight": "second==1",
             "text": "second"
           },
           {

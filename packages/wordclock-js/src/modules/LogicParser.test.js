@@ -72,39 +72,37 @@ describe("LogicParser", () => {
           expect(term("day%2", props)).toEqual(0);
           expect(term("day*2", props)).toEqual(4);
           expect(term("day==2", props)).toEqual(true);
-          expect(term("day===2", props)).toEqual(true);
-          expect(term("day!==month", props)).toEqual(true);
-          expect(term("day===month", props)).toEqual(false);
-          expect(term("(day*month)===(1+day+month)", props)).toEqual(true);
+          expect(term("day!=month", props)).toEqual(true);
+          expect(term("(day*month)==(1+day+month)", props)).toEqual(true);
 
           expect(
-            term("(second%10)===2 || (second>10 && second<21)", { second: 2 })
+            term("(second%10)==2 || (second>10 && second<21)", { second: 2 })
           ).toEqual(true);
           expect(
-            term("(second%10)===2 || (second>10 && second<21)", { second: 12 })
+            term("(second%10)==2 || (second>10 && second<21)", { second: 12 })
           ).toEqual(true);
           expect(
-            term("(second%10)===2 || (second>10 && second<21)", { second: 22 })
+            term("(second%10)==2 || (second>10 && second<21)", { second: 22 })
           ).toEqual(true);
 
           expect(
-            term("(second%10)===2 && (second>10 && second<21)", { second: 2 })
+            term("(second%10)==2 && (second>10 && second<21)", { second: 2 })
           ).toEqual(false);
           expect(
-            term("(second%10)===2 && (second>10 && second<21)", { second: 12 })
+            term("(second%10)==2 && (second>10 && second<21)", { second: 12 })
           ).toEqual(true);
           expect(
-            term("(second%10)===2 && (second>10 && second<21)", { second: 22 })
+            term("(second%10)==2 && (second>10 && second<21)", { second: 22 })
           ).toEqual(false);
 
           expect(
-            term("(second%10)===2 && !(second>10 && second<21)", { second: 2 })
+            term("(second%10)==2 && !(second>10 && second<21)", { second: 2 })
           ).toEqual(true);
           expect(
-            term("(second%10)===2 && !(second>10 && second<21)", { second: 12 })
+            term("(second%10)==2 && !(second>10 && second<21)", { second: 12 })
           ).toEqual(false);
           expect(
-            term("(second%10)===2 && !(second>10 && second<21)", { second: 22 })
+            term("(second%10)==2 && !(second>10 && second<21)", { second: 22 })
           ).toEqual(true);
         });
       });

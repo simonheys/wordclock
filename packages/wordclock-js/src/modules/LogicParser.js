@@ -147,14 +147,10 @@ export const performOperation = ({
     result = a && b;
   } else if (operator === "||") {
     result = a || b;
-  } else if (operator === "!==") {
-    result = a !== b;
-  } else if (operator === "===") {
-    result = a === b;
   } else if (operator === "!=") {
-    result = a != b;
+    result = a !== b;
   } else if (operator === "==") {
-    result = a == b;
+    result = a === b;
   } else if (operator === ">") {
     result = a > b;
   } else if (operator === "<") {

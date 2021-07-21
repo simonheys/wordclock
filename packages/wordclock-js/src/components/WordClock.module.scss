@@ -1,22 +1,26 @@
 .container {
+  composes: global(word-clock);
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.inner {
+.words {
+  composes: global(words);
   color: #999;
   font-weight: bold;
   line-height: 1;
 }
 
-.label {
+.word {
+  composes: global(word);
   display: inline-block;
   margin-right: 0.25em;
   transition: color 0.15s;
 }
 
-.labelHighlighted {
-  composes: label;
+.wordHighlighted {
+  composes: word;
+  composes: global(word-highlighted);
   color: #cc0000;
 }
