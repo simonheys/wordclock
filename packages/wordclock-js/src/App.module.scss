@@ -3,3 +3,9 @@
   height: 360px;
   background-color: #f4f4f4;
 }
+
+.containerLarge {
+  composes: container;
+  width: 720px;
+  height: 640px;
+}

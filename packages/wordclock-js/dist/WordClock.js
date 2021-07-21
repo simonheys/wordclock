@@ -3254,13 +3254,13 @@ var FIT = {
   OK: "OK",
   LARGE: "LARGE"
 };
-var minimumFontSizeAdjustment = 0.1;
+var minimumFontSizeAdjustment = 0.01;
 
 var WordClock = function WordClock(_ref2) {
   var words = _ref2.words;
-  var containerRef = React__namespace.useRef();
-  var innerRef = React__namespace.useRef();
-  var ro = React__namespace.useRef();
+  var containerRef = React__namespace.useRef(null);
+  var innerRef = React__namespace.useRef(null);
+  var ro = React__namespace.useRef(null);
 
   var _React$useState = React__namespace.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -3290,49 +3290,45 @@ var WordClock = function WordClock(_ref2) {
 
   var elapsedMilliseconds = useAnimationFrame();
   var timeProps = useTimeProps();
-  React__namespace.useEffect(function () {
-    ro.current = new index(function (entries) {
-      var currentRefEntry = entries.find(function (_ref3) {
-        var target = _ref3.target;
-        return target === containerRef.current;
-      });
-
-      if (currentRefEntry) {
-        setTargetHeight(currentRefEntry.contentRect.height); // start resizing
-
-        setSizeState(_objectSpread2(_objectSpread2({}, sizeState), {}, {
-          fontSizeLow: 1,
-          fontSizeHigh: 256,
-          previousFit: FIT.UNKNOWN
-        }));
+  var updateResizeObserver = React__namespace.useCallback(function () {
+    if (ro.current) {
+      if (containerRef.current) {
+        ro.current.unobserve(containerRef.current);
       }
-    });
+    } else {
+      ro.current = new index(function (entries) {
+        var currentRefEntry = entries.find(function (_ref3) {
+          var target = _ref3.target;
+          return target === containerRef.current;
+        });
+
+        if (currentRefEntry) {
+          setTargetHeight(currentRefEntry.contentRect.height); // start resizing
+
+          setSizeState(_objectSpread2(_objectSpread2({}, sizeState), {}, {
+            fontSizeLow: 1,
+            fontSizeHigh: 256,
+            previousFit: FIT.UNKNOWN
+          }));
+        }
+      });
+    }
 
     if (containerRef.current) {
-      var _ro$current;
-
-      ro === null || ro === void 0 ? void 0 : (_ro$current = ro.current) === null || _ro$current === void 0 ? void 0 : _ro$current.observe(containerRef.current);
+      ro.current.observe(containerRef.current);
     }
 
     return function () {
-      return ro.current.disconnect();
+      ro.current.disconnect();
+      ro.current = null;
     };
   }, [setTargetHeight, setSizeState, sizeState]);
   var setContainerRef = React__namespace.useCallback(function (ref) {
-    if (containerRef.current) {
-      var _ro$current2;
-
-      ro === null || ro === void 0 ? void 0 : (_ro$current2 = ro.current) === null || _ro$current2 === void 0 ? void 0 : _ro$current2.unobserve(containerRef.current);
+    if (ref && ref !== containerRef.current) {
+      containerRef.current = ref;
+      updateResizeObserver();
     }
-
-    containerRef.current = ref;
-
-    if (containerRef.current) {
-      var _ro$current3;
-
-      ro === null || ro === void 0 ? void 0 : (_ro$current3 = ro.current) === null || _ro$current3 === void 0 ? void 0 : _ro$current3.observe(containerRef.current);
-    }
-  }, []);
+  }, [updateResizeObserver]);
   React__namespace.useEffect(function () {
     if (containerRef.current && innerRef.current) {
       var boundingClientRect = innerRef.current.getBoundingClientRect();

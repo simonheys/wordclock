@@ -45,12 +45,12 @@ const FIT = {
   LARGE: "LARGE",
 };
 
-const minimumFontSizeAdjustment = 0.1;
+const minimumFontSizeAdjustment = 0.01;
 
 const WordClock = ({ words }) => {
-  const containerRef = React.useRef();
-  const innerRef = React.useRef();
-  const ro = React.useRef();
+  const containerRef = React.useRef(null);
+  const innerRef = React.useRef(null);
+  const ro = React.useRef(null);
 
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
@@ -66,37 +66,46 @@ const WordClock = ({ words }) => {
   const elapsedMilliseconds = useAnimationFrame();
   const timeProps = useTimeProps();
 
-  React.useEffect(() => {
-    ro.current = new ResizeObserver((entries) => {
-      const currentRefEntry = entries.find(
-        ({ target }) => target === containerRef.current
-      );
-      if (currentRefEntry) {
-        setTargetHeight(currentRefEntry.contentRect.height);
-        // start resizing
-        setSizeState({
-          ...sizeState,
-          fontSizeLow: 1,
-          fontSizeHigh: 256,
-          previousFit: FIT.UNKNOWN,
-        });
+  const updateResizeObserver = React.useCallback(() => {
+    if (ro.current) {
+      if (containerRef.current) {
+        ro.current.unobserve(containerRef.current);
       }
-    });
-    if (containerRef.current) {
-      ro?.current?.observe(containerRef.current);
+    } else {
+      ro.current = new ResizeObserver((entries) => {
+        const currentRefEntry = entries.find(
+          ({ target }) => target === containerRef.current
+        );
+        if (currentRefEntry) {
+          setTargetHeight(currentRefEntry.contentRect.height);
+          // start resizing
+          setSizeState({
+            ...sizeState,
+            fontSizeLow: 1,
+            fontSizeHigh: 256,
+            previousFit: FIT.UNKNOWN,
+          });
+        }
+      });
     }
-    return () => ro.current.disconnect();
+    if (containerRef.current) {
+      ro.current.observe(containerRef.current);
+    }
+    return () => {
+      ro.current.disconnect();
+      ro.current = null;
+    };
   }, [setTargetHeight, setSizeState, sizeState]);
 
-  const setContainerRef = React.useCallback((ref) => {
-    if (containerRef.current) {
-      ro?.current?.unobserve(containerRef.current);
-    }
-    containerRef.current = ref;
-    if (containerRef.current) {
-      ro?.current?.observe(containerRef.current);
-    }
-  }, []);
+  const setContainerRef = React.useCallback(
+    (ref) => {
+      if (ref && ref !== containerRef.current) {
+        containerRef.current = ref;
+        updateResizeObserver();
+      }
+    },
+    [updateResizeObserver]
+  );
 
   React.useEffect(() => {
     if (containerRef.current && innerRef.current) {
