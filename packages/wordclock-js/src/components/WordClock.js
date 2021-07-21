@@ -2,7 +2,6 @@ import * as React from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 import useTimeProps from "../hooks/useTimeProps";
-import useAnimationFrame from "../hooks/useAnimationFrame";
 import * as WordsFileParser from "../modules/WordsFileParser";
 import * as LogicParser from "../modules/LogicParser";
 
@@ -50,6 +49,7 @@ const minimumFontSizeAdjustment = 0.01;
 const WordClock = ({ words }) => {
   const containerRef = React.useRef(null);
   const innerRef = React.useRef(null);
+  const rafRef = React.useRef(null);
   const ro = React.useRef(null);
 
   const [logic, setLogic] = React.useState([]);
@@ -63,7 +63,7 @@ const WordClock = ({ words }) => {
     previousFit: FIT.UNKNOWN,
   });
 
-  const elapsedMilliseconds = useAnimationFrame();
+  // const elapsedMilliseconds = useAnimationFrame();
   const timeProps = useTimeProps();
 
   const updateResizeObserver = React.useCallback(() => {
@@ -107,53 +107,57 @@ const WordClock = ({ words }) => {
     [updateResizeObserver]
   );
 
-  React.useEffect(() => {
-    if (containerRef.current && innerRef.current) {
-      const boundingClientRect = innerRef.current.getBoundingClientRect();
-      const { height } = boundingClientRect;
-      if (height > 0 && targetHeight > 0) {
-        const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-        const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
-        if (sizeState.previousFit === FIT.OK) {
-          // currently FIT.OK - do nothing
-        } else if (height < targetHeight) {
-          // currently FIT.SMALL
-          // increase size
-          setSizeState({
-            fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
-            previousFontSize: sizeState.fontSize,
-            fontSizeLow: sizeState.fontSize,
-            fontSizeHigh: sizeState.fontSizeHigh,
-            previousFit: FIT.SMALL,
-          });
-        } else {
-          // currently FIT.LARGE
-          if (
-            sizeState.previousFit === FIT.SMALL &&
-            fontSizeDifference <= minimumFontSizeAdjustment
-          ) {
-            // use previous size
-            setSizeState({
-              fontSize: sizeState.previousFontSize,
-              previousFontSize: sizeState.previousFontSize,
-              fontSizeLow: sizeState.previousFontSize,
-              fontSizeHigh: sizeState.previousFontSize,
-              previousFit: FIT.OK,
-            });
-          } else {
-            // decrease size
-            setSizeState({
-              fontSize: nextFontSize,
-              previousFontSize: sizeState.fontSize,
-              fontSizeLow: sizeState.fontSizeLow,
-              fontSizeHigh: sizeState.fontSize,
-              previousFit: FIT.LARGE,
-            });
-          }
-        }
+  const checkFontSize = React.useCallback(() => {
+    if (!containerRef.current || !innerRef.current || targetHeight === 0) {
+      return;
+    }
+    const boundingClientRect = innerRef.current.getBoundingClientRect();
+    const { height } = boundingClientRect;
+    const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+    const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
+    if (sizeState.previousFit === FIT.OK) {
+      // currently FIT.OK - do nothing
+    } else if (height < targetHeight) {
+      // currently FIT.SMALL
+      // increase size
+      setSizeState({
+        fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+        previousFontSize: sizeState.fontSize,
+        fontSizeLow: sizeState.fontSize,
+        fontSizeHigh: sizeState.fontSizeHigh,
+        previousFit: FIT.SMALL,
+      });
+    } else {
+      // currently FIT.LARGE
+      if (
+        sizeState.previousFit === FIT.SMALL &&
+        fontSizeDifference <= minimumFontSizeAdjustment
+      ) {
+        // use previous size
+        setSizeState({
+          fontSize: sizeState.previousFontSize,
+          previousFontSize: sizeState.previousFontSize,
+          fontSizeLow: sizeState.previousFontSize,
+          fontSizeHigh: sizeState.previousFontSize,
+          previousFit: FIT.OK,
+        });
+      } else {
+        // decrease size
+        setSizeState({
+          fontSize: nextFontSize,
+          previousFontSize: sizeState.fontSize,
+          fontSizeLow: sizeState.fontSizeLow,
+          fontSizeHigh: sizeState.fontSize,
+          previousFit: FIT.LARGE,
+        });
       }
     }
-  }, [elapsedMilliseconds, sizeState, targetHeight]);
+  }, [sizeState, targetHeight]);
+
+  React.useEffect(() => {
+    rafRef.current = requestAnimationFrame(checkFontSize);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [checkFontSize]);
 
   const style = React.useMemo(() => {
     return {
