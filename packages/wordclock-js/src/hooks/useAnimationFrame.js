@@ -1,6 +1,6 @@
 /* @flow */
 
-import * as React from 'react';
+import * as React from "react";
 
 const useAnimationFrame = () => {
   const [elapsed, setTime] = React.useState(0);

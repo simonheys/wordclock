@@ -1,8 +1,8 @@
 /* @flow */
 
-import * as React from 'react';
+import * as React from "react";
 
-const useBoundingClientRect = (ref: any) => {
+const useBoundingClientRect = (ref) => {
   const [boundingClientRect, setBoundingClientRect] = React.useState();
 
   const updateBoundingClientRect = React.useCallback(
@@ -12,8 +12,8 @@ const useBoundingClientRect = (ref: any) => {
 
   React.useEffect(() => {
     updateBoundingClientRect();
-    window.addEventListener('resize', updateBoundingClientRect);
-    return () => window.removeEventListener('resize', updateBoundingClientRect);
+    window.addEventListener("resize", updateBoundingClientRect);
+    return () => window.removeEventListener("resize", updateBoundingClientRect);
   }, [updateBoundingClientRect]);
 
   return boundingClientRect;
