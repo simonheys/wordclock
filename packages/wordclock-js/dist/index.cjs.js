@@ -1591,6 +1591,14 @@ const FIT = {
   LARGE: "LARGE"
 };
 const minimumFontSizeAdjustment = 0.01;
+const sizeStateDefault = {
+  fontSize: 12,
+  lineHeight: 1,
+  previousFontSize: 12,
+  fontSizeLow: 1,
+  fontSizeHigh: 256,
+  previousFit: FIT.UNKNOWN
+};
 
 const WordClock = ({
   words
@@ -1603,13 +1611,7 @@ const WordClock = ({
   const [logic, setLogic] = React__namespace.useState([]);
   const [label, setLabel] = React__namespace.useState([]);
   const [targetHeight, setTargetHeight] = React__namespace.useState(0);
-  const [sizeState, setSizeState] = React__namespace.useState({
-    fontSize: 12,
-    lineHeight: 1,
-    previousFontSize: 12,
-    fontSizeLow: 1,
-    fontSizeHigh: 256,
-    previousFit: FIT.UNKNOWN
+  const [sizeState, setSizeState] = React__namespace.useState({ ...sizeStateDefault
   }); // const elapsedMilliseconds = useAnimationFrame();
 
   const timeProps = useTimeProps();
@@ -1650,10 +1652,7 @@ const WordClock = ({
     if (!containerRef.current || !innerRef.current || targetHeight === 0) ; else {
       if (needsResize.current) {
         needsResize.current = false;
-        setSizeState({ ...sizeState,
-          fontSizeLow: 1,
-          fontSizeHigh: 256,
-          previousFit: FIT.UNKNOWN
+        setSizeState({ ...sizeStateDefault
         });
       } else {
         const boundingClientRect = innerRef.current.getBoundingClientRect();
@@ -1678,8 +1677,6 @@ const WordClock = ({
             // use previous size
             setSizeState({ ...sizeState,
               fontSize: sizeState.previousFontSize,
-              fontSizeLow: sizeState.previousFontSize,
-              fontSizeHigh: sizeState.previousFontSize,
               previousFit: FIT.OK
             });
           } else {
@@ -1718,7 +1715,7 @@ const WordClock = ({
     needsResize.current = true;
   }, [words]);
   const isResizing = sizeState.previousFit !== FIT.OK;
-  return /*#__PURE__*/React__namespace.createElement("div", {
+  return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.createElement("div", {
     ref: setContainerRef,
     className: styles.container
   }, /*#__PURE__*/React__namespace.createElement("div", {
@@ -1729,7 +1726,10 @@ const WordClock = ({
     logic: logic,
     label: label,
     timeProps: timeProps
-  })));
+  }))), /*#__PURE__*/React__namespace.createElement("pre", null, JSON.stringify({
+    sizeState,
+    targetHeight
+  }, null, 2)));
 };
 
 exports.WordClock = WordClock;

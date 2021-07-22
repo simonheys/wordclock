@@ -1200,43 +1200,49 @@
     return ResizeObserver;
   }();
 
-  const getTimeProps = dateInstance => {
+  var getTimeProps = function getTimeProps(dateInstance) {
     if (dateInstance === undefined) {
       dateInstance = new Date();
     }
 
-    const day = dateInstance.getDay();
-    let daystartingmonday = day - 1;
+    var day = dateInstance.getDay();
+    var daystartingmonday = day - 1;
 
     while (daystartingmonday < 0) {
       daystartingmonday += 7;
     }
 
-    const date = dateInstance.getDate();
-    const month = dateInstance.getMonth();
-    const hour = dateInstance.getHours() % 12;
-    const twentyfourhour = dateInstance.getHours();
-    const minute = dateInstance.getMinutes();
-    const second = dateInstance.getSeconds();
+    var date = dateInstance.getDate();
+    var month = dateInstance.getMonth();
+    var hour = dateInstance.getHours() % 12;
+    var twentyfourhour = dateInstance.getHours();
+    var minute = dateInstance.getMinutes();
+    var second = dateInstance.getSeconds();
     return {
-      day,
-      daystartingmonday,
-      date,
-      month,
-      hour,
-      twentyfourhour,
-      minute,
-      second
+      day: day,
+      daystartingmonday: daystartingmonday,
+      date: date,
+      month: month,
+      hour: hour,
+      twentyfourhour: twentyfourhour,
+      minute: minute,
+      second: second
     };
   };
 
-  const useTimeProps = () => {
-    const [timeProps, setTimeProps] = React__namespace.useState(getTimeProps());
-    React__namespace.useEffect(() => {
-      const interval = setInterval(() => {
+  var useTimeProps = function useTimeProps() {
+    var _React$useState = React__namespace.useState(getTimeProps()),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        timeProps = _React$useState2[0],
+        setTimeProps = _React$useState2[1];
+
+    React__namespace.useEffect(function () {
+      var interval = setInterval(function () {
         setTimeProps(getTimeProps());
       }, 1000);
-      return () => clearInterval(interval);
+      return function () {
+        return clearInterval(interval);
+      };
     }, []);
     return timeProps;
   };
@@ -1678,6 +1684,14 @@
     LARGE: "LARGE"
   };
   var minimumFontSizeAdjustment = 0.01;
+  var sizeStateDefault = {
+    fontSize: 12,
+    lineHeight: 1,
+    previousFontSize: 12,
+    fontSizeLow: 1,
+    fontSizeHigh: 256,
+    previousFit: FIT.UNKNOWN
+  };
 
   var WordClock = function WordClock(_ref2) {
     var words = _ref2.words;
@@ -1702,14 +1716,7 @@
         targetHeight = _React$useState6[0],
         setTargetHeight = _React$useState6[1];
 
-    var _React$useState7 = React__namespace.useState({
-      fontSize: 12,
-      lineHeight: 1,
-      previousFontSize: 12,
-      fontSizeLow: 1,
-      fontSizeHigh: 256,
-      previousFit: FIT.UNKNOWN
-    }),
+    var _React$useState7 = React__namespace.useState(_objectSpread({}, sizeStateDefault)),
         _React$useState8 = _slicedToArray(_React$useState7, 2),
         sizeState = _React$useState8[0],
         setSizeState = _React$useState8[1]; // const elapsedMilliseconds = useAnimationFrame();
@@ -1754,11 +1761,7 @@
       if (!containerRef.current || !innerRef.current || targetHeight === 0) ; else {
         if (needsResize.current) {
           needsResize.current = false;
-          setSizeState(_objectSpread(_objectSpread({}, sizeState), {}, {
-            fontSizeLow: 1,
-            fontSizeHigh: 256,
-            previousFit: FIT.UNKNOWN
-          }));
+          setSizeState(_objectSpread({}, sizeStateDefault));
         } else {
           var boundingClientRect = innerRef.current.getBoundingClientRect();
           var height = boundingClientRect.height;
@@ -1780,8 +1783,6 @@
               // use previous size
               setSizeState(_objectSpread(_objectSpread({}, sizeState), {}, {
                 fontSize: sizeState.previousFontSize,
-                fontSizeLow: sizeState.previousFontSize,
-                fontSizeHigh: sizeState.previousFontSize,
                 previousFit: FIT.OK
               }));
             } else {
@@ -1822,7 +1823,7 @@
       needsResize.current = true;
     }, [words]);
     var isResizing = sizeState.previousFit !== FIT.OK;
-    return /*#__PURE__*/React__namespace.createElement("div", {
+    return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.createElement("div", {
       ref: setContainerRef,
       className: styles.container
     }, /*#__PURE__*/React__namespace.createElement("div", {
@@ -1833,7 +1834,10 @@
       logic: logic,
       label: label,
       timeProps: timeProps
-    })));
+    }))), /*#__PURE__*/React__namespace.createElement("pre", null, JSON.stringify({
+      sizeState: sizeState,
+      targetHeight: targetHeight
+    }, null, 2)));
   };
 
   exports.WordClock = WordClock;
