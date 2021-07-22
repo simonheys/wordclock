@@ -111,6 +111,7 @@ const WordClock = ({ words }) => {
     const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
     const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
     if (sizeState.previousTargetSize) {
+      // component resized - start resizing again
       if (
         sizeState.previousTargetSize.width !== targetSize.width ||
         sizeState.previousTargetSize.height !== targetSize.height
@@ -131,6 +132,7 @@ const WordClock = ({ words }) => {
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
         previousTargetSize: targetSize,
+        previousHeight: height,
       });
     } else {
       // currently FIT.LARGE
@@ -154,6 +156,7 @@ const WordClock = ({ words }) => {
           fontSizeHigh: sizeState.fontSize,
           previousFit: FIT.LARGE,
           previousTargetSize: targetSize,
+          previousHeight: height,
         });
       }
     }
@@ -173,6 +176,7 @@ const WordClock = ({ words }) => {
     const parsed = WordsFileParser.parseJson(words);
     setLogic(parsed.logic);
     setLabel(parsed.label);
+    // start resizing
     setSizeState({ ...sizeStateDefault });
   }, [words]);
 
@@ -188,7 +192,6 @@ const WordClock = ({ words }) => {
           <WordClockInner logic={logic} label={label} timeProps={timeProps} />
         </div>
       </div>
-      <pre>{JSON.stringify({ sizeState, targetSize }, null, 2)}</pre>
     </React.Fragment>
   );
 };

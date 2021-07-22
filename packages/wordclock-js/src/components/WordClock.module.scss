@@ -9,8 +9,11 @@
   composes: global(words);
   color: #999;
   font-weight: bold;
-  line-height: 1;
   transition: opacity 0.15s;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%; // when not resizing, space out the rows to fill
 }
 
 .wordsResizing {
@@ -18,11 +21,12 @@
   composes: global(resizing);
   opacity: 0;
   visibility: hidden;
+  height: auto; // allow natural size for calculation
 }
 
 .word {
   composes: global(word);
-  display: inline-block;
+  display: flex;
   margin-right: 0.25em;
   transition: color 0.15s;
 }
