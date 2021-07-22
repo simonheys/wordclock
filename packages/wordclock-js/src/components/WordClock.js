@@ -180,6 +180,7 @@ const WordClock = ({ words }) => {
     const parsed = WordsFileParser.parseJson(words);
     setLogic(parsed.logic);
     setLabel(parsed.label);
+    needsResize.current = true;
   }, [words]);
 
   const isResizing = sizeState.previousFit !== FIT.OK;

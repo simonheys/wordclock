@@ -3,32 +3,19 @@ import WordClock from "./components/WordClock";
 import styles from "./App.module.scss";
 import React from "react";
 
+const wordsCollection = {
+  A: require("wordclock-words/json/Albanian.json"),
+  B: require("wordclock-words/json/Chinese.json"),
+};
+
 const App = () => {
-  const [words, setWords] = React.useState();
-  const [large, setLarge] = React.useState(false);
-
-  const toggleLarge = React.useCallback(
-    (e) => {
-      e.preventDefault();
-      setLarge(!large);
-    },
-    [large]
-  );
-
-  const loadJson = async (url) => {
-    const response = await fetch("/English_simple_fragmented.json");
-    const json = await response.json();
-    setWords(json);
-  };
-
-  React.useEffect(() => {
-    loadJson();
-  }, []);
+  const [words, setWords] = React.useState(wordsCollection["A"]);
 
   return (
-    <div className={large ? styles.containerLarge : styles.container}>
+    <div className={styles.container}>
       <WordClock words={words} />
-      <div onClick={toggleLarge}>Toggle large</div>
+      <div onClick={() => setWords(wordsCollection["A"])}>Words A</div>
+      <div onClick={() => setWords(wordsCollection["B"])}>Words B</div>
     </div>
   );
 };
