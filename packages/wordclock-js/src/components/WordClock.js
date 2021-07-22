@@ -58,16 +58,13 @@ const sizeStateDefault = {
 const WordClock = ({ words }) => {
   const containerRef = React.useRef(null);
   const innerRef = React.useRef(null);
-  const rafRef = React.useRef(null);
   const ro = React.useRef(null);
-  const needsResize = React.useRef(true);
 
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
-  const [targetHeight, setTargetHeight] = React.useState(0);
+  const [targetSize, setTargetSize] = React.useState({ width: 0, height: 0 });
   const [sizeState, setSizeState] = React.useState({ ...sizeStateDefault });
 
-  // const elapsedMilliseconds = useAnimationFrame();
   const timeProps = useTimeProps();
 
   const updateResizeObserver = React.useCallback(() => {
@@ -81,8 +78,8 @@ const WordClock = ({ words }) => {
           ({ target }) => target === containerRef.current
         );
         if (currentRefEntry) {
-          setTargetHeight(currentRefEntry.contentRect.height);
-          needsResize.current = true;
+          const { width, height } = currentRefEntry.contentRect;
+          setTargetSize({ width, height });
         }
       });
     }
@@ -93,7 +90,7 @@ const WordClock = ({ words }) => {
       ro.current.disconnect();
       ro.current = null;
     };
-  }, [setTargetHeight]);
+  }, [setTargetSize]);
 
   const setContainerRef = React.useCallback(
     (ref) => {
@@ -105,61 +102,62 @@ const WordClock = ({ words }) => {
     [updateResizeObserver]
   );
 
-  const checkFontSize = React.useCallback(() => {
-    if (!containerRef.current || !innerRef.current || targetHeight === 0) {
-    } else {
-      if (needsResize.current) {
-        needsResize.current = false;
-        setSizeState({ ...sizeStateDefault });
-      } else {
-        const boundingClientRect = innerRef.current.getBoundingClientRect();
-        const { height } = boundingClientRect;
-        const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-        const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
-        if (sizeState.previousFit === FIT.OK) {
-          // currently FIT.OK - do nothing
-        } else if (height < targetHeight) {
-          // currently FIT.SMALL
-          // increase size
-          setSizeState({
-            ...sizeState,
-            fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
-            previousFontSize: sizeState.fontSize,
-            fontSizeLow: sizeState.fontSize,
-            previousFit: FIT.SMALL,
-          });
-        } else {
-          // currently FIT.LARGE
-          if (
-            sizeState.previousFit === FIT.SMALL &&
-            fontSizeDifference <= minimumFontSizeAdjustment
-          ) {
-            // use previous size
-            setSizeState({
-              ...sizeState,
-              fontSize: sizeState.previousFontSize,
-              previousFit: FIT.OK,
-            });
-          } else {
-            // decrease size
-            setSizeState({
-              ...sizeState,
-              fontSize: nextFontSize,
-              previousFontSize: sizeState.fontSize,
-              fontSizeHigh: sizeState.fontSize,
-              previousFit: FIT.LARGE,
-            });
-          }
-        }
+  React.useEffect(() => {
+    if (!containerRef.current || !innerRef.current || targetSize.width === 0) {
+      return;
+    }
+    const boundingClientRect = innerRef.current.getBoundingClientRect();
+    const { height } = boundingClientRect;
+    const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+    const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
+    if (sizeState.previousTargetSize) {
+      if (
+        sizeState.previousTargetSize.width !== targetSize.width ||
+        sizeState.previousTargetSize.height !== targetSize.height
+      ) {
+        setSizeState({ ...sizeStateDefault, previousTargetSize: targetSize });
+        return;
       }
     }
-    rafRef.current = requestAnimationFrame(checkFontSize);
-  }, [sizeState, targetHeight]);
-
-  React.useEffect(() => {
-    rafRef.current = requestAnimationFrame(checkFontSize);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [checkFontSize]);
+    if (sizeState.previousFit === FIT.OK) {
+      // currently FIT.OK - do nothing
+    } else if (height < targetSize.height) {
+      // currently FIT.SMALL
+      // increase size
+      setSizeState({
+        ...sizeState,
+        fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+        previousFontSize: sizeState.fontSize,
+        fontSizeLow: sizeState.fontSize,
+        previousFit: FIT.SMALL,
+        previousTargetSize: targetSize,
+      });
+    } else {
+      // currently FIT.LARGE
+      if (
+        sizeState.previousFit === FIT.SMALL &&
+        fontSizeDifference <= minimumFontSizeAdjustment
+      ) {
+        // use previous size
+        setSizeState({
+          ...sizeState,
+          fontSize: sizeState.previousFontSize,
+          previousFit: FIT.OK,
+          previousTargetSize: targetSize,
+        });
+      } else {
+        // decrease size
+        setSizeState({
+          ...sizeState,
+          fontSize: nextFontSize,
+          previousFontSize: sizeState.fontSize,
+          fontSizeHigh: sizeState.fontSize,
+          previousFit: FIT.LARGE,
+          previousTargetSize: targetSize,
+        });
+      }
+    }
+  }, [sizeState, targetSize, targetSize.height, targetSize.width]);
 
   const style = React.useMemo(() => {
     return {
@@ -175,7 +173,7 @@ const WordClock = ({ words }) => {
     const parsed = WordsFileParser.parseJson(words);
     setLogic(parsed.logic);
     setLabel(parsed.label);
-    needsResize.current = true;
+    setSizeState({ ...sizeStateDefault });
   }, [words]);
 
   const isResizing = sizeState.previousFit !== FIT.OK;
@@ -190,7 +188,7 @@ const WordClock = ({ words }) => {
           <WordClockInner logic={logic} label={label} timeProps={timeProps} />
         </div>
       </div>
-      <pre>{JSON.stringify({ sizeState, targetHeight }, null, 2)}</pre>
+      <pre>{JSON.stringify({ sizeState, targetSize }, null, 2)}</pre>
     </React.Fragment>
   );
 };
