@@ -51,12 +51,14 @@ const WordClock = ({ words }) => {
   const innerRef = React.useRef(null);
   const rafRef = React.useRef(null);
   const ro = React.useRef(null);
+  const needsResize = React.useRef(true);
 
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
   const [targetHeight, setTargetHeight] = React.useState(0);
   const [sizeState, setSizeState] = React.useState({
     fontSize: 12,
+    lineHeight: 1,
     previousFontSize: 12,
     fontSizeLow: 1,
     fontSizeHigh: 256,
@@ -78,13 +80,7 @@ const WordClock = ({ words }) => {
         );
         if (currentRefEntry) {
           setTargetHeight(currentRefEntry.contentRect.height);
-          // start resizing
-          setSizeState({
-            ...sizeState,
-            fontSizeLow: 1,
-            fontSizeHigh: 256,
-            previousFit: FIT.UNKNOWN,
-          });
+          needsResize.current = true;
         }
       });
     }
@@ -95,7 +91,7 @@ const WordClock = ({ words }) => {
       ro.current.disconnect();
       ro.current = null;
     };
-  }, [setTargetHeight, setSizeState, sizeState]);
+  }, [setTargetHeight]);
 
   const setContainerRef = React.useCallback(
     (ref) => {
@@ -109,49 +105,60 @@ const WordClock = ({ words }) => {
 
   const checkFontSize = React.useCallback(() => {
     if (!containerRef.current || !innerRef.current || targetHeight === 0) {
-      return;
-    }
-    const boundingClientRect = innerRef.current.getBoundingClientRect();
-    const { height } = boundingClientRect;
-    const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-    const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
-    if (sizeState.previousFit === FIT.OK) {
-      // currently FIT.OK - do nothing
-    } else if (height < targetHeight) {
-      // currently FIT.SMALL
-      // increase size
-      setSizeState({
-        fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
-        previousFontSize: sizeState.fontSize,
-        fontSizeLow: sizeState.fontSize,
-        fontSizeHigh: sizeState.fontSizeHigh,
-        previousFit: FIT.SMALL,
-      });
     } else {
-      // currently FIT.LARGE
-      if (
-        sizeState.previousFit === FIT.SMALL &&
-        fontSizeDifference <= minimumFontSizeAdjustment
-      ) {
-        // use previous size
+      if (needsResize.current) {
+        needsResize.current = false;
         setSizeState({
-          fontSize: sizeState.previousFontSize,
-          previousFontSize: sizeState.previousFontSize,
-          fontSizeLow: sizeState.previousFontSize,
-          fontSizeHigh: sizeState.previousFontSize,
-          previousFit: FIT.OK,
+          ...sizeState,
+          fontSizeLow: 1,
+          fontSizeHigh: 256,
+          previousFit: FIT.UNKNOWN,
         });
       } else {
-        // decrease size
-        setSizeState({
-          fontSize: nextFontSize,
-          previousFontSize: sizeState.fontSize,
-          fontSizeLow: sizeState.fontSizeLow,
-          fontSizeHigh: sizeState.fontSize,
-          previousFit: FIT.LARGE,
-        });
+        const boundingClientRect = innerRef.current.getBoundingClientRect();
+        const { height } = boundingClientRect;
+        const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+        const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
+        if (sizeState.previousFit === FIT.OK) {
+          // currently FIT.OK - do nothing
+        } else if (height < targetHeight) {
+          // currently FIT.SMALL
+          // increase size
+          setSizeState({
+            ...sizeState,
+            fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+            previousFontSize: sizeState.fontSize,
+            fontSizeLow: sizeState.fontSize,
+            previousFit: FIT.SMALL,
+          });
+        } else {
+          // currently FIT.LARGE
+          if (
+            sizeState.previousFit === FIT.SMALL &&
+            fontSizeDifference <= minimumFontSizeAdjustment
+          ) {
+            // use previous size
+            setSizeState({
+              ...sizeState,
+              fontSize: sizeState.previousFontSize,
+              fontSizeLow: sizeState.previousFontSize,
+              fontSizeHigh: sizeState.previousFontSize,
+              previousFit: FIT.OK,
+            });
+          } else {
+            // decrease size
+            setSizeState({
+              ...sizeState,
+              fontSize: nextFontSize,
+              previousFontSize: sizeState.fontSize,
+              fontSizeHigh: sizeState.fontSize,
+              previousFit: FIT.LARGE,
+            });
+          }
+        }
       }
     }
+    rafRef.current = requestAnimationFrame(checkFontSize);
   }, [sizeState, targetHeight]);
 
   React.useEffect(() => {
@@ -162,8 +169,9 @@ const WordClock = ({ words }) => {
   const style = React.useMemo(() => {
     return {
       fontSize: sizeState.fontSize,
+      lineHeight: sizeState.lineHeight,
     };
-  }, [sizeState.fontSize]);
+  }, [sizeState.fontSize, sizeState.lineHeight]);
 
   React.useEffect(() => {
     if (!words) {
@@ -174,9 +182,14 @@ const WordClock = ({ words }) => {
     setLabel(parsed.label);
   }, [words]);
 
+  const isResizing = sizeState.previousFit !== FIT.OK;
   return (
     <div ref={setContainerRef} className={styles.container}>
-      <div ref={innerRef} className={styles.words} style={style}>
+      <div
+        ref={innerRef}
+        className={isResizing ? styles.wordsResizing : styles.words}
+        style={style}
+      >
         <WordClockInner logic={logic} label={label} timeProps={timeProps} />
       </div>
     </div>
