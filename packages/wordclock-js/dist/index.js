@@ -1427,82 +1427,86 @@
     }) > 0;
   };
 
-  const OPERATORS = {
+  var OPERATORS = {
     EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
     MATH: ["%", "*", "/", "+", "-"],
     BOOLEAN: ["&&", "||"],
     CONVERSION: ["-", "!"]
   }; // ____________________________________________________________________________________________________ term
 
-  const term = (source, props) => {
-    let terms;
-    let parsing = false;
-    let result;
+  var term = function term(source, props) {
+    var terms;
+    var parsing = false;
+    var result;
     parsing = true;
 
     while (parsing) {
       // parse brackets
       if (containsBraces(source)) {
         terms = extractStringContainedInOutermostBraces(source);
-        const termResult = term(terms[1], props);
-        source = `${terms[0]}${termResult}${terms[2]}`;
+        var termResult = term(terms[1], props);
+        source = "".concat(terms[0]).concat(termResult).concat(terms[2]);
       } else {
         // parse math operators
         result = scanForInstanceOf({
-          source,
+          source: source,
           array: OPERATORS.MATH
         });
 
         if (result !== -1) {
           terms = extractTermsAroundPivot({
-            source,
+            source: source,
             pivot: OPERATORS.MATH[result]
           });
-          const operationResult = performOperation({
+          var operationResult = performOperation({
             termOne: terms[1],
             termTwo: terms[2],
             operator: OPERATORS.MATH[result],
-            props
+            props: props
           });
-          source = `${terms[0]}${operationResult}${terms[3]}`;
+          source = "".concat(terms[0]).concat(operationResult).concat(terms[3]);
         } else {
           // parse equality operators
           result = scanForInstanceOf({
-            source,
+            source: source,
             array: OPERATORS.EQUALITY
           });
 
           if (result !== -1) {
             terms = extractTermsAroundPivot({
-              source,
+              source: source,
               pivot: OPERATORS.EQUALITY[result]
             });
-            const operationResult = performOperation({
+
+            var _operationResult = performOperation({
               termOne: terms[1],
               termTwo: terms[2],
               operator: OPERATORS.EQUALITY[result],
-              props
+              props: props
             });
-            source = `${terms[0]}${operationResult}${terms[3]}`;
+
+            source = "".concat(terms[0]).concat(_operationResult).concat(terms[3]);
           } else {
             // parse boolean operators
             result = scanForInstanceOf({
-              source,
+              source: source,
               array: OPERATORS.BOOLEAN
             });
 
             if (result !== -1) {
               terms = extractTermsAroundPivot({
-                source,
+                source: source,
                 pivot: OPERATORS.BOOLEAN[result]
               });
-              const operationResult = performOperation({
+
+              var _operationResult2 = performOperation({
                 termOne: terms[1],
                 termTwo: terms[2],
                 operator: OPERATORS.BOOLEAN[result],
-                props
+                props: props
               });
-              source = `${terms[0]}${operationResult}${terms[3]}`;
+
+              source = "".concat(terms[0]).concat(_operationResult2).concat(terms[3]);
             } else {
               parsing = false;
             }
@@ -1515,15 +1519,17 @@
   }; // ____________________________________________________________________________________________________ Process
   // check for var names, - and !
 
-  const processTerm = (source = "", props = {}) => {
-    let result;
-    const isString = typeof source === "string";
+  var processTerm = function processTerm() {
+    var source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var result;
+    var isString = typeof source === "string";
 
     if (isString) {
       source = source.trim();
     }
 
-    const isNumeric = isNumericString(source);
+    var isNumeric = isNumericString(source);
 
     if (isString && source.startsWith("-")) {
       result = processTerm(source.substr(1), props);
@@ -1551,16 +1557,17 @@
     return source;
   }; // ____________________________________________________________________________________________________ operation
 
-  const performOperation = ({
-    termOne,
-    termTwo,
-    operator,
-    props
-  } = {}) => {
+  var performOperation = function performOperation() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        termOne = _ref.termOne,
+        termTwo = _ref.termTwo,
+        operator = _ref.operator,
+        props = _ref.props;
+
     // replace variable names where appropriate
-    let a = processTerm(termOne, props);
-    let b = processTerm(termTwo, props);
-    let result = 0;
+    var a = processTerm(termOne, props);
+    var b = processTerm(termTwo, props);
+    var result = 0;
 
     if (operator === "*") {
       result = a * b;
@@ -1812,6 +1819,7 @@
       var parsed = parseJson(words);
       setLogic(parsed.logic);
       setLabel(parsed.label);
+      needsResize.current = true;
     }, [words]);
     var isResizing = sizeState.previousFit !== FIT.OK;
     return /*#__PURE__*/React__namespace.createElement("div", {

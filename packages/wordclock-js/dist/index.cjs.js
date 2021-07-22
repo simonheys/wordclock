@@ -1715,6 +1715,7 @@ const WordClock = ({
     const parsed = parseJson(words);
     setLogic(parsed.logic);
     setLabel(parsed.label);
+    needsResize.current = true;
   }, [words]);
   const isResizing = sizeState.previousFit !== FIT.OK;
   return /*#__PURE__*/React__namespace.createElement("div", {
