@@ -1200,49 +1200,43 @@
     return ResizeObserver;
   }();
 
-  var getTimeProps = function getTimeProps(dateInstance) {
+  const getTimeProps = dateInstance => {
     if (dateInstance === undefined) {
       dateInstance = new Date();
     }
 
-    var day = dateInstance.getDay();
-    var daystartingmonday = day - 1;
+    const day = dateInstance.getDay();
+    let daystartingmonday = day - 1;
 
     while (daystartingmonday < 0) {
       daystartingmonday += 7;
     }
 
-    var date = dateInstance.getDate();
-    var month = dateInstance.getMonth();
-    var hour = dateInstance.getHours() % 12;
-    var twentyfourhour = dateInstance.getHours();
-    var minute = dateInstance.getMinutes();
-    var second = dateInstance.getSeconds();
+    const date = dateInstance.getDate();
+    const month = dateInstance.getMonth();
+    const hour = dateInstance.getHours() % 12;
+    const twentyfourhour = dateInstance.getHours();
+    const minute = dateInstance.getMinutes();
+    const second = dateInstance.getSeconds();
     return {
-      day: day,
-      daystartingmonday: daystartingmonday,
-      date: date,
-      month: month,
-      hour: hour,
-      twentyfourhour: twentyfourhour,
-      minute: minute,
-      second: second
+      day,
+      daystartingmonday,
+      date,
+      month,
+      hour,
+      twentyfourhour,
+      minute,
+      second
     };
   };
 
-  var useTimeProps = function useTimeProps() {
-    var _React$useState = React__namespace.useState(getTimeProps()),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        timeProps = _React$useState2[0],
-        setTimeProps = _React$useState2[1];
-
-    React__namespace.useEffect(function () {
-      var interval = setInterval(function () {
+  const useTimeProps = () => {
+    const [timeProps, setTimeProps] = React__namespace.useState(getTimeProps());
+    React__namespace.useEffect(() => {
+      const interval = setInterval(() => {
         setTimeProps(getTimeProps());
       }, 1000);
-      return function () {
-        return clearInterval(interval);
-      };
+      return () => clearInterval(interval);
     }, []);
     return timeProps;
   };
@@ -1635,7 +1629,7 @@
     }
   }
 
-  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.WordClock-module_words__3W2_V {\n  color: #999;\n  font-weight: bold;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.25em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #cc0000; }\n";
+  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #999;\n  font-weight: bold;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.25em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #cc0000; }\n";
   var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
   styleInject(css_248z);
 
