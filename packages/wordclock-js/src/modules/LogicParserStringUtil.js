@@ -25,10 +25,10 @@ export const extractStringContainedInOutermostBraces = (source) => {
 
   while (count > 0 && i < source.length) {
     c = source.substr(i, 1);
-    if (c == "(") {
+    if (c === "(") {
       count++;
     }
-    if (c == ")") {
+    if (c === ")") {
       count--;
     }
     i++;

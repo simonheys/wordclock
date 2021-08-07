@@ -62,44 +62,50 @@ const WordClock = ({ words }) => {
 
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
-  const [targetSize, setTargetSize] = React.useState({ width: 0, height: 0 });
+  const [targetSize, setTargetSize] = React.useState({
+    width: 0,
+    height: 0,
+  });
   const [sizeState, setSizeState] = React.useState({ ...sizeStateDefault });
 
   const timeProps = useTimeProps();
 
-  const updateResizeObserver = React.useCallback(() => {
+  const teardownResizeObserver = React.useCallback(() => {
     if (ro.current) {
       if (containerRef.current) {
         ro.current.unobserve(containerRef.current);
       }
-    } else {
-      ro.current = new ResizeObserver((entries) => {
-        const currentRefEntry = entries.find(
-          ({ target }) => target === containerRef.current
-        );
-        if (currentRefEntry) {
-          const { width, height } = currentRefEntry.contentRect;
-          setTargetSize({ width, height });
-        }
-      });
-    }
-    if (containerRef.current) {
-      ro.current.observe(containerRef.current);
-    }
-    return () => {
       ro.current.disconnect();
       ro.current = null;
-    };
-  }, [setTargetSize]);
+    }
+  }, []);
+
+  const setupResizeObserver = React.useCallback(() => {
+    if (ro.current) {
+      teardownResizeObserver();
+    }
+    if (!containerRef.current) {
+      return;
+    }
+    ro.current = new ResizeObserver((entries) => {
+      const currentRefEntry = entries.find(
+        ({ target }) => target === containerRef.current
+      );
+      if (currentRefEntry) {
+        const { width, height } = currentRefEntry.contentRect;
+        setTargetSize({ width, height });
+      }
+    });
+    ro.current.observe(containerRef.current);
+  }, [teardownResizeObserver]);
 
   const setContainerRef = React.useCallback(
     (ref) => {
-      if (ref && ref !== containerRef.current) {
-        containerRef.current = ref;
-        updateResizeObserver();
-      }
+      teardownResizeObserver();
+      containerRef.current = ref;
+      setupResizeObserver();
     },
-    [updateResizeObserver]
+    [setupResizeObserver, teardownResizeObserver]
   );
 
   React.useEffect(() => {
@@ -182,17 +188,15 @@ const WordClock = ({ words }) => {
 
   const isResizing = sizeState.previousFit !== FIT.OK;
   return (
-    <React.Fragment>
-      <div ref={setContainerRef} className={styles.container}>
-        <div
-          ref={innerRef}
-          className={isResizing ? styles.wordsResizing : styles.words}
-          style={style}
-        >
-          <WordClockInner logic={logic} label={label} timeProps={timeProps} />
-        </div>
+    <div ref={setContainerRef} className={styles.container}>
+      <div
+        ref={innerRef}
+        className={isResizing ? styles.wordsResizing : styles.words}
+        style={style}
+      >
+        <WordClockInner logic={logic} label={label} timeProps={timeProps} />
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

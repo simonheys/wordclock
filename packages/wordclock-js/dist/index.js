@@ -1241,39 +1241,38 @@
     return timeProps;
   };
 
-  var parseJson = function parseJson(_ref) {
-    var groups = _ref.groups;
-    var label = [];
-    var logic = [];
-    groups.forEach(function (group) {
-      var groupLabel = [];
-      var groupLogic = [];
-      group.forEach(function (entry) {
-        var type = entry.type;
+  const parseJson = ({
+    groups
+  }) => {
+    const label = [];
+    const logic = [];
+    groups.forEach(group => {
+      const groupLabel = [];
+      const groupLogic = [];
+      group.forEach(entry => {
+        const type = entry.type;
 
         if (type === "item") {
-          var items = entry.items;
-          items.forEach(function (item) {
-            var _item$text;
-
-            var highlight = item.highlight;
-            var text = (_item$text = item.text) !== null && _item$text !== void 0 ? _item$text : "";
+          const items = entry.items;
+          items.forEach(item => {
+            const highlight = item.highlight;
+            const text = item.text ?? "";
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "sequence") {
-          var bind = entry.bind;
-          var first = entry.first;
-          var textArray = entry.text;
-          textArray.forEach(function (text, index) {
-            var highlight = "".concat(bind, "==").concat(first + index);
+          const bind = entry.bind;
+          const first = entry.first;
+          const textArray = entry.text;
+          textArray.forEach((text, index) => {
+            const highlight = `${bind}==${first + index}`;
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "space") {
-          var count = entry.count;
+          const count = entry.count;
 
-          for (var i = 0; i < count; i++) {
+          for (let i = 0; i < count; i++) {
             groupLabel.push("");
             groupLogic.push("");
           }
@@ -1283,8 +1282,8 @@
       label.push(groupLabel);
     });
     return {
-      logic: logic,
-      label: label
+      logic,
+      label
     };
   };
 
@@ -1312,11 +1311,11 @@
     while (count > 0 && i < source.length) {
       c = source.substr(i, 1);
 
-      if (c == "(") {
+      if (c === "(") {
         count++;
       }
 
-      if (c == ")") {
+      if (c === ")") {
         count--;
       }
 
@@ -1717,45 +1716,48 @@
         setSizeState = _React$useState8[1];
 
     var timeProps = useTimeProps();
-    var updateResizeObserver = React__namespace.useCallback(function () {
+    var teardownResizeObserver = React__namespace.useCallback(function () {
       if (ro.current) {
         if (containerRef.current) {
           ro.current.unobserve(containerRef.current);
         }
-      } else {
-        ro.current = new index(function (entries) {
-          var currentRefEntry = entries.find(function (_ref3) {
-            var target = _ref3.target;
-            return target === containerRef.current;
-          });
 
-          if (currentRefEntry) {
-            var _currentRefEntry$cont = currentRefEntry.contentRect,
-                width = _currentRefEntry$cont.width,
-                height = _currentRefEntry$cont.height;
-            setTargetSize({
-              width: width,
-              height: height
-            });
-          }
-        });
-      }
-
-      if (containerRef.current) {
-        ro.current.observe(containerRef.current);
-      }
-
-      return function () {
         ro.current.disconnect();
         ro.current = null;
-      };
-    }, [setTargetSize]);
-    var setContainerRef = React__namespace.useCallback(function (ref) {
-      if (ref && ref !== containerRef.current) {
-        containerRef.current = ref;
-        updateResizeObserver();
       }
-    }, [updateResizeObserver]);
+    }, []);
+    var setupResizeObserver = React__namespace.useCallback(function () {
+      if (ro.current) {
+        teardownResizeObserver();
+      }
+
+      if (!containerRef.current) {
+        return;
+      }
+
+      ro.current = new index(function (entries) {
+        var currentRefEntry = entries.find(function (_ref3) {
+          var target = _ref3.target;
+          return target === containerRef.current;
+        });
+
+        if (currentRefEntry) {
+          var _currentRefEntry$cont = currentRefEntry.contentRect,
+              width = _currentRefEntry$cont.width,
+              height = _currentRefEntry$cont.height;
+          setTargetSize({
+            width: width,
+            height: height
+          });
+        }
+      });
+      ro.current.observe(containerRef.current);
+    }, [teardownResizeObserver]);
+    var setContainerRef = React__namespace.useCallback(function (ref) {
+      teardownResizeObserver();
+      containerRef.current = ref;
+      setupResizeObserver();
+    }, [setupResizeObserver, teardownResizeObserver]);
     React__namespace.useEffect(function () {
       if (!containerRef.current || !innerRef.current || targetSize.width === 0) {
         return;
@@ -1827,7 +1829,7 @@
       setSizeState(_objectSpread({}, sizeStateDefault));
     }, [words]);
     var isResizing = sizeState.previousFit !== FIT.OK;
-    return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.createElement("div", {
+    return /*#__PURE__*/React__namespace.createElement("div", {
       ref: setContainerRef,
       className: styles.container
     }, /*#__PURE__*/React__namespace.createElement("div", {
@@ -1838,7 +1840,7 @@
       logic: logic,
       label: label,
       timeProps: timeProps
-    }))));
+    })));
   };
 
   exports.WordClock = WordClock;
