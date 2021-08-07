@@ -1200,79 +1200,84 @@
     return ResizeObserver;
   }();
 
-  const getTimeProps = dateInstance => {
+  var getTimeProps = function getTimeProps(dateInstance) {
     if (dateInstance === undefined) {
       dateInstance = new Date();
     }
 
-    const day = dateInstance.getDay();
-    let daystartingmonday = day - 1;
+    var day = dateInstance.getDay();
+    var daystartingmonday = day - 1;
 
     while (daystartingmonday < 0) {
       daystartingmonday += 7;
     }
 
-    const date = dateInstance.getDate();
-    const month = dateInstance.getMonth();
-    const hour = dateInstance.getHours() % 12;
-    const twentyfourhour = dateInstance.getHours();
-    const minute = dateInstance.getMinutes();
-    const second = dateInstance.getSeconds();
+    var date = dateInstance.getDate();
+    var month = dateInstance.getMonth();
+    var hour = dateInstance.getHours() % 12;
+    var twentyfourhour = dateInstance.getHours();
+    var minute = dateInstance.getMinutes();
+    var second = dateInstance.getSeconds();
     return {
-      day,
-      daystartingmonday,
-      date,
-      month,
-      hour,
-      twentyfourhour,
-      minute,
-      second
+      day: day,
+      daystartingmonday: daystartingmonday,
+      date: date,
+      month: month,
+      hour: hour,
+      twentyfourhour: twentyfourhour,
+      minute: minute,
+      second: second
     };
   };
 
-  const useTimeProps = () => {
-    const [timeProps, setTimeProps] = React__namespace.useState(getTimeProps());
-    React__namespace.useEffect(() => {
-      const interval = setInterval(() => {
+  var useTimeProps = function useTimeProps() {
+    var _React$useState = React__namespace.useState(getTimeProps()),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        timeProps = _React$useState2[0],
+        setTimeProps = _React$useState2[1];
+
+    React__namespace.useEffect(function () {
+      var interval = setInterval(function () {
         setTimeProps(getTimeProps());
       }, 1000);
-      return () => clearInterval(interval);
+      return function () {
+        return clearInterval(interval);
+      };
     }, []);
     return timeProps;
   };
 
-  const parseJson = ({
-    groups
-  }) => {
-    const label = [];
-    const logic = [];
-    groups.forEach(group => {
-      const groupLabel = [];
-      const groupLogic = [];
-      group.forEach(entry => {
-        const type = entry.type;
+  var parseJson = function parseJson(_ref) {
+    var groups = _ref.groups;
+    var label = [];
+    var logic = [];
+    groups.forEach(function (group) {
+      var groupLabel = [];
+      var groupLogic = [];
+      group.forEach(function (entry) {
+        var type = entry.type;
 
         if (type === "item") {
-          const items = entry.items;
-          items.forEach(item => {
-            const highlight = item.highlight;
-            const text = item.text ?? "";
+          var items = entry.items;
+          items.forEach(function (item) {
+            var highlight = item.highlight;
+            var text = item.text || "";
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "sequence") {
-          const bind = entry.bind;
-          const first = entry.first;
-          const textArray = entry.text;
-          textArray.forEach((text, index) => {
-            const highlight = `${bind}==${first + index}`;
+          var bind = entry.bind;
+          var first = entry.first;
+          var textArray = entry.text;
+          textArray.forEach(function (text, index) {
+            var highlight = "".concat(bind, "==").concat(first + index);
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "space") {
-          const count = entry.count;
+          var count = entry.count;
 
-          for (let i = 0; i < count; i++) {
+          for (var i = 0; i < count; i++) {
             groupLabel.push("");
             groupLogic.push("");
           }
@@ -1282,8 +1287,8 @@
       label.push(groupLabel);
     });
     return {
-      logic,
-      label
+      logic: logic,
+      label: label
     };
   };
 

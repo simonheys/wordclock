@@ -10,7 +10,7 @@ export const parseJson = ({ groups }) => {
         const items = entry.items;
         items.forEach((item) => {
           const highlight = item.highlight;
-          const text = item.text ?? "";
+          const text = item.text || "";
           groupLabel.push(text);
           groupLogic.push(highlight);
         });
