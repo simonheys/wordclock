@@ -48,7 +48,6 @@ const minimumFontSizeAdjustment = 0.01;
 
 const sizeStateDefault = {
   fontSize: 12,
-  lineHeight: 1,
   previousFontSize: 12,
   fontSizeLow: 1,
   fontSizeHigh: 256,
@@ -69,8 +68,7 @@ const WordClock = ({ words }) => {
     if (!targetSize.width) {
       return;
     }
-    const boundingClientRect = innerRef.current.getBoundingClientRect();
-    const { height } = boundingClientRect;
+    const height = innerRef.current.scrollHeight;
     const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
     const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
     if (sizeState.previousTargetSize) {
@@ -123,20 +121,13 @@ const WordClock = ({ words }) => {
         });
       }
     }
-  }, [
-    containerRef,
-    sizeState,
-    targetSize,
-    targetSize.height,
-    targetSize.width,
-  ]);
+  }, [sizeState, targetSize]);
 
   const style = React.useMemo(() => {
     return {
       fontSize: sizeState.fontSize,
-      lineHeight: sizeState.lineHeight,
     };
-  }, [sizeState.fontSize, sizeState.lineHeight]);
+  }, [sizeState.fontSize]);
 
   React.useEffect(() => {
     if (!words) {
