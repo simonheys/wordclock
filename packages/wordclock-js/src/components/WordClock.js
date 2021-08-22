@@ -1,11 +1,11 @@
 import * as React from "react";
-import ResizeObserver from "resize-observer-polyfill";
 
 import useTimeProps from "../hooks/useTimeProps";
 import * as WordsFileParser from "../modules/WordsFileParser";
 import * as LogicParser from "../modules/LogicParser";
 
 import styles from "./WordClock.module.scss";
+import useSize from "../hooks/useSize";
 
 const WordClockInner = ({ logic, label, timeProps, fontSize }) => {
   return label.map((labelGroup, labelIndex) => {
@@ -56,60 +56,17 @@ const sizeStateDefault = {
 };
 
 const WordClock = ({ words }) => {
-  const containerRef = React.useRef(null);
   const innerRef = React.useRef(null);
-  const ro = React.useRef(null);
+  const { ref: containerRef, size: targetSize } = useSize();
 
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
-  const [targetSize, setTargetSize] = React.useState({
-    width: 0,
-    height: 0,
-  });
   const [sizeState, setSizeState] = React.useState({ ...sizeStateDefault });
 
   const timeProps = useTimeProps();
 
-  const teardownResizeObserver = React.useCallback(() => {
-    if (ro.current) {
-      if (containerRef.current) {
-        ro.current.unobserve(containerRef.current);
-      }
-      ro.current.disconnect();
-      ro.current = null;
-    }
-  }, []);
-
-  const setupResizeObserver = React.useCallback(() => {
-    if (ro.current) {
-      teardownResizeObserver();
-    }
-    if (!containerRef.current) {
-      return;
-    }
-    ro.current = new ResizeObserver((entries) => {
-      const currentRefEntry = entries.find(
-        ({ target }) => target === containerRef.current
-      );
-      if (currentRefEntry) {
-        const { width, height } = currentRefEntry.contentRect;
-        setTargetSize({ width, height });
-      }
-    });
-    ro.current.observe(containerRef.current);
-  }, [teardownResizeObserver]);
-
-  const setContainerRef = React.useCallback(
-    (ref) => {
-      teardownResizeObserver();
-      containerRef.current = ref;
-      setupResizeObserver();
-    },
-    [setupResizeObserver, teardownResizeObserver]
-  );
-
   React.useEffect(() => {
-    if (!containerRef.current || !innerRef.current || targetSize.width === 0) {
+    if (!targetSize.width) {
       return;
     }
     const boundingClientRect = innerRef.current.getBoundingClientRect();
@@ -166,7 +123,13 @@ const WordClock = ({ words }) => {
         });
       }
     }
-  }, [sizeState, targetSize, targetSize.height, targetSize.width]);
+  }, [
+    containerRef,
+    sizeState,
+    targetSize,
+    targetSize.height,
+    targetSize.width,
+  ]);
 
   const style = React.useMemo(() => {
     return {
@@ -188,7 +151,7 @@ const WordClock = ({ words }) => {
 
   const isResizing = sizeState.previousFit !== FIT.OK;
   return (
-    <div ref={setContainerRef} className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       <div
         ref={innerRef}
         className={isResizing ? styles.wordsResizing : styles.words}
