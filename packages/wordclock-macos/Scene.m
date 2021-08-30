@@ -38,8 +38,8 @@
 
 - (void)advanceTimeBy:(float)seconds {
     //	DDLogVerbose(@"advance time by:");
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendarUnit unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday;
     NSDate *date = [NSDate date];
     NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
 
@@ -48,15 +48,22 @@
     [calendar release];
 
     if (second != _previousSecond) {
-        NSInteger hour = [dateComponents hour];
-        hour %= 12;
+        NSInteger twentyfourhour = [dateComponents hour];
+        NSInteger hour = twentyfourhour % 12;
         if (hour == 0) {
             hour = 12;
         }
+        
+        NSInteger minute = [dateComponents minute];
+        
+        #ifdef DEMO_TIME
+            hour = 9;
+            minute = 41;
+        #endif
 
         [LogicParser sharedInstance].hour = hour;
-        [LogicParser sharedInstance].twentyfourhour = [dateComponents hour];
-        [LogicParser sharedInstance].minute = [dateComponents minute];
+        [LogicParser sharedInstance].twentyfourhour = twentyfourhour;
+        [LogicParser sharedInstance].minute = minute;
         [LogicParser sharedInstance].second = second;
         [LogicParser sharedInstance].day = [dateComponents weekday] - 1;  //-1 for compatibility with flash d.getDay();
         // DDLogVerbose(@"day:%d",[LogicParser sharedInstance].day);

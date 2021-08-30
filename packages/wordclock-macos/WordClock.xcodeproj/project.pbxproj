@@ -628,8 +628,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/yarn copy-words\n";
+			shellPath = "/bin/zsh -l";
+			shellScript = "yarn copy-words\n";
 		};
 		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -645,8 +645,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/yarn update-build-number\n";
+			shellPath = "/bin/zsh -l";
+			shellScript = "yarn update-build-number\n";
 		};
 		F49DA2BD217C69D700D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -662,8 +662,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/zsh;
-			shellScript = "/opt/homebrew/bin/yarn update-build-number\n";
+			shellPath = "/bin/zsh -l";
+			shellScript = "yarn update-build-number\n";
 		};
 		F4E8F512165FD0C30019987F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -675,8 +675,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/opt/homebrew/bin/yarn copy-words\n";
+			shellPath = "/bin/zsh -l";
+			shellScript = "yarn copy-words\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
