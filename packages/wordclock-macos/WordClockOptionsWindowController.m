@@ -303,6 +303,10 @@
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"never" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:0];
     [newMenu addItem:menuItem];
+    
+    menuItem = [[[NSMenuItem alloc] initWithTitle:@"every 10 seconds" action:nil keyEquivalent:@""] autorelease];
+    [menuItem setTag:10];
+    [newMenu addItem:menuItem];
 
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"every 30 seconds" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:30];

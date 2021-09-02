@@ -149,54 +149,13 @@ NSString *const kWordClockWordManagerLogicaAndLabelsWillChangeNotification = @"k
 
 // ____________________________________________________________________________________________________ singleton
 
-static WordClockWordManager *shareWordClockWordManagerInstance = nil;
-
-+ (WordClockWordManager*)sharedInstance
-{
-    @synchronized(self) {
-        if (shareWordClockWordManagerInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-    return shareWordClockWordManagerInstance;
++ (WordClockWordManager *)sharedInstance {
+    static dispatch_once_t once;
+    static WordClockWordManager *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (shareWordClockWordManagerInstance == nil) {
-            shareWordClockWordManagerInstance = [super allocWithZone:zone];
-            return shareWordClockWordManagerInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-
-- (id)retain
-{
-    return self;
-}
-
-- (unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release
-{
-    //do nothing
-}
-
-- (id)autorelease
-{
-    return self;
-}
-
 
 @end

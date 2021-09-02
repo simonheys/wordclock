@@ -9,7 +9,7 @@
 #import <GLKit/GLKit.h>
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "LogicXmlFileParser.h"
+#import "WordClockWordsFileParser.h"
 #import "LogicParserStringUtil.h"
 #import "LogicParser.h"
 #import "WordClockGLView.h"
@@ -21,11 +21,11 @@
 @class LogicXmlFileParser;
 @class WordClockGLView;
 
-@interface WordClockViewController : GLKViewController
+@interface WordClockViewController : GLKViewController <WordClockWordsFileParserDelegate>
 {
 @private
 	NSInteger _previousSecond;
-	LogicXmlFileParser *_parser;
+	WordClockWordsFileParser *_parser;
 	NSString *_currentXmlFile;
 	id delegate;
 	BOOL _running;

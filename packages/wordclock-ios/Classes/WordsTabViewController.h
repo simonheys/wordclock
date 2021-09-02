@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WordClockXmlFileParser.h"
+#import "WordClockWordsManifestFileParser.h"
 #import "WordClockPreferences.h"
 #import "UITableViewControllerBlack.h"
 #import "DLog.h"
@@ -21,7 +21,7 @@ typedef enum _WordsTabViewControllerState {
 } WordsTabViewControllerState;
 
 
-@interface WordsTabViewController : UITableViewControllerBlack<WordClockXmlFileParserDelegate>
+@interface WordsTabViewController : UITableViewControllerBlack<WordClockWordsManifestFileParserDelegate>
 {
 	NSArray *displayList;
 	NSDictionary *currentFile;

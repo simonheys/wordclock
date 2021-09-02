@@ -99,7 +99,8 @@
     if ([self.transitionTimer isValid]) {
         [self stopTransitionTimer];
     }
-    self.transitionTimer = [NSTimer scheduledTimerWithTimeInterval:[WordClockPreferences sharedInstance].transitionTime target:self selector:@selector(transitionTimerFired:) userInfo:nil repeats:YES];
+    NSTimeInterval ti = [WordClockPreferences sharedInstance].transitionTime;
+    self.transitionTimer = [NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(transitionTimerFired:) userInfo:nil repeats:YES];
 }
 
 - (void)stopTransitionTimer {

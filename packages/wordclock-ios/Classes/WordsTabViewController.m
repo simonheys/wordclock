@@ -21,7 +21,7 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 }
 
 @interface WordsTabViewController ()
-@property (nonatomic, retain) WordClockXmlFileParser *wordClockXmlFileParser;
+@property (nonatomic, retain) WordClockWordsManifestFileParser *wordClockXmlFileParser;
 @end
 
 @implementation WordsTabViewController
@@ -92,14 +92,14 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 {
 	DLog(@"loadData");
 	
-	NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
- NSString *manifestFile =[thisBundle pathForResource:@"Manifest" ofType:@"xml"];
+//	NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
+// NSString *manifestFile =[thisBundle pathForResource:@"Manifest" ofType:@"xml"];
 // DLog(@"manifestFile:%@",manifestFile);
 //	([WordClockXmlFileParser sharedInstance] ).manifestFile = manifestFile;
 //	[thisBundle release];
-    self.wordClockXmlFileParser = [[[WordClockXmlFileParser alloc] init] autorelease];
+    self.wordClockXmlFileParser = [[[WordClockWordsManifestFileParser alloc] init] autorelease];
     self.wordClockXmlFileParser.delegate = self;
-    self.wordClockXmlFileParser.manifestFile = manifestFile;
+//    self.wordClockXmlFileParser.manifestFile = manifestFile;
 
 
 
@@ -147,7 +147,7 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 	[self.tableView reloadData];
 }
 
--(void)wordClockXmlFileParserDidCompleteParsingManifest:(WordClockXmlFileParser *)parser
+- (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser *)parser
 {
 	DLog(@"wordClockXmlFileParserDidCompleteParsingManifest");
 }
@@ -272,7 +272,7 @@ NSMutableDictionary *sectionDictionaryWithNameInArray(NSString *name, NSArray *a
 	// language sections contains the language section dictionary items
 	NSMutableArray *languageSections = [[NSMutableArray alloc] init];
 	
-	NSArray *xmlFiles = [self.wordClockXmlFileParser xmlFiles];
+	NSArray *xmlFiles = [self.wordClockXmlFileParser wordsFiles];
 	
 	NSDictionary *xmlFileDictionary;
 	NSString *sectionName;

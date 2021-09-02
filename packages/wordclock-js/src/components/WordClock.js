@@ -63,7 +63,7 @@ const WordClock = ({ words }) => {
   const [sizeState, setSizeState] = React.useState({ ...sizeStateDefault });
 
   const timeProps = useTimeProps();
-
+  //
   React.useEffect(() => {
     if (!targetSize.width) {
       return;

@@ -49,7 +49,7 @@ NSString *WCLockedKey = @"locked";
 		isRunningOnPad = YES;
 	}
 	NSDictionary *factoryDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"English.xml", WCXMLFileKey,
+		@"English.json", WCXMLFileKey,
 		@"Helvetica-Bold", WCFontNameKey,
 		[NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0]],WCHighlightColourKey,
 		[NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0]],WCForegroundColourKey,
@@ -397,53 +397,13 @@ NSString *WCLockedKey = @"locked";
 
 // ____________________________________________________________________________________________________ Singleton
 
-static WordClockPreferences *sharedWordClockPreferencesInstance = nil;
-
-+ (WordClockPreferences*)sharedInstance
-{
-    @synchronized(self) {
-        if (sharedWordClockPreferencesInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-    return sharedWordClockPreferencesInstance;
-}
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (sharedWordClockPreferencesInstance == nil) {
-            sharedWordClockPreferencesInstance = [super allocWithZone:zone];
-            return sharedWordClockPreferencesInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-
-- (id)retain
-{
-    return self;
-}
-
-- (unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release
-{
-    //do nothing
-}
-
-- (id)autorelease
-{
-    return self;
++ (WordClockPreferences *)sharedInstance {
+    static dispatch_once_t once;
+    static WordClockPreferences *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 // ____________________________________________________________________________________________________ Getters / Setters

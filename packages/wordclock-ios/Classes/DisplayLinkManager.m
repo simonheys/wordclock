@@ -180,52 +180,13 @@
 
 // ____________________________________________________________________________________________________ singleton
 
-static DisplayLinkManager *_sharedDisplayLinkManagerInstance = nil;
-
-+ (DisplayLinkManager*)sharedInstance
-{
-    @synchronized(self) {
-        if (_sharedDisplayLinkManagerInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-    return _sharedDisplayLinkManagerInstance;
-}
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (_sharedDisplayLinkManagerInstance == nil) {
-            _sharedDisplayLinkManagerInstance = [super allocWithZone:zone];
-            return _sharedDisplayLinkManagerInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
-- (unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release
-{
-    //do nothing
-}
-
-- (id)autorelease
-{
-    return self;
++ (DisplayLinkManager *)sharedInstance {
+    static dispatch_once_t once;
+    static DisplayLinkManager *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 @end

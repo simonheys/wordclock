@@ -12,7 +12,6 @@
 #import "TypographyTabViewController.h"
 #import "FlipsideColourPickerViewController.h"
 #import "AboutTabViewController.h"
-#import "WordClockXmlFileParser.h"
 #import "DLog.h"
 
 @protocol FlipsideViewControllerDelegate;

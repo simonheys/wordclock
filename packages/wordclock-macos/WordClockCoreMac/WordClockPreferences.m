@@ -97,7 +97,7 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 }
 
 - (void)reset {
-    self.wordsFile = @"English.xml";
+    self.wordsFile = @"English.json";
     self.fontName = @"Helvetica-Bold";
     self.highlightColour = [NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0];
     self.foregroundColour = [NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0];

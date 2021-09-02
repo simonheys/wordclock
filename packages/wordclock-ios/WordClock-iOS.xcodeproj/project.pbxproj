@@ -14,7 +14,6 @@
 		F40402410F472184001AAA26 /* WordClockWordLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F40402400F472184001AAA26 /* WordClockWordLayout.m */; };
 		F404025E0F47299E001AAA26 /* CoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F404025D0F47299E001AAA26 /* CoordinateProvider.m */; };
 		F40510310F66EB75008BF18E /* image_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = F405102F0F66EB75008BF18E /* image_utilities.c */; };
-		F40C17BC0E5716B300373191 /* LogicXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C17BB0E5716B300373191 /* LogicXmlFileParser.m */; };
 		F40C18900E57265F00373191 /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C188F0E57265F00373191 /* LogicParserStringUtil.m */; };
 		F40C9B131644352E000923BF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F40C9B121644352E000923BF /* GLKit.framework */; };
 		F41182220F48428C002630A1 /* LinearCoordinateProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F41182210F48428C002630A1 /* LinearCoordinateProvider.m */; };
@@ -24,9 +23,12 @@
 		F42441C911030584007B4469 /* DisplayLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F42441C811030584007B4469 /* DisplayLinkManager.m */; };
 		F42441D7110308C5007B4469 /* DisplayLinkManagerTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = F42441D6110308C5007B4469 /* DisplayLinkManagerTarget.m */; };
 		F426A9251094355300E3265F /* ColourGradientSliderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F426A9241094355300E3265F /* ColourGradientSliderControl.m */; };
+		F42B6E6726E102C10004279C /* WordClockWordsManifestFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B6E6426E102C10004279C /* WordClockWordsManifestFileParser.m */; };
+		F42B6E6826E102C10004279C /* WordClockWordsManifestFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B6E6426E102C10004279C /* WordClockWordsManifestFileParser.m */; };
+		F42B6E6926E102C10004279C /* WordClockWordsFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B6E6526E102C10004279C /* WordClockWordsFileParser.m */; };
+		F42B6E6A26E102C10004279C /* WordClockWordsFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F42B6E6526E102C10004279C /* WordClockWordsFileParser.m */; };
 		F42BD9BE0E5749A50027E0DF /* LogicParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F42BD9BD0E5749A50027E0DF /* LogicParser.m */; };
 		F42DA0F70F99F20900B95CDD /* uptime.c in Sources */ = {isa = PBXBuildFile; fileRef = F42DA0F60F99F20900B95CDD /* uptime.c */; };
-		F43322240E5FE98C00797A7E /* WordClockXmlFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F43322230E5FE98C00797A7E /* WordClockXmlFileParser.m */; };
 		F43325310E603B5200797A7E /* WordClockPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = F43325300E603B5200797A7E /* WordClockPreferences.m */; };
 		F439B8FE0E9B672100FB3047 /* AboutTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F439B8FD0E9B672100FB3047 /* AboutTabViewController.m */; };
 		F439B9030E9B67E300FB3047 /* FlipsideAboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F439B9020E9B67E300FB3047 /* FlipsideAboutView.xib */; };
@@ -108,7 +110,6 @@
 		F4663F3A165785A4004B09EC /* tracking_min@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4663F01165785A4004B09EC /* tracking_min@2x.png */; };
 		F4663F3E16578A78004B09EC /* flipside_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4663F3C16578A78004B09EC /* flipside_background.png */; };
 		F4663F3F16578A78004B09EC /* flipside_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4663F3D16578A78004B09EC /* flipside_background@2x.png */; };
-		F46B82EF2697166E00A7F640 /* NSXMLParser+App.m in Sources */ = {isa = PBXBuildFile; fileRef = F46B82EE2697166D00A7F640 /* NSXMLParser+App.m */; };
 		F47132A30F6401BA00EF7F93 /* CustomUISlider.m in Sources */ = {isa = PBXBuildFile; fileRef = F47132A10F6401BA00EF7F93 /* CustomUISlider.m */; };
 		F4778CC2110C54AB0064FDCE /* LogicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4778CC1110C54AB0064FDCE /* LogicTests.m */; };
 		F4778D9B110C581B0064FDCE /* LogicParserStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F40C188F0E57265F00373191 /* LogicParserStringUtil.m */; };
@@ -151,8 +152,6 @@
 		F404025D0F47299E001AAA26 /* CoordinateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateProvider.m; sourceTree = "<group>"; };
 		F405102F0F66EB75008BF18E /* image_utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image_utilities.c; sourceTree = "<group>"; };
 		F40510300F66EB75008BF18E /* image_utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_utilities.h; sourceTree = "<group>"; };
-		F40C17BA0E5716B300373191 /* LogicXmlFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicXmlFileParser.h; sourceTree = "<group>"; };
-		F40C17BB0E5716B300373191 /* LogicXmlFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicXmlFileParser.m; sourceTree = "<group>"; };
 		F40C188E0E57265F00373191 /* LogicParserStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicParserStringUtil.h; sourceTree = "<group>"; };
 		F40C188F0E57265F00373191 /* LogicParserStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicParserStringUtil.m; sourceTree = "<group>"; };
 		F40C9B121644352E000923BF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -170,12 +169,14 @@
 		F42441D6110308C5007B4469 /* DisplayLinkManagerTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayLinkManagerTarget.m; sourceTree = "<group>"; };
 		F426A9231094355300E3265F /* ColourGradientSliderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColourGradientSliderControl.h; sourceTree = "<group>"; };
 		F426A9241094355300E3265F /* ColourGradientSliderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColourGradientSliderControl.m; sourceTree = "<group>"; };
+		F42B6E6326E102C10004279C /* WordClockWordsFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWordsFileParser.h; sourceTree = "<group>"; };
+		F42B6E6426E102C10004279C /* WordClockWordsManifestFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWordsManifestFileParser.m; sourceTree = "<group>"; };
+		F42B6E6526E102C10004279C /* WordClockWordsFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockWordsFileParser.m; sourceTree = "<group>"; };
+		F42B6E6626E102C10004279C /* WordClockWordsManifestFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockWordsManifestFileParser.h; sourceTree = "<group>"; };
 		F42BD9BC0E5749A50027E0DF /* LogicParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicParser.h; sourceTree = "<group>"; };
 		F42BD9BD0E5749A50027E0DF /* LogicParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicParser.m; sourceTree = "<group>"; };
 		F42DA0F50F99F20900B95CDD /* uptime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uptime.h; path = Classes/uptime.h; sourceTree = "<group>"; };
 		F42DA0F60F99F20900B95CDD /* uptime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uptime.c; path = Classes/uptime.c; sourceTree = "<group>"; };
-		F43322220E5FE98C00797A7E /* WordClockXmlFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockXmlFileParser.h; sourceTree = "<group>"; };
-		F43322230E5FE98C00797A7E /* WordClockXmlFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockXmlFileParser.m; sourceTree = "<group>"; };
 		F433252F0E603B5200797A7E /* WordClockPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockPreferences.h; sourceTree = "<group>"; };
 		F43325300E603B5200797A7E /* WordClockPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockPreferences.m; sourceTree = "<group>"; };
 		F439B8FC0E9B672100FB3047 /* AboutTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTabViewController.h; sourceTree = "<group>"; };
@@ -266,8 +267,6 @@
 		F4663F01165785A4004B09EC /* tracking_min@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracking_min@2x.png"; sourceTree = "<group>"; };
 		F4663F3C16578A78004B09EC /* flipside_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipside_background.png; sourceTree = "<group>"; };
 		F4663F3D16578A78004B09EC /* flipside_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flipside_background@2x.png"; sourceTree = "<group>"; };
-		F46B82ED2697166D00A7F640 /* NSXMLParser+App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+App.h"; sourceTree = "<group>"; };
-		F46B82EE2697166D00A7F640 /* NSXMLParser+App.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+App.m"; sourceTree = "<group>"; };
 		F47132A10F6401BA00EF7F93 /* CustomUISlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUISlider.m; sourceTree = "<group>"; };
 		F47132A20F6401BA00EF7F93 /* CustomUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUISlider.h; sourceTree = "<group>"; };
 		F4778CB8110C54710064FDCE /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,8 +453,6 @@
 		F40C17BF0E5716B800373191 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				F40C17BA0E5716B300373191 /* LogicXmlFileParser.h */,
-				F40C17BB0E5716B300373191 /* LogicXmlFileParser.m */,
 				F40C188E0E57265F00373191 /* LogicParserStringUtil.h */,
 				F40C188F0E57265F00373191 /* LogicParserStringUtil.m */,
 				F42BD9BC0E5749A50027E0DF /* LogicParser.h */,
@@ -488,12 +485,12 @@
 		F433221A0E5FE8BE00797A7E /* Words */ = {
 			isa = PBXGroup;
 			children = (
-				F46B82ED2697166D00A7F640 /* NSXMLParser+App.h */,
-				F46B82EE2697166D00A7F640 /* NSXMLParser+App.m */,
+				F42B6E6326E102C10004279C /* WordClockWordsFileParser.h */,
+				F42B6E6526E102C10004279C /* WordClockWordsFileParser.m */,
+				F42B6E6626E102C10004279C /* WordClockWordsManifestFileParser.h */,
+				F42B6E6426E102C10004279C /* WordClockWordsManifestFileParser.m */,
 				F4E42CE20E588126001DA050 /* WordsTabViewController.h */,
 				F4E42CE30E588126001DA050 /* WordsTabViewController.m */,
-				F43322220E5FE98C00797A7E /* WordClockXmlFileParser.h */,
-				F43322230E5FE98C00797A7E /* WordClockXmlFileParser.m */,
 			);
 			name = Words;
 			sourceTree = "<group>";
@@ -882,7 +879,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying xml...\"\ncp \"${PROJECT_DIR}\"/../wordclock-words/xml/*.xml \"${TARGET_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}\"\necho \"Done\"\n";
+			shellScript = "echo \"Copying json...\"\nmkdir -p \"${TARGET_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}/json\"\ncp \"${PROJECT_DIR}\"/../wordclock-words/json/*.json \"${TARGET_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}/json\"\necho \"Done\"\n";
 		};
 		F4778CB6110C54710064FDCE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -922,14 +919,13 @@
 				F4BFD0E10E350B7300FEF341 /* WordClockGLView.m in Sources */,
 				F4AAC1E60E35B2A100FA4BA9 /* WordClockViewController.m in Sources */,
 				F4A7D1F50E365ADA00D2FE6E /* FlipsideViewController.m in Sources */,
-				F40C17BC0E5716B300373191 /* LogicXmlFileParser.m in Sources */,
 				F40C18900E57265F00373191 /* LogicParserStringUtil.m in Sources */,
 				F42BD9BE0E5749A50027E0DF /* LogicParser.m in Sources */,
+				F42B6E6726E102C10004279C /* WordClockWordsManifestFileParser.m in Sources */,
 				F4E42CE40E588126001DA050 /* WordsTabViewController.m in Sources */,
 				F4E42CE90E58818F001DA050 /* FontTabViewController.m in Sources */,
 				F4E42D8F0E588BEC001DA050 /* TypographyTabViewController.m in Sources */,
 				F4E42D990E588C2A001DA050 /* FlipsideColourPickerViewController.m in Sources */,
-				F43322240E5FE98C00797A7E /* WordClockXmlFileParser.m in Sources */,
 				F43325310E603B5200797A7E /* WordClockPreferences.m in Sources */,
 				F4F721FD0E6161AE00535F2C /* FlipsideColourPickerView.m in Sources */,
 				F4F722BD0E61692B00535F2C /* FlipsideColourPickerCursorView.m in Sources */,
@@ -945,6 +941,7 @@
 				F41182220F48428C002630A1 /* LinearCoordinateProvider.m in Sources */,
 				F41182290F484416002630A1 /* RotaryCoordinateProvider.m in Sources */,
 				F45C8B6A0F50017A00675ED2 /* WordClockViewControls.m in Sources */,
+				F42B6E6926E102C10004279C /* WordClockWordsFileParser.m in Sources */,
 				F4E620DB0F513CD0000ED085 /* sin_and_cos_tables.c in Sources */,
 				F41BB9910F5ADC0C00816C05 /* TouchableView.m in Sources */,
 				F47132A30F6401BA00EF7F93 /* CustomUISlider.m in Sources */,
@@ -957,7 +954,6 @@
 				F4432EA70F6815D5006585FB /* ShowableWordClockPreview.m in Sources */,
 				F45958150F6D4D7800BB0A9E /* culling.c in Sources */,
 				F4CDB1670F90FF120088085F /* UITableViewControllerBlack.m in Sources */,
-				F46B82EF2697166E00A7F640 /* NSXMLParser+App.m in Sources */,
 				F42DA0F70F99F20900B95CDD /* uptime.c in Sources */,
 				F4E0A1690F9B232000864C09 /* NSDictionaryAdditions.m in Sources */,
 				F426A9251094355300E3265F /* ColourGradientSliderControl.m in Sources */,
@@ -971,9 +967,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42B6E6826E102C10004279C /* WordClockWordsManifestFileParser.m in Sources */,
 				F4778D9B110C581B0064FDCE /* LogicParserStringUtil.m in Sources */,
 				F4778D9C110C581B0064FDCE /* LogicParser.m in Sources */,
 				F4778CC2110C54AB0064FDCE /* LogicTests.m in Sources */,
+				F42B6E6A26E102C10004279C /* WordClockWordsFileParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -103,62 +103,14 @@
 
 // ____________________________________________________________________________________________________ singleton
 
-+ (TweenManager*)sharedInstance
-{
++ (TweenManager *)sharedInstance {
     static dispatch_once_t once;
     static TweenManager *sharedInstance;
-    dispatch_once(&once, ^{ sharedInstance = [[self alloc] init]; });
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
     return sharedInstance;
 }
-/*
-static TweenManager *_sharedTweenManagerInstance = nil;
-
-+ (TweenManager*)sharedInstance
-{
-    @synchronized(self) {
-        if (_sharedTweenManagerInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-    return _sharedTweenManagerInstance;
-}
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (_sharedTweenManagerInstance == nil) {
-            _sharedTweenManagerInstance = [super allocWithZone:zone];
-            return _sharedTweenManagerInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
-- (NSUInteger)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release
-{
-    //do nothing
-}
-
-- (id)autorelease
-{
-    return self;
-}
-*/
 
 @end
 

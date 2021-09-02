@@ -15,53 +15,13 @@ NSString *LogicParserOperators = @"!%&*()-+=|/<>";
 
 // ____________________________________________________________________________________________________ Singleton
 
-static LogicParser *shareNSLogicParserInstance = nil;
-
-+ (LogicParser*)sharedInstance
-{
-    @synchronized(self) {
-        if (shareNSLogicParserInstance == nil) {
-            [[self alloc] init]; // assignment not done here
-        }
-    }
-    return shareNSLogicParserInstance;
-}
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (shareNSLogicParserInstance == nil) {
-            shareNSLogicParserInstance = [super allocWithZone:zone];
-            return shareNSLogicParserInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; //on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-
-- (id)retain
-{
-    return self;
-}
-
-- (unsigned)retainCount
-{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release
-{
-    //do nothing
-}
-
-- (id)autorelease
-{
-    return self;
++ (LogicParser *)sharedInstance {
+    static dispatch_once_t once;
+    static LogicParser *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 // ____________________________________________________________________________________________________ Init
@@ -94,7 +54,6 @@ static LogicParser *shareNSLogicParserInstance = nil;
 	[LogicParserConversionOperators release];
 	[super dealloc];
 }
-
 
 // ____________________________________________________________________________________________________ Term
 

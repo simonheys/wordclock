@@ -244,6 +244,8 @@ would be nice to be able to have 1024x1024 textures at some points.
 		uint i = [index intValue];
 		glBindTexture(GL_TEXTURE_2D, _spriteTexture[i]);
 		glDrawArrays(GL_TRIANGLE_STRIP, i<<2, 4);
+        DLog(@"%f %f %f %f",_colours[i*4],_colours[1+i*4],_colours[2+i*4],_colours[3+i*4]);
+      
 	}
 	
 //	glEnable(GL_DEPTH_TEST);
@@ -410,6 +412,7 @@ would be nice to be able to have 1024x1024 textures at some points.
 	NSString *fontName = [WordClockPreferences sharedInstance].fontName;
 	float tracking = [WordClockPreferences sharedInstance].tracking;
 	WCCaseAdjustment caseAdjustment = [WordClockPreferences sharedInstance].caseAdjustment;
+     DLog(@"word:%@",[WordClockWordManager sharedInstance].word);
 	for ( w in [WordClockWordManager sharedInstance].word ) {
 		[w setFontWithName:fontName tracking:tracking caseAdjustment:caseAdjustment];
 	}

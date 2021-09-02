@@ -44,7 +44,7 @@
 
 - (void)numberOfWordsDidChange:(NSNotification *)notification
 {
-	DLog(@"numberOfWordsDidChange");
+	DLog(@"numberOfWordsDidChange:%@",@([WordClockWordManager sharedInstance].numberOfWords));
 	free(_coordinates);
 	_coordinates = malloc([WordClockWordManager sharedInstance].numberOfWords * sizeof(WordClockWordCoordinates));
 }

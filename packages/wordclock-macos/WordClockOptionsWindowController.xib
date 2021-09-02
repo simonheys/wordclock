@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="64">
-                        <rect key="frame" x="652" y="13" width="96" height="32"/>
+                        <rect key="frame" x="653" y="13" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="65">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -259,7 +259,7 @@ DQ
                         </subviews>
                     </customView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnX-Yh-0Wm">
-                        <rect key="frame" x="388" y="23" width="241" height="14"/>
+                        <rect key="frame" x="133" y="23" width="241" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <gestureRecognizers>
                             <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="LTj-7x-FJr">
@@ -268,12 +268,23 @@ DQ
                                 </connections>
                             </clickGestureRecognizer>
                         </gestureRecognizers>
-                        <textFieldCell key="cell" enabled="NO" alignment="left" title="Copyright Studio Heys Limited 2003–present" usesSingleLineMode="YES" id="jAH-lW-0Xv">
+                        <textFieldCell key="cell" enabled="NO" alignment="right" title="Copyright Studio Heys Limited 2003–present" usesSingleLineMode="YES" id="jAH-lW-0Xv">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7R6-q2-h5G">
+                        <rect key="frame" x="383" y="13" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NRW-0y-bcB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="defaultsSelected:" target="-2" id="Q1m-wj-Kpg"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>

@@ -43,6 +43,7 @@ static inline size_t nextHighestPowerOfTwo(float value)
 // calculate the unscaled size based on these
 -(void)setFontWithName:(NSString *)fontName tracking:(float)tracking caseAdjustment:(WCCaseAdjustment)caseAdjustment
 {
+    NSLog(@"setFontWithName:%@ tracking:%@",fontName,@(tracking));
 	if ( _isSpace ) {
 		return;
 	}
@@ -282,7 +283,7 @@ static inline size_t nextHighestPowerOfTwo(float value)
 		return;
 	}
 	
-//	DLog(@"Rendering with dimensions %dx%d scale:%f word:%@ length:%d",width,height,_scale,_label,[_label length]);
+	DLog(@"Rendering with dimensions %dx%d scale:%f word:%@ length:%d",width,height,_scale,_label,[_label length]);
 	
 	_textureWidth = width;
 	_textureHeight = height;

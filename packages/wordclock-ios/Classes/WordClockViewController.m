@@ -51,10 +51,10 @@
 
 // ____________________________________________________________________________________________________ startup
 
-- (void)logicXmlFileParserDidCompleteParsing:(LogicXmlFileParser*)parser
+- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser *)logicParser
 {
 	DLog(@"logicXmlFileParserDidCompleteParsing");
-	[(WordClockGLView *)self.view setLogic:parser.logic label:parser.label];
+	[(WordClockGLView *)self.view setLogic:logicParser.logic label:logicParser.label];
 	if ([delegate respondsToSelector:@selector(wordClockDidCompleteParsing:)]) {
 		[delegate wordClockDidCompleteParsing:self];
 	}			
@@ -73,7 +73,7 @@
 	NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
 	
 	[_parser release];
-	_parser = [[LogicXmlFileParser alloc] init];
+	_parser = [[WordClockWordsFileParser alloc] init];
 	[_parser setDelegate:self];
 
 	_currentXmlFile = xmlFile;
