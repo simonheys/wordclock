@@ -32,7 +32,7 @@
     self.view = [[[WordClockGLView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 }
 
-- (void)viewDidLoad 
+- (void)viewDidLoad
 {
 	DLog(@"viewDidLoad");
 	
@@ -46,21 +46,11 @@
 	
 	[self.view addSubview:_controls];
 	
-	[self.view setAlpha:0];	
+	[self.view setAlpha:0];
 }
 
-// ____________________________________________________________________________________________________ startup
+// ____________________________________________________________________________________________________ startup or update from flipside view
 
-- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser *)logicParser
-{
-	DLog(@"logicXmlFileParserDidCompleteParsing");
-	[(WordClockGLView *)self.view setLogic:logicParser.logic label:logicParser.label];
-	if ([delegate respondsToSelector:@selector(wordClockDidCompleteParsing:)]) {
-		[delegate wordClockDidCompleteParsing:self];
-	}			
-}
-
-// ____________________________________________________________________________________________________ update from flipside view
 
 - (void)updateFromPreferences
 {
@@ -77,17 +67,39 @@
 	[_parser setDelegate:self];
 
 	_currentXmlFile = xmlFile;
-	DLog(@"updateFromPreferences - Parse xml:%@",xmlFile);
-	[_parser parseFile:[thisBundle pathForResource:_currentXmlFile ofType:nil]];
+     NSString *fileName = [thisBundle pathForResource:_currentXmlFile ofType:nil inDirectory:@"json"];
+    
+	DLog(@"updateFromPreferences - Parse xml:%@ fileName:%@",xmlFile,fileName);
+//	[_parser parseFile:[thisBundle pathForResource:_currentXmlFile ofType:nil]];
+	[_parser parseFile:fileName];
 
-	DLog(@"updateFromPreferences - I'm back");
+//	DLog(@"updateFromPreferences - I'm back");
+//	[(WordClockGLView *)self.view updateFromPreferences];
+//
+////	self.view.backgroundColor = [WordClockPreferences sharedInstance].backgroundColour;
+//
+//	// highlight words
+//	_previousSecond = -1;
+//	[self runLoop];
+}
+
+- (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser *)logicParser
+{
+	DLog(@"wordClockWordsFileParserDidCompleteParsing");
+	[(WordClockGLView *)self.view setLogic:logicParser.logic label:logicParser.label];
+ 
+// DLog(@"updateFromPreferences - I'm back");
 	[(WordClockGLView *)self.view updateFromPreferences];
 	
-//	self.view.backgroundColor = [WordClockPreferences sharedInstance].backgroundColour;	
+//	self.view.backgroundColor = [WordClockPreferences sharedInstance].backgroundColour;
 	
 	// highlight words
 	_previousSecond = -1;
 	[self runLoop];
+    
+	if ([delegate respondsToSelector:@selector(wordClockDidCompleteParsing:)]) {
+		[delegate wordClockDidCompleteParsing:self];
+	}
 }
 
 // ____________________________________________________________________________________________________ begin
@@ -155,15 +167,15 @@
 // ____________________________________________________________________________________________________ run
 
 -(void)runLoop
-{	
+{
 	NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSCalendarUnit unitFlags = 
-		NSYearCalendarUnit | 
-		NSMonthCalendarUnit |  
-		NSDayCalendarUnit | 
-		NSHourCalendarUnit | 
-		NSMinuteCalendarUnit | 
-		NSSecondCalendarUnit | 
+	NSCalendarUnit unitFlags =
+		NSYearCalendarUnit |
+		NSMonthCalendarUnit |
+		NSDayCalendarUnit |
+		NSHourCalendarUnit |
+		NSMinuteCalendarUnit |
+		NSSecondCalendarUnit |
 		NSWeekdayCalendarUnit;
 	NSDate *date = [NSDate date];
 	NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
@@ -201,13 +213,13 @@
 
 // ____________________________________________________________________________________________________ cleanup
 
-- (void)didReceiveMemoryWarning 
+- (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 	// Release anything that's not essential, such as cached data
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
 	if ( delegate ) {
 		[delegate release];
@@ -217,7 +229,7 @@
 
 // ____________________________________________________________________________________________________ touches
 
-- (void)touchableViewDidChange:(TouchableView*)touchableView 
+- (void)touchableViewDidChange:(TouchableView*)touchableView
 {
 //	DLog(@"touchableViewDidChange");
 	((WordClockGLView *)self.view).scale = touchableView.scale;
@@ -225,7 +237,7 @@
 	((WordClockGLView *)self.view).translateY = touchableView.translationY;
 }
 
-- (void)touchableViewTrackingTouchesEnded:(TouchableView*)touchableView 
+- (void)touchableViewTrackingTouchesEnded:(TouchableView*)touchableView
 {
 //	DLog(@"touchableViewTrackingTouchesEnded");
 	
@@ -245,7 +257,7 @@
 	((WordClockGLView *)self.view).textureScalingEnabled = YES;
 }
 
-- (void)touchableViewTrackingTouchesBegan:(TouchableView*)touchableView 
+- (void)touchableViewTrackingTouchesBegan:(TouchableView*)touchableView
 {
 //	DLog(@"touchableViewTrackingTouchesBegan");
 	((WordClockGLView *)self.view).textureScalingEnabled = NO;
