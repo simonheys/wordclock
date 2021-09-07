@@ -1,6 +1,6 @@
 //
 //  WordClockPreferences.m
-//  WordClock-iOS
+//  WordClock iOS
 //
 //  Created by Simon Heys on 21/07/2008.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
@@ -33,366 +33,318 @@ NSString *WCLockedKey = @"locked";
 
 // ____________________________________________________________________________________________________ defaults
 
-+ (void)initialize
-{
++ (void)initialize {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
+
     [defaults registerDefaults:[self factoryDefaults]];
-	
-	DLog(@"registered defaults");
+
+    DLog(@"registered defaults");
 }
 
-+ (NSDictionary *)factoryDefaults
-{
-	BOOL isRunningOnPad = NO;
-	if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
-		isRunningOnPad = YES;
-	}
-	NSDictionary *factoryDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"English.json", WCXMLFileKey,
-		@"Helvetica-Bold", WCFontNameKey,
-		[NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0]],WCHighlightColourKey,
-		[NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0]],WCForegroundColourKey,
-		[NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0]],WCBackgroundColourKey,
-		[NSNumber numberWithFloat:0.0f],WCLeadingKey,
-		[NSNumber numberWithFloat:0.0f],WCTrackingKey,
-		[NSNumber numberWithUnsignedInt:WCJustificationLeft],WCJustificationKey,
-		[NSNumber numberWithUnsignedInt:WCStyleLinear],WCStyleKey,
-		[NSNumber numberWithFloat:0.0f],WCLinearTranslateXKey,
-		[NSNumber numberWithFloat:0.0f],WCLinearTranslateYKey,
-		[NSNumber numberWithFloat:1.0f],WCLinearScaleKey,
-		isRunningOnPad ? [NSNumber numberWithFloat:-512.0f/1.5f] : [NSNumber numberWithFloat:-240.0f/0.75f],WCRotaryTranslateXKey,
-		[NSNumber numberWithFloat:0.0f],WCRotaryTranslateYKey,
-		isRunningOnPad ? [NSNumber numberWithFloat:1.5f] : [NSNumber numberWithFloat:0.75f],WCRotaryScaleKey,
-		[NSNumber numberWithBool:YES],WCLockedKey,
-		nil		
-	];
-	return factoryDefaults;
++ (NSDictionary *)factoryDefaults {
+    BOOL isRunningOnPad = NO;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        isRunningOnPad = YES;
+    }
+    NSDictionary *factoryDefaults = [NSDictionary dictionaryWithObjectsAndKeys:@"English.json", WCXMLFileKey, @"Helvetica-Bold", WCFontNameKey, [NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0]], WCHighlightColourKey, [NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0]], WCForegroundColourKey, [NSKeyedArchiver archivedDataWithRootObject:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0]], WCBackgroundColourKey, [NSNumber numberWithFloat:0.0f], WCLeadingKey, [NSNumber numberWithFloat:0.0f], WCTrackingKey, [NSNumber numberWithUnsignedInt:WCJustificationLeft], WCJustificationKey, [NSNumber numberWithUnsignedInt:WCStyleLinear], WCStyleKey, [NSNumber numberWithFloat:0.0f], WCLinearTranslateXKey, [NSNumber numberWithFloat:0.0f], WCLinearTranslateYKey, [NSNumber numberWithFloat:1.0f], WCLinearScaleKey, isRunningOnPad ? [NSNumber numberWithFloat:-512.0f / 1.5f] : [NSNumber numberWithFloat:-240.0f / 0.75f], WCRotaryTranslateXKey, [NSNumber numberWithFloat:0.0f], WCRotaryTranslateYKey, isRunningOnPad ? [NSNumber numberWithFloat:1.5f] : [NSNumber numberWithFloat:0.75f], WCRotaryScaleKey, [NSNumber numberWithBool:YES], WCLockedKey, nil];
+    return factoryDefaults;
 }
 
-- (void) dealloc
-{
-	[_backgroundColour release];
-	[_foregroundColour release];
-	[_highlightColour release];
-	[_fontName release];
-	[super dealloc];
+- (void)dealloc {
+    [_backgroundColour release];
+    [_foregroundColour release];
+    [_highlightColour release];
+    [_fontName release];
+    [super dealloc];
 }
 
 // ____________________________________________________________________________________________________ xml file
 
-- (void)setXmlFile:(NSString *)value
-{
-	[[NSUserDefaults standardUserDefaults] setObject:value forKey:WCXMLFileKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+- (void)setXmlFile:(NSString *)value {
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:WCXMLFileKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSString *)xmlFile
-{
-	return [[NSUserDefaults standardUserDefaults] stringForKey:WCXMLFileKey];
+- (NSString *)xmlFile {
+    return [[NSUserDefaults standardUserDefaults] stringForKey:WCXMLFileKey];
 }
 
 // ____________________________________________________________________________________________________ font name
 
-- (void)setFontName:(NSString *)value
-{
-	if ( [value isEqual:_fontName] ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:value forKey:WCFontNameKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_fontName = [value retain];
+- (void)setFontName:(NSString *)value {
+    if ([value isEqual:_fontName]) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:WCFontNameKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _fontName = [value retain];
 }
 
-- (NSString *)fontName
-{
-	if ( !_fontName ) {
-		_fontName = [[NSUserDefaults standardUserDefaults] stringForKey:WCFontNameKey];
-		[_fontName retain];
-	}
-	return _fontName;
+- (NSString *)fontName {
+    if (!_fontName) {
+        _fontName = [[NSUserDefaults standardUserDefaults] stringForKey:WCFontNameKey];
+        [_fontName retain];
+    }
+    return _fontName;
 }
 
-- (void)setLeading:(float)value
-{
-	if ( _leading == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLeadingKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_leading = value;
+- (void)setLeading:(float)value {
+    if (_leading == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLeadingKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _leading = value;
 }
 
-- (float)leading
-{
-	if ( !_leading ) {
-		_leading = [[NSUserDefaults standardUserDefaults] floatForKey:WCLeadingKey];
-	}
-	return _leading;
+- (float)leading {
+    if (!_leading) {
+        _leading = [[NSUserDefaults standardUserDefaults] floatForKey:WCLeadingKey];
+    }
+    return _leading;
 }
 
-- (void)setTracking:(float)value
-{
-	if ( _tracking == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCTrackingKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_tracking = value;
+- (void)setTracking:(float)value {
+    if (_tracking == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCTrackingKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _tracking = value;
 }
 
-- (float)tracking
-{
-	if ( !_tracking ) {
-		_tracking = [[NSUserDefaults standardUserDefaults] floatForKey:WCTrackingKey];
-	}
-	return _tracking;
+- (float)tracking {
+    if (!_tracking) {
+        _tracking = [[NSUserDefaults standardUserDefaults] floatForKey:WCTrackingKey];
+    }
+    return _tracking;
 }
 
-- (void)setCaseAdjustment:(WCCaseAdjustment)value
-{
-	if ( _caseAdjustment == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInt:value] forKey:WCCaseAdjustmentKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_caseAdjustment = value;
-	
+- (void)setCaseAdjustment:(WCCaseAdjustment)value {
+    if (_caseAdjustment == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInt:value] forKey:WCCaseAdjustmentKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _caseAdjustment = value;
 }
 
-- (WCCaseAdjustment)caseAdjustment
-{
-	if ( !_caseAdjustment ) {
-		_caseAdjustment = [[NSUserDefaults standardUserDefaults] integerForKey:WCCaseAdjustmentKey];
-	}
-	return _caseAdjustment;
+- (WCCaseAdjustment)caseAdjustment {
+    if (!_caseAdjustment) {
+        _caseAdjustment = [[NSUserDefaults standardUserDefaults] integerForKey:WCCaseAdjustmentKey];
+    }
+    return _caseAdjustment;
 }
 
-- (void)setJustification:(WCJustification)value
-{
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInt:value] forKey:WCJustificationKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+- (void)setJustification:(WCJustification)value {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInt:value] forKey:WCJustificationKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (WCJustification)justification
-{
-	return [[NSUserDefaults standardUserDefaults] integerForKey:WCJustificationKey];
+- (WCJustification)justification {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:WCJustificationKey];
 }
 
-- (void)setStyle:(WCStyle)value
-{
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInt:value] forKey:WCStyleKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+- (void)setStyle:(WCStyle)value {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInt:value] forKey:WCStyleKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (WCStyle)style
-{
-	return [[NSUserDefaults standardUserDefaults] integerForKey:WCStyleKey];
+- (WCStyle)style {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:WCStyleKey];
 }
 
 // ____________________________________________________________________________________________________ colour
 
-- (void)setBackgroundColour:(UIColor *)colour
-{
-	if ( [colour isEqual:_backgroundColour] ) {
-		DLog(@"setBackgroundColour: colour is same, not saving");
-		return;
-	}
-	[_backgroundColour release];
-	NSData *theData;
-	theData=[NSKeyedArchiver archivedDataWithRootObject:colour];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:WCBackgroundColourKey];	
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_backgroundColour = [colour retain];
+- (void)setBackgroundColour:(UIColor *)colour {
+    if ([colour isEqual:_backgroundColour]) {
+        DLog(@"setBackgroundColour: colour is same, not saving");
+        return;
+    }
+    [_backgroundColour release];
+    NSData *theData;
+    theData = [NSKeyedArchiver archivedDataWithRootObject:colour];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:WCBackgroundColourKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _backgroundColour = [colour retain];
 }
 
-- (void)setForegroundColour:(UIColor *)colour
-{
-	if ( [colour isEqual:_foregroundColour] ) {
-		DLog(@"setForegroundColour: colour is same, not saving");
-		return;
-	}
-	[_foregroundColour release];
-	NSData *theData;
-	theData=[NSKeyedArchiver archivedDataWithRootObject:colour];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:WCForegroundColourKey];	
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_foregroundColour = [colour retain];
+- (void)setForegroundColour:(UIColor *)colour {
+    if ([colour isEqual:_foregroundColour]) {
+        DLog(@"setForegroundColour: colour is same, not saving");
+        return;
+    }
+    [_foregroundColour release];
+    NSData *theData;
+    theData = [NSKeyedArchiver archivedDataWithRootObject:colour];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:WCForegroundColourKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _foregroundColour = [colour retain];
 }
 
-- (void)setHighlightColour:(UIColor *)colour
-{
-	if ( [colour isEqual:_highlightColour] ) {
-		DLog(@"setHighlightColour: colour is same, not saving");
-		return;
-	}
-	[_highlightColour release];
-	NSData *theData;
-	theData=[NSKeyedArchiver archivedDataWithRootObject:colour];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:WCHighlightColourKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];	
-	_highlightColour = [colour retain];
+- (void)setHighlightColour:(UIColor *)colour {
+    if ([colour isEqual:_highlightColour]) {
+        DLog(@"setHighlightColour: colour is same, not saving");
+        return;
+    }
+    [_highlightColour release];
+    NSData *theData;
+    theData = [NSKeyedArchiver archivedDataWithRootObject:colour];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:WCHighlightColourKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _highlightColour = [colour retain];
 }
 
--(UIColor *)backgroundColour
-{
-	if ( !_backgroundColour ) {
-		_backgroundColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:WCBackgroundColourKey]];
-		[_backgroundColour retain];
-	}
-	return _backgroundColour;
+- (UIColor *)backgroundColour {
+    if (!_backgroundColour) {
+        _backgroundColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:WCBackgroundColourKey]];
+        [_backgroundColour retain];
+    }
+    return _backgroundColour;
 }
 
--(UIColor *)foregroundColour
-{	
-	if ( !_foregroundColour ) {
-		_foregroundColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:WCForegroundColourKey]];
-		[_foregroundColour retain];
-	}
-	return _foregroundColour;
+- (UIColor *)foregroundColour {
+    if (!_foregroundColour) {
+        _foregroundColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:WCForegroundColourKey]];
+        [_foregroundColour retain];
+    }
+    return _foregroundColour;
 }
 
--(UIColor *)highlightColour
-{
-	if ( !_highlightColour ) {
-		_highlightColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:WCHighlightColourKey]];
-		[_highlightColour retain];
-	}
-	return _highlightColour;
+- (UIColor *)highlightColour {
+    if (!_highlightColour) {
+        _highlightColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:WCHighlightColourKey]];
+        [_highlightColour retain];
+    }
+    return _highlightColour;
 }
 
 // ____________________________________________________________________________________________________ Translate & Scale
 
-- (void)setLinearTranslateX:(float)value
-{
-	if ( _linearTranslateX == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLinearTranslateXKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_linearTranslateX = value;
+- (void)setLinearTranslateX:(float)value {
+    if (_linearTranslateX == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLinearTranslateXKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _linearTranslateX = value;
 }
 
-- (float)linearTranslateX
-{
-	if ( !_linearTranslateX ) {
-		_linearTranslateX = [[NSUserDefaults standardUserDefaults] floatForKey:WCLinearTranslateXKey];
-	}
-	return _linearTranslateX;
+- (float)linearTranslateX {
+    if (!_linearTranslateX) {
+        _linearTranslateX = [[NSUserDefaults standardUserDefaults] floatForKey:WCLinearTranslateXKey];
+    }
+    return _linearTranslateX;
 }
 
-- (void)setLinearTranslateY:(float)value
-{
-	if ( _linearTranslateY == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLinearTranslateYKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_linearTranslateY = value;
+- (void)setLinearTranslateY:(float)value {
+    if (_linearTranslateY == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLinearTranslateYKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _linearTranslateY = value;
 }
 
-- (float)linearTranslateY
-{
-	if ( !_linearTranslateY ) {
-		_linearTranslateY = [[NSUserDefaults standardUserDefaults] floatForKey:WCLinearTranslateYKey];
-	}
-	return _linearTranslateY;
+- (float)linearTranslateY {
+    if (!_linearTranslateY) {
+        _linearTranslateY = [[NSUserDefaults standardUserDefaults] floatForKey:WCLinearTranslateYKey];
+    }
+    return _linearTranslateY;
 }
 
-- (void)setLinearScale:(float)value
-{
-	if ( _linearScale == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLinearScaleKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_linearScale = value;
+- (void)setLinearScale:(float)value {
+    if (_linearScale == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCLinearScaleKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _linearScale = value;
 }
 
-- (float)linearScale
-{
-	if ( !_linearScale ) {
-		_linearScale = [[NSUserDefaults standardUserDefaults] floatForKey:WCLinearScaleKey];
-		if ( _linearScale > kTouchableViewMaximumScale ) { _linearScale = kTouchableViewMaximumScale; }
-		if ( _linearScale < kTouchableViewMinimumScale ) { _linearScale = kTouchableViewMinimumScale; }
-	}
-	return _linearScale;
+- (float)linearScale {
+    if (!_linearScale) {
+        _linearScale = [[NSUserDefaults standardUserDefaults] floatForKey:WCLinearScaleKey];
+        if (_linearScale > kTouchableViewMaximumScale) {
+            _linearScale = kTouchableViewMaximumScale;
+        }
+        if (_linearScale < kTouchableViewMinimumScale) {
+            _linearScale = kTouchableViewMinimumScale;
+        }
+    }
+    return _linearScale;
 }
 
-- (void)setRotaryTranslateX:(float)value
-{
-	if ( _rotaryTranslateX == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCRotaryTranslateXKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_rotaryTranslateX = value;
+- (void)setRotaryTranslateX:(float)value {
+    if (_rotaryTranslateX == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCRotaryTranslateXKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _rotaryTranslateX = value;
 }
 
-- (float)rotaryTranslateX
-{
-	if ( !_rotaryTranslateX ) {
-		_rotaryTranslateX = [[NSUserDefaults standardUserDefaults] floatForKey:WCRotaryTranslateXKey];
-	}
-	return _rotaryTranslateX;
+- (float)rotaryTranslateX {
+    if (!_rotaryTranslateX) {
+        _rotaryTranslateX = [[NSUserDefaults standardUserDefaults] floatForKey:WCRotaryTranslateXKey];
+    }
+    return _rotaryTranslateX;
 }
 
-- (void)setRotaryTranslateY:(float)value
-{
-	if ( _rotaryTranslateY == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCRotaryTranslateYKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_rotaryTranslateY = value;
+- (void)setRotaryTranslateY:(float)value {
+    if (_rotaryTranslateY == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCRotaryTranslateYKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _rotaryTranslateY = value;
 }
 
-- (float)rotaryTranslateY
-{
-	if ( !_rotaryTranslateY ) {
-		_rotaryTranslateY = [[NSUserDefaults standardUserDefaults] floatForKey:WCRotaryTranslateYKey];
-	}
-	return _rotaryTranslateY;
+- (float)rotaryTranslateY {
+    if (!_rotaryTranslateY) {
+        _rotaryTranslateY = [[NSUserDefaults standardUserDefaults] floatForKey:WCRotaryTranslateYKey];
+    }
+    return _rotaryTranslateY;
 }
 
-- (void)setRotaryScale:(float)value
-{
-	if ( _rotaryScale == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCRotaryScaleKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_rotaryScale = value;
+- (void)setRotaryScale:(float)value {
+    if (_rotaryScale == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:value] forKey:WCRotaryScaleKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _rotaryScale = value;
 }
 
-- (float)rotaryScale
-{
-	if ( !_rotaryScale ) {
-		_rotaryScale = [[NSUserDefaults standardUserDefaults] floatForKey:WCRotaryScaleKey];
-		if ( _rotaryScale > kTouchableViewMaximumScale ) { _rotaryScale = kTouchableViewMaximumScale; }
-		if ( _rotaryScale < kTouchableViewMinimumScale ) { _rotaryScale = kTouchableViewMinimumScale; }
-	}
-	return _rotaryScale;
+- (float)rotaryScale {
+    if (!_rotaryScale) {
+        _rotaryScale = [[NSUserDefaults standardUserDefaults] floatForKey:WCRotaryScaleKey];
+        if (_rotaryScale > kTouchableViewMaximumScale) {
+            _rotaryScale = kTouchableViewMaximumScale;
+        }
+        if (_rotaryScale < kTouchableViewMinimumScale) {
+            _rotaryScale = kTouchableViewMinimumScale;
+        }
+    }
+    return _rotaryScale;
 }
 
 // ____________________________________________________________________________________________________ Locked
 
-- (void)setLocked:(BOOL)value
-{
-	if ( _locked == value ) {
-		return;
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:value] forKey:WCLockedKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	_locked = value;
+- (void)setLocked:(BOOL)value {
+    if (_locked == value) {
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:value] forKey:WCLockedKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _locked = value;
 }
 
-- (BOOL)locked
-{
-	if ( !_locked ) {
-		_locked = [[NSUserDefaults standardUserDefaults] boolForKey:WCLockedKey];
-	}
-	return _locked;
+- (BOOL)locked {
+    if (!_locked) {
+        _locked = [[NSUserDefaults standardUserDefaults] boolForKey:WCLockedKey];
+    }
+    return _locked;
 }
 
 // ____________________________________________________________________________________________________ Singleton
@@ -428,6 +380,5 @@ NSString *WCLockedKey = @"locked";
 @synthesize rotaryScale;
 
 @synthesize locked;
-
 
 @end

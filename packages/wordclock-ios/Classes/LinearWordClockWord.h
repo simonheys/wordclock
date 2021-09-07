@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "WordClockPreferences.h"
 //#import "NSLog.h"
 
@@ -15,7 +16,7 @@
 #import "WordClockWord.h"
 
 @interface LinearWordClockWord : WordClockWord {
-	CGSize _baseFontSizeForCalculation;
+    CGSize _baseFontSizeForCalculation;
 }
 
 - (CGSize)sizeWithFont:(UIFont *)font;

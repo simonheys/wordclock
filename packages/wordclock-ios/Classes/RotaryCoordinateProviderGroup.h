@@ -1,30 +1,31 @@
 //
 //  RotaryCoordinateProviderGroup.h
-//  WordClock-iOS
+//  WordClock iOS
 //
 //  Created by Simon Heys on 21/07/2008.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "WordClockWordGroup.h"
+
 #import "Tween.h"
+#import "WordClockWordGroup.h"
 #import "WordClockWordManager.h"
 
 // handles settings, animation and rotation for each group
 // of a rotary coordinate provider
 @interface RotaryCoordinateProviderGroup : NSObject {
-@private
-	float _angle;
-	float _radius;
-	float _displayedRadius;
-	float _scaleFactor;
-	float _maximumLabelWidth;
-	BOOL _observingGroup;
-	Tween *_angleTween;
-	WordClockWordGroup *_group;
-	RotaryCoordinateProviderGroup *_parent;
-	RotaryCoordinateProviderGroup *_child;
+   @private
+    float _angle;
+    float _radius;
+    float _displayedRadius;
+    float _scaleFactor;
+    float _maximumLabelWidth;
+    BOOL _observingGroup;
+    Tween *_angleTween;
+    WordClockWordGroup *_group;
+    RotaryCoordinateProviderGroup *_parent;
+    RotaryCoordinateProviderGroup *_child;
 }
 
 - (id)initWithGroup:(WordClockWordGroup *)group;
@@ -45,8 +46,8 @@
 @property float displayedRadius;
 @property float radius;
 @property float scaleFactor;
-@property (readonly) float maximumLabelWidth;
-@property (assign) WordClockWordGroup *group;
-@property (assign) RotaryCoordinateProviderGroup *parent;
-@property (assign) RotaryCoordinateProviderGroup *child;
+@property(readonly) float maximumLabelWidth;
+@property(assign) WordClockWordGroup *group;
+@property(assign) RotaryCoordinateProviderGroup *parent;
+@property(assign) RotaryCoordinateProviderGroup *child;
 @end

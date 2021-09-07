@@ -8,13 +8,11 @@
     "lint:prettier": "prettier -l './_scripts/**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "prettier": "prettier --write './_scripts/**/*.{js,json,css,scss}'",
-    "code-format": "babel-node ./_scripts/code-format",
-    "update-copyright": "babel-node ./_scripts/update-copyright"
+    "code-format": "babel-node ./_scripts/code-format"
   },
   "devDependencies": {
     "execSync": "^1.0.2",
     "fs-extra": "^8.0.1",
-    "moment": "^2.24.0",
     "multi-glob": "^1.0.2"
   }
 }

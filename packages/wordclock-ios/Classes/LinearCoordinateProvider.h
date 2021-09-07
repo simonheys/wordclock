@@ -1,6 +1,6 @@
 //
 //  LinearCoordinateProvider.h
-//  WordClock-iOS
+//  WordClock iOS
 //
 //  Created by Simon Heys on 21/07/2008.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
@@ -12,21 +12,19 @@
 
 #define FONT_SIZE_TOLERANCE 0.05
 
+@interface LinearCoordinateProvider : CoordinateProvider {
+   @private
+    NSMutableArray *_sizeCache;
+    NSMutableArray *_rectCache;
 
-@interface LinearCoordinateProvider : CoordinateProvider 
-{
-@private
-	NSMutableArray *_sizeCache;
-	NSMutableArray *_rectCache;
+    //	float _tracking;
+    float _leading;
 
-//	float _tracking;
-	float _leading;
-
-	float _width;
-	float _height;
-	float _wordScale;
-	float _widthUsedInPreviousUpdate;
-	float _heightUsedInPreviousUpdate;
+    float _width;
+    float _height;
+    float _wordScale;
+    float _widthUsedInPreviousUpdate;
+    float _heightUsedInPreviousUpdate;
 }
 
 @property float width;
