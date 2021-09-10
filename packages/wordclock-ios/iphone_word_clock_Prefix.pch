@@ -1,14 +1,14 @@
 //
 //  iphone_word_clock_Prefix.pch
-//  WordClock-iOS
+//  WordClock iOS
 //
 //  Created by Simon Heys on 21/07/2008.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #ifdef __OBJC__
-	#import <Foundation/Foundation.h>
-	#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #endif
 
 //#define DEBUG_CULL

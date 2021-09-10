@@ -1,0 +1,24 @@
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+def myPods
+  platform :osx, '10.10'
+  pod 'CocoaLumberjack', '~> 1.8'
+  pod 'libextobjc/EXTScope', '~> 0.4'
+end
+
+target :'Word Clock' do
+	myPods
+end
+
+target :'Word Clock Window' do
+	myPods
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.10'
+    end
+  end
+end

@@ -5,10 +5,8 @@
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-    "xml-to-json": "babel-node _scripts/xml-to-json"
   },
   "devDependencies": {
-    "xml2js": "^0.4.23"
   },
   "dependencies": {}
 }

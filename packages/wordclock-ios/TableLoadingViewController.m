@@ -1,13 +1,12 @@
 //
 //  TableLoadingViewController.m
-//  WordClock-iOS
+//  WordClock iOS
 //
 //  Created by Simon Heys on 21/07/2008.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
 #import "TableLoadingViewController.h"
-
 
 @implementation TableLoadingViewController
 
@@ -27,34 +26,28 @@
 }
 */
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.hidesBackButton = YES;
-	self.navigationItem.backBarButtonItem.enabled = NO;
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.backBarButtonItem.enabled = NO;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.wrapperView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 }
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+    [super didReceiveMemoryWarning];  // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
-
 
 - (void)dealloc {
     [_wrapperView release];
     [super dealloc];
 }
-
 
 - (void)viewDidUnload {
     [self setWrapperView:nil];
