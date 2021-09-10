@@ -21,12 +21,8 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>40</string>
+	<string>45</string>
 	<key>NSPrincipalClass</key>
 	<string>WordClockScreenSaverView</string>
-	<key>SUFeedURL</key>
-	<string>https://www.simonheys.com/files/appcast/wordclock.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>pubkey.pem</string>
 </dict>
 </plist>
