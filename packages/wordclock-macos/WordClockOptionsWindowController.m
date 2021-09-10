@@ -34,6 +34,7 @@
 
 @property(assign) IBOutlet NSPopUpButton *fontFamilyPopUpButton;
 @property(assign) IBOutlet NSPopUpButton *fontVariantPopUpButton;
+@property (assign) IBOutlet NSButton *defaultsButton;
 @end
 
 @implementation WordClockOptionsWindowController
@@ -91,6 +92,9 @@
 
 - (void)windowDidLoad {
     DDLogVerbose(@"windowDidLoad");
+    
+    // restoring the defaults does not behave well at the moment
+    [self.defaultsButton removeFromSuperview];
 
     [self resetUI];
 
