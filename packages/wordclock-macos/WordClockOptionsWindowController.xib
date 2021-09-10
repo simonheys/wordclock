@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="backgroundColorWell" destination="5" id="51"/>
                 <outlet property="customView" destination="79" id="88"/>
+                <outlet property="defaultsButton" destination="7R6-q2-h5G" id="P8p-1J-ZS6"/>
                 <outlet property="fontFamilyPopUpButton" destination="Lqu-ih-v7E" id="pMA-c2-yyt"/>
                 <outlet property="fontVariantPopUpButton" destination="SUt-0g-fJ3" id="qFt-vm-LIm"/>
                 <outlet property="foregroundColorWell" destination="6" id="52"/>
