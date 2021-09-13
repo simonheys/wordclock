@@ -1792,8 +1792,7 @@
             previousFontSize: sizeState.fontSize,
             fontSizeLow: sizeState.fontSize,
             previousFit: FIT.SMALL,
-            previousTargetSize: targetSize,
-            previousHeight: height
+            previousTargetSize: targetSize
           });
         });
       } else {
@@ -1818,8 +1817,7 @@
               previousFontSize: sizeState.fontSize,
               fontSizeHigh: sizeState.fontSize,
               previousFit: FIT.LARGE,
-              previousTargetSize: targetSize,
-              previousHeight: height
+              previousTargetSize: targetSize
             });
           });
         }

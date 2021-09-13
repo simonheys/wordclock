@@ -1694,8 +1694,7 @@ const WordClock = ({
         previousFontSize: sizeState.fontSize,
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
-        previousTargetSize: targetSize,
-        previousHeight: height
+        previousTargetSize: targetSize
       }));
     } else {
       const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
@@ -1715,8 +1714,7 @@ const WordClock = ({
           previousFontSize: sizeState.fontSize,
           fontSizeHigh: sizeState.fontSize,
           previousFit: FIT.LARGE,
-          previousTargetSize: targetSize,
-          previousHeight: height
+          previousTargetSize: targetSize
         }));
       }
     }

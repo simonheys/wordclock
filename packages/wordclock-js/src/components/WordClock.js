@@ -91,8 +91,7 @@ const WordClock = ({ words }) => {
         previousFontSize: sizeState.fontSize,
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
-        previousTargetSize: targetSize,
-        previousHeight: height,
+        // previousTargetSize: targetSize,
       }));
     } else {
       const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
@@ -106,7 +105,7 @@ const WordClock = ({ words }) => {
           ...sizeState,
           fontSize: sizeState.previousFontSize,
           previousFit: FIT.OK,
-          previousTargetSize: targetSize,
+          // previousTargetSize: targetSize,
         }));
       } else {
         // decrease size
@@ -116,8 +115,7 @@ const WordClock = ({ words }) => {
           previousFontSize: sizeState.fontSize,
           fontSizeHigh: sizeState.fontSize,
           previousFit: FIT.LARGE,
-          previousTargetSize: targetSize,
-          previousHeight: height,
+          // previousTargetSize: targetSize,
         }));
       }
     }
