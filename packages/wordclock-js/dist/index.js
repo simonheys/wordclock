@@ -102,79 +102,84 @@
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
 
-  const getTimeProps = dateInstance => {
+  var getTimeProps = function getTimeProps(dateInstance) {
     if (dateInstance === undefined) {
       dateInstance = new Date();
     }
 
-    const day = dateInstance.getDay();
-    let daystartingmonday = day - 1;
+    var day = dateInstance.getDay();
+    var daystartingmonday = day - 1;
 
     while (daystartingmonday < 0) {
       daystartingmonday += 7;
     }
 
-    const date = dateInstance.getDate();
-    const month = dateInstance.getMonth();
-    const hour = dateInstance.getHours() % 12;
-    const twentyfourhour = dateInstance.getHours();
-    const minute = dateInstance.getMinutes();
-    const second = dateInstance.getSeconds();
+    var date = dateInstance.getDate();
+    var month = dateInstance.getMonth();
+    var hour = dateInstance.getHours() % 12;
+    var twentyfourhour = dateInstance.getHours();
+    var minute = dateInstance.getMinutes();
+    var second = dateInstance.getSeconds();
     return {
-      day,
-      daystartingmonday,
-      date,
-      month,
-      hour,
-      twentyfourhour,
-      minute,
-      second
+      day: day,
+      daystartingmonday: daystartingmonday,
+      date: date,
+      month: month,
+      hour: hour,
+      twentyfourhour: twentyfourhour,
+      minute: minute,
+      second: second
     };
   };
 
-  const useTimeProps = () => {
-    const [timeProps, setTimeProps] = React__namespace.useState(getTimeProps());
-    React__namespace.useEffect(() => {
-      const interval = setInterval(() => {
+  var useTimeProps = function useTimeProps() {
+    var _React$useState = React__namespace.useState(getTimeProps()),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        timeProps = _React$useState2[0],
+        setTimeProps = _React$useState2[1];
+
+    React__namespace.useEffect(function () {
+      var interval = setInterval(function () {
         setTimeProps(getTimeProps());
       }, 1000);
-      return () => clearInterval(interval);
+      return function () {
+        return clearInterval(interval);
+      };
     }, []);
     return timeProps;
   };
 
-  const parseJson = ({
-    groups
-  }) => {
-    const label = [];
-    const logic = [];
-    groups.forEach(group => {
-      const groupLabel = [];
-      const groupLogic = [];
-      group.forEach(entry => {
-        const type = entry.type;
+  var parseJson = function parseJson(_ref) {
+    var groups = _ref.groups;
+    var label = [];
+    var logic = [];
+    groups.forEach(function (group) {
+      var groupLabel = [];
+      var groupLogic = [];
+      group.forEach(function (entry) {
+        var type = entry.type;
 
         if (type === "item") {
-          const items = entry.items;
-          items.forEach(item => {
-            const highlight = item.highlight;
-            const text = item.text || "";
+          var items = entry.items;
+          items.forEach(function (item) {
+            var highlight = item.highlight;
+            var text = item.text || "";
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "sequence") {
-          const bind = entry.bind;
-          const first = entry.first;
-          const textArray = entry.text;
-          textArray.forEach((text, index) => {
-            const highlight = `${bind}==${first + index}`;
+          var bind = entry.bind;
+          var first = entry.first;
+          var textArray = entry.text;
+          textArray.forEach(function (text, index) {
+            var highlight = "".concat(bind, "==").concat(first + index);
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "space") {
-          const count = entry.count;
+          var count = entry.count;
 
-          for (let i = 0; i < count; i++) {
+          for (var i = 0; i < count; i++) {
             groupLabel.push("");
             groupLogic.push("");
           }
@@ -184,8 +189,8 @@
       label.push(groupLabel);
     });
     return {
-      logic,
-      label
+      logic: logic,
+      label: label
     };
   };
 
@@ -530,7 +535,7 @@
     }
   }
 
-  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
+  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
   var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
   styleInject(css_248z);
 
@@ -1632,14 +1637,19 @@
     return ResizeObserver;
   }();
 
-  const useSize = () => {
-    const ref = React__namespace.useRef(null);
-    const resizeObserver = React__namespace.useRef(null);
-    const [size, setSize] = React__namespace.useState({
+  var useSize = function useSize() {
+    var ref = React__namespace.useRef(null);
+    var resizeObserver = React__namespace.useRef(null);
+
+    var _React$useState = React__namespace.useState({
       width: 0,
       height: 0
-    });
-    const teardownResizeObserver = React__namespace.useCallback(() => {
+    }),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        size = _React$useState2[0],
+        setSize = _React$useState2[1];
+
+    var teardownResizeObserver = React__namespace.useCallback(function () {
       if (resizeObserver.current) {
         if (ref.current) {
           resizeObserver.current.unobserve(ref.current);
@@ -1649,7 +1659,7 @@
         resizeObserver.current = null;
       }
     }, []);
-    const setupResizeObserver = React__namespace.useCallback(() => {
+    var setupResizeObserver = React__namespace.useCallback(function () {
       if (resizeObserver.current) {
         teardownResizeObserver();
       }
@@ -1658,25 +1668,25 @@
         return;
       }
 
-      resizeObserver.current = new index(entries => {
-        const currentRefEntry = entries.find(({
-          target
-        }) => target === ref.current);
+      resizeObserver.current = new index(function (entries) {
+        var currentRefEntry = entries.find(function (_ref) {
+          var target = _ref.target;
+          return target === ref.current;
+        });
 
         if (currentRefEntry) {
-          const {
-            width,
-            height
-          } = currentRefEntry.contentRect;
+          var _currentRefEntry$cont = currentRefEntry.contentRect,
+              width = _currentRefEntry$cont.width,
+              height = _currentRefEntry$cont.height;
           setSize({
-            width,
-            height
+            width: width,
+            height: height
           });
         }
       });
       resizeObserver.current.observe(ref.current);
     }, [teardownResizeObserver]);
-    const setRef = React__namespace.useCallback(nextRef => {
+    var setRef = React__namespace.useCallback(function (nextRef) {
       teardownResizeObserver();
       ref.current = nextRef;
       setupResizeObserver();
@@ -1684,7 +1694,7 @@
     return {
       ref: setRef,
       useRef: ref,
-      size
+      size: size
     };
   };
 
@@ -1732,7 +1742,7 @@
     OK: "OK",
     LARGE: "LARGE"
   };
-  var minimumFontSizeAdjustment = 0.01;
+  var minimumFontSizeAdjustment = 0.00001;
   var sizeStateDefault = {
     fontSize: 12,
     previousFontSize: 12,
@@ -1766,7 +1776,7 @@
 
     var timeProps = useTimeProps();
     React__namespace.useEffect(function () {
-      if (!targetSize.width) {
+      if (!targetSize.width || !targetSize.height) {
         return;
       }
 
@@ -1782,7 +1792,15 @@
 
       var height = innerRef.current.scrollHeight;
 
-      if (sizeState.previousFit === FIT.OK) ; else if (height < targetSize.height) {
+      if (sizeState.previousFit === FIT.OK) ; else if (height === targetSize.height) {
+        // set FIT.OK
+        setSizeState(function (sizeState) {
+          return _objectSpread(_objectSpread({}, sizeState), {}, {
+            previousFit: FIT.OK,
+            previousTargetSize: targetSize
+          });
+        });
+      } else if (height < targetSize.height) {
         // currently FIT.SMALL
         // increase size
         var nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh);

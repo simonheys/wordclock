@@ -3,3 +3,9 @@
   height: 720px;
   background-color: #f4f4f4;
 }
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
