@@ -447,7 +447,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
+var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
 var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
 styleInject(css_248z);
 
@@ -1646,7 +1646,7 @@ const FIT = {
   OK: "OK",
   LARGE: "LARGE"
 };
-const minimumFontSizeAdjustment = 0.01;
+const minimumFontSizeAdjustment = 0.00001;
 const sizeStateDefault = {
   fontSize: 12,
   previousFontSize: 12,
@@ -1669,7 +1669,7 @@ const WordClock = ({
   });
   const timeProps = useTimeProps();
   React__namespace.useEffect(() => {
-    if (!targetSize.width) {
+    if (!targetSize.width || !targetSize.height) {
       return;
     }
 
@@ -1685,7 +1685,13 @@ const WordClock = ({
 
     const height = innerRef.current.scrollHeight;
 
-    if (sizeState.previousFit === FIT.OK) ; else if (height < targetSize.height) {
+    if (sizeState.previousFit === FIT.OK) ; else if (height === targetSize.height) {
+      // set FIT.OK
+      setSizeState(sizeState => ({ ...sizeState,
+        previousFit: FIT.OK,
+        previousTargetSize: targetSize
+      }));
+    } else if (height < targetSize.height) {
       // currently FIT.SMALL
       // increase size
       const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh);
@@ -1694,8 +1700,7 @@ const WordClock = ({
         previousFontSize: sizeState.fontSize,
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
-        previousTargetSize: targetSize,
-        previousHeight: height
+        previousTargetSize: targetSize
       }));
     } else {
       const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
@@ -1715,8 +1720,7 @@ const WordClock = ({
           previousFontSize: sizeState.fontSize,
           fontSizeHigh: sizeState.fontSize,
           previousFit: FIT.LARGE,
-          previousTargetSize: targetSize,
-          previousHeight: height
+          previousTargetSize: targetSize
         }));
       }
     }

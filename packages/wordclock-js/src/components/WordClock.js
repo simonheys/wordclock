@@ -44,7 +44,7 @@ const FIT = {
   LARGE: "LARGE",
 };
 
-const minimumFontSizeAdjustment = 0.01;
+const minimumFontSizeAdjustment = 0.00001;
 
 const sizeStateDefault = {
   fontSize: 12,
@@ -65,7 +65,7 @@ const WordClock = ({ words }) => {
   const timeProps = useTimeProps();
 
   React.useEffect(() => {
-    if (!targetSize.width) {
+    if (!targetSize.width || !targetSize.height) {
       return;
     }
     if (sizeState.previousTargetSize) {
@@ -81,6 +81,13 @@ const WordClock = ({ words }) => {
     const height = innerRef.current.scrollHeight;
     if (sizeState.previousFit === FIT.OK) {
       // currently FIT.OK - do nothing
+    } else if (height === targetSize.height) {
+      // set FIT.OK
+      setSizeState((sizeState) => ({
+        ...sizeState,
+        previousFit: FIT.OK,
+        previousTargetSize: targetSize,
+      }));
     } else if (height < targetSize.height) {
       // currently FIT.SMALL
       // increase size
@@ -92,7 +99,6 @@ const WordClock = ({ words }) => {
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
         previousTargetSize: targetSize,
-        previousHeight: height,
       }));
     } else {
       const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
@@ -117,7 +123,6 @@ const WordClock = ({ words }) => {
           fontSizeHigh: sizeState.fontSize,
           previousFit: FIT.LARGE,
           previousTargetSize: targetSize,
-          previousHeight: height,
         }));
       }
     }
