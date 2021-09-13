@@ -63,14 +63,11 @@ const WordClock = ({ words }) => {
   const [sizeState, setSizeState] = React.useState({ ...sizeStateDefault });
 
   const timeProps = useTimeProps();
-  //
+
   React.useEffect(() => {
     if (!targetSize.width) {
       return;
     }
-    const height = innerRef.current.scrollHeight;
-    const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-    const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
     if (sizeState.previousTargetSize) {
       // component resized - start resizing again
       if (
@@ -81,36 +78,39 @@ const WordClock = ({ words }) => {
         return;
       }
     }
+    const height = innerRef.current.scrollHeight;
     if (sizeState.previousFit === FIT.OK) {
       // currently FIT.OK - do nothing
     } else if (height < targetSize.height) {
       // currently FIT.SMALL
       // increase size
-      setSizeState({
+      const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh);
+      setSizeState((sizeState) => ({
         ...sizeState,
-        fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+        fontSize: nextFontSize,
         previousFontSize: sizeState.fontSize,
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
         previousTargetSize: targetSize,
         previousHeight: height,
-      });
+      }));
     } else {
-      // currently FIT.LARGE
+      const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+      const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
       if (
         sizeState.previousFit === FIT.SMALL &&
         fontSizeDifference <= minimumFontSizeAdjustment
       ) {
         // use previous size
-        setSizeState({
+        setSizeState((sizeState) => ({
           ...sizeState,
           fontSize: sizeState.previousFontSize,
           previousFit: FIT.OK,
           previousTargetSize: targetSize,
-        });
+        }));
       } else {
         // decrease size
-        setSizeState({
+        setSizeState((sizeState) => ({
           ...sizeState,
           fontSize: nextFontSize,
           previousFontSize: sizeState.fontSize,
@@ -118,10 +118,17 @@ const WordClock = ({ words }) => {
           previousFit: FIT.LARGE,
           previousTargetSize: targetSize,
           previousHeight: height,
-        });
+        }));
       }
     }
-  }, [sizeState, targetSize]);
+  }, [
+    sizeState.fontSize,
+    sizeState.fontSizeHigh,
+    sizeState.fontSizeLow,
+    sizeState.previousFit,
+    sizeState.previousTargetSize,
+    targetSize,
+  ]);
 
   const style = React.useMemo(() => {
     return {

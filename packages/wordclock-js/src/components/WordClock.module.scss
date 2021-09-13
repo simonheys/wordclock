@@ -7,7 +7,7 @@
 
 .words {
   composes: global(words);
-  color: #999;
+  color: #ccc;
   font-weight: bold;
   line-height: 1;
   transition: opacity 0.15s;
@@ -35,5 +35,5 @@
 .wordHighlighted {
   composes: word;
   composes: global(word-highlighted);
-  color: #cc0000;
+  color: #ff0000;
 }

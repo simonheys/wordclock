@@ -34,6 +34,16 @@ https://github.com/simonheys/wordclock/releases
 
   The words and expressions that influence how time is displayed in different variations or languages
 
+## Getting Started
+
+Install common dependencies
+
+```
+$ yarn
+```
+
+See individual packages for further steps.
+
 ## License
 
 [MIT](LICENSE)
