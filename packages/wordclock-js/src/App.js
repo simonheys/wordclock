@@ -45,7 +45,7 @@ const App = () => {
   }, [file]);
 
   return (
-    <div className={styles.container}>
+    <React.Fragment>
       <div>
         <input
           type="checkbox"
@@ -70,8 +70,10 @@ const App = () => {
           );
         })}
       </select>
-      {mounted && <WordClock words={words} />}
-    </div>
+      <div className={styles.container}>
+        {mounted && <WordClock words={words} />}
+      </div>
+    </React.Fragment>
   );
 };
 

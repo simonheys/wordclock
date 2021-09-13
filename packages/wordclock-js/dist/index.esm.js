@@ -1,5 +1,430 @@
 import * as React from 'react';
 
+const getTimeProps = dateInstance => {
+  if (dateInstance === undefined) {
+    dateInstance = new Date();
+  }
+
+  const day = dateInstance.getDay();
+  let daystartingmonday = day - 1;
+
+  while (daystartingmonday < 0) {
+    daystartingmonday += 7;
+  }
+
+  const date = dateInstance.getDate();
+  const month = dateInstance.getMonth();
+  const hour = dateInstance.getHours() % 12;
+  const twentyfourhour = dateInstance.getHours();
+  const minute = dateInstance.getMinutes();
+  const second = dateInstance.getSeconds();
+  return {
+    day,
+    daystartingmonday,
+    date,
+    month,
+    hour,
+    twentyfourhour,
+    minute,
+    second
+  };
+};
+
+const useTimeProps = () => {
+  const [timeProps, setTimeProps] = React.useState(getTimeProps());
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeProps(getTimeProps());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return timeProps;
+};
+
+const parseJson = ({
+  groups
+}) => {
+  const label = [];
+  const logic = [];
+  groups.forEach(group => {
+    const groupLabel = [];
+    const groupLogic = [];
+    group.forEach(entry => {
+      const type = entry.type;
+
+      if (type === "item") {
+        const items = entry.items;
+        items.forEach(item => {
+          const highlight = item.highlight;
+          const text = item.text || "";
+          groupLabel.push(text);
+          groupLogic.push(highlight);
+        });
+      } else if (type === "sequence") {
+        const bind = entry.bind;
+        const first = entry.first;
+        const textArray = entry.text;
+        textArray.forEach((text, index) => {
+          const highlight = `${bind}==${first + index}`;
+          groupLabel.push(text);
+          groupLogic.push(highlight);
+        });
+      } else if (type === "space") {
+        const count = entry.count;
+
+        for (let i = 0; i < count; i++) {
+          groupLabel.push("");
+          groupLogic.push("");
+        }
+      }
+    });
+    logic.push(groupLogic);
+    label.push(groupLabel);
+  });
+  return {
+    logic,
+    label
+  };
+};
+
+const OPERATORS$1 = "!%&*()-+=|/<>";
+const isNumericString = string => {
+  return /^-?\d+$/.test(string);
+};
+const extractStringContainedInOutermostBraces = source => {
+  if (typeof source !== "string") {
+    return "";
+  }
+
+  let leftOfBraces;
+  let rightOfBraces;
+  let insideBraces;
+  let count;
+  let firstBrace;
+  let i;
+  let c;
+  firstBrace = source.indexOf("(");
+  i = 1 + firstBrace;
+  leftOfBraces = source.substr(0, firstBrace);
+  count = 1;
+
+  while (count > 0 && i < source.length) {
+    c = source.substr(i, 1);
+
+    if (c === "(") {
+      count++;
+    }
+
+    if (c === ")") {
+      count--;
+    }
+
+    i++;
+  }
+
+  if (i < source.length) {
+    rightOfBraces = source.substr(i);
+  } else {
+    rightOfBraces = "";
+  }
+
+  insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
+  return [leftOfBraces, insideBraces, rightOfBraces];
+};
+const scanForInstanceOf = ({
+  source,
+  array
+} = {}) => {
+  if (typeof source !== "string" || !Array.isArray(array)) {
+    return -1;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    if (source.indexOf(array[i]) !== -1) {
+      return i;
+    }
+  }
+
+  return -1;
+};
+const extractTermsAroundPivot = ({
+  source,
+  pivot
+}) => {
+  let leftTerm;
+  let rightTerm;
+  let leftOfPivot;
+  let rightOfPivot;
+  let beforeLeftTerm;
+  let afterRightTerm;
+  let c;
+  let i;
+  const pivotLocation = source.indexOf(pivot);
+  leftOfPivot = source.substr(0, pivotLocation);
+  rightOfPivot = source.substr(pivotLocation + pivot.length); // left term
+
+  leftTerm = "";
+  i = leftOfPivot.length - 1;
+  c = leftOfPivot.substr(i, 1);
+
+  while (i > 0 && OPERATORS$1.indexOf(c) === -1) {
+    i--;
+    c = leftOfPivot.substr(i, 1);
+  }
+
+  if (OPERATORS$1.indexOf(c) !== -1) {
+    leftTerm = leftOfPivot.substr(i + 1);
+    beforeLeftTerm = leftOfPivot.substr(0, i + 1);
+  } else {
+    leftTerm = leftOfPivot.substr(i);
+    beforeLeftTerm = leftOfPivot.substr(0, i);
+  } // right term
+
+
+  rightTerm = "";
+
+  if (rightOfPivot.length > 0) {
+    i = 0;
+    c = rightOfPivot.substr(i, 1);
+
+    while (i < rightOfPivot.length && OPERATORS$1.indexOf(c) === -1) {
+      i++;
+
+      if (i < rightOfPivot.length) {
+        c = rightOfPivot.substr(i, 1);
+      }
+    }
+  }
+
+  if (i < rightOfPivot.length) {
+    rightTerm = rightOfPivot.substr(0, i);
+    afterRightTerm = rightOfPivot.substr(i);
+  } else {
+    rightTerm = rightOfPivot;
+    afterRightTerm = "";
+  }
+
+  return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
+};
+const contains = ({
+  source,
+  instance
+} = {}) => {
+  if (typeof source !== "string") {
+    return false;
+  }
+
+  return source.indexOf(instance) !== -1;
+};
+const containsBraces = source => {
+  return contains({
+    source,
+    instance: "("
+  }) > 0 || contains({
+    source,
+    instance: ")"
+  }) > 0;
+};
+
+const OPERATORS = {
+  EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
+  MATH: ["%", "*", "/", "+", "-"],
+  BOOLEAN: ["&&", "||"],
+  CONVERSION: ["-", "!"]
+}; // ____________________________________________________________________________________________________ term
+
+const term = (source, props) => {
+  let terms;
+  let parsing = false;
+  let result;
+  parsing = true;
+
+  while (parsing) {
+    // parse brackets
+    if (containsBraces(source)) {
+      terms = extractStringContainedInOutermostBraces(source);
+      const termResult = term(terms[1], props);
+      source = `${terms[0]}${termResult}${terms[2]}`;
+    } else {
+      // parse math operators
+      result = scanForInstanceOf({
+        source,
+        array: OPERATORS.MATH
+      });
+
+      if (result !== -1) {
+        terms = extractTermsAroundPivot({
+          source,
+          pivot: OPERATORS.MATH[result]
+        });
+        const operationResult = performOperation({
+          termOne: terms[1],
+          termTwo: terms[2],
+          operator: OPERATORS.MATH[result],
+          props
+        });
+        source = `${terms[0]}${operationResult}${terms[3]}`;
+      } else {
+        // parse equality operators
+        result = scanForInstanceOf({
+          source,
+          array: OPERATORS.EQUALITY
+        });
+
+        if (result !== -1) {
+          terms = extractTermsAroundPivot({
+            source,
+            pivot: OPERATORS.EQUALITY[result]
+          });
+          const operationResult = performOperation({
+            termOne: terms[1],
+            termTwo: terms[2],
+            operator: OPERATORS.EQUALITY[result],
+            props
+          });
+          source = `${terms[0]}${operationResult}${terms[3]}`;
+        } else {
+          // parse boolean operators
+          result = scanForInstanceOf({
+            source,
+            array: OPERATORS.BOOLEAN
+          });
+
+          if (result !== -1) {
+            terms = extractTermsAroundPivot({
+              source,
+              pivot: OPERATORS.BOOLEAN[result]
+            });
+            const operationResult = performOperation({
+              termOne: terms[1],
+              termTwo: terms[2],
+              operator: OPERATORS.BOOLEAN[result],
+              props
+            });
+            source = `${terms[0]}${operationResult}${terms[3]}`;
+          } else {
+            parsing = false;
+          }
+        }
+      }
+    }
+  }
+
+  return processTerm(source, props);
+}; // ____________________________________________________________________________________________________ Process
+// check for var names, - and !
+
+const processTerm = (source = "", props = {}) => {
+  let result;
+  const isString = typeof source === "string";
+
+  if (isString) {
+    source = source.trim();
+  }
+
+  const isNumeric = isNumericString(source);
+
+  if (isString && source.startsWith("-")) {
+    result = processTerm(source.substr(1), props);
+    return 0 - result;
+  } else if (isString && source.startsWith("!")) {
+    result = processTerm(source.substr(1), props); // invert result
+
+    return !result;
+  } else if (isNumeric) {
+    return parseInt(source);
+  } else if (source === "else") {
+    // 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
+    return true;
+  } else if (source === "false") {
+    return false;
+  } else if (source === "true") {
+    return true;
+  } // return from props
+
+
+  if (props[source] !== undefined) {
+    return processTerm(props[source], props);
+  }
+
+  return source;
+}; // ____________________________________________________________________________________________________ operation
+
+const performOperation = ({
+  termOne,
+  termTwo,
+  operator,
+  props
+} = {}) => {
+  // replace variable names where appropriate
+  let a = processTerm(termOne, props);
+  let b = processTerm(termTwo, props);
+  let result = 0;
+
+  if (operator === "*") {
+    result = a * b;
+  } else if (operator === "/") {
+    result = a / b;
+  } else if (operator === "+") {
+    result = a + b;
+  } else if (operator === "-") {
+    result = a - b;
+  } else if (operator === "%") {
+    result = a % b;
+  } else if (operator === "&&") {
+    result = a && b;
+  } else if (operator === "||") {
+    result = a || b;
+  } else if (operator === "!=") {
+    result = a !== b;
+  } else if (operator === "==") {
+    result = a === b;
+  } else if (operator === ">") {
+    result = a > b;
+  } else if (operator === "<") {
+    result = a < b;
+  } else if (operator === ">=") {
+    result = a >= b;
+  } else if (operator === "<=") {
+    result = a <= b;
+  }
+
+  return result;
+};
+
+function styleInject(css, ref) {
+  if (ref === void 0) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') {
+    return;
+  }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
+var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
+styleInject(css_248z);
+
 /**
  * A collection of shims that provide minimal functionality of the ES6 collections.
  *
@@ -1098,430 +1523,61 @@ var index = function () {
   return ResizeObserver;
 }();
 
-const getTimeProps = dateInstance => {
-  if (dateInstance === undefined) {
-    dateInstance = new Date();
-  }
+const useSize = () => {
+  const ref = React.useRef(null);
+  const resizeObserver = React.useRef(null);
+  const [size, setSize] = React.useState({
+    width: 0,
+    height: 0
+  });
+  const teardownResizeObserver = React.useCallback(() => {
+    if (resizeObserver.current) {
+      if (ref.current) {
+        resizeObserver.current.unobserve(ref.current);
+      }
 
-  const day = dateInstance.getDay();
-  let daystartingmonday = day - 1;
-
-  while (daystartingmonday < 0) {
-    daystartingmonday += 7;
-  }
-
-  const date = dateInstance.getDate();
-  const month = dateInstance.getMonth();
-  const hour = dateInstance.getHours() % 12;
-  const twentyfourhour = dateInstance.getHours();
-  const minute = dateInstance.getMinutes();
-  const second = dateInstance.getSeconds();
-  return {
-    day,
-    daystartingmonday,
-    date,
-    month,
-    hour,
-    twentyfourhour,
-    minute,
-    second
-  };
-};
-
-const useTimeProps = () => {
-  const [timeProps, setTimeProps] = React.useState(getTimeProps());
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeProps(getTimeProps());
-    }, 1000);
-    return () => clearInterval(interval);
+      resizeObserver.current.disconnect();
+      resizeObserver.current = null;
+    }
   }, []);
-  return timeProps;
-};
+  const setupResizeObserver = React.useCallback(() => {
+    if (resizeObserver.current) {
+      teardownResizeObserver();
+    }
 
-const parseJson = ({
-  groups
-}) => {
-  const label = [];
-  const logic = [];
-  groups.forEach(group => {
-    const groupLabel = [];
-    const groupLogic = [];
-    group.forEach(entry => {
-      const type = entry.type;
+    if (!ref.current) {
+      return;
+    }
 
-      if (type === "item") {
-        const items = entry.items;
-        items.forEach(item => {
-          const highlight = item.highlight;
-          const text = item.text || "";
-          groupLabel.push(text);
-          groupLogic.push(highlight);
+    resizeObserver.current = new index(entries => {
+      const currentRefEntry = entries.find(({
+        target
+      }) => target === ref.current);
+
+      if (currentRefEntry) {
+        const {
+          width,
+          height
+        } = currentRefEntry.contentRect;
+        setSize({
+          width,
+          height
         });
-      } else if (type === "sequence") {
-        const bind = entry.bind;
-        const first = entry.first;
-        const textArray = entry.text;
-        textArray.forEach((text, index) => {
-          const highlight = `${bind}==${first + index}`;
-          groupLabel.push(text);
-          groupLogic.push(highlight);
-        });
-      } else if (type === "space") {
-        const count = entry.count;
-
-        for (let i = 0; i < count; i++) {
-          groupLabel.push("");
-          groupLogic.push("");
-        }
       }
     });
-    logic.push(groupLogic);
-    label.push(groupLabel);
-  });
+    resizeObserver.current.observe(ref.current);
+  }, [teardownResizeObserver]);
+  const setRef = React.useCallback(nextRef => {
+    teardownResizeObserver();
+    ref.current = nextRef;
+    setupResizeObserver();
+  }, [setupResizeObserver, teardownResizeObserver]);
   return {
-    logic,
-    label
+    ref: setRef,
+    useRef: ref,
+    size
   };
 };
-
-const OPERATORS$1 = "!%&*()-+=|/<>";
-const isNumericString = string => {
-  return /^-?\d+$/.test(string);
-};
-const extractStringContainedInOutermostBraces = source => {
-  if (typeof source !== "string") {
-    return "";
-  }
-
-  let leftOfBraces;
-  let rightOfBraces;
-  let insideBraces;
-  let count;
-  let firstBrace;
-  let i;
-  let c;
-  firstBrace = source.indexOf("(");
-  i = 1 + firstBrace;
-  leftOfBraces = source.substr(0, firstBrace);
-  count = 1;
-
-  while (count > 0 && i < source.length) {
-    c = source.substr(i, 1);
-
-    if (c === "(") {
-      count++;
-    }
-
-    if (c === ")") {
-      count--;
-    }
-
-    i++;
-  }
-
-  if (i < source.length) {
-    rightOfBraces = source.substr(i);
-  } else {
-    rightOfBraces = "";
-  }
-
-  insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
-  return [leftOfBraces, insideBraces, rightOfBraces];
-};
-const scanForInstanceOf = ({
-  source,
-  array
-} = {}) => {
-  if (typeof source !== "string" || !Array.isArray(array)) {
-    return -1;
-  }
-
-  for (let i = 0; i < array.length; i++) {
-    if (source.indexOf(array[i]) !== -1) {
-      return i;
-    }
-  }
-
-  return -1;
-};
-const extractTermsAroundPivot = ({
-  source,
-  pivot
-}) => {
-  let leftTerm;
-  let rightTerm;
-  let leftOfPivot;
-  let rightOfPivot;
-  let beforeLeftTerm;
-  let afterRightTerm;
-  let c;
-  let i;
-  const pivotLocation = source.indexOf(pivot);
-  leftOfPivot = source.substr(0, pivotLocation);
-  rightOfPivot = source.substr(pivotLocation + pivot.length); // left term
-
-  leftTerm = "";
-  i = leftOfPivot.length - 1;
-  c = leftOfPivot.substr(i, 1);
-
-  while (i > 0 && OPERATORS$1.indexOf(c) === -1) {
-    i--;
-    c = leftOfPivot.substr(i, 1);
-  }
-
-  if (OPERATORS$1.indexOf(c) !== -1) {
-    leftTerm = leftOfPivot.substr(i + 1);
-    beforeLeftTerm = leftOfPivot.substr(0, i + 1);
-  } else {
-    leftTerm = leftOfPivot.substr(i);
-    beforeLeftTerm = leftOfPivot.substr(0, i);
-  } // right term
-
-
-  rightTerm = "";
-
-  if (rightOfPivot.length > 0) {
-    i = 0;
-    c = rightOfPivot.substr(i, 1);
-
-    while (i < rightOfPivot.length && OPERATORS$1.indexOf(c) === -1) {
-      i++;
-
-      if (i < rightOfPivot.length) {
-        c = rightOfPivot.substr(i, 1);
-      }
-    }
-  }
-
-  if (i < rightOfPivot.length) {
-    rightTerm = rightOfPivot.substr(0, i);
-    afterRightTerm = rightOfPivot.substr(i);
-  } else {
-    rightTerm = rightOfPivot;
-    afterRightTerm = "";
-  }
-
-  return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
-};
-const contains = ({
-  source,
-  instance
-} = {}) => {
-  if (typeof source !== "string") {
-    return false;
-  }
-
-  return source.indexOf(instance) !== -1;
-};
-const containsBraces = source => {
-  return contains({
-    source,
-    instance: "("
-  }) > 0 || contains({
-    source,
-    instance: ")"
-  }) > 0;
-};
-
-const OPERATORS = {
-  EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
-  MATH: ["%", "*", "/", "+", "-"],
-  BOOLEAN: ["&&", "||"],
-  CONVERSION: ["-", "!"]
-}; // ____________________________________________________________________________________________________ term
-
-const term = (source, props) => {
-  let terms;
-  let parsing = false;
-  let result;
-  parsing = true;
-
-  while (parsing) {
-    // parse brackets
-    if (containsBraces(source)) {
-      terms = extractStringContainedInOutermostBraces(source);
-      const termResult = term(terms[1], props);
-      source = `${terms[0]}${termResult}${terms[2]}`;
-    } else {
-      // parse math operators
-      result = scanForInstanceOf({
-        source,
-        array: OPERATORS.MATH
-      });
-
-      if (result !== -1) {
-        terms = extractTermsAroundPivot({
-          source,
-          pivot: OPERATORS.MATH[result]
-        });
-        const operationResult = performOperation({
-          termOne: terms[1],
-          termTwo: terms[2],
-          operator: OPERATORS.MATH[result],
-          props
-        });
-        source = `${terms[0]}${operationResult}${terms[3]}`;
-      } else {
-        // parse equality operators
-        result = scanForInstanceOf({
-          source,
-          array: OPERATORS.EQUALITY
-        });
-
-        if (result !== -1) {
-          terms = extractTermsAroundPivot({
-            source,
-            pivot: OPERATORS.EQUALITY[result]
-          });
-          const operationResult = performOperation({
-            termOne: terms[1],
-            termTwo: terms[2],
-            operator: OPERATORS.EQUALITY[result],
-            props
-          });
-          source = `${terms[0]}${operationResult}${terms[3]}`;
-        } else {
-          // parse boolean operators
-          result = scanForInstanceOf({
-            source,
-            array: OPERATORS.BOOLEAN
-          });
-
-          if (result !== -1) {
-            terms = extractTermsAroundPivot({
-              source,
-              pivot: OPERATORS.BOOLEAN[result]
-            });
-            const operationResult = performOperation({
-              termOne: terms[1],
-              termTwo: terms[2],
-              operator: OPERATORS.BOOLEAN[result],
-              props
-            });
-            source = `${terms[0]}${operationResult}${terms[3]}`;
-          } else {
-            parsing = false;
-          }
-        }
-      }
-    }
-  }
-
-  return processTerm(source, props);
-}; // ____________________________________________________________________________________________________ Process
-// check for var names, - and !
-
-const processTerm = (source = "", props = {}) => {
-  let result;
-  const isString = typeof source === "string";
-
-  if (isString) {
-    source = source.trim();
-  }
-
-  const isNumeric = isNumericString(source);
-
-  if (isString && source.startsWith("-")) {
-    result = processTerm(source.substr(1), props);
-    return 0 - result;
-  } else if (isString && source.startsWith("!")) {
-    result = processTerm(source.substr(1), props); // invert result
-
-    return !result;
-  } else if (isNumeric) {
-    return parseInt(source);
-  } else if (source === "else") {
-    // 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
-    return true;
-  } else if (source === "false") {
-    return false;
-  } else if (source === "true") {
-    return true;
-  } // return from props
-
-
-  if (props[source] !== undefined) {
-    return processTerm(props[source], props);
-  }
-
-  return source;
-}; // ____________________________________________________________________________________________________ operation
-
-const performOperation = ({
-  termOne,
-  termTwo,
-  operator,
-  props
-} = {}) => {
-  // replace variable names where appropriate
-  let a = processTerm(termOne, props);
-  let b = processTerm(termTwo, props);
-  let result = 0;
-
-  if (operator === "*") {
-    result = a * b;
-  } else if (operator === "/") {
-    result = a / b;
-  } else if (operator === "+") {
-    result = a + b;
-  } else if (operator === "-") {
-    result = a - b;
-  } else if (operator === "%") {
-    result = a % b;
-  } else if (operator === "&&") {
-    result = a && b;
-  } else if (operator === "||") {
-    result = a || b;
-  } else if (operator === "!=") {
-    result = a !== b;
-  } else if (operator === "==") {
-    result = a === b;
-  } else if (operator === ">") {
-    result = a > b;
-  } else if (operator === "<") {
-    result = a < b;
-  } else if (operator === ">=") {
-    result = a >= b;
-  } else if (operator === "<=") {
-    result = a <= b;
-  }
-
-  return result;
-};
-
-function styleInject(css, ref) {
-  if (ref === void 0) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') {
-    return;
-  }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #999;\n  font-weight: bold;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.25em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #cc0000; }\n";
-var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
-styleInject(css_248z);
 
 const WordClockInner = ({
   logic,
@@ -1567,7 +1623,6 @@ const FIT = {
 const minimumFontSizeAdjustment = 0.01;
 const sizeStateDefault = {
   fontSize: 12,
-  lineHeight: 1,
   previousFontSize: 12,
   fontSizeLow: 1,
   fontSizeHigh: 256,
@@ -1577,71 +1632,20 @@ const sizeStateDefault = {
 const WordClock = ({
   words
 }) => {
-  const containerRef = React.useRef(null);
   const innerRef = React.useRef(null);
-  const ro = React.useRef(null);
+  const {
+    ref: containerRef,
+    size: targetSize
+  } = useSize();
   const [logic, setLogic] = React.useState([]);
   const [label, setLabel] = React.useState([]);
-  const [targetSize, setTargetSize] = React.useState({
-    width: 0,
-    height: 0
-  });
   const [sizeState, setSizeState] = React.useState({ ...sizeStateDefault
   });
   const timeProps = useTimeProps();
-  const teardownResizeObserver = React.useCallback(() => {
-    if (ro.current) {
-      if (containerRef.current) {
-        ro.current.unobserve(containerRef.current);
-      }
-
-      ro.current.disconnect();
-      ro.current = null;
-    }
-  }, []);
-  const setupResizeObserver = React.useCallback(() => {
-    if (ro.current) {
-      teardownResizeObserver();
-    }
-
-    if (!containerRef.current) {
-      return;
-    }
-
-    ro.current = new index(entries => {
-      const currentRefEntry = entries.find(({
-        target
-      }) => target === containerRef.current);
-
-      if (currentRefEntry) {
-        const {
-          width,
-          height
-        } = currentRefEntry.contentRect;
-        setTargetSize({
-          width,
-          height
-        });
-      }
-    });
-    ro.current.observe(containerRef.current);
-  }, [teardownResizeObserver]);
-  const setContainerRef = React.useCallback(ref => {
-    teardownResizeObserver();
-    containerRef.current = ref;
-    setupResizeObserver();
-  }, [setupResizeObserver, teardownResizeObserver]);
   React.useEffect(() => {
-    if (!containerRef.current || !innerRef.current || targetSize.width === 0) {
+    if (!targetSize.width) {
       return;
     }
-
-    const boundingClientRect = innerRef.current.getBoundingClientRect();
-    const {
-      height
-    } = boundingClientRect;
-    const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-    const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
 
     if (sizeState.previousTargetSize) {
       // component resized - start resizing again
@@ -1653,45 +1657,49 @@ const WordClock = ({
       }
     }
 
+    const height = innerRef.current.scrollHeight;
+
     if (sizeState.previousFit === FIT.OK) ; else if (height < targetSize.height) {
       // currently FIT.SMALL
       // increase size
-      setSizeState({ ...sizeState,
-        fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
+      const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh);
+      setSizeState(sizeState => ({ ...sizeState,
+        fontSize: nextFontSize,
         previousFontSize: sizeState.fontSize,
         fontSizeLow: sizeState.fontSize,
         previousFit: FIT.SMALL,
         previousTargetSize: targetSize,
         previousHeight: height
-      });
+      }));
     } else {
-      // currently FIT.LARGE
+      const nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+      const fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
+
       if (sizeState.previousFit === FIT.SMALL && fontSizeDifference <= minimumFontSizeAdjustment) {
         // use previous size
-        setSizeState({ ...sizeState,
+        setSizeState(sizeState => ({ ...sizeState,
           fontSize: sizeState.previousFontSize,
           previousFit: FIT.OK,
           previousTargetSize: targetSize
-        });
+        }));
       } else {
         // decrease size
-        setSizeState({ ...sizeState,
+        setSizeState(sizeState => ({ ...sizeState,
           fontSize: nextFontSize,
           previousFontSize: sizeState.fontSize,
           fontSizeHigh: sizeState.fontSize,
           previousFit: FIT.LARGE,
           previousTargetSize: targetSize,
           previousHeight: height
-        });
+        }));
       }
     }
-  }, [sizeState, targetSize, targetSize.height, targetSize.width]);
+  }, [sizeState.fontSize, sizeState.fontSizeHigh, sizeState.fontSizeLow, sizeState.previousFit, sizeState.previousTargetSize, targetSize]);
   const style = React.useMemo(() => {
     return {
-      fontSize: sizeState.fontSize,
-      lineHeight: sizeState.lineHeight
+      fontSize: sizeState.fontSize
     };
-  }, [sizeState.fontSize, sizeState.lineHeight]);
+  }, [sizeState.fontSize]);
   React.useEffect(() => {
     if (!words) {
       return;
@@ -1706,7 +1714,7 @@ const WordClock = ({
   }, [words]);
   const isResizing = sizeState.previousFit !== FIT.OK;
   return /*#__PURE__*/React.createElement("div", {
-    ref: setContainerRef,
+    ref: containerRef,
     className: styles.container
   }, /*#__PURE__*/React.createElement("div", {
     ref: innerRef,

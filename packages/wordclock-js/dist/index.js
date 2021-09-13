@@ -102,6 +102,438 @@
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
 
+  const getTimeProps = dateInstance => {
+    if (dateInstance === undefined) {
+      dateInstance = new Date();
+    }
+
+    const day = dateInstance.getDay();
+    let daystartingmonday = day - 1;
+
+    while (daystartingmonday < 0) {
+      daystartingmonday += 7;
+    }
+
+    const date = dateInstance.getDate();
+    const month = dateInstance.getMonth();
+    const hour = dateInstance.getHours() % 12;
+    const twentyfourhour = dateInstance.getHours();
+    const minute = dateInstance.getMinutes();
+    const second = dateInstance.getSeconds();
+    return {
+      day,
+      daystartingmonday,
+      date,
+      month,
+      hour,
+      twentyfourhour,
+      minute,
+      second
+    };
+  };
+
+  const useTimeProps = () => {
+    const [timeProps, setTimeProps] = React__namespace.useState(getTimeProps());
+    React__namespace.useEffect(() => {
+      const interval = setInterval(() => {
+        setTimeProps(getTimeProps());
+      }, 1000);
+      return () => clearInterval(interval);
+    }, []);
+    return timeProps;
+  };
+
+  const parseJson = ({
+    groups
+  }) => {
+    const label = [];
+    const logic = [];
+    groups.forEach(group => {
+      const groupLabel = [];
+      const groupLogic = [];
+      group.forEach(entry => {
+        const type = entry.type;
+
+        if (type === "item") {
+          const items = entry.items;
+          items.forEach(item => {
+            const highlight = item.highlight;
+            const text = item.text || "";
+            groupLabel.push(text);
+            groupLogic.push(highlight);
+          });
+        } else if (type === "sequence") {
+          const bind = entry.bind;
+          const first = entry.first;
+          const textArray = entry.text;
+          textArray.forEach((text, index) => {
+            const highlight = `${bind}==${first + index}`;
+            groupLabel.push(text);
+            groupLogic.push(highlight);
+          });
+        } else if (type === "space") {
+          const count = entry.count;
+
+          for (let i = 0; i < count; i++) {
+            groupLabel.push("");
+            groupLogic.push("");
+          }
+        }
+      });
+      logic.push(groupLogic);
+      label.push(groupLabel);
+    });
+    return {
+      logic,
+      label
+    };
+  };
+
+  const OPERATORS$1 = "!%&*()-+=|/<>";
+  const isNumericString = string => {
+    return /^-?\d+$/.test(string);
+  };
+  const extractStringContainedInOutermostBraces = source => {
+    if (typeof source !== "string") {
+      return "";
+    }
+
+    let leftOfBraces;
+    let rightOfBraces;
+    let insideBraces;
+    let count;
+    let firstBrace;
+    let i;
+    let c;
+    firstBrace = source.indexOf("(");
+    i = 1 + firstBrace;
+    leftOfBraces = source.substr(0, firstBrace);
+    count = 1;
+
+    while (count > 0 && i < source.length) {
+      c = source.substr(i, 1);
+
+      if (c === "(") {
+        count++;
+      }
+
+      if (c === ")") {
+        count--;
+      }
+
+      i++;
+    }
+
+    if (i < source.length) {
+      rightOfBraces = source.substr(i);
+    } else {
+      rightOfBraces = "";
+    }
+
+    insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
+    return [leftOfBraces, insideBraces, rightOfBraces];
+  };
+  const scanForInstanceOf = ({
+    source,
+    array
+  } = {}) => {
+    if (typeof source !== "string" || !Array.isArray(array)) {
+      return -1;
+    }
+
+    for (let i = 0; i < array.length; i++) {
+      if (source.indexOf(array[i]) !== -1) {
+        return i;
+      }
+    }
+
+    return -1;
+  };
+  const extractTermsAroundPivot = ({
+    source,
+    pivot
+  }) => {
+    let leftTerm;
+    let rightTerm;
+    let leftOfPivot;
+    let rightOfPivot;
+    let beforeLeftTerm;
+    let afterRightTerm;
+    let c;
+    let i;
+    const pivotLocation = source.indexOf(pivot);
+    leftOfPivot = source.substr(0, pivotLocation);
+    rightOfPivot = source.substr(pivotLocation + pivot.length); // left term
+
+    leftTerm = "";
+    i = leftOfPivot.length - 1;
+    c = leftOfPivot.substr(i, 1);
+
+    while (i > 0 && OPERATORS$1.indexOf(c) === -1) {
+      i--;
+      c = leftOfPivot.substr(i, 1);
+    }
+
+    if (OPERATORS$1.indexOf(c) !== -1) {
+      leftTerm = leftOfPivot.substr(i + 1);
+      beforeLeftTerm = leftOfPivot.substr(0, i + 1);
+    } else {
+      leftTerm = leftOfPivot.substr(i);
+      beforeLeftTerm = leftOfPivot.substr(0, i);
+    } // right term
+
+
+    rightTerm = "";
+
+    if (rightOfPivot.length > 0) {
+      i = 0;
+      c = rightOfPivot.substr(i, 1);
+
+      while (i < rightOfPivot.length && OPERATORS$1.indexOf(c) === -1) {
+        i++;
+
+        if (i < rightOfPivot.length) {
+          c = rightOfPivot.substr(i, 1);
+        }
+      }
+    }
+
+    if (i < rightOfPivot.length) {
+      rightTerm = rightOfPivot.substr(0, i);
+      afterRightTerm = rightOfPivot.substr(i);
+    } else {
+      rightTerm = rightOfPivot;
+      afterRightTerm = "";
+    }
+
+    return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
+  };
+  const contains = ({
+    source,
+    instance
+  } = {}) => {
+    if (typeof source !== "string") {
+      return false;
+    }
+
+    return source.indexOf(instance) !== -1;
+  };
+  const containsBraces = source => {
+    return contains({
+      source,
+      instance: "("
+    }) > 0 || contains({
+      source,
+      instance: ")"
+    }) > 0;
+  };
+
+  var OPERATORS = {
+    EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
+    MATH: ["%", "*", "/", "+", "-"],
+    BOOLEAN: ["&&", "||"],
+    CONVERSION: ["-", "!"]
+  }; // ____________________________________________________________________________________________________ term
+
+  var term = function term(source, props) {
+    var terms;
+    var parsing = false;
+    var result;
+    parsing = true;
+
+    while (parsing) {
+      // parse brackets
+      if (containsBraces(source)) {
+        terms = extractStringContainedInOutermostBraces(source);
+        var termResult = term(terms[1], props);
+        source = "".concat(terms[0]).concat(termResult).concat(terms[2]);
+      } else {
+        // parse math operators
+        result = scanForInstanceOf({
+          source: source,
+          array: OPERATORS.MATH
+        });
+
+        if (result !== -1) {
+          terms = extractTermsAroundPivot({
+            source: source,
+            pivot: OPERATORS.MATH[result]
+          });
+          var operationResult = performOperation({
+            termOne: terms[1],
+            termTwo: terms[2],
+            operator: OPERATORS.MATH[result],
+            props: props
+          });
+          source = "".concat(terms[0]).concat(operationResult).concat(terms[3]);
+        } else {
+          // parse equality operators
+          result = scanForInstanceOf({
+            source: source,
+            array: OPERATORS.EQUALITY
+          });
+
+          if (result !== -1) {
+            terms = extractTermsAroundPivot({
+              source: source,
+              pivot: OPERATORS.EQUALITY[result]
+            });
+
+            var _operationResult = performOperation({
+              termOne: terms[1],
+              termTwo: terms[2],
+              operator: OPERATORS.EQUALITY[result],
+              props: props
+            });
+
+            source = "".concat(terms[0]).concat(_operationResult).concat(terms[3]);
+          } else {
+            // parse boolean operators
+            result = scanForInstanceOf({
+              source: source,
+              array: OPERATORS.BOOLEAN
+            });
+
+            if (result !== -1) {
+              terms = extractTermsAroundPivot({
+                source: source,
+                pivot: OPERATORS.BOOLEAN[result]
+              });
+
+              var _operationResult2 = performOperation({
+                termOne: terms[1],
+                termTwo: terms[2],
+                operator: OPERATORS.BOOLEAN[result],
+                props: props
+              });
+
+              source = "".concat(terms[0]).concat(_operationResult2).concat(terms[3]);
+            } else {
+              parsing = false;
+            }
+          }
+        }
+      }
+    }
+
+    return processTerm(source, props);
+  }; // ____________________________________________________________________________________________________ Process
+  // check for var names, - and !
+
+  var processTerm = function processTerm() {
+    var source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var result;
+    var isString = typeof source === "string";
+
+    if (isString) {
+      source = source.trim();
+    }
+
+    var isNumeric = isNumericString(source);
+
+    if (isString && source.startsWith("-")) {
+      result = processTerm(source.substr(1), props);
+      return 0 - result;
+    } else if (isString && source.startsWith("!")) {
+      result = processTerm(source.substr(1), props); // invert result
+
+      return !result;
+    } else if (isNumeric) {
+      return parseInt(source);
+    } else if (source === "else") {
+      // 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
+      return true;
+    } else if (source === "false") {
+      return false;
+    } else if (source === "true") {
+      return true;
+    } // return from props
+
+
+    if (props[source] !== undefined) {
+      return processTerm(props[source], props);
+    }
+
+    return source;
+  }; // ____________________________________________________________________________________________________ operation
+
+  var performOperation = function performOperation() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        termOne = _ref.termOne,
+        termTwo = _ref.termTwo,
+        operator = _ref.operator,
+        props = _ref.props;
+
+    // replace variable names where appropriate
+    var a = processTerm(termOne, props);
+    var b = processTerm(termTwo, props);
+    var result = 0;
+
+    if (operator === "*") {
+      result = a * b;
+    } else if (operator === "/") {
+      result = a / b;
+    } else if (operator === "+") {
+      result = a + b;
+    } else if (operator === "-") {
+      result = a - b;
+    } else if (operator === "%") {
+      result = a % b;
+    } else if (operator === "&&") {
+      result = a && b;
+    } else if (operator === "||") {
+      result = a || b;
+    } else if (operator === "!=") {
+      result = a !== b;
+    } else if (operator === "==") {
+      result = a === b;
+    } else if (operator === ">") {
+      result = a > b;
+    } else if (operator === "<") {
+      result = a < b;
+    } else if (operator === ">=") {
+      result = a >= b;
+    } else if (operator === "<=") {
+      result = a <= b;
+    }
+
+    return result;
+  };
+
+  function styleInject(css, ref) {
+    if (ref === void 0) ref = {};
+    var insertAt = ref.insertAt;
+
+    if (!css || typeof document === 'undefined') {
+      return;
+    }
+
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var style = document.createElement('style');
+    style.type = 'text/css';
+
+    if (insertAt === 'top') {
+      if (head.firstChild) {
+        head.insertBefore(style, head.firstChild);
+      } else {
+        head.appendChild(style);
+      }
+    } else {
+      head.appendChild(style);
+    }
+
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+  }
+
+  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%;\n  overflow: hidden; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
+  var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
+  styleInject(css_248z);
+
   /**
    * A collection of shims that provide minimal functionality of the ES6 collections.
    *
@@ -1200,442 +1632,61 @@
     return ResizeObserver;
   }();
 
-  var getTimeProps = function getTimeProps(dateInstance) {
-    if (dateInstance === undefined) {
-      dateInstance = new Date();
-    }
+  const useSize = () => {
+    const ref = React__namespace.useRef(null);
+    const resizeObserver = React__namespace.useRef(null);
+    const [size, setSize] = React__namespace.useState({
+      width: 0,
+      height: 0
+    });
+    const teardownResizeObserver = React__namespace.useCallback(() => {
+      if (resizeObserver.current) {
+        if (ref.current) {
+          resizeObserver.current.unobserve(ref.current);
+        }
 
-    var day = dateInstance.getDay();
-    var daystartingmonday = day - 1;
-
-    while (daystartingmonday < 0) {
-      daystartingmonday += 7;
-    }
-
-    var date = dateInstance.getDate();
-    var month = dateInstance.getMonth();
-    var hour = dateInstance.getHours() % 12;
-    var twentyfourhour = dateInstance.getHours();
-    var minute = dateInstance.getMinutes();
-    var second = dateInstance.getSeconds();
-    return {
-      day: day,
-      daystartingmonday: daystartingmonday,
-      date: date,
-      month: month,
-      hour: hour,
-      twentyfourhour: twentyfourhour,
-      minute: minute,
-      second: second
-    };
-  };
-
-  var useTimeProps = function useTimeProps() {
-    var _React$useState = React__namespace.useState(getTimeProps()),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        timeProps = _React$useState2[0],
-        setTimeProps = _React$useState2[1];
-
-    React__namespace.useEffect(function () {
-      var interval = setInterval(function () {
-        setTimeProps(getTimeProps());
-      }, 1000);
-      return function () {
-        return clearInterval(interval);
-      };
+        resizeObserver.current.disconnect();
+        resizeObserver.current = null;
+      }
     }, []);
-    return timeProps;
-  };
+    const setupResizeObserver = React__namespace.useCallback(() => {
+      if (resizeObserver.current) {
+        teardownResizeObserver();
+      }
 
-  var parseJson = function parseJson(_ref) {
-    var groups = _ref.groups;
-    var label = [];
-    var logic = [];
-    groups.forEach(function (group) {
-      var groupLabel = [];
-      var groupLogic = [];
-      group.forEach(function (entry) {
-        var type = entry.type;
+      if (!ref.current) {
+        return;
+      }
 
-        if (type === "item") {
-          var items = entry.items;
-          items.forEach(function (item) {
-            var highlight = item.highlight;
-            var text = item.text || "";
-            groupLabel.push(text);
-            groupLogic.push(highlight);
+      resizeObserver.current = new index(entries => {
+        const currentRefEntry = entries.find(({
+          target
+        }) => target === ref.current);
+
+        if (currentRefEntry) {
+          const {
+            width,
+            height
+          } = currentRefEntry.contentRect;
+          setSize({
+            width,
+            height
           });
-        } else if (type === "sequence") {
-          var bind = entry.bind;
-          var first = entry.first;
-          var textArray = entry.text;
-          textArray.forEach(function (text, index) {
-            var highlight = "".concat(bind, "==").concat(first + index);
-            groupLabel.push(text);
-            groupLogic.push(highlight);
-          });
-        } else if (type === "space") {
-          var count = entry.count;
-
-          for (var i = 0; i < count; i++) {
-            groupLabel.push("");
-            groupLogic.push("");
-          }
         }
       });
-      logic.push(groupLogic);
-      label.push(groupLabel);
-    });
+      resizeObserver.current.observe(ref.current);
+    }, [teardownResizeObserver]);
+    const setRef = React__namespace.useCallback(nextRef => {
+      teardownResizeObserver();
+      ref.current = nextRef;
+      setupResizeObserver();
+    }, [setupResizeObserver, teardownResizeObserver]);
     return {
-      logic: logic,
-      label: label
+      ref: setRef,
+      useRef: ref,
+      size
     };
   };
-
-  const OPERATORS$1 = "!%&*()-+=|/<>";
-  const isNumericString = string => {
-    return /^-?\d+$/.test(string);
-  };
-  const extractStringContainedInOutermostBraces = source => {
-    if (typeof source !== "string") {
-      return "";
-    }
-
-    let leftOfBraces;
-    let rightOfBraces;
-    let insideBraces;
-    let count;
-    let firstBrace;
-    let i;
-    let c;
-    firstBrace = source.indexOf("(");
-    i = 1 + firstBrace;
-    leftOfBraces = source.substr(0, firstBrace);
-    count = 1;
-
-    while (count > 0 && i < source.length) {
-      c = source.substr(i, 1);
-
-      if (c === "(") {
-        count++;
-      }
-
-      if (c === ")") {
-        count--;
-      }
-
-      i++;
-    }
-
-    if (i < source.length) {
-      rightOfBraces = source.substr(i);
-    } else {
-      rightOfBraces = "";
-    }
-
-    insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
-    return [leftOfBraces, insideBraces, rightOfBraces];
-  };
-  const scanForInstanceOf = ({
-    source,
-    array
-  } = {}) => {
-    if (typeof source !== "string" || !Array.isArray(array)) {
-      return -1;
-    }
-
-    for (let i = 0; i < array.length; i++) {
-      if (source.indexOf(array[i]) !== -1) {
-        return i;
-      }
-    }
-
-    return -1;
-  };
-  const extractTermsAroundPivot = ({
-    source,
-    pivot
-  }) => {
-    let leftTerm;
-    let rightTerm;
-    let leftOfPivot;
-    let rightOfPivot;
-    let beforeLeftTerm;
-    let afterRightTerm;
-    let c;
-    let i;
-    const pivotLocation = source.indexOf(pivot);
-    leftOfPivot = source.substr(0, pivotLocation);
-    rightOfPivot = source.substr(pivotLocation + pivot.length); // left term
-
-    leftTerm = "";
-    i = leftOfPivot.length - 1;
-    c = leftOfPivot.substr(i, 1);
-
-    while (i > 0 && OPERATORS$1.indexOf(c) === -1) {
-      i--;
-      c = leftOfPivot.substr(i, 1);
-    }
-
-    if (OPERATORS$1.indexOf(c) !== -1) {
-      leftTerm = leftOfPivot.substr(i + 1);
-      beforeLeftTerm = leftOfPivot.substr(0, i + 1);
-    } else {
-      leftTerm = leftOfPivot.substr(i);
-      beforeLeftTerm = leftOfPivot.substr(0, i);
-    } // right term
-
-
-    rightTerm = "";
-
-    if (rightOfPivot.length > 0) {
-      i = 0;
-      c = rightOfPivot.substr(i, 1);
-
-      while (i < rightOfPivot.length && OPERATORS$1.indexOf(c) === -1) {
-        i++;
-
-        if (i < rightOfPivot.length) {
-          c = rightOfPivot.substr(i, 1);
-        }
-      }
-    }
-
-    if (i < rightOfPivot.length) {
-      rightTerm = rightOfPivot.substr(0, i);
-      afterRightTerm = rightOfPivot.substr(i);
-    } else {
-      rightTerm = rightOfPivot;
-      afterRightTerm = "";
-    }
-
-    return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
-  };
-  const contains = ({
-    source,
-    instance
-  } = {}) => {
-    if (typeof source !== "string") {
-      return false;
-    }
-
-    return source.indexOf(instance) !== -1;
-  };
-  const containsBraces = source => {
-    return contains({
-      source,
-      instance: "("
-    }) > 0 || contains({
-      source,
-      instance: ")"
-    }) > 0;
-  };
-
-  var OPERATORS = {
-    EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
-    MATH: ["%", "*", "/", "+", "-"],
-    BOOLEAN: ["&&", "||"],
-    CONVERSION: ["-", "!"]
-  }; // ____________________________________________________________________________________________________ term
-
-  var term = function term(source, props) {
-    var terms;
-    var parsing = false;
-    var result;
-    parsing = true;
-
-    while (parsing) {
-      // parse brackets
-      if (containsBraces(source)) {
-        terms = extractStringContainedInOutermostBraces(source);
-        var termResult = term(terms[1], props);
-        source = "".concat(terms[0]).concat(termResult).concat(terms[2]);
-      } else {
-        // parse math operators
-        result = scanForInstanceOf({
-          source: source,
-          array: OPERATORS.MATH
-        });
-
-        if (result !== -1) {
-          terms = extractTermsAroundPivot({
-            source: source,
-            pivot: OPERATORS.MATH[result]
-          });
-          var operationResult = performOperation({
-            termOne: terms[1],
-            termTwo: terms[2],
-            operator: OPERATORS.MATH[result],
-            props: props
-          });
-          source = "".concat(terms[0]).concat(operationResult).concat(terms[3]);
-        } else {
-          // parse equality operators
-          result = scanForInstanceOf({
-            source: source,
-            array: OPERATORS.EQUALITY
-          });
-
-          if (result !== -1) {
-            terms = extractTermsAroundPivot({
-              source: source,
-              pivot: OPERATORS.EQUALITY[result]
-            });
-
-            var _operationResult = performOperation({
-              termOne: terms[1],
-              termTwo: terms[2],
-              operator: OPERATORS.EQUALITY[result],
-              props: props
-            });
-
-            source = "".concat(terms[0]).concat(_operationResult).concat(terms[3]);
-          } else {
-            // parse boolean operators
-            result = scanForInstanceOf({
-              source: source,
-              array: OPERATORS.BOOLEAN
-            });
-
-            if (result !== -1) {
-              terms = extractTermsAroundPivot({
-                source: source,
-                pivot: OPERATORS.BOOLEAN[result]
-              });
-
-              var _operationResult2 = performOperation({
-                termOne: terms[1],
-                termTwo: terms[2],
-                operator: OPERATORS.BOOLEAN[result],
-                props: props
-              });
-
-              source = "".concat(terms[0]).concat(_operationResult2).concat(terms[3]);
-            } else {
-              parsing = false;
-            }
-          }
-        }
-      }
-    }
-
-    return processTerm(source, props);
-  }; // ____________________________________________________________________________________________________ Process
-  // check for var names, - and !
-
-  var processTerm = function processTerm() {
-    var source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var result;
-    var isString = typeof source === "string";
-
-    if (isString) {
-      source = source.trim();
-    }
-
-    var isNumeric = isNumericString(source);
-
-    if (isString && source.startsWith("-")) {
-      result = processTerm(source.substr(1), props);
-      return 0 - result;
-    } else if (isString && source.startsWith("!")) {
-      result = processTerm(source.substr(1), props); // invert result
-
-      return !result;
-    } else if (isNumeric) {
-      return parseInt(source);
-    } else if (source === "else") {
-      // 'else' is used as a convenient phrase for the xml, logically it's the equivalent of 'true'
-      return true;
-    } else if (source === "false") {
-      return false;
-    } else if (source === "true") {
-      return true;
-    } // return from props
-
-
-    if (props[source] !== undefined) {
-      return processTerm(props[source], props);
-    }
-
-    return source;
-  }; // ____________________________________________________________________________________________________ operation
-
-  var performOperation = function performOperation() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        termOne = _ref.termOne,
-        termTwo = _ref.termTwo,
-        operator = _ref.operator,
-        props = _ref.props;
-
-    // replace variable names where appropriate
-    var a = processTerm(termOne, props);
-    var b = processTerm(termTwo, props);
-    var result = 0;
-
-    if (operator === "*") {
-      result = a * b;
-    } else if (operator === "/") {
-      result = a / b;
-    } else if (operator === "+") {
-      result = a + b;
-    } else if (operator === "-") {
-      result = a - b;
-    } else if (operator === "%") {
-      result = a % b;
-    } else if (operator === "&&") {
-      result = a && b;
-    } else if (operator === "||") {
-      result = a || b;
-    } else if (operator === "!=") {
-      result = a !== b;
-    } else if (operator === "==") {
-      result = a === b;
-    } else if (operator === ">") {
-      result = a > b;
-    } else if (operator === "<") {
-      result = a < b;
-    } else if (operator === ">=") {
-      result = a >= b;
-    } else if (operator === "<=") {
-      result = a <= b;
-    }
-
-    return result;
-  };
-
-  function styleInject(css, ref) {
-    if (ref === void 0) ref = {};
-    var insertAt = ref.insertAt;
-
-    if (!css || typeof document === 'undefined') {
-      return;
-    }
-
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
-    style.type = 'text/css';
-
-    if (insertAt === 'top') {
-      if (head.firstChild) {
-        head.insertBefore(style, head.firstChild);
-      } else {
-        head.appendChild(style);
-      }
-    } else {
-      head.appendChild(style);
-    }
-
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(document.createTextNode(css));
-    }
-  }
-
-  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #999;\n  font-weight: bold;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.25em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #cc0000; }\n";
-  var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
-  styleInject(css_248z);
 
   function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -1684,7 +1735,6 @@
   var minimumFontSizeAdjustment = 0.01;
   var sizeStateDefault = {
     fontSize: 12,
-    lineHeight: 1,
     previousFontSize: 12,
     fontSizeLow: 1,
     fontSizeHigh: 256,
@@ -1693,9 +1743,11 @@
 
   var WordClock = function WordClock(_ref2) {
     var words = _ref2.words;
-    var containerRef = React__namespace.useRef(null);
     var innerRef = React__namespace.useRef(null);
-    var ro = React__namespace.useRef(null);
+
+    var _useSize = useSize(),
+        containerRef = _useSize.ref,
+        targetSize = _useSize.size;
 
     var _React$useState = React__namespace.useState([]),
         _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -1707,71 +1759,16 @@
         label = _React$useState4[0],
         setLabel = _React$useState4[1];
 
-    var _React$useState5 = React__namespace.useState({
-      width: 0,
-      height: 0
-    }),
+    var _React$useState5 = React__namespace.useState(_objectSpread({}, sizeStateDefault)),
         _React$useState6 = _slicedToArray(_React$useState5, 2),
-        targetSize = _React$useState6[0],
-        setTargetSize = _React$useState6[1];
-
-    var _React$useState7 = React__namespace.useState(_objectSpread({}, sizeStateDefault)),
-        _React$useState8 = _slicedToArray(_React$useState7, 2),
-        sizeState = _React$useState8[0],
-        setSizeState = _React$useState8[1];
+        sizeState = _React$useState6[0],
+        setSizeState = _React$useState6[1];
 
     var timeProps = useTimeProps();
-    var teardownResizeObserver = React__namespace.useCallback(function () {
-      if (ro.current) {
-        if (containerRef.current) {
-          ro.current.unobserve(containerRef.current);
-        }
-
-        ro.current.disconnect();
-        ro.current = null;
-      }
-    }, []);
-    var setupResizeObserver = React__namespace.useCallback(function () {
-      if (ro.current) {
-        teardownResizeObserver();
-      }
-
-      if (!containerRef.current) {
-        return;
-      }
-
-      ro.current = new index(function (entries) {
-        var currentRefEntry = entries.find(function (_ref3) {
-          var target = _ref3.target;
-          return target === containerRef.current;
-        });
-
-        if (currentRefEntry) {
-          var _currentRefEntry$cont = currentRefEntry.contentRect,
-              width = _currentRefEntry$cont.width,
-              height = _currentRefEntry$cont.height;
-          setTargetSize({
-            width: width,
-            height: height
-          });
-        }
-      });
-      ro.current.observe(containerRef.current);
-    }, [teardownResizeObserver]);
-    var setContainerRef = React__namespace.useCallback(function (ref) {
-      teardownResizeObserver();
-      containerRef.current = ref;
-      setupResizeObserver();
-    }, [setupResizeObserver, teardownResizeObserver]);
     React__namespace.useEffect(function () {
-      if (!containerRef.current || !innerRef.current || targetSize.width === 0) {
+      if (!targetSize.width) {
         return;
       }
-
-      var boundingClientRect = innerRef.current.getBoundingClientRect();
-      var height = boundingClientRect.height;
-      var nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
-      var fontSizeDifference = Math.abs(sizeState.fontSize - nextFontSize);
 
       if (sizeState.previousTargetSize) {
         // component resized - start resizing again
@@ -1783,45 +1780,56 @@
         }
       }
 
+      var height = innerRef.current.scrollHeight;
+
       if (sizeState.previousFit === FIT.OK) ; else if (height < targetSize.height) {
         // currently FIT.SMALL
         // increase size
-        setSizeState(_objectSpread(_objectSpread({}, sizeState), {}, {
-          fontSize: 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh),
-          previousFontSize: sizeState.fontSize,
-          fontSizeLow: sizeState.fontSize,
-          previousFit: FIT.SMALL,
-          previousTargetSize: targetSize,
-          previousHeight: height
-        }));
-      } else {
-        // currently FIT.LARGE
-        if (sizeState.previousFit === FIT.SMALL && fontSizeDifference <= minimumFontSizeAdjustment) {
-          // use previous size
-          setSizeState(_objectSpread(_objectSpread({}, sizeState), {}, {
-            fontSize: sizeState.previousFontSize,
-            previousFit: FIT.OK,
-            previousTargetSize: targetSize
-          }));
-        } else {
-          // decrease size
-          setSizeState(_objectSpread(_objectSpread({}, sizeState), {}, {
+        var nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeHigh);
+        setSizeState(function (sizeState) {
+          return _objectSpread(_objectSpread({}, sizeState), {}, {
             fontSize: nextFontSize,
             previousFontSize: sizeState.fontSize,
-            fontSizeHigh: sizeState.fontSize,
-            previousFit: FIT.LARGE,
+            fontSizeLow: sizeState.fontSize,
+            previousFit: FIT.SMALL,
             previousTargetSize: targetSize,
             previousHeight: height
-          }));
+          });
+        });
+      } else {
+        var _nextFontSize = 0.5 * (sizeState.fontSize + sizeState.fontSizeLow);
+
+        var fontSizeDifference = Math.abs(sizeState.fontSize - _nextFontSize);
+
+        if (sizeState.previousFit === FIT.SMALL && fontSizeDifference <= minimumFontSizeAdjustment) {
+          // use previous size
+          setSizeState(function (sizeState) {
+            return _objectSpread(_objectSpread({}, sizeState), {}, {
+              fontSize: sizeState.previousFontSize,
+              previousFit: FIT.OK,
+              previousTargetSize: targetSize
+            });
+          });
+        } else {
+          // decrease size
+          setSizeState(function (sizeState) {
+            return _objectSpread(_objectSpread({}, sizeState), {}, {
+              fontSize: _nextFontSize,
+              previousFontSize: sizeState.fontSize,
+              fontSizeHigh: sizeState.fontSize,
+              previousFit: FIT.LARGE,
+              previousTargetSize: targetSize,
+              previousHeight: height
+            });
+          });
         }
       }
-    }, [sizeState, targetSize, targetSize.height, targetSize.width]);
+    }, [sizeState.fontSize, sizeState.fontSizeHigh, sizeState.fontSizeLow, sizeState.previousFit, sizeState.previousTargetSize, targetSize]);
     var style = React__namespace.useMemo(function () {
       return {
-        fontSize: sizeState.fontSize,
-        lineHeight: sizeState.lineHeight
+        fontSize: sizeState.fontSize
       };
-    }, [sizeState.fontSize, sizeState.lineHeight]);
+    }, [sizeState.fontSize]);
     React__namespace.useEffect(function () {
       if (!words) {
         return;
@@ -1835,7 +1843,7 @@
     }, [words]);
     var isResizing = sizeState.previousFit !== FIT.OK;
     return /*#__PURE__*/React__namespace.createElement("div", {
-      ref: setContainerRef,
+      ref: containerRef,
       className: styles.container
     }, /*#__PURE__*/React__namespace.createElement("div", {
       ref: innerRef,
