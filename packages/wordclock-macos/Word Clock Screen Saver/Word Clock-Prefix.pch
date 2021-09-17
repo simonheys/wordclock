@@ -8,7 +8,7 @@
 
 #ifdef __OBJC__
 //    #define FORCE_LOGGING
-#define DEMO_TIME
+#undef DEMO_TIME
 
 #import <Cocoa/Cocoa.h>
 
