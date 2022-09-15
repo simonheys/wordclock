@@ -12,6 +12,7 @@
     "lint:prettier": "prettier -l './**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
     "precommit": "yarn lint",
     "prettier": "prettier --write './**/*.{js,json,css,scss}'",
+    "build": "yarn workspaces run build",
     "test": "CI=true yarn workspaces run test"
   },
   "devDependencies": {

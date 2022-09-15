@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.WordClock = {}, global.React));
-}(this, (function (exports, React) { 'use strict';
+})(this, (function (exports, React) { 'use strict';
 
   function _interopNamespace(e) {
     if (e && e.__esModule) return e;
@@ -13,14 +13,12 @@
           var d = Object.getOwnPropertyDescriptor(e, k);
           Object.defineProperty(n, k, d.get ? d : {
             enumerable: true,
-            get: function () {
-              return e[k];
-            }
+            get: function () { return e[k]; }
           });
         }
       });
     }
-    n['default'] = e;
+    n["default"] = e;
     return Object.freeze(n);
   }
 
@@ -102,84 +100,80 @@
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
 
-  var getTimeProps = function getTimeProps(dateInstance) {
+  const getTimeProps = dateInstance => {
     if (dateInstance === undefined) {
       dateInstance = new Date();
     }
 
-    var day = dateInstance.getDay();
-    var daystartingmonday = day - 1;
+    const day = dateInstance.getDay();
+    let daystartingmonday = day - 1;
 
     while (daystartingmonday < 0) {
       daystartingmonday += 7;
     }
 
-    var date = dateInstance.getDate();
-    var month = dateInstance.getMonth();
-    var hour = dateInstance.getHours() % 12;
-    var twentyfourhour = dateInstance.getHours();
-    var minute = dateInstance.getMinutes();
-    var second = dateInstance.getSeconds();
+    const date = dateInstance.getDate();
+    const month = dateInstance.getMonth();
+    const hour = dateInstance.getHours() % 12;
+    const twentyfourhour = dateInstance.getHours();
+    const minute = dateInstance.getMinutes();
+    const second = dateInstance.getSeconds();
     return {
-      day: day,
-      daystartingmonday: daystartingmonday,
-      date: date,
-      month: month,
-      hour: hour,
-      twentyfourhour: twentyfourhour,
-      minute: minute,
-      second: second
+      day,
+      daystartingmonday,
+      date,
+      month,
+      hour,
+      twentyfourhour,
+      minute,
+      second
     };
   };
 
-  var useTimeProps = function useTimeProps() {
-    var _React$useState = React__namespace.useState(getTimeProps()),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        timeProps = _React$useState2[0],
-        setTimeProps = _React$useState2[1];
-
-    React__namespace.useEffect(function () {
-      var interval = setInterval(function () {
+  const useTimeProps = () => {
+    const [timeProps, setTimeProps] = React__namespace.useState(getTimeProps());
+    React__namespace.useEffect(() => {
+      const interval = setInterval(() => {
         setTimeProps(getTimeProps());
       }, 1000);
-      return function () {
-        return clearInterval(interval);
-      };
+      return () => clearInterval(interval);
     }, []);
     return timeProps;
   };
 
-  var parseJson = function parseJson(_ref) {
-    var groups = _ref.groups;
-    var label = [];
-    var logic = [];
-    groups.forEach(function (group) {
-      var groupLabel = [];
-      var groupLogic = [];
-      group.forEach(function (entry) {
-        var type = entry.type;
+  const parseJson = _ref => {
+    let {
+      groups
+    } = _ref;
+    const label = [];
+    const logic = [];
+    groups.forEach(group => {
+      const groupLabel = [];
+      const groupLogic = [];
+      group.forEach(entry => {
+        const type = entry.type;
 
         if (type === "item") {
-          var items = entry.items;
-          items.forEach(function (item) {
-            var highlight = item.highlight;
-            var text = item.text || "";
+          const items = entry.items;
+          items.forEach(item => {
+            const highlight = item.highlight;
+            const text = item.text || "";
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "sequence") {
-          var bind = entry.bind;
-          var first = entry.first;
-          var textArray = entry.text;
-          textArray.forEach(function (text, index) {
-            var highlight = "".concat(bind, "==").concat(first + index);
+          const bind = entry.bind;
+          const first = entry.first;
+          const textArray = entry.text;
+          textArray.forEach((text, index) => {
+            const highlight = `${bind}==${first + index}`;
             groupLabel.push(text);
             groupLogic.push(highlight);
           });
         } else if (type === "space") {
-          var count = entry.count;
+          const count = entry.count;
 
-          for (var i = 0; i < count; i++) {
+          for (let i = 0; i < count; i++) {
             groupLabel.push("");
             groupLogic.push("");
           }
@@ -189,8 +183,8 @@
       label.push(groupLabel);
     });
     return {
-      logic: logic,
-      label: label
+      logic,
+      label
     };
   };
 
@@ -238,10 +232,12 @@
     insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
     return [leftOfBraces, insideBraces, rightOfBraces];
   };
-  const scanForInstanceOf = ({
-    source,
-    array
-  } = {}) => {
+  const scanForInstanceOf = function () {
+    let {
+      source,
+      array
+    } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
     if (typeof source !== "string" || !Array.isArray(array)) {
       return -1;
     }
@@ -254,10 +250,11 @@
 
     return -1;
   };
-  const extractTermsAroundPivot = ({
-    source,
-    pivot
-  }) => {
+  const extractTermsAroundPivot = _ref => {
+    let {
+      source,
+      pivot
+    } = _ref;
     let leftTerm;
     let rightTerm;
     let leftOfPivot;
@@ -313,10 +310,12 @@
 
     return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
   };
-  const contains = ({
-    source,
-    instance
-  } = {}) => {
+  const contains = function () {
+    let {
+      source,
+      instance
+    } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
     if (typeof source !== "string") {
       return false;
     }
@@ -333,86 +332,82 @@
     }) > 0;
   };
 
-  var OPERATORS = {
+  const OPERATORS = {
     EQUALITY: ["===", "!==", "==", "!=", ">=", "<=", ">", "<"],
     MATH: ["%", "*", "/", "+", "-"],
     BOOLEAN: ["&&", "||"],
     CONVERSION: ["-", "!"]
   }; // ____________________________________________________________________________________________________ term
 
-  var term = function term(source, props) {
-    var terms;
-    var parsing = false;
-    var result;
+  const term = (source, props) => {
+    let terms;
+    let parsing = false;
+    let result;
     parsing = true;
 
     while (parsing) {
       // parse brackets
       if (containsBraces(source)) {
         terms = extractStringContainedInOutermostBraces(source);
-        var termResult = term(terms[1], props);
-        source = "".concat(terms[0]).concat(termResult).concat(terms[2]);
+        const termResult = term(terms[1], props);
+        source = `${terms[0]}${termResult}${terms[2]}`;
       } else {
         // parse math operators
         result = scanForInstanceOf({
-          source: source,
+          source,
           array: OPERATORS.MATH
         });
 
         if (result !== -1) {
           terms = extractTermsAroundPivot({
-            source: source,
+            source,
             pivot: OPERATORS.MATH[result]
           });
-          var operationResult = performOperation({
+          const operationResult = performOperation({
             termOne: terms[1],
             termTwo: terms[2],
             operator: OPERATORS.MATH[result],
-            props: props
+            props
           });
-          source = "".concat(terms[0]).concat(operationResult).concat(terms[3]);
+          source = `${terms[0]}${operationResult}${terms[3]}`;
         } else {
           // parse equality operators
           result = scanForInstanceOf({
-            source: source,
+            source,
             array: OPERATORS.EQUALITY
           });
 
           if (result !== -1) {
             terms = extractTermsAroundPivot({
-              source: source,
+              source,
               pivot: OPERATORS.EQUALITY[result]
             });
-
-            var _operationResult = performOperation({
+            const operationResult = performOperation({
               termOne: terms[1],
               termTwo: terms[2],
               operator: OPERATORS.EQUALITY[result],
-              props: props
+              props
             });
-
-            source = "".concat(terms[0]).concat(_operationResult).concat(terms[3]);
+            source = `${terms[0]}${operationResult}${terms[3]}`;
           } else {
             // parse boolean operators
             result = scanForInstanceOf({
-              source: source,
+              source,
               array: OPERATORS.BOOLEAN
             });
 
             if (result !== -1) {
               terms = extractTermsAroundPivot({
-                source: source,
+                source,
                 pivot: OPERATORS.BOOLEAN[result]
               });
-
-              var _operationResult2 = performOperation({
+              const operationResult = performOperation({
                 termOne: terms[1],
                 termTwo: terms[2],
                 operator: OPERATORS.BOOLEAN[result],
-                props: props
+                props
               });
-
-              source = "".concat(terms[0]).concat(_operationResult2).concat(terms[3]);
+              source = `${terms[0]}${operationResult}${terms[3]}`;
             } else {
               parsing = false;
             }
@@ -425,17 +420,17 @@
   }; // ____________________________________________________________________________________________________ Process
   // check for var names, - and !
 
-  var processTerm = function processTerm() {
-    var source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var result;
-    var isString = typeof source === "string";
+  const processTerm = function () {
+    let source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    let props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    let result;
+    const isString = typeof source === "string";
 
     if (isString) {
       source = source.trim();
     }
 
-    var isNumeric = isNumericString(source);
+    const isNumeric = isNumericString(source);
 
     if (isString && source.startsWith("-")) {
       result = processTerm(source.substr(1), props);
@@ -463,17 +458,17 @@
     return source;
   }; // ____________________________________________________________________________________________________ operation
 
-  var performOperation = function performOperation() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        termOne = _ref.termOne,
-        termTwo = _ref.termTwo,
-        operator = _ref.operator,
-        props = _ref.props;
-
+  const performOperation = function () {
+    let {
+      termOne,
+      termTwo,
+      operator,
+      props
+    } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     // replace variable names where appropriate
-    var a = processTerm(termOne, props);
-    var b = processTerm(termTwo, props);
-    var result = 0;
+    let a = processTerm(termOne, props);
+    let b = processTerm(termTwo, props);
+    let result = 0;
 
     if (operator === "*") {
       result = a * b;
@@ -535,8 +530,8 @@
     }
   }
 
-  var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
-  var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
+  var css_248z = ".WordClock-module_container__c19GZ {\n  width: 100%;\n  height: 100%;\n}\n\n.WordClock-module_words__TLXzu {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%;\n}\n\n.WordClock-module_wordsResizing__B-3-e {\n  opacity: 0;\n  visibility: hidden;\n  height: auto;\n}\n\n.WordClock-module_word__phLek {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s;\n}\n\n.WordClock-module_wordHighlighted__amn4o {\n  color: #ff0000;\n}";
+  var styles = {"container":"WordClock-module_container__c19GZ word-clock","words":"WordClock-module_words__TLXzu words","wordsResizing":"WordClock-module_wordsResizing__B-3-e WordClock-module_words__TLXzu words resizing","word":"WordClock-module_word__phLek word","wordHighlighted":"WordClock-module_wordHighlighted__amn4o WordClock-module_word__phLek word word-highlighted"};
   styleInject(css_248z);
 
   /**
@@ -573,98 +568,101 @@
       return result;
     }
 
-    return function () {
-      function class_1() {
-        this.__entries__ = [];
-      }
+    return (
+      /** @class */
+      function () {
+        function class_1() {
+          this.__entries__ = [];
+        }
 
-      Object.defineProperty(class_1.prototype, "size", {
+        Object.defineProperty(class_1.prototype, "size", {
+          /**
+           * @returns {boolean}
+           */
+          get: function () {
+            return this.__entries__.length;
+          },
+          enumerable: true,
+          configurable: true
+        });
         /**
-         * @returns {boolean}
+         * @param {*} key
+         * @returns {*}
          */
-        get: function () {
-          return this.__entries__.length;
-        },
-        enumerable: true,
-        configurable: true
-      });
-      /**
-       * @param {*} key
-       * @returns {*}
-       */
 
-      class_1.prototype.get = function (key) {
-        var index = getIndex(this.__entries__, key);
-        var entry = this.__entries__[index];
-        return entry && entry[1];
-      };
-      /**
-       * @param {*} key
-       * @param {*} value
-       * @returns {void}
-       */
+        class_1.prototype.get = function (key) {
+          var index = getIndex(this.__entries__, key);
+          var entry = this.__entries__[index];
+          return entry && entry[1];
+        };
+        /**
+         * @param {*} key
+         * @param {*} value
+         * @returns {void}
+         */
 
 
-      class_1.prototype.set = function (key, value) {
-        var index = getIndex(this.__entries__, key);
+        class_1.prototype.set = function (key, value) {
+          var index = getIndex(this.__entries__, key);
 
-        if (~index) {
-          this.__entries__[index][1] = value;
-        } else {
-          this.__entries__.push([key, value]);
-        }
-      };
-      /**
-       * @param {*} key
-       * @returns {void}
-       */
-
-
-      class_1.prototype.delete = function (key) {
-        var entries = this.__entries__;
-        var index = getIndex(entries, key);
-
-        if (~index) {
-          entries.splice(index, 1);
-        }
-      };
-      /**
-       * @param {*} key
-       * @returns {void}
-       */
+          if (~index) {
+            this.__entries__[index][1] = value;
+          } else {
+            this.__entries__.push([key, value]);
+          }
+        };
+        /**
+         * @param {*} key
+         * @returns {void}
+         */
 
 
-      class_1.prototype.has = function (key) {
-        return !!~getIndex(this.__entries__, key);
-      };
-      /**
-       * @returns {void}
-       */
+        class_1.prototype.delete = function (key) {
+          var entries = this.__entries__;
+          var index = getIndex(entries, key);
+
+          if (~index) {
+            entries.splice(index, 1);
+          }
+        };
+        /**
+         * @param {*} key
+         * @returns {void}
+         */
 
 
-      class_1.prototype.clear = function () {
-        this.__entries__.splice(0);
-      };
-      /**
-       * @param {Function} callback
-       * @param {*} [ctx=null]
-       * @returns {void}
-       */
+        class_1.prototype.has = function (key) {
+          return !!~getIndex(this.__entries__, key);
+        };
+        /**
+         * @returns {void}
+         */
 
 
-      class_1.prototype.forEach = function (callback, ctx) {
-        if (ctx === void 0) {
-          ctx = null;
-        }
+        class_1.prototype.clear = function () {
+          this.__entries__.splice(0);
+        };
+        /**
+         * @param {Function} callback
+         * @param {*} [ctx=null]
+         * @returns {void}
+         */
 
-        for (var _i = 0, _a = this.__entries__; _i < _a.length; _i++) {
-          var entry = _a[_i];
-          callback.call(ctx, entry[1], entry[0]);
-        }
-      };
 
-      return class_1;
-    }();
+        class_1.prototype.forEach = function (callback, ctx) {
+          if (ctx === void 0) {
+            ctx = null;
+          }
+
+          for (var _i = 0, _a = this.__entries__; _i < _a.length; _i++) {
+            var entry = _a[_i];
+            callback.call(ctx, entry[1], entry[0]);
+          }
+        };
+
+        return class_1;
+      }()
+    );
   }();
   /**
    * Detects whether window and document objects are available in current environment.
@@ -800,7 +798,9 @@
    * Singleton controller class which handles updates of ResizeObserver instances.
    */
 
-  var ResizeObserverController = function () {
+  var ResizeObserverController =
+  /** @class */
+  function () {
     /**
      * Creates a new instance of ResizeObserverController.
      *
@@ -1324,7 +1324,9 @@
    */
 
 
-  var ResizeObservation = function () {
+  var ResizeObservation =
+  /** @class */
+  function () {
     /**
      * Creates an instance of ResizeObservation.
      *
@@ -1384,7 +1386,9 @@
     return ResizeObservation;
   }();
 
-  var ResizeObserverEntry = function () {
+  var ResizeObserverEntry =
+  /** @class */
+  function () {
     /**
      * Creates an instance of ResizeObserverEntry.
      *
@@ -1408,7 +1412,9 @@
     return ResizeObserverEntry;
   }();
 
-  var ResizeObserverSPI = function () {
+  var ResizeObserverSPI =
+  /** @class */
+  function () {
     /**
      * Creates a new instance of ResizeObserver.
      *
@@ -1595,7 +1601,9 @@
    * exposing only those methods and properties that are defined in the spec.
    */
 
-  var ResizeObserver = function () {
+  var ResizeObserver =
+  /** @class */
+  function () {
     /**
      * Creates a new instance of ResizeObserver.
      *
@@ -1637,19 +1645,14 @@
     return ResizeObserver;
   }();
 
-  var useSize = function useSize() {
-    var ref = React__namespace.useRef(null);
-    var resizeObserver = React__namespace.useRef(null);
-
-    var _React$useState = React__namespace.useState({
+  const useSize = () => {
+    const ref = React__namespace.useRef(null);
+    const resizeObserver = React__namespace.useRef(null);
+    const [size, setSize] = React__namespace.useState({
       width: 0,
       height: 0
-    }),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        size = _React$useState2[0],
-        setSize = _React$useState2[1];
-
-    var teardownResizeObserver = React__namespace.useCallback(function () {
+    });
+    const teardownResizeObserver = React__namespace.useCallback(() => {
       if (resizeObserver.current) {
         if (ref.current) {
           resizeObserver.current.unobserve(ref.current);
@@ -1659,7 +1662,7 @@
         resizeObserver.current = null;
       }
     }, []);
-    var setupResizeObserver = React__namespace.useCallback(function () {
+    const setupResizeObserver = React__namespace.useCallback(() => {
       if (resizeObserver.current) {
         teardownResizeObserver();
       }
@@ -1668,25 +1671,28 @@
         return;
       }
 
-      resizeObserver.current = new index(function (entries) {
-        var currentRefEntry = entries.find(function (_ref) {
-          var target = _ref.target;
+      resizeObserver.current = new index(entries => {
+        const currentRefEntry = entries.find(_ref => {
+          let {
+            target
+          } = _ref;
           return target === ref.current;
         });
 
         if (currentRefEntry) {
-          var _currentRefEntry$cont = currentRefEntry.contentRect,
-              width = _currentRefEntry$cont.width,
-              height = _currentRefEntry$cont.height;
+          const {
+            width,
+            height
+          } = currentRefEntry.contentRect;
           setSize({
-            width: width,
-            height: height
+            width,
+            height
           });
         }
       });
       resizeObserver.current.observe(ref.current);
     }, [teardownResizeObserver]);
-    var setRef = React__namespace.useCallback(function (nextRef) {
+    const setRef = React__namespace.useCallback(nextRef => {
       teardownResizeObserver();
       ref.current = nextRef;
       setupResizeObserver();
@@ -1694,13 +1700,13 @@
     return {
       ref: setRef,
       useRef: ref,
-      size: size
+      size
     };
   };
 
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
   var WordClockInner = function WordClockInner(_ref) {
     var logic = _ref.logic,
@@ -1876,5 +1882,5 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=index.js.map

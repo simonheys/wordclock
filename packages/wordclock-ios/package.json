@@ -1,6 +1,6 @@
 {
   "name": "wordclock-ios",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "prettier": "prettier --write './_scripts/**/*.{js,json,css,scss}'",
     "code-format": "babel-node ./_scripts/code-format",
+    "build": "echo 'No build script'",
     "test": "echo 'No tests'"
   },
   "devDependencies": {

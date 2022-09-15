@@ -41,9 +41,10 @@ const useTimeProps = () => {
   return timeProps;
 };
 
-const parseJson = ({
-  groups
-}) => {
+const parseJson = _ref => {
+  let {
+    groups
+  } = _ref;
   const label = [];
   const logic = [];
   groups.forEach(group => {
@@ -131,10 +132,12 @@ const extractStringContainedInOutermostBraces = source => {
   insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
   return [leftOfBraces, insideBraces, rightOfBraces];
 };
-const scanForInstanceOf = ({
-  source,
-  array
-} = {}) => {
+const scanForInstanceOf = function () {
+  let {
+    source,
+    array
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
   if (typeof source !== "string" || !Array.isArray(array)) {
     return -1;
   }
@@ -147,10 +150,11 @@ const scanForInstanceOf = ({
 
   return -1;
 };
-const extractTermsAroundPivot = ({
-  source,
-  pivot
-}) => {
+const extractTermsAroundPivot = _ref => {
+  let {
+    source,
+    pivot
+  } = _ref;
   let leftTerm;
   let rightTerm;
   let leftOfPivot;
@@ -206,10 +210,12 @@ const extractTermsAroundPivot = ({
 
   return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
 };
-const contains = ({
-  source,
-  instance
-} = {}) => {
+const contains = function () {
+  let {
+    source,
+    instance
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
   if (typeof source !== "string") {
     return false;
   }
@@ -314,7 +320,9 @@ const term = (source, props) => {
 }; // ____________________________________________________________________________________________________ Process
 // check for var names, - and !
 
-const processTerm = (source = "", props = {}) => {
+const processTerm = function () {
+  let source = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  let props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   let result;
   const isString = typeof source === "string";
 
@@ -350,12 +358,13 @@ const processTerm = (source = "", props = {}) => {
   return source;
 }; // ____________________________________________________________________________________________________ operation
 
-const performOperation = ({
-  termOne,
-  termTwo,
-  operator,
-  props
-} = {}) => {
+const performOperation = function () {
+  let {
+    termOne,
+    termTwo,
+    operator,
+    props
+  } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   // replace variable names where appropriate
   let a = processTerm(termOne, props);
   let b = processTerm(termTwo, props);
@@ -421,8 +430,8 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".WordClock-module_container__t8Dqz {\n  width: 100%;\n  height: 100%; }\n\n.WordClock-module_words__3W2_V {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%; }\n\n.WordClock-module_wordsResizing__3qRAw {\n  opacity: 0;\n  visibility: hidden;\n  height: auto; }\n\n.WordClock-module_word__1ziNY {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s; }\n\n.WordClock-module_wordHighlighted__3ZWlC {\n  color: #ff0000; }\n";
-var styles = {"container":"WordClock-module_container__t8Dqz word-clock","words":"WordClock-module_words__3W2_V words","wordsResizing":"WordClock-module_wordsResizing__3qRAw WordClock-module_words__3W2_V words resizing","word":"WordClock-module_word__1ziNY word","wordHighlighted":"WordClock-module_wordHighlighted__3ZWlC WordClock-module_word__1ziNY word word-highlighted"};
+var css_248z = ".WordClock-module_container__c19GZ {\n  width: 100%;\n  height: 100%;\n}\n\n.WordClock-module_words__TLXzu {\n  color: #ccc;\n  font-weight: bold;\n  line-height: 1;\n  transition: opacity 0.15s;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  height: 100%;\n}\n\n.WordClock-module_wordsResizing__B-3-e {\n  opacity: 0;\n  visibility: hidden;\n  height: auto;\n}\n\n.WordClock-module_word__phLek {\n  display: flex;\n  margin-right: 0.2em;\n  transition: color 0.15s;\n}\n\n.WordClock-module_wordHighlighted__amn4o {\n  color: #ff0000;\n}";
+var styles = {"container":"WordClock-module_container__c19GZ word-clock","words":"WordClock-module_words__TLXzu words","wordsResizing":"WordClock-module_wordsResizing__B-3-e WordClock-module_words__TLXzu words resizing","word":"WordClock-module_word__phLek word","wordHighlighted":"WordClock-module_wordHighlighted__amn4o WordClock-module_word__phLek word word-highlighted"};
 styleInject(css_248z);
 
 /**
@@ -459,98 +468,101 @@ var MapShim = function () {
     return result;
   }
 
-  return function () {
-    function class_1() {
-      this.__entries__ = [];
-    }
+  return (
+    /** @class */
+    function () {
+      function class_1() {
+        this.__entries__ = [];
+      }
 
-    Object.defineProperty(class_1.prototype, "size", {
+      Object.defineProperty(class_1.prototype, "size", {
+        /**
+         * @returns {boolean}
+         */
+        get: function () {
+          return this.__entries__.length;
+        },
+        enumerable: true,
+        configurable: true
+      });
       /**
-       * @returns {boolean}
+       * @param {*} key
+       * @returns {*}
        */
-      get: function () {
-        return this.__entries__.length;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    /**
-     * @param {*} key
-     * @returns {*}
-     */
 
-    class_1.prototype.get = function (key) {
-      var index = getIndex(this.__entries__, key);
-      var entry = this.__entries__[index];
-      return entry && entry[1];
-    };
-    /**
-     * @param {*} key
-     * @param {*} value
-     * @returns {void}
-     */
+      class_1.prototype.get = function (key) {
+        var index = getIndex(this.__entries__, key);
+        var entry = this.__entries__[index];
+        return entry && entry[1];
+      };
+      /**
+       * @param {*} key
+       * @param {*} value
+       * @returns {void}
+       */
 
 
-    class_1.prototype.set = function (key, value) {
-      var index = getIndex(this.__entries__, key);
+      class_1.prototype.set = function (key, value) {
+        var index = getIndex(this.__entries__, key);
 
-      if (~index) {
-        this.__entries__[index][1] = value;
-      } else {
-        this.__entries__.push([key, value]);
-      }
-    };
-    /**
-     * @param {*} key
-     * @returns {void}
-     */
-
-
-    class_1.prototype.delete = function (key) {
-      var entries = this.__entries__;
-      var index = getIndex(entries, key);
-
-      if (~index) {
-        entries.splice(index, 1);
-      }
-    };
-    /**
-     * @param {*} key
-     * @returns {void}
-     */
+        if (~index) {
+          this.__entries__[index][1] = value;
+        } else {
+          this.__entries__.push([key, value]);
+        }
+      };
+      /**
+       * @param {*} key
+       * @returns {void}
+       */
 
 
-    class_1.prototype.has = function (key) {
-      return !!~getIndex(this.__entries__, key);
-    };
-    /**
-     * @returns {void}
-     */
+      class_1.prototype.delete = function (key) {
+        var entries = this.__entries__;
+        var index = getIndex(entries, key);
+
+        if (~index) {
+          entries.splice(index, 1);
+        }
+      };
+      /**
+       * @param {*} key
+       * @returns {void}
+       */
 
 
-    class_1.prototype.clear = function () {
-      this.__entries__.splice(0);
-    };
-    /**
-     * @param {Function} callback
-     * @param {*} [ctx=null]
-     * @returns {void}
-     */
+      class_1.prototype.has = function (key) {
+        return !!~getIndex(this.__entries__, key);
+      };
+      /**
+       * @returns {void}
+       */
 
 
-    class_1.prototype.forEach = function (callback, ctx) {
-      if (ctx === void 0) {
-        ctx = null;
-      }
+      class_1.prototype.clear = function () {
+        this.__entries__.splice(0);
+      };
+      /**
+       * @param {Function} callback
+       * @param {*} [ctx=null]
+       * @returns {void}
+       */
 
-      for (var _i = 0, _a = this.__entries__; _i < _a.length; _i++) {
-        var entry = _a[_i];
-        callback.call(ctx, entry[1], entry[0]);
-      }
-    };
 
-    return class_1;
-  }();
+      class_1.prototype.forEach = function (callback, ctx) {
+        if (ctx === void 0) {
+          ctx = null;
+        }
+
+        for (var _i = 0, _a = this.__entries__; _i < _a.length; _i++) {
+          var entry = _a[_i];
+          callback.call(ctx, entry[1], entry[0]);
+        }
+      };
+
+      return class_1;
+    }()
+  );
 }();
 /**
  * Detects whether window and document objects are available in current environment.
@@ -686,7 +698,9 @@ var mutationObserverSupported = typeof MutationObserver !== 'undefined';
  * Singleton controller class which handles updates of ResizeObserver instances.
  */
 
-var ResizeObserverController = function () {
+var ResizeObserverController =
+/** @class */
+function () {
   /**
    * Creates a new instance of ResizeObserverController.
    *
@@ -1210,7 +1224,9 @@ function createRectInit(x, y, width, height) {
  */
 
 
-var ResizeObservation = function () {
+var ResizeObservation =
+/** @class */
+function () {
   /**
    * Creates an instance of ResizeObservation.
    *
@@ -1270,7 +1286,9 @@ var ResizeObservation = function () {
   return ResizeObservation;
 }();
 
-var ResizeObserverEntry = function () {
+var ResizeObserverEntry =
+/** @class */
+function () {
   /**
    * Creates an instance of ResizeObserverEntry.
    *
@@ -1294,7 +1312,9 @@ var ResizeObserverEntry = function () {
   return ResizeObserverEntry;
 }();
 
-var ResizeObserverSPI = function () {
+var ResizeObserverSPI =
+/** @class */
+function () {
   /**
    * Creates a new instance of ResizeObserver.
    *
@@ -1481,7 +1501,9 @@ var observers = typeof WeakMap !== 'undefined' ? new WeakMap() : new MapShim();
  * exposing only those methods and properties that are defined in the spec.
  */
 
-var ResizeObserver = function () {
+var ResizeObserver =
+/** @class */
+function () {
   /**
    * Creates a new instance of ResizeObserver.
    *
@@ -1550,9 +1572,12 @@ const useSize = () => {
     }
 
     resizeObserver.current = new index(entries => {
-      const currentRefEntry = entries.find(({
-        target
-      }) => target === ref.current);
+      const currentRefEntry = entries.find(_ref => {
+        let {
+          target
+        } = _ref;
+        return target === ref.current;
+      });
 
       if (currentRefEntry) {
         const {
@@ -1579,12 +1604,13 @@ const useSize = () => {
   };
 };
 
-const WordClockInner = ({
-  logic,
-  label,
-  timeProps,
-  fontSize
-}) => {
+const WordClockInner = _ref => {
+  let {
+    logic,
+    label,
+    timeProps,
+    fontSize
+  } = _ref;
   return label.map((labelGroup, labelIndex) => {
     const logicGroup = logic[labelIndex];
     let highlighted;
@@ -1629,9 +1655,10 @@ const sizeStateDefault = {
   previousFit: FIT.UNKNOWN
 };
 
-const WordClock = ({
-  words
-}) => {
+const WordClock = _ref2 => {
+  let {
+    words
+  } = _ref2;
   const innerRef = React.useRef(null);
   const {
     ref: containerRef,
