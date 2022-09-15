@@ -1,6 +1,6 @@
 {
   "name": "wordclock",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "private": true,
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
@@ -11,7 +11,9 @@
     "lint": "yarn lint:prettier",
     "lint:prettier": "prettier -l './**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
     "precommit": "yarn lint",
-    "prettier": "prettier --write './**/*.{js,json,css,scss}'"
+    "prettier": "prettier --write './**/*.{js,json,css,scss}'",
+    "build": "yarn workspaces run build",
+    "test": "CI=true yarn workspaces run test"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -31,7 +33,5 @@
   "jest": {
     "verbose": true
   },
-  "dependencies": {
-    "node-sass": "^6.0.1"
-  }
+  "dependencies": {}
 }
