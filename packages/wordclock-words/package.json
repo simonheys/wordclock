@@ -5,8 +5,6 @@
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-  },
-  "devDependencies": {
-  },
-  "dependencies": {}
+    "test": "echo 'No tests'"
+  }
 }

@@ -16,7 +16,8 @@
     "make-dist": "babel-node ./_scripts/make-dist",
     "settings": "babel-node ./_scripts/settings",
     "update-copyright": "babel-node ./_scripts/update-copyright",
-    "notarize": "babel-node ./_scripts/notarize"
+    "notarize": "babel-node ./_scripts/notarize",
+    "test": "echo 'No tests'"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
