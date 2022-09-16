@@ -20,7 +20,7 @@
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.0.2",
     "execSync": "^1.0.2",
     "fs-extra": "^8.0.1",
     "moment": "^2.29.4",
