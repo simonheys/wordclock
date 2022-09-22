@@ -95,7 +95,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		33E847F582FA45528503B529 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		58183543DA4765AC67F8E145 /* Pods-Word Clock Window.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word Clock Window.debug.xcconfig"; path = "Target Support Files/Pods-Word Clock Window/Pods-Word Clock Window.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		F455AB5C1670DBEF00F41C22 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F45EFDE3167C3C0400D60C46 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = _resources/thumbnail.png; sourceTree = "<group>"; };
 		F45EFDE4167C3C0400D60C46 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thumbnail@2x.png"; path = "_resources/thumbnail@2x.png"; sourceTree = "<group>"; };
+		F46390E628DC4BFD0072B46D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4678669131902F6002F899B /* WordClockGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockGLView.h; sourceTree = "<group>"; };
 		F467866A131902F6002F899B /* WordClockGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockGLView.m; sourceTree = "<group>"; };
 		F46786D11319081E002F899B /* WordClockGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockGLViewController.h; sourceTree = "<group>"; };
@@ -505,7 +505,7 @@
 				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					F44D11ED165951CE003A3557 = {
-						DevelopmentTeam = 4YADBGMM88;
+						DevelopmentTeam = 7P37GZG7HN;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -514,7 +514,7 @@
 						};
 					};
 					F4E8F500165FD0B50019987F = {
-						DevelopmentTeam = 4YADBGMM88;
+						DevelopmentTeam = 7P37GZG7HN;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -758,7 +758,7 @@
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C165DFE840E0CC02AAC07 /* English */,
+				F46390E628DC4BFD0072B46D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -833,7 +833,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 4YADBGMM88;
+				DEVELOPMENT_TEAM = 7P37GZG7HN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -873,7 +873,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4YADBGMM88;
+				DEVELOPMENT_TEAM = 7P37GZG7HN;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -908,6 +908,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4YADBGMM88;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7P37GZG7HN;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -950,6 +951,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4YADBGMM88;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7P37GZG7HN;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
