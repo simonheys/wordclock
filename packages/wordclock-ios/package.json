@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "execSync": "^1.0.2",
-    "fs-extra": "^8.0.1",
+    "fs-extra": "^10.1.0",
     "multi-glob": "^1.0.2"
   }
 }
