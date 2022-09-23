@@ -5,17 +5,6 @@ const workspace = `WordClock.xcworkspace`;
 const scheme = `Word Clock`;
 const configuration = `Release`;
 
-const ascPrimaryBundleId = process.env.MAC_NOTARIZE_ASC_PRIMARY_BUNDLE_ID;
-const ascUsername = process.env.MAC_NOTARIZE_APPLE_ID;
-const ascPassword = process.env.MAC_NOTARIZE_APPLE_ID_PASSWORD;
-const ascProvider = process.env.MAC_NOTARIZE_ASC_PROVIDER;
+const keychainProfile = process.env.MAC_NOTARIZE_KEYCHAIN_PROFILE;
 
-export {
-  workspace,
-  scheme,
-  configuration,
-  ascPrimaryBundleId,
-  ascUsername,
-  ascPassword,
-  ascProvider,
-};
+export { workspace, scheme, configuration, keychainProfile };
