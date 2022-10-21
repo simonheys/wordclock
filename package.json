@@ -16,7 +16,7 @@
     "test": "CI=true yarn workspaces run test"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.3",
+    "@babel/core": "^7.19.6",
     "@babel/node": "^7.8.0",
     "@babel/plugin-proposal-decorators": "^7.19.6",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
