@@ -23,7 +23,7 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "execSync": "^1.0.2",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.0",
     "moment": "^2.29.4",
     "multi-glob": "^1.0.2",
     "xml2js": "^0.4.19"
