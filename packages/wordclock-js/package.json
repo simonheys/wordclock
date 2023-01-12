@@ -51,7 +51,7 @@
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "postcss": "^8.4.20",
-    "rollup": "^3.9.0",
+    "rollup": "^3.9.1",
     "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-postcss": "^4.0.0"
   }
