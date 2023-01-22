@@ -50,7 +50,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "postcss": "^8.4.20",
+    "postcss": "^8.4.21",
     "rollup": "^3.10.0",
     "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-postcss": "^4.0.0"
