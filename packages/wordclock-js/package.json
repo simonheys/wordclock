@@ -9,7 +9,7 @@
     "dist"
   ],
   "dependencies": {
-    "@babel/core": "^7.20.2",
+    "@babel/core": "^7.20.12",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
