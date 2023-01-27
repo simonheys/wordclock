@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
-    "eslint": "^8.31.0",
+    "eslint": "^8.32.0",
     "execSync": "^1.0.2",
     "fs-extra": "^11.1.0",
     "moment": "^2.29.4",
