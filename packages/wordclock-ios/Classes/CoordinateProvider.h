@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 // FIXME importing WordClockGLView causes errors....why?
-//#import "WordClockGLView.h"
+// #import "WordClockGLView.h"
 #import "DLog.h"
 #import "WordClockWordManager.h"
-//#import "WordClockWord.h"
+// #import "WordClockWord.h"
 
 typedef struct _WordClockWordCoordinates {
     float x;

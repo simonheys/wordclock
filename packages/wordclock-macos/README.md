@@ -12,15 +12,15 @@ This is the code used for the native macOS Screensaver version. It has a long hi
 
 - Build and sign the app
 
-        $ yarn build
+        $ pnpm build
 
 - Bundle it into a DMG to preserve the signature
 
-        $ yarn package-dmg
+        $ pnpm package-dmg
 
 - Notarize and staple the DMG
 
-        $ yarn notarize
+        $ pnpm notarize
 
 ## macOS sign and Notarize
 

@@ -4,17 +4,13 @@
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-    "lint:eslint": "eslint ./_scripts/",
-    "lint:prettier": "prettier -l './_scripts/**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
-    "lint": "yarn lint:eslint && yarn lint:prettier",
-    "prettier": "prettier --write './_scripts/**/*.{js,json,css,scss}'",
-    "code-format": "babel-node ./_scripts/code-format",
+    "code-format": "ts-node ./_scripts/code-format",
     "build": "echo 'No build script'",
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "execSync": "^1.0.2",
-    "fs-extra": "^11.1.1",
-    "multi-glob": "^1.0.2"
+    "@tsconfig/node16": "^16.1.0",
+    "glob": "^10.3.3",
+    "ts-node": "^10.9.1"
   }
 }

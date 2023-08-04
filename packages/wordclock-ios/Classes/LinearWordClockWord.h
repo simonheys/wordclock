@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "WordClockPreferences.h"
-//#import "NSLog.h"
+// #import "NSLog.h"
 
 #define FONT_SIZE_FOR_CALCULATION 12.0f
 

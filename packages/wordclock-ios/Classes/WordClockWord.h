@@ -15,8 +15,8 @@
 
 #define kWordClockWordUnscaledFontSize 24.0f
 #define kWordClockWordScaleMaximum 20.0f
-//#define kWordClockWordTextureWidthMaximum 512
-//#define kWordClockWordTextureHeightMaximum 512
+// #define kWordClockWordTextureWidthMaximum 512
+// #define kWordClockWordTextureHeightMaximum 512
 
 // 256 x 128 = 3833856
 // 512 x 256 = 10223616 = more than 24Mb
