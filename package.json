@@ -4,34 +4,22 @@
   "private": true,
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "lint": "yarn lint:prettier",
-    "lint:prettier": "prettier -l './**/*.{js,json,css,scss}' || (echo '\nThese files are not formatted correctly. Did you forget to run \"yarn prettier\"?' && false)",
-    "precommit": "yarn lint",
-    "prettier": "prettier --write './**/*.{js,json,css,scss}'",
-    "build": "yarn workspaces run build",
-    "test": "CI=true yarn workspaces run test"
+    "preinstall": "npx only-allow pnpm",
+    "prettier": "prettier --write './**/*.{js,json,css,scss,yml,ts,tsx,md}'",
+    "build": "pnpm run -r --parallel --stream build",
+    "test": "CI=true pnpm run --parallel --stream test",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.8",
-    "@babel/node": "^7.22.6",
-    "@babel/plugin-proposal-decorators": "^7.22.0",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/plugin-transform-destructuring": "^7.20.7",
-    "@babel/plugin-transform-runtime": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
-    "@babel/runtime": "^7.22.6",
-    "husky": "^0.14.3",
-    "lodash": "^4.17.21",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0"
   },
   "jest": {
     "verbose": true
   },
-  "dependencies": {}
+  "lint-staged": {
+    "*.{js,json,css,scss,yml,ts,ts,md}": "prettier --write"
+  }
 }

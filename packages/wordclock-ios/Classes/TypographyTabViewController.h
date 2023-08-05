@@ -13,7 +13,7 @@
 #import "ShowableWordClockPreview.h"
 #import "WordClockPreferences.h"
 
-//#import "NSLog.h"
+// #import "NSLog.h"
 
 @interface TypographyTabViewController : FlipsideTabViewController {
     IBOutlet UISegmentedControl *justifyControl;

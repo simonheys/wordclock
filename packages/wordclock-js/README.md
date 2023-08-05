@@ -7,5 +7,5 @@ Simple react component that can run in a web browser
 Run the example development server from repository root
 
 ```
-$ yarn workspace wordclock-js start
+$ pnpm workspace wordclock-js start
 ```

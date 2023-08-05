@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
-//#import "NSLog.h"
+// #import "NSLog.h"
 
 @interface FlipsideColourPickerCursorView : UIView {
     UIColor *_colour;
