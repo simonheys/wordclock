@@ -2,13 +2,16 @@ name: Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,11 +19,17 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn install --frozen-lockfile
-    - run: yarn test
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - name: Run tests
+        run: pnpm test

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "LogicParserStringUtil.h"
-//#import "NSLog.h"
+// #import "NSLog.h"
 
 NSArray *LogicParserEqualityOperators;
 NSArray *LogicParserMathOperators;
