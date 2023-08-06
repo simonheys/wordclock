@@ -14,7 +14,7 @@
       "require": "./dist/wordclock.umd.js",
       "types": "./dist/wordclock.d.ts"
     },
-    "./dist/style.css": {
+    "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }

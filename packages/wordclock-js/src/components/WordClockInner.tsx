@@ -20,18 +20,19 @@ export const WordClockInner: FC<WordClockInnerProps> = ({
       {label.map((labelGroup, labelIndex) => {
         const logicGroup = logic[labelIndex];
         let hasPreviousHighlight = false;
+        let highlighted = false;
         // only allow a single highlight per group
         return labelGroup.map((label, labelGroupIndex) => {
-          if (!label.length) {
-            return null;
-          }
-          let highlighted = false;
+          highlighted = false;
           if (!hasPreviousHighlight) {
             const logic = logicGroup[labelGroupIndex];
             highlighted = LogicParser.term(logic, timeProps);
             if (highlighted) {
               hasPreviousHighlight = true;
             }
+          }
+          if (!label.length) {
+            return null;
           }
           return (
             <div
