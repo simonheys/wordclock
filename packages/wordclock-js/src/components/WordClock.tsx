@@ -1,55 +1,11 @@
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import useSize from "../hooks/useSize";
-import useTimeProps, { TimeProps } from "../hooks/useTimeProps";
-import * as LogicParser from "../modules/LogicParser";
+import useTimeProps from "../hooks/useTimeProps";
 import * as WordsFileParser from "../modules/WordsFileParser";
-import { WordsJson } from "../types";
+import { WordsJson, WordsLabel, WordsLogic } from "../types";
 import styles from "./WordClock.module.scss";
-
-interface WordClockInnerProps {
-  logic: string[][];
-  label: string[][];
-  timeProps: TimeProps;
-}
-
-const WordClockInner: FC<WordClockInnerProps> = ({
-  logic,
-  label,
-  timeProps,
-}) => {
-  return (
-    <>
-      {label.map((labelGroup, labelIndex) => {
-        const logicGroup = logic[labelIndex];
-        let highlighted;
-        let hasPreviousHighlight = false;
-        // only allow a single highlight per group
-        return labelGroup.map((label, labelGroupIndex) => {
-          highlighted = false;
-          if (!hasPreviousHighlight) {
-            const logic = logicGroup[labelGroupIndex];
-            highlighted = LogicParser.term(logic, timeProps);
-            if (highlighted) {
-              hasPreviousHighlight = true;
-            }
-          }
-          if (!label.length) {
-            return null;
-          }
-          return (
-            <div
-              className={highlighted ? styles.wordHighlighted : styles.word}
-              key={`${labelIndex}-${labelGroupIndex}`}
-            >
-              {label}
-            </div>
-          );
-        });
-      })}
-    </>
-  );
-};
+import { WordClockInner } from "./WordClockInner";
 
 enum FIT {
   UNKNOWN = "UNKNOWN",
@@ -84,8 +40,8 @@ const WordClock = ({ words }: { words: WordsJson }) => {
   const innerRef = useRef<HTMLDivElement>(null);
   const { ref: containerRef, size: targetSize } = useSize();
 
-  const [logic, setLogic] = useState<string[][]>([]);
-  const [label, setLabel] = useState<string[][]>([]);
+  const [logic, setLogic] = useState<WordsLogic>([]);
+  const [label, setLabel] = useState<WordsLabel>([]);
   const [sizeState, setSizeState] = useState<SizeState>({
     ...sizeStateDefault,
   });
