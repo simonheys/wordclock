@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prettier": "prettier --write './**/*.{js,json,css,scss,yml,ts,tsx,md}'",
+    "prettier": "prettier --ignore-unknown --write .",
     "build": "pnpm run -r --parallel --stream build",
     "test": "CI=true pnpm run --parallel --stream test",
     "prepare": "husky install"
@@ -20,6 +20,7 @@
     "verbose": true
   },
   "lint-staged": {
-    "*.{js,json,css,scss,yml,ts,ts,md}": "prettier --write"
+    "*": "prettier --ignore-unknown --write",
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
   }
 }
