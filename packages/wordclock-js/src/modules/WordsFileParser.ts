@@ -1,8 +1,8 @@
-import { WordsJson } from "../types";
+import { WordsJson, WordsLabel, WordsLogic } from "../types";
 
 export const parseJson = ({ groups }: WordsJson) => {
-  const label: string[][] = [];
-  const logic: string[][] = [];
+  const label: WordsLabel = [];
+  const logic: WordsLogic = [];
   groups.forEach((group) => {
     const groupLabel: string[] = [];
     const groupLogic: string[] = [];

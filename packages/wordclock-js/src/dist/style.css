@@ -1,0 +1,27 @@
+._container_1drai_1 {
+  width: 100%;
+  height: 100%;
+}
+._words_1drai_7 {
+  color: #ccc;
+  font-weight: 700;
+  line-height: 1;
+  transition: opacity 0.15s;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+}
+._wordsResizing_1drai_19 {
+  opacity: 0;
+  visibility: hidden;
+  height: auto;
+}
+._word_1drai_7 {
+  display: flex;
+  margin-right: 0.2em;
+  transition: color 0.15s;
+}
+._wordHighlighted_1drai_34 {
+  color: red;
+}

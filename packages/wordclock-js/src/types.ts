@@ -36,3 +36,6 @@ export interface WordsJson {
 }
 
 export type Words = Record<string, WordsEntry[]>;
+
+export type WordsLabel = string[][];
+export type WordsLogic = string[][];

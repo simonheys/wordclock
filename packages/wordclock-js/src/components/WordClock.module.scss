@@ -16,14 +16,6 @@
   height: 100%; // when not resizing, space out the rows to fill
 }
 
-.wordsResizing {
-  composes: words;
-  composes: global(resizing);
-  opacity: 0;
-  visibility: hidden;
-  height: auto; // allow natural size for calculation
-}
-
 .word {
   composes: global(word);
   display: flex;
