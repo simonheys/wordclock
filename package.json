@@ -10,7 +10,7 @@
     "build": "pnpm run -r --parallel --stream build",
     "test": "CI=true pnpm run --parallel --stream test",
     "prepare": "husky install",
-    "publish": "pnpm run -r --parallel --stream publish"
+    "publish-npm": "pnpm run -r --parallel --stream publish-npm"
   },
   "devDependencies": {
     "husky": "^8.0.3",

@@ -1,3 +1,5 @@
+import { JSX as JSX_2 } from 'react/jsx-runtime';
+
 declare type Group = {
     type: "sequence";
     bind: "hour" | "minute" | "second";
@@ -16,7 +18,7 @@ declare type Group = {
 
 export declare const WordClock: ({ words }: {
     words: WordsJson;
-}) => JSX.Element;
+}) => JSX_2.Element;
 
 declare interface WordsJson {
     meta: {
