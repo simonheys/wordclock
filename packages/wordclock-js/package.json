@@ -1,7 +1,9 @@
 {
-  "name": "wordclock-js",
+  "name": "@simonheys/wordclock",
   "version": "1.1.5",
-  "private": true,
+  "private": false,
+  "author": "Simon Heys <si@simonheys.com>",
+  "license": "MIT",
   "main": "./dist/wordclock.umd.js",
   "module": "./dist/wordclock.es.js",
   "types": "./dist/wordclock.d.ts",
@@ -66,5 +68,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Simple react component that can run in a web browser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonheys/wordclock.git"
+  },
+  "keywords": [
+    "wordclock"
+  ],
+  "bugs": {
+    "url": "https://github.com/simonheys/wordclock/issues"
+  },
+  "homepage": "https://github.com/simonheys/wordclock#readme"
 }
