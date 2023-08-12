@@ -1,6 +1,6 @@
 {
   "name": "wordclock",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "private": false,
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
@@ -9,7 +9,8 @@
     "prettier": "prettier --ignore-unknown --write .",
     "build": "pnpm run -r --parallel --stream build",
     "test": "CI=true pnpm run --parallel --stream test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish": "pnpm run -r --parallel --stream publish"
   },
   "devDependencies": {
     "husky": "^8.0.3",
