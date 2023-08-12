@@ -1,6 +1,6 @@
 {
   "name": "@simonheys/wordclock",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "private": false,
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
@@ -25,7 +25,6 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
     "resize-observer-polyfill": "^1.5.1",
     "@simonheys/wordclock-words": "*"
   },
@@ -39,6 +38,7 @@
     "@types/testing-library__jest-dom": "^5.14.9",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "identity-obj-proxy": "^3.0.0",
+    "react-scripts": "5.0.1",
     "sass": "^1.65.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
@@ -49,7 +49,8 @@
     "build": "vite build",
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish-npm": "pnpm build && npm publish --public"
   },
   "eslintConfig": {
     "extends": [

@@ -4,11 +4,11 @@ import styles from "./App.module.scss";
 import WordClock from "./components/WordClock";
 import { Manifest, WordsEntry, WordsJson, Words } from "./types";
 
-const manifest: Manifest = require(`wordclock-words/json/Manifest.json`);
+const manifest: Manifest = require(`@simonheys/wordclock-words/json/Manifest.json`);
 const words: Words = {};
 
 manifest.files.forEach((file) => {
-  const json: WordsJson = require(`wordclock-words/json/${file}`);
+  const json: WordsJson = require(`@simonheys/wordclock-words/json/${file}`);
   const { meta } = json;
   const { language, title } = meta;
   const languageTitle = manifest.languages[language];
@@ -54,7 +54,7 @@ const App = () => {
   );
 
   const words = useMemo(() => {
-    const json = require(`wordclock-words/json/${file}`);
+    const json = require(`@simonheys/wordclock-words/json/${file}`);
     return json;
   }, [file]);
 
