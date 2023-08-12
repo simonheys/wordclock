@@ -34,6 +34,9 @@ importers:
 
   packages/wordclock-js:
     dependencies:
+      '@simonheys/wordclock-words':
+        specifier: '*'
+        version: link:../wordclock-words
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -49,9 +52,6 @@ importers:
       resize-observer-polyfill:
         specifier: ^1.5.1
         version: 1.5.1
-      wordclock-words:
-        specifier: '*'
-        version: link:../wordclock-words
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^5.17.0
