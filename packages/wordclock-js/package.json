@@ -1,7 +1,9 @@
 {
-  "name": "wordclock-js",
-  "version": "1.1.5",
-  "private": true,
+  "name": "@simonheys/wordclock",
+  "version": "1.1.7",
+  "private": false,
+  "author": "Simon Heys <si@simonheys.com>",
+  "license": "MIT",
   "main": "./dist/wordclock.umd.js",
   "module": "./dist/wordclock.es.js",
   "types": "./dist/wordclock.d.ts",
@@ -14,7 +16,7 @@
       "require": "./dist/wordclock.umd.js",
       "types": "./dist/wordclock.d.ts"
     },
-    "./dist/style.css": {
+    "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
@@ -23,15 +25,32 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
     "resize-observer-polyfill": "^1.5.1",
-    "wordclock-words": "*"
+    "@simonheys/wordclock-words": "*"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.3",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/testing-library__jest-dom": "^5.14.9",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "identity-obj-proxy": "^3.0.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.65.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.1",
+    "web-vitals": "^3.4.0"
   },
   "scripts": {
     "build": "vite build",
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish-npm": "pnpm build && npm publish --public"
   },
   "eslintConfig": {
     "extends": [
@@ -51,16 +70,16 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@vitejs/plugin-react-swc": "^3.3.2",
-    "identity-obj-proxy": "^3.0.0",
-    "sass": "^1.64.1",
-    "typescript": "^5.1.6",
-    "web-vitals": "^3.4.0",
-    "vite": "^4.4.8",
-    "vite-plugin-dts": "^3.5.0"
-  }
+  "description": "Simple react component that can run in a web browser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonheys/wordclock.git"
+  },
+  "keywords": [
+    "wordclock"
+  ],
+  "bugs": {
+    "url": "https://github.com/simonheys/wordclock/issues"
+  },
+  "homepage": "https://github.com/simonheys/wordclock#readme"
 }

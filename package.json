@@ -1,25 +1,27 @@
 {
   "name": "wordclock",
-  "version": "1.1.5",
-  "private": true,
+  "version": "1.1.7",
+  "private": false,
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prettier": "prettier --write './**/*.{js,json,css,scss,yml,ts,tsx,md}'",
+    "prettier": "prettier --ignore-unknown --write .",
     "build": "pnpm run -r --parallel --stream build",
     "test": "CI=true pnpm run --parallel --stream test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish-npm": "pnpm run -r --parallel --stream publish-npm"
   },
   "devDependencies": {
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.1"
   },
   "jest": {
     "verbose": true
   },
   "lint-staged": {
-    "*.{js,json,css,scss,yml,ts,ts,md}": "prettier --write"
+    "*": "prettier --ignore-unknown --write",
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
   }
 }

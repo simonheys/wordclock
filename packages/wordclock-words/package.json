@@ -1,11 +1,12 @@
 {
-  "name": "wordclock-words",
-  "version": "1.1.5",
+  "name": "@simonheys/wordclock-words",
+  "version": "1.1.7",
   "main": "index.js",
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
     "build": "echo 'No build script'",
-    "test": "echo 'No tests'"
+    "test": "echo 'No tests'",
+    "publish-npm": "npm publish --public"
   }
 }
