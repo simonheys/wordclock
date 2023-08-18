@@ -90,8 +90,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(sass@1.65.1)
       vite-plugin-dts:
-        specifier: ^3.5.1
-        version: 3.5.1(rollup@2.79.1)(typescript@5.1.6)(vite@4.4.9)
+        specifier: ^3.5.2
+        version: 3.5.2(rollup@2.79.1)(typescript@5.1.6)(vite@4.4.9)
       web-vitals:
         specifier: ^3.4.0
         version: 3.4.0
@@ -10770,8 +10770,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-plugin-dts@3.5.1(rollup@2.79.1)(typescript@5.1.6)(vite@4.4.9):
-    resolution: {integrity: sha512-wrrIvRTWq9xL0HKOUvJyJ+wivEoLsZ2GU2I2000v5tAAUtu9gE+5OUmUJ9yNkmyYz3tSPedkkiXHeb5jnnSXhg==}
+  /vite-plugin-dts@3.5.2(rollup@2.79.1)(typescript@5.1.6)(vite@4.4.9):
+    resolution: {integrity: sha512-iKc851+jdHEoN1ifbOEsoMs+/Zg26PE1EyO2Jc+4apOWRoaeK2zRJnaStgUuJaVaEcAjTqWzpNgCAMq7iO6DWA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
