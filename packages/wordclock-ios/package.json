@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.0",
-    "glob": "^10.3.3",
+    "glob": "^10.3.10",
     "ts-node": "^10.9.1"
   }
 }
