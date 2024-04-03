@@ -41,7 +41,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.67.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.12",
+    "vite": "^5.0.13",
     "vite-plugin-dts": "^3.5.3",
     "web-vitals": "^3.4.0"
   },
