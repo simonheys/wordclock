@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@simonheys/wordclock':
         specifier: file:../
-        version: file:packages/wordclock-js(lodash-es@4.17.21)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(resize-observer-polyfill@1.5.1)
+        version: link:..
       '@simonheys/wordclock-words':
         specifier: file:../../wordclock-words
         version: link:../../wordclock-words
@@ -118,10 +118,10 @@ importers:
         specifier: ^20
         version: 20.12.12
       '@types/react':
-        specifier: ^18
+        specifier: 18.3.11
         version: 18.3.11
       '@types/react-dom':
-        specifier: ^18
+        specifier: 18.3.1
         version: 18.3.1
       eslint:
         specifier: ^8
@@ -719,14 +719,6 @@ packages:
 
   '@simonheys/wordclock-words@1.1.7':
     resolution: {integrity: sha512-V7mxN4pLJ6XnSOH7r2/9oX9bULlHJo8WfEuecipKIgO3SKv0eX34SEf3iZLfPuGdim9wTL/yOyb43vkfwQ8beA==}
-
-  '@simonheys/wordclock@file:packages/wordclock-js':
-    resolution: {directory: packages/wordclock-js, type: directory}
-    peerDependencies:
-      lodash-es: ^4.17.21
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      resize-observer-polyfill: ^1.5.1
 
   '@swc/core-darwin-arm64@1.7.36':
     resolution: {integrity: sha512-8vDczXzCgv3ceTPhEivlpGprN44YlrCK1nbfU9g2TrhV/Aiqi09W/eM5zLesdoM1Z3mJl492gc/8nlTkpDdusw==}
@@ -3697,14 +3689,6 @@ snapshots:
       - '@types/node'
 
   '@simonheys/wordclock-words@1.1.7': {}
-
-  '@simonheys/wordclock@file:packages/wordclock-js(lodash-es@4.17.21)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(resize-observer-polyfill@1.5.1)':
-    dependencies:
-      '@simonheys/wordclock-words': 1.1.7
-      lodash-es: 4.17.21
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      resize-observer-polyfill: 1.5.1
 
   '@swc/core-darwin-arm64@1.7.36':
     optional: true
