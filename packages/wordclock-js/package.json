@@ -29,21 +29,21 @@
     "@simonheys/wordclock-words": "*"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.0.1",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.5.3",
+    "@testing-library/jest-dom": "6.0.1",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/jest": "29.5.12",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
-    "@types/testing-library__jest-dom": "^6.0.0",
-    "@vitejs/plugin-react-swc": "^3.3.2",
-    "identity-obj-proxy": "^3.0.0",
+    "@types/testing-library__jest-dom": "6.0.0",
+    "@vitejs/plugin-react-swc": "3.3.2",
+    "identity-obj-proxy": "3.0.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.67.0",
-    "typescript": "^5.2.2",
+    "sass": "1.67.0",
+    "typescript": "5.2.2",
     "vite": "^5.0.12",
-    "vite-plugin-dts": "^3.5.3",
-    "web-vitals": "^3.4.0"
+    "vite-plugin-dts": "3.5.3",
+    "web-vitals": "3.4.0"
   },
   "scripts": {
     "build": "vite build",
