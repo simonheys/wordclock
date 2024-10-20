@@ -1,4 +1,4 @@
-import { WordsJson, WordsLabel, WordsLogic } from "../types";
+import { WordsJson, WordsLabel, WordsLogic } from "../components/types";
 
 export const parseJson = ({ groups }: WordsJson) => {
   const label: WordsLabel = [];

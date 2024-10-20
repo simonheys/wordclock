@@ -1,13 +1,23 @@
+"use client";
+
 import { ChangeEvent, Fragment, useCallback, useMemo, useState } from "react";
 
-import styles from "./App.module.scss";
-import WordClock from "./components/WordClock";
-import { Manifest, WordsEntry, WordsJson, Words } from "./types";
+import {
+  type WordsEntry,
+  type Words,
+  type WordsJson,
+  type Manifest,
+  WordClock,
+  WordClockContent,
+} from "@simonheys/wordclock";
 
-const manifest: Manifest = require(`@simonheys/wordclock-words/json/Manifest.json`);
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const manifest: Manifest = require("@simonheys/wordclock-words/json/Manifest.json");
+
 const words: Words = {};
 
 manifest.files.forEach((file) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const json: WordsJson = require(`@simonheys/wordclock-words/json/${file}`);
   const { meta } = json;
   const { language, title } = meta;
@@ -23,14 +33,14 @@ manifest.files.forEach((file) => {
 
 const wordsOrdered: Record<string, WordsEntry[]> = Object.keys(words)
   .sort()
-  .reduce((obj: any, key: string) => {
+  .reduce((obj: Record<string, WordsEntry[]>, key: string) => {
     obj[key] = words[key];
     return obj;
   }, {});
 
 const heights = [0, 1, 10, 150, 200, 300, 600, 900];
 
-const App = () => {
+export default function Home() {
   const [file, setFile] = useState("English_simple_fragmented.json");
   const [mounted, setMounted] = useState(true);
   const [height, setHeight] = useState(600);
@@ -54,13 +64,14 @@ const App = () => {
   );
 
   const words = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const json = require(`@simonheys/wordclock-words/json/${file}`);
     return json;
   }, [file]);
 
   return (
     <Fragment>
-      <div className={styles.controls}>
+      <div className="flex flex-row justify-between">
         <div>
           <input
             type="checkbox"
@@ -70,7 +81,8 @@ const App = () => {
           />
           <label htmlFor="mounted">Mounted</label>
         </div>
-        <select value={file} onChange={onFileChange}>
+        <label htmlFor="language-select">Select language and style:</label>
+        <select id="language-select" value={file} onChange={onFileChange}>
           {Object.entries(wordsOrdered).map(([languageTitle, entries]) => {
             return (
               <optgroup key={languageTitle} label={languageTitle}>
@@ -85,7 +97,8 @@ const App = () => {
             );
           })}
         </select>
-        <select value={height} onChange={onHeightChange}>
+        <label htmlFor="height-select">Select height:</label>
+        <select id="height-select" value={height} onChange={onHeightChange}>
           {heights.map((value) => {
             return (
               <option key={value} value={value}>
@@ -95,11 +108,16 @@ const App = () => {
           })}
         </select>
       </div>
-      <div className={styles.container} style={{ height: `${height}px` }}>
-        {mounted && <WordClock words={words} />}
+      <div
+        className="w-full bg-gray-100 text-gray-400 leading-none font-bold tracking-tight"
+        style={{ height: `${height}px` }}
+      >
+        {mounted && (
+          <WordClock words={words}>
+            <WordClockContent />
+          </WordClock>
+        )}
       </div>
     </Fragment>
   );
-};
-
-export default App;
+}
