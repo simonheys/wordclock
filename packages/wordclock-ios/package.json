@@ -9,8 +9,8 @@
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^16.1.0",
-    "glob": "^10.3.3",
-    "ts-node": "^10.9.1"
+    "@tsconfig/node16": "16.1.1",
+    "glob": "10.3.3",
+    "ts-node": "10.9.1"
   }
 }
