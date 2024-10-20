@@ -30,7 +30,7 @@ importers:
         version: 10.4.5
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36)(@types/node@20.12.12)(typescript@5.6.3)
 
   packages/wordclock-js:
     dependencies:
@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@simonheys/wordclock':
         specifier: file:../
-        version: file:packages/wordclock-js(lodash-es@4.17.21)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(resize-observer-polyfill@1.5.1)
+        version: link:..
       '@simonheys/wordclock-words':
         specifier: file:../../wordclock-words
         version: link:../../wordclock-words
@@ -134,7 +134,7 @@ importers:
         version: 8.4.47
       tailwindcss:
         specifier: ^3.4.1
-        version: 3.4.14(ts-node@10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3))
+        version: 3.4.14(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.6.3))
       typescript:
         specifier: ^5
         version: 5.6.3
@@ -158,7 +158,7 @@ importers:
         version: 2.30.1
       ts-node:
         specifier: 10.9.2
-        version: 10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3)
+        version: 10.9.2(@swc/core@1.7.36)(@types/node@20.12.12)(typescript@5.6.3)
       xml2js:
         specifier: 0.6.2
         version: 0.6.2
@@ -719,14 +719,6 @@ packages:
 
   '@simonheys/wordclock-words@1.1.7':
     resolution: {integrity: sha512-V7mxN4pLJ6XnSOH7r2/9oX9bULlHJo8WfEuecipKIgO3SKv0eX34SEf3iZLfPuGdim9wTL/yOyb43vkfwQ8beA==}
-
-  '@simonheys/wordclock@file:packages/wordclock-js':
-    resolution: {directory: packages/wordclock-js, type: directory}
-    peerDependencies:
-      lodash-es: ^4.17.21
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      resize-observer-polyfill: ^1.5.1
 
   '@swc/core-darwin-arm64@1.7.36':
     resolution: {integrity: sha512-8vDczXzCgv3ceTPhEivlpGprN44YlrCK1nbfU9g2TrhV/Aiqi09W/eM5zLesdoM1Z3mJl492gc/8nlTkpDdusw==}
@@ -3209,8 +3201,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@7.5.9:
-    resolution: {integrity: sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q==}
+  ws@7.5.10:
+    resolution: {integrity: sha512-+dbF1tHwZpXcbOJdVOkzLDxZP1ailvSxM6ZweXTegylPny803bFhA+vqBYw4s31NSAk4S2Qz+AKXK9a4wkdjcQ==}
     engines: {node: '>=8.3.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -3697,14 +3689,6 @@ snapshots:
       - '@types/node'
 
   '@simonheys/wordclock-words@1.1.7': {}
-
-  '@simonheys/wordclock@file:packages/wordclock-js(lodash-es@4.17.21)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(resize-observer-polyfill@1.5.1)':
-    dependencies:
-      '@simonheys/wordclock-words': 1.1.7
-      lodash-es: 4.17.21
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      resize-observer-polyfill: 1.5.1
 
   '@swc/core-darwin-arm64@1.7.36':
     optional: true
@@ -4716,7 +4700,7 @@ snapshots:
       debug: 4.3.7
       enhanced-resolve: 5.17.1
       eslint: 8.57.0
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.0)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-plugin-import@2.31.0)(eslint@8.57.0))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.8.1
       is-bun-module: 1.2.1
@@ -4729,7 +4713,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.0):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-plugin-import@2.31.0)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -4740,7 +4724,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.0):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-plugin-import@2.31.0)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -4762,7 +4746,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.0)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@5.37.0(eslint@8.57.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.6)(eslint-plugin-import@2.31.0)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -5425,7 +5409,7 @@ snapshots:
       whatwg-encoding: 1.0.5
       whatwg-mimetype: 2.3.0
       whatwg-url: 8.7.0
-      ws: 7.5.9
+      ws: 7.5.10
       xml-name-validator: 3.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -5808,13 +5792,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.47
 
-  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3)):
+  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.6.3)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.1
     optionalDependencies:
       postcss: 8.4.47
-      ts-node: 10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3)
+      ts-node: 10.9.2(@swc/core@1.7.36)(@types/node@20.12.12)(typescript@5.6.3)
 
   postcss-nested@6.2.0(postcss@8.4.47):
     dependencies:
@@ -6240,7 +6224,7 @@ snapshots:
   symbol-tree@3.2.4:
     optional: true
 
-  tailwindcss@3.4.14(ts-node@10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3)):
+  tailwindcss@3.4.14(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.6.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -6259,7 +6243,7 @@ snapshots:
       postcss: 8.4.47
       postcss-import: 15.1.0(postcss@8.4.47)
       postcss-js: 4.0.1(postcss@8.4.47)
-      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3))
+      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@20.12.12)(typescript@5.6.3))
       postcss-nested: 6.2.0(postcss@8.4.47)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.2
@@ -6318,7 +6302,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@swc/core@1.7.36(@swc/helpers@0.5.5))(@types/node@20.12.12)(typescript@5.6.3):
+  ts-node@10.9.2(@swc/core@1.7.36)(@types/node@20.12.12)(typescript@5.6.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.9
@@ -6628,7 +6612,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@7.5.9:
+  ws@7.5.10:
     optional: true
 
   xml-name-validator@3.0.0:
