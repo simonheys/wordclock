@@ -1,4 +1,4 @@
-import { isArray, isString } from "lodash";
+import { isArray, isString } from "lodash-es";
 
 export const OPERATORS = "!%&*()-+=|/<>";
 

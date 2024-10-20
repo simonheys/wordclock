@@ -1,20 +1,16 @@
 import { FC } from "react";
-import { TimeProps } from "../hooks/useTimeProps";
 import * as LogicParser from "../modules/LogicParser";
-import styles from "./WordClock.module.scss";
-import { WordsLabel, WordsLogic } from "../types";
+import { useWordClock } from "./useWordClock";
+import { WordClockWord, WordClockWordProps } from "./WordClockWord";
 
-interface WordClockInnerProps {
-  logic: WordsLogic;
-  label: WordsLabel;
-  timeProps: TimeProps;
+interface WordClockContentProps {
+  wordComponent?: FC<WordClockWordProps>;
 }
 
-export const WordClockInner: FC<WordClockInnerProps> = ({
-  logic,
-  label,
-  timeProps,
+export const WordClockContent: FC<WordClockContentProps> = ({
+  wordComponent: WordComponent = WordClockWord,
 }) => {
+  const { logic, label, timeProps } = useWordClock();
   return (
     <>
       {label.map((labelGroup, labelIndex) => {
@@ -35,12 +31,12 @@ export const WordClockInner: FC<WordClockInnerProps> = ({
             return null;
           }
           return (
-            <div
-              className={highlighted ? styles.wordHighlighted : styles.word}
+            <WordComponent
               key={`${labelIndex}-${labelGroupIndex}`}
+              highlighted={highlighted}
             >
               {label}
-            </div>
+            </WordComponent>
           );
         });
       })}
