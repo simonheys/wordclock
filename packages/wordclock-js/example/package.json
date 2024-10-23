@@ -11,18 +11,18 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.15"
+    "next": "14.2.16"
   },
   "devDependencies": {
     "@simonheys/wordclock": "file:../",
     "@simonheys/wordclock-words": "file:../../wordclock-words",
     "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/node": "^20.17.0",
+    "@types/react": "^18.3.11",
     "@types/react-dom": "^18",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.15"
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.16"
   }
 }
