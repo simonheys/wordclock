@@ -1,4 +1,4 @@
-import { term, processTerm, performOperation } from "./LogicParser";
+import { performOperation, processTerm, term } from "./LogicParser";
 
 describe("LogicParser", () => {
   describe("processTerm", () => {

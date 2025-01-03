@@ -12,9 +12,9 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/wordclock.d.ts",
       "import": "./dist/wordclock.mjs",
-      "require": "./dist/wordclock.umd.js",
-      "types": "./dist/wordclock.d.ts"
+      "require": "./dist/wordclock.umd.js"
     }
   },
   "dependencies": {
@@ -29,7 +29,7 @@
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",
     "@vitejs/plugin-react-swc": "3.7.2",
-    "eslint": "9.17.0",
+    "eslint": "8.57.1",
     "happy-dom": "15.10.2",
     "lodash": "4.17.21",
     "typescript": "5.7.2",
@@ -48,7 +48,8 @@
     "dev": "cd example && pnpm dev",
     "publish-npm": "pnpm build && npm publish --public",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint ."
   },
   "browserslist": {
     "production": [

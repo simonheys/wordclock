@@ -3,12 +3,12 @@
 import { ChangeEvent, Fragment, useCallback, useMemo, useState } from "react";
 
 import {
-  type WordsEntry,
-  type Words,
-  type WordsJson,
   type Manifest,
   WordClock,
   WordClockContent,
+  type Words,
+  type WordsEntry,
+  type WordsJson,
 } from "@simonheys/wordclock";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

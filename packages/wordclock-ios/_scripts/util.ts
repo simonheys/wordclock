@@ -1,6 +1,6 @@
-import { spawn, execSync } from "child_process";
-import path from "path";
+import { execSync, spawn } from "child_process";
 import { glob } from "glob";
+import path from "path";
 
 export const cwd = path.join(__dirname, "../");
 

@@ -1,9 +1,9 @@
-import readline from "readline";
 import fs from "fs-extra";
-import path from "path";
 import moment from "moment";
+import path from "path";
+import readline from "readline";
 
-import { cwd, getSourceFiles, executeCommand } from "./util";
+import { cwd, executeCommand, getSourceFiles } from "./util";
 
 const PROJECT_NAME = "WordClock macOS";
 const AUTHOR_NAME = "Simon Heys";
