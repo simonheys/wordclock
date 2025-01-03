@@ -7,4 +7,4 @@ const configuration = `Release`;
 
 const keychainProfile = process.env.MAC_NOTARIZE_KEYCHAIN_PROFILE;
 
-export { workspace, scheme, configuration, keychainProfile };
+export { configuration, keychainProfile, scheme, workspace };

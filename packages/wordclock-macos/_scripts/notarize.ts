@@ -1,6 +1,6 @@
-import { spawnCommand } from "./util";
-import { getDmgInfo } from "./meta";
 import { keychainProfile } from "./config";
+import { getDmgInfo } from "./meta";
+import { spawnCommand } from "./util";
 
 (async () => {
   const dmgInfo = await getDmgInfo();

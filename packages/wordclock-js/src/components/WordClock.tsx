@@ -2,10 +2,10 @@
 
 import { CSSProperties, FC, HTMLAttributes, useEffect, useState } from "react";
 
+import { useResizeTextToFit } from "../hooks/useResizeTextToFit";
 import useTimeProps from "../hooks/useTimeProps";
 import * as WordsFileParser from "../modules/WordsFileParser";
 import { WordsJson, WordsLabel, WordsLogic } from "./types";
-import { useResizeTextToFit } from "../hooks/useResizeTextToFit";
 import { WordClockProvider } from "./useWordClock";
 
 const containerStyle: CSSProperties = {

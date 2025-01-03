@@ -8,6 +8,7 @@
     "preinstall": "npx only-allow pnpm",
     "prettier": "prettier --ignore-unknown --write .",
     "build": "pnpm run -r --parallel --stream build",
+    "lint": "pnpm run -r --parallel --stream lint",
     "test": "CI=true pnpm run --parallel --stream test",
     "prepare": "husky install",
     "publish-npm": "pnpm run -r --parallel --stream publish-npm"
@@ -15,7 +16,8 @@
   "devDependencies": {
     "husky": "9.1.7",
     "lint-staged": "15.3.0",
-    "prettier": "3.4.2"
+    "prettier": "3.4.2",
+    "prettier-plugin-organize-imports": "4.1.0"
   },
   "jest": {
     "verbose": true

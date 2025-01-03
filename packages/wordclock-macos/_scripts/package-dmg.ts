@@ -1,9 +1,9 @@
 const path = require("path");
 const fs = require("fs-extra");
 
-import { spawnCommand } from "./util";
 import { getDmgInfo } from "./meta";
 import settings from "./settings";
+import { spawnCommand } from "./util";
 
 const { BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME } = settings;
 

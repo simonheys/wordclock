@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const useAnimationFrame = () => {
   const [elapsed, setTime] = useState(0);
