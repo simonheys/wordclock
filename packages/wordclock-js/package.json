@@ -34,7 +34,7 @@
     "lodash": "4.17.21",
     "typescript": "5.7.2",
     "vite": "5.4.11",
-    "vite-plugin-dts": "3.9.1",
+    "vite-plugin-dts": "4.4.0",
     "vitest": "2.1.8"
   },
   "peerDependencies": {
