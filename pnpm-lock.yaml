@@ -78,7 +78,7 @@ importers:
         specifier: 8.57.1
         version: 8.57.1
       happy-dom:
-        specifier: ^15.7.4
+        specifier: 15.10.2
         version: 15.10.2
       lodash:
         specifier: 4.17.21
