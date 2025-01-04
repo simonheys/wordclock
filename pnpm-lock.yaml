@@ -93,8 +93,8 @@ importers:
         specifier: 8.57.1
         version: 8.57.1
       happy-dom:
-        specifier: 15.11.7
-        version: 15.11.7
+        specifier: 16.3.0
+        version: 16.3.0
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -112,7 +112,7 @@ importers:
         version: 4.4.0(@types/node@22.10.5)(rollup@4.24.0)(typescript@5.7.2)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))
       vitest:
         specifier: 2.1.8
-        version: 2.1.8(@types/node@22.10.5)(happy-dom@15.11.7)(jsdom@16.7.0)(sass@1.80.3)
+        version: 2.1.8(@types/node@22.10.5)(happy-dom@16.3.0)(jsdom@16.7.0)(sass@1.80.3)
 
   packages/wordclock-js/example:
     dependencies:
@@ -2398,8 +2398,8 @@ packages:
     engines: {node: '>=0.4.7'}
     hasBin: true
 
-  happy-dom@15.11.7:
-    resolution: {integrity: sha512-KyrFvnl+J9US63TEzwoiJOQzZBJY7KgBushJA8X61DMbNsH+2ONkDuLDnCnwUiPTF42tLoEmrPyoqbenVA5zrg==}
+  happy-dom@16.3.0:
+    resolution: {integrity: sha512-Q71RaIhyS21vhW17Tpa5W36yqQXIlE1TZ0A0Gguts8PShUSQE/7fBgxYGxgm3+5y0gF6afdlAVHLQqgrIcfRzg==}
     engines: {node: '>=18.0.0'}
 
   has-bigints@1.0.2:
@@ -6648,9 +6648,8 @@ snapshots:
     optionalDependencies:
       uglify-js: 3.19.3
 
-  happy-dom@15.11.7:
+  happy-dom@16.3.0:
     dependencies:
-      entities: 4.5.0
       webidl-conversions: 7.0.0
       whatwg-mimetype: 3.0.0
 
@@ -8366,7 +8365,7 @@ snapshots:
       sass: 1.80.3
       yaml: 2.6.1
 
-  vitest@2.1.8(@types/node@22.10.5)(happy-dom@15.11.7)(jsdom@16.7.0)(sass@1.80.3):
+  vitest@2.1.8(@types/node@22.10.5)(happy-dom@16.3.0)(jsdom@16.7.0)(sass@1.80.3):
     dependencies:
       '@vitest/expect': 2.1.8
       '@vitest/mocker': 2.1.8(vite@5.4.11(@types/node@22.10.5)(sass@1.80.3))
@@ -8390,7 +8389,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.10.5
-      happy-dom: 15.11.7
+      happy-dom: 16.3.0
       jsdom: 16.7.0
     transitivePeerDependencies:
       - less
