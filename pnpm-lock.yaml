@@ -81,8 +81,8 @@ importers:
         specifier: 8.57.1
         version: 8.57.1
       happy-dom:
-        specifier: 15.10.2
-        version: 15.10.2
+        specifier: 15.11.7
+        version: 15.11.7
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -97,7 +97,7 @@ importers:
         version: 4.4.0(@types/node@20.17.11)(rollup@4.24.0)(typescript@5.7.2)(vite@6.0.7(@types/node@20.17.11)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))
       vitest:
         specifier: 2.1.8
-        version: 2.1.8(@types/node@20.17.11)(happy-dom@15.10.2)(jsdom@16.7.0)(sass@1.80.3)
+        version: 2.1.8(@types/node@20.17.11)(happy-dom@15.11.7)(jsdom@16.7.0)(sass@1.80.3)
 
   packages/wordclock-js/example:
     dependencies:
@@ -2049,8 +2049,8 @@ packages:
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
-  happy-dom@15.10.2:
-    resolution: {integrity: sha512-NbA5XrSovenJIIcfixCREX3ZnV7yHP4phhbfuxxf4CPn+LZpz/jIM9EqJ2DrPwgVDSMoAKH3pZwQvkbsSiCrUw==}
+  happy-dom@15.11.7:
+    resolution: {integrity: sha512-KyrFvnl+J9US63TEzwoiJOQzZBJY7KgBushJA8X61DMbNsH+2ONkDuLDnCnwUiPTF42tLoEmrPyoqbenVA5zrg==}
     engines: {node: '>=18.0.0'}
 
   has-bigints@1.0.2:
@@ -5392,7 +5392,7 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  happy-dom@15.10.2:
+  happy-dom@15.11.7:
     dependencies:
       entities: 4.5.0
       webidl-conversions: 7.0.0
@@ -6698,7 +6698,7 @@ snapshots:
       sass: 1.80.3
       yaml: 2.6.1
 
-  vitest@2.1.8(@types/node@20.17.11)(happy-dom@15.10.2)(jsdom@16.7.0)(sass@1.80.3):
+  vitest@2.1.8(@types/node@20.17.11)(happy-dom@15.11.7)(jsdom@16.7.0)(sass@1.80.3):
     dependencies:
       '@vitest/expect': 2.1.8
       '@vitest/mocker': 2.1.8(vite@5.4.11(@types/node@20.17.11)(sass@1.80.3))
@@ -6722,7 +6722,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 20.17.11
-      happy-dom: 15.10.2
+      happy-dom: 15.11.7
       jsdom: 16.7.0
     transitivePeerDependencies:
       - less
