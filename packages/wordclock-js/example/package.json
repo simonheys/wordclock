@@ -1,0 +1,28 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.1.3"
+  },
+  "devDependencies": {
+    "@simonheys/wordclock": "file:../",
+    "@simonheys/wordclock-words": "file:../../wordclock-words",
+    "typescript": "5.7.2",
+    "@types/node": "22.10.5",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.17",
+    "eslint": "8.57.1",
+    "eslint-config-next": "15.1.3"
+  }
+}

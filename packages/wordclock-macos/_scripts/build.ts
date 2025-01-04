@@ -1,6 +1,6 @@
 import { spawnCommand } from "./util";
 
-import { workspace, scheme, configuration } from "./config";
+import { configuration, scheme, workspace } from "./config";
 
 (async () => {
   console.log("Building");

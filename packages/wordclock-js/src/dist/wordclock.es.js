@@ -1,12 +1,12 @@
-import { jsx as w, Fragment as q } from "react/jsx-runtime";
+import { isArray as U, isString as y } from "lodash";
 import * as p from "react";
 import {
-  useState as z,
   useEffect as H,
-  useRef as V,
   useMemo as K,
+  useRef as V,
+  useState as z,
 } from "react";
-import { isString as y, isArray as U } from "lodash";
+import { Fragment as q, jsx as w } from "react/jsx-runtime";
 var N = (function () {
     if (typeof Map < "u") return Map;
     function e(n, t) {
@@ -75,10 +75,10 @@ var N = (function () {
     return typeof global < "u" && global.Math === Math
       ? global
       : typeof self < "u" && self.Math === Math
-      ? self
-      : typeof window < "u" && window.Math === Math
-      ? window
-      : Function("return this")();
+        ? self
+        : typeof window < "u" && window.Math === Math
+          ? window
+          : Function("return this")();
   })(),
   Y = (function () {
     return typeof requestAnimationFrame == "function"
@@ -635,18 +635,18 @@ const de = () => {
     return i && e.startsWith("-")
       ? ((t = g(e.substr(1), n)), 0 - t)
       : i && e.startsWith("!")
-      ? ((t = g(e.substr(1), n)), !t)
-      : r
-      ? parseInt(e)
-      : e === "else"
-      ? !0
-      : e === "false"
-      ? !1
-      : e === "true"
-      ? !0
-      : n[e] !== void 0
-      ? g(n[e], n)
-      : e;
+        ? ((t = g(e.substr(1), n)), !t)
+        : r
+          ? parseInt(e)
+          : e === "else"
+            ? !0
+            : e === "false"
+              ? !1
+              : e === "true"
+                ? !0
+                : n[e] !== void 0
+                  ? g(n[e], n)
+                  : e;
   },
   L = ({ termOne: e, termTwo: n, operator: t, props: i } = {}) => {
     let r = g(e, i),
@@ -656,28 +656,28 @@ const de = () => {
       t === "*"
         ? (o = r * s)
         : t === "/"
-        ? (o = r / s)
-        : t === "+"
-        ? (o = r + s)
-        : t === "-"
-        ? (o = r - s)
-        : t === "%"
-        ? (o = r % s)
-        : t === "&&"
-        ? (o = r && s)
-        : t === "||"
-        ? (o = r || s)
-        : t === "!="
-        ? (o = r !== s)
-        : t === "=="
-        ? (o = r === s)
-        : t === ">"
-        ? (o = r > s)
-        : t === "<"
-        ? (o = r < s)
-        : t === ">="
-        ? (o = r >= s)
-        : t === "<=" && (o = r <= s),
+          ? (o = r / s)
+          : t === "+"
+            ? (o = r + s)
+            : t === "-"
+              ? (o = r - s)
+              : t === "%"
+                ? (o = r % s)
+                : t === "&&"
+                  ? (o = r && s)
+                  : t === "||"
+                    ? (o = r || s)
+                    : t === "!="
+                      ? (o = r !== s)
+                      : t === "=="
+                        ? (o = r === s)
+                        : t === ">"
+                          ? (o = r > s)
+                          : t === "<"
+                            ? (o = r < s)
+                            : t === ">="
+                              ? (o = r >= s)
+                              : t === "<=" && (o = r <= s),
       o
     );
   },

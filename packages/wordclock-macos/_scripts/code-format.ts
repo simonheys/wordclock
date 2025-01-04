@@ -1,6 +1,6 @@
 import path from "path";
 
-import { cwd, getSourceFiles, executeCommand } from "./util";
+import { cwd, executeCommand, getSourceFiles } from "./util";
 
 (async () => {
   const files = await getSourceFiles();

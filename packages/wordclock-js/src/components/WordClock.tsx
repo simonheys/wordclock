@@ -1,13 +1,30 @@
-import { useEffect, useState } from "react";
+"use client";
 
+import { CSSProperties, FC, HTMLAttributes, useEffect, useState } from "react";
+
+import { useResizeTextToFit } from "../hooks/useResizeTextToFit";
 import useTimeProps from "../hooks/useTimeProps";
 import * as WordsFileParser from "../modules/WordsFileParser";
-import { WordsJson, WordsLabel, WordsLogic } from "../types";
-import styles from "./WordClock.module.scss";
-import { WordClockInner } from "./WordClockInner";
-import { useResizeTextToFit } from "../hooks/useResizeTextToFit";
+import { WordsJson, WordsLabel, WordsLogic } from "./types";
+import { WordClockProvider } from "./useWordClock";
 
-const WordClock = ({ words }: { words: WordsJson }) => {
+const containerStyle: CSSProperties = {
+  width: "100%",
+  height: "100%",
+};
+
+const wordsStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  height: "100%",
+};
+
+interface WordClockProps extends HTMLAttributes<HTMLDivElement> {
+  words: WordsJson;
+}
+
+export const WordClock: FC<WordClockProps> = ({ words, children, ...rest }) => {
   const [logic, setLogic] = useState<WordsLogic>([]);
   const [label, setLabel] = useState<WordsLabel>([]);
 
@@ -28,12 +45,12 @@ const WordClock = ({ words }: { words: WordsJson }) => {
   }, [logic, resize]);
 
   return (
-    <div ref={containerRef} className={styles.container}>
-      <div ref={resizeRef} className={styles.words}>
-        <WordClockInner logic={logic} label={label} timeProps={timeProps} />
+    <div ref={containerRef} style={containerStyle}>
+      <div ref={resizeRef} style={wordsStyle} {...rest}>
+        <WordClockProvider value={{ logic, label, timeProps }}>
+          {children}
+        </WordClockProvider>
       </div>
     </div>
   );
 };
-
-export default WordClock;
