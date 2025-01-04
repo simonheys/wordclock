@@ -1,12 +1,6 @@
 name: Release @simonheys/wordclock
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-    paths:
-      - "packages/wordclock-js/**"
   pull_request:
     branches:
       - main
@@ -53,9 +47,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HUSKY: 0
-        run: |
-          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
-            cd packages/wordclock-js && npx semantic-release
-          else
-            cd packages/wordclock-js && npx semantic-release --dry-run
-          fi
+        run: cd packages/wordclock-js && npx semantic-release
