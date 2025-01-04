@@ -1,6 +1,12 @@
 name: Release @simonheys/wordclock
 
 on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - "packages/wordclock-js/**"
   pull_request:
     branches:
       - main
