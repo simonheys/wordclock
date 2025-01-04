@@ -15,6 +15,5 @@
   "git": {
     "assets": false,
     "requireCleanWorkingDir": false
-  },
-  "tagFormat": "wordclock-words@${version}"
+  }
 }
