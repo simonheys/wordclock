@@ -17,7 +17,7 @@
     "@simonheys/wordclock": "file:../",
     "@simonheys/wordclock-words": "file:../../wordclock-words",
     "typescript": "5.7.2",
-    "@types/node": "20.17.11",
+    "@types/node": "22.10.5",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "postcss": "8.4.49",
