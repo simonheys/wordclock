@@ -34,7 +34,7 @@
     "@types/react-dom": "19.0.2",
     "@vitejs/plugin-react-swc": "3.7.2",
     "eslint": "8.57.1",
-    "happy-dom": "15.11.7",
+    "happy-dom": "16.3.0",
     "lodash": "4.17.21",
     "semantic-release": "24.2.1",
     "typescript": "5.7.2",
