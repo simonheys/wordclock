@@ -8,5 +8,12 @@
     "build": "echo 'No build script'",
     "test": "echo 'No tests'",
     "publish-npm": "npm publish --public"
+  },
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^12.0.0",
+    "@semantic-release/github": "^10.0.0",
+    "@semantic-release/npm": "^12.0.0",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "semantic-release": "^23.0.0"
   }
 }
