@@ -33,6 +33,7 @@
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "@vitejs/plugin-react-swc": "3.7.2",
+    "concurrently": "^9.1.2",
     "eslint": "8.57.1",
     "happy-dom": "16.3.0",
     "lodash": "4.17.21",
@@ -50,7 +51,9 @@
   },
   "scripts": {
     "build": "vite build",
-    "dev": "cd example && pnpm dev",
+    "build:watch": "vite build --watch",
+    "dev": "concurrently \"pnpm build:watch\" \"pnpm dev:example\"",
+    "dev:example": "cd example && pnpm dev",
     "publish-npm": "pnpm build && npm publish --public",
     "test": "vitest run",
     "test:watch": "vitest",

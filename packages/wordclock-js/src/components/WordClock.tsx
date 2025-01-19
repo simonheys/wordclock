@@ -18,6 +18,7 @@ const wordsStyle: CSSProperties = {
   flexDirection: "row",
   flexWrap: "wrap",
   height: "100%",
+  alignContent: "space-between",
 };
 
 interface WordClockProps extends HTMLAttributes<HTMLDivElement> {
