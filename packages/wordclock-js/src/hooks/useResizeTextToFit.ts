@@ -7,10 +7,17 @@ const minimumFontSizeAdjustment = 0.0001;
 export const useResizeTextToFit = () => {
   const { ref: containerRef, size: targetSize } = useSize();
   const resizeRef = useRef<HTMLDivElement>(null);
+  const originalHeightRef = useRef<string | null>(null);
+
   const resize = useCallback(() => {
     if (!resizeRef.current || !targetSize.height) {
       return;
     }
+
+    // Store original height before modifying
+    originalHeightRef.current = resizeRef.current.style.height || null;
+    resizeRef.current.style.height = "auto";
+
     let fontSizeLow = 1;
     let fontSizeHigh = 256;
     let done = false;
@@ -20,8 +27,6 @@ export const useResizeTextToFit = () => {
       highFits = false,
       midFits = false;
     let fontSizeMid;
-
-    resizeRef.current.style.height = "auto";
 
     while (
       !done &&
@@ -52,7 +57,13 @@ export const useResizeTextToFit = () => {
     }
 
     resizeRef.current.style.fontSize = `${fontSizeLow}px`;
-    resizeRef.current.style.removeProperty("height");
+
+    // Restore original height or remove the property
+    if (originalHeightRef.current) {
+      resizeRef.current.style.height = originalHeightRef.current;
+    } else {
+      resizeRef.current.style.removeProperty("height");
+    }
   }, [targetSize]);
 
   useEffect(() => {

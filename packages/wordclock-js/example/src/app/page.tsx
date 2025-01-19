@@ -109,7 +109,7 @@ export default function Home() {
         </select>
       </div>
       <div
-        className="w-full bg-gray-100 text-gray-400 leading-none font-bold tracking-tight"
+        className="w-full bg-gray-100 text-gray-400 leading-[1.1] font-bold tracking-tight [font-feature-settings:'liga'_1,'kern'_1]"
         style={{ height: `${height}px` }}
       >
         {mounted && (
