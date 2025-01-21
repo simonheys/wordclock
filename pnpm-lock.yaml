@@ -88,7 +88,7 @@ importers:
         version: 19.0.2(@types/react@19.0.2)
       '@vitejs/plugin-react-swc':
         specifier: 3.7.2
-        version: 3.7.2(@swc/helpers@0.5.15)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))
+        version: 3.7.2(@swc/helpers@0.5.15)(vite@6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))
       concurrently:
         specifier: ^9.1.2
         version: 9.1.2
@@ -108,11 +108,11 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
       vite:
-        specifier: 6.0.7
-        version: 6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)
+        specifier: 6.0.9
+        version: 6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)
       vite-plugin-dts:
         specifier: 4.4.0
-        version: 4.4.0(@types/node@22.10.5)(rollup@4.24.0)(typescript@5.7.2)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))
+        version: 4.4.0(@types/node@22.10.5)(rollup@4.24.0)(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@22.10.5)(happy-dom@16.3.0)(jsdom@16.7.0)(sass@1.80.3)
@@ -4140,8 +4140,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.0.7:
-    resolution: {integrity: sha512-RDt8r/7qx9940f8FcOIAH9PTViRrghKaK2K1jY3RaAURrEUbm9Du1mJ72G+jlhtG3WwodnfzY8ORQZbBavZEAQ==}
+  vite@6.0.9:
+    resolution: {integrity: sha512-MSgUxHcaXLtnBPktkbUSoQUANApKYuxZ6DrbVENlIorbhL2dZydTLaZ01tjUoE3szeFzlFk9ANOKk0xurh4MKA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -5302,10 +5302,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.1': {}
 
-  '@vitejs/plugin-react-swc@3.7.2(@swc/helpers@0.5.15)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))':
+  '@vitejs/plugin-react-swc@3.7.2(@swc/helpers@0.5.15)(vite@6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1))':
     dependencies:
       '@swc/core': 1.7.36(@swc/helpers@0.5.15)
-      vite: 6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)
+      vite: 6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -8409,7 +8409,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-dts@4.4.0(@types/node@22.10.5)(rollup@4.24.0)(typescript@5.7.2)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)):
+  vite-plugin-dts@4.4.0(@types/node@22.10.5)(rollup@4.24.0)(typescript@5.7.2)(vite@6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)):
     dependencies:
       '@microsoft/api-extractor': 7.48.1(@types/node@22.10.5)
       '@rollup/pluginutils': 5.1.4(rollup@4.24.0)
@@ -8422,7 +8422,7 @@ snapshots:
       magic-string: 0.30.17
       typescript: 5.7.2
     optionalDependencies:
-      vite: 6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)
+      vite: 6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -8438,7 +8438,7 @@ snapshots:
       fsevents: 2.3.3
       sass: 1.80.3
 
-  vite@6.0.7(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1):
+  vite@6.0.9(@types/node@22.10.5)(jiti@1.21.6)(sass@1.80.3)(yaml@2.6.1):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
