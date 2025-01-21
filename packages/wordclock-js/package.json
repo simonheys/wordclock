@@ -39,7 +39,7 @@
     "lodash": "4.17.21",
     "semantic-release": "24.2.1",
     "typescript": "5.7.2",
-    "vite": "6.0.7",
+    "vite": "6.0.9",
     "vite-plugin-dts": "4.4.0",
     "vitest": "2.1.8"
   },
