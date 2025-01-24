@@ -47,6 +47,15 @@
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview {
     self = [super initWithFrame:frame isPreview:isPreview];
+    if (!isPreview) {
+      [[NSDistributedNotificationCenter defaultCenter]
+          addObserverForName: @"com.apple.screensaver.willstop"
+                      object: nil
+                       queue: nil
+                  usingBlock:^(NSNotification *n) {
+          [[NSApplication sharedApplication] terminate: self];
+        }];
+    }
     if (self) {
         WCFileFunctionLevelFormatter *fileFunctionLevelFormatter = [WCFileFunctionLevelFormatter new];
         [[DDTTYLogger sharedInstance] setLogFormatter:fileFunctionLevelFormatter];
