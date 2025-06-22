@@ -74,9 +74,17 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
     [[WordClockPreferences defaults] registerDefaults:[self factoryDefaults]];
 }
 
+// Preferences are located in ~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences
+
 + (NSUserDefaults *)defaults {
 #ifdef SCREENSAVER
-    return [ScreenSaverDefaults defaultsForModuleWithName:@"com.simonheys.wordclock"];
+    if (@available(macOS 10.15, *)) {
+        DDLogVerbose(@"Using new defaults");
+        return [[NSUserDefaults alloc] initWithSuiteName:@"com.simonheys.wordclock"];
+    } else {
+        DDLogVerbose(@"Using old defaults");
+        return [ScreenSaverDefaults defaultsForModuleWithName:@"com.simonheys.wordclock"];
+    }
 #else
     return [NSUserDefaults standardUserDefaults];
 #endif

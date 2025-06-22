@@ -2,8 +2,8 @@
 inhibit_all_warnings!
 
 def myPods
-  platform :osx, '10.13'
-  pod 'CocoaLumberjack', '~> 3.0'
+  platform :osx, '11.5'
+	pod 'CocoaLumberjack', '~> 1.8'
   pod 'libextobjc/EXTScope', '~> 0.4'
 end
 
@@ -18,7 +18,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '11.5'
     end
   end
 end

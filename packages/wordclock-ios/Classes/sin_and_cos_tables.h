@@ -6,13 +6,13 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-#import "math.h"
+#include <math.h>
 
 #define SIN_TABLE_SIZE 4096
 #define SIN_TABLE_BITMASK 4095
 
-float _sinTable[SIN_TABLE_SIZE];
-float _cosTable[SIN_TABLE_SIZE];
+extern float _sinTable[SIN_TABLE_SIZE];
+extern float _cosTable[SIN_TABLE_SIZE];
 
 void buildSinAndCosTables();
 

@@ -12,6 +12,11 @@
 
 NSString *LogicParserOperators = @"!%&*()-+=|/<>";
 
+NSArray *LogicParserEqualityOperators;
+NSArray *LogicParserMathOperators;
+NSArray *LogicParserBooleanOperators;
+NSArray *LogicParserConversionOperators;
+
 @implementation LogicParser
 
 // ____________________________________________________________________________________________________
