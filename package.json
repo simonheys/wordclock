@@ -1,6 +1,6 @@
 {
   "name": "wordclock",
-  "version": "1.1.7",
+  "version": "1.2.1",
   "private": false,
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
@@ -17,7 +17,8 @@
     "husky": "9.1.7",
     "lint-staged": "15.3.0",
     "prettier": "3.4.2",
-    "prettier-plugin-organize-imports": "4.1.0"
+    "prettier-plugin-organize-imports": "4.1.0",
+    "tsx": "^4.20.3"
   },
   "jest": {
     "verbose": true
