@@ -84,14 +84,28 @@
             [self startTransitionTimer];
         }
     }
+    [self addObservers];
 
     [super startAnimation];
+}
+
+- (void)addObservers {
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(onWillSleep:) name:NSWorkspaceWillSleepNotification object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreensaverWillStart:) name:@"com.apple.screensaver.willstart" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreensaverWillStop:) name:@"com.apple.screensaver.willstop" object:nil];
+}
+
+- (void)removeObservers {
+    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self name:NSWorkspaceWillSleepNotification object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.screensaver.willstart" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.screensaver.willstop" object:nil];
 }
 
 - (void)stopAnimation {
     DDLogVerbose(@"stopAnimation");
     [self.rootViewController stopAnimation];
     [self stopTransitionTimer];
+    [self removeObservers];
     [super stopAnimation];
 }
 
@@ -145,6 +159,27 @@
             break;
     }
     [self.rootViewController startAnimation];
+}
+
+- (void)onWillSleep:(NSNotification *)notification {
+    DDLogVerbose(@"onWillSleep");
+    [self stopAnimation];
+    if (@available(macOS 14.0, *)) {
+        exit(0);
+    }
+}
+
+- (void)onScreensaverWillStart:(NSNotification *)notification {
+    DDLogVerbose(@"onScreensaverWillStart");
+    [self startAnimation];
+}
+
+- (void)onScreensaverWillStop:(NSNotification *)notification {
+    DDLogVerbose(@"onScreensaverWillStop");
+    [self stopAnimation];
+    if (@available(macOS 14.0, *)) {
+        exit(0);
+    }
 }
 
 // ____________________________________________________________________________________________________
