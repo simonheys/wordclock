@@ -78,13 +78,18 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 
 + (NSUserDefaults *)defaults {
 #ifdef SCREENSAVER
-    if (@available(macOS 10.15, *)) {
-        DDLogVerbose(@"Using new defaults");
-        return [[NSUserDefaults alloc] initWithSuiteName:@"com.simonheys.wordclock"];
-    } else {
-        DDLogVerbose(@"Using old defaults");
-        return [ScreenSaverDefaults defaultsForModuleWithName:@"com.simonheys.wordclock"];
-    }
+    static NSUserDefaults *sharedDefaults = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (@available(macOS 10.15, *)) {
+            DDLogVerbose(@"Using new defaults");
+            sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"com.simonheys.wordclock"];
+        } else {
+            DDLogVerbose(@"Using old defaults");
+            sharedDefaults = [ScreenSaverDefaults defaultsForModuleWithName:@"com.simonheys.wordclock"];
+        }
+    });
+    return sharedDefaults;
 #else
     return [NSUserDefaults standardUserDefaults];
 #endif
