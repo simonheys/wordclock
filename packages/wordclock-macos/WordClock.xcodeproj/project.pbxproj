@@ -629,7 +629,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm copy-words\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm copy-words\n";
 		};
 		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -646,7 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm update-build-number\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm update-build-number\n";
 		};
 		F49DA2BD217C69D700D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -663,7 +663,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm update-build-number\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm update-build-number\n";
 		};
 		F4E8F512165FD0C30019987F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -676,7 +676,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm copy-words\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm copy-words\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
