@@ -95,7 +95,10 @@
 */
 
     self.tabBarController.viewControllers = @[
-        typographyNavController, wordsNavController, fontNavController, colourNavController,
+        typographyNavController,
+        wordsNavController,
+        fontNavController,
+        colourNavController,
         /*
         aboutNavController,
         */

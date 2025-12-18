@@ -39,7 +39,7 @@ https://github.com/simonheys/wordclock/releases
 Install common dependencies
 
 ```
-$ yarn
+$ pnpm install
 ```
 
 See individual packages for further steps.

@@ -1,23 +1,22 @@
-const path = require("path");
-const fs = require("fs-extra");
+const path = require('path')
+const fs = require('fs-extra')
 
-import { getDmgInfo } from "./meta";
-import settings from "./settings";
-import { spawnCommand } from "./util";
+import { getDmgInfo } from './meta'
+import settings from './settings'
+import { spawnCommand } from './util'
 
-const { BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME } = settings;
+const { BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME } = settings
 
-console.log("Packaging DMG");
+console.log('Packaging DMG')
+;(async () => {
+  const sourceFolder = path.join(BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME)
 
-(async () => {
-  const sourceFolder = path.join(BUILT_PRODUCTS_DIR, FULL_PRODUCT_NAME);
+  const dmgInfo = await getDmgInfo()
+  const { dmgVolumeName, dmgFolderPath, dmgPath, dmgTmpPath } = dmgInfo
 
-  const dmgInfo = await getDmgInfo();
-  const { dmgVolumeName, dmgFolderPath, dmgPath, dmgTmpPath } = dmgInfo;
-
-  await fs.ensureDir(dmgFolderPath);
-  await fs.remove(dmgPath);
-  await fs.remove(dmgTmpPath);
+  await fs.ensureDir(dmgFolderPath)
+  await fs.remove(dmgPath)
+  await fs.remove(dmgTmpPath)
 
   await spawnCommand(`hdiutil`, [
     `create`,
@@ -32,17 +31,11 @@ console.log("Packaging DMG");
     `-format`,
     `UDRW`,
     dmgTmpPath,
-  ]);
+  ])
 
-  await spawnCommand(`hdiutil`, [
-    `attach`,
-    `-readwrite`,
-    `-noverify`,
-    `-noautoopen`,
-    dmgTmpPath,
-  ]);
+  await spawnCommand(`hdiutil`, [`attach`, `-readwrite`, `-noverify`, `-noautoopen`, dmgTmpPath])
 
-  await spawnCommand(`hdiutil`, [`detach`, `/Volumes/${dmgVolumeName}`]);
+  await spawnCommand(`hdiutil`, [`detach`, `/Volumes/${dmgVolumeName}`])
 
   await spawnCommand(`hdiutil`, [
     `convert`,
@@ -54,7 +47,7 @@ console.log("Packaging DMG");
     `-o`,
     dmgPath,
     `-puppetstrings`,
-  ]);
+  ])
 
-  await fs.remove(dmgTmpPath);
-})();
+  await fs.remove(dmgTmpPath)
+})()

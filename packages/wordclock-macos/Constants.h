@@ -16,5 +16,5 @@
 #define kTouchableViewMinimumScale 0.2f
 
 #define ENABLE_MIPMAPPING
-//#define ENABLE_CULL
+// #define ENABLE_CULL
 #define ENABLE_16_BIT_TEXTURES

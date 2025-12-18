@@ -7,7 +7,7 @@
 //
 
 // FIXME importing WordClockGLView causes errors....why?
-//#import "WordClockGLView.h"
+// #import "WordClockGLView.h"
 #import "WordClockCore.h"
 
 @class WordClockWordManager;
