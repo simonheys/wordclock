@@ -8,6 +8,9 @@
 
 #include "sin_and_cos_tables.h"
 
+float _sinTable[SIN_TABLE_SIZE];
+float _cosTable[SIN_TABLE_SIZE];
+
 void buildSinAndCosTables()
 {
 	for ( int i = 0; i < SIN_TABLE_SIZE; i++ ) {

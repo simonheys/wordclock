@@ -505,7 +505,7 @@
 				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					F44D11ED165951CE003A3557 = {
-						DevelopmentTeam = 7P37GZG7HN;
+						DevelopmentTeam = 4YADBGMM88;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -514,7 +514,7 @@
 						};
 					};
 					F4E8F500165FD0B50019987F = {
-						DevelopmentTeam = 7P37GZG7HN;
+						DevelopmentTeam = 4YADBGMM88;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -629,7 +629,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm copy-words\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm copy-words\n";
 		};
 		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -646,7 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm update-build-number\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm update-build-number\n";
 		};
 		F49DA2BD217C69D700D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -663,7 +663,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm update-build-number\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm update-build-number\n";
 		};
 		F4E8F512165FD0C30019987F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -676,7 +676,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm copy-words\n";
+            shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm copy-words\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -833,7 +833,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 7P37GZG7HN;
+				DEVELOPMENT_TEAM = 4YADBGMM88;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -851,8 +851,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -873,7 +873,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7P37GZG7HN;
+				DEVELOPMENT_TEAM = 4YADBGMM88;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -884,8 +884,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -908,7 +908,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4YADBGMM88;
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7P37GZG7HN;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 4YADBGMM88;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -926,8 +926,8 @@
 				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -951,7 +951,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4YADBGMM88;
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7P37GZG7HN;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 4YADBGMM88;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -962,8 +962,8 @@
 				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

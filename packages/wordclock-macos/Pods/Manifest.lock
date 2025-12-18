@@ -1,13 +1,15 @@
 PODS:
-  - CocoaLumberjack (3.8.1):
-    - CocoaLumberjack/Core (= 3.8.1)
-  - CocoaLumberjack/Core (3.8.1)
+  - CocoaLumberjack (1.9.2):
+    - CocoaLumberjack/Extensions (= 1.9.2)
+  - CocoaLumberjack/Core (1.9.2)
+  - CocoaLumberjack/Extensions (1.9.2):
+    - CocoaLumberjack/Core
   - libextobjc/EXTScope (0.6):
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.6)
 
 DEPENDENCIES:
-  - CocoaLumberjack (~> 3.0)
+  - CocoaLumberjack (~> 1.8)
   - libextobjc/EXTScope (~> 0.4)
 
 SPEC REPOS:
@@ -16,9 +18,9 @@ SPEC REPOS:
     - libextobjc
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 5c7e64cdb877770859bddec4d3d5a0d7c9299df9
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
 
-PODFILE CHECKSUM: 91eb27d46835cce1550902a0837032ffec0631d3
+PODFILE CHECKSUM: 850b1882ae9c647aa39e69d8dfd3244cd5e31a8f
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.16.2

@@ -23,6 +23,7 @@
 @property(nonatomic, retain) WordClockOptionsWindowController *optionsWindowController;
 @property(nonatomic, retain) NSTimer *transitionTimer;
 @property(nonatomic, retain) NSDate *dateOfLastTransition;
+@property(nonatomic, assign) BOOL observersRegistered;
 @end
 
 @implementation WordClockScreenSaverView
@@ -34,6 +35,7 @@
 @synthesize dateOfLastTransition = _dateOfLastTransition;
 
 - (void)dealloc {
+    [self removeObservers];
     @try {
         [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCStyleKey];
     } @catch (NSException *exception) {
@@ -47,15 +49,6 @@
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview {
     self = [super initWithFrame:frame isPreview:isPreview];
-    if (!isPreview) {
-      [[NSDistributedNotificationCenter defaultCenter]
-          addObserverForName: @"com.apple.screensaver.willstop"
-                      object: nil
-                       queue: nil
-                  usingBlock:^(NSNotification *n) {
-          [[NSApplication sharedApplication] terminate: self];
-        }];
-    }
     if (self) {
         WCFileFunctionLevelFormatter *fileFunctionLevelFormatter = [WCFileFunctionLevelFormatter new];
         [[DDTTYLogger sharedInstance] setLogFormatter:fileFunctionLevelFormatter];
@@ -84,14 +77,36 @@
             [self startTransitionTimer];
         }
     }
+    [self addObservers];
 
     [super startAnimation];
+}
+
+- (void)addObservers {
+    if (self.observersRegistered) {
+        return;
+    }
+    self.observersRegistered = YES;
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(onWillSleep:) name:NSWorkspaceWillSleepNotification object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreensaverWillStart:) name:@"com.apple.screensaver.willstart" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreensaverWillStop:) name:@"com.apple.screensaver.willstop" object:nil];
+}
+
+- (void)removeObservers {
+    if (!self.observersRegistered) {
+        return;
+    }
+    self.observersRegistered = NO;
+    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self name:NSWorkspaceWillSleepNotification object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.screensaver.willstart" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.screensaver.willstop" object:nil];
 }
 
 - (void)stopAnimation {
     DDLogVerbose(@"stopAnimation");
     [self.rootViewController stopAnimation];
     [self stopTransitionTimer];
+    [self removeObservers];
     [super stopAnimation];
 }
 
@@ -145,6 +160,33 @@
             break;
     }
     [self.rootViewController startAnimation];
+}
+
+- (void)onWillSleep:(NSNotification *)notification {
+    DDLogVerbose(@"onWillSleep");
+    if ([self isAnimating]) {
+        [self stopAnimation];
+    }
+    if (@available(macOS 14.0, *)) {
+        exit(0);
+    }
+}
+
+- (void)onScreensaverWillStart:(NSNotification *)notification {
+    DDLogVerbose(@"onScreensaverWillStart");
+    if (![self isAnimating]) {
+        [self startAnimation];
+    }
+}
+
+- (void)onScreensaverWillStop:(NSNotification *)notification {
+    DDLogVerbose(@"onScreensaverWillStop");
+    if ([self isAnimating]) {
+        [self stopAnimation];
+    }
+    if (@available(macOS 14.0, *)) {
+        exit(0);
+    }
 }
 
 // ____________________________________________________________________________________________________
