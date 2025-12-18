@@ -34,7 +34,7 @@
 
 @property(assign) IBOutlet NSPopUpButton *fontFamilyPopUpButton;
 @property(assign) IBOutlet NSPopUpButton *fontVariantPopUpButton;
-@property (assign) IBOutlet NSButton *defaultsButton;
+@property(assign) IBOutlet NSButton *defaultsButton;
 @end
 
 @implementation WordClockOptionsWindowController
@@ -92,7 +92,7 @@
 
 - (void)windowDidLoad {
     DDLogVerbose(@"windowDidLoad");
-    
+
     // restoring the defaults does not behave well at the moment
     [self.defaultsButton removeFromSuperview];
 
@@ -307,7 +307,7 @@
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"never" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:0];
     [newMenu addItem:menuItem];
-    
+
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"every 10 seconds" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:10];
     [newMenu addItem:menuItem];

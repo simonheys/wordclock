@@ -1,177 +1,164 @@
-import { isArray, isString } from "lodash-es";
+import { isArray, isString } from 'lodash-es'
 
-export const OPERATORS = "!%&*()-+=|/<>";
+export const OPERATORS = '!%&*()-+=|/<>'
 
 export const isNumericString = (string: string) => {
-  return /^-?\d+$/.test(string);
-};
+  return /^-?\d+$/.test(string)
+}
 
 export const extractStringContainedInOutermostBraces = (source: string) => {
   if (!isString(source)) {
-    return "";
+    return ''
   }
 
-  let leftOfBraces;
-  let rightOfBraces;
-  let insideBraces;
-  let count;
-  let firstBrace;
-  let i;
-  let c;
+  let rightOfBraces
+  let count
+  let i
+  let c
 
-  firstBrace = source.indexOf("(");
-  i = 1 + firstBrace;
+  const firstBrace = source.indexOf('(')
+  i = 1 + firstBrace
 
-  leftOfBraces = source.substr(0, firstBrace);
-  count = 1;
+  const leftOfBraces = source.substr(0, firstBrace)
+  count = 1
 
   while (count > 0 && i < source.length) {
-    c = source.substr(i, 1);
-    if (c === "(") {
-      count++;
+    c = source.substr(i, 1)
+    if (c === '(') {
+      count++
     }
-    if (c === ")") {
-      count--;
+    if (c === ')') {
+      count--
     }
-    i++;
+    i++
   }
   if (i < source.length) {
-    rightOfBraces = source.substr(i);
+    rightOfBraces = source.substr(i)
   } else {
-    rightOfBraces = "";
+    rightOfBraces = ''
   }
 
-  insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace));
-  return [leftOfBraces, insideBraces, rightOfBraces];
-};
+  const insideBraces = source.substr(1 + firstBrace, i - 1 - (1 + firstBrace))
+  return [leftOfBraces, insideBraces, rightOfBraces]
+}
 
 export const scanForInstanceOf = ({
   source,
   array,
 }: {
-  source?: string;
-  array?: string[] | readonly string[];
+  source?: string
+  array?: string[] | readonly string[]
 } = {}) => {
   if (!isString(source) || !isArray(array)) {
-    return -1;
+    return -1
   }
   for (let i = 0; i < array.length; i++) {
     if (source.indexOf(array[i]) !== -1) {
-      return i;
+      return i
     }
   }
-  return -1;
-};
+  return -1
+}
 
-export const extractTermsAroundPivot = ({
-  source,
-  pivot,
-}: {
-  source: string;
-  pivot: string;
-}) => {
-  let leftTerm;
-  let rightTerm;
-  let leftOfPivot;
-  let rightOfPivot;
-  let beforeLeftTerm;
-  let afterRightTerm;
-  let c;
-  let i;
+export const extractTermsAroundPivot = ({ source, pivot }: { source: string; pivot: string }) => {
+  let leftTerm
+  let rightTerm
+  let beforeLeftTerm
+  let afterRightTerm
+  let c
+  let i
 
-  const pivotLocation = source.indexOf(pivot);
+  const pivotLocation = source.indexOf(pivot)
 
-  leftOfPivot = source.substr(0, pivotLocation);
-  rightOfPivot = source.substr(pivotLocation + pivot.length);
+  const leftOfPivot = source.substr(0, pivotLocation)
+  const rightOfPivot = source.substr(pivotLocation + pivot.length)
 
   // left term
-  leftTerm = "";
-  i = leftOfPivot.length - 1;
-  c = leftOfPivot.substr(i, 1);
+  leftTerm = ''
+  i = leftOfPivot.length - 1
+  c = leftOfPivot.substr(i, 1)
 
   while (i > 0 && OPERATORS.indexOf(c) === -1) {
-    i--;
-    c = leftOfPivot.substr(i, 1);
+    i--
+    c = leftOfPivot.substr(i, 1)
   }
 
   if (OPERATORS.indexOf(c) !== -1) {
-    leftTerm = leftOfPivot.substr(i + 1);
-    beforeLeftTerm = leftOfPivot.substr(0, i + 1);
+    leftTerm = leftOfPivot.substr(i + 1)
+    beforeLeftTerm = leftOfPivot.substr(0, i + 1)
   } else {
-    leftTerm = leftOfPivot.substr(i);
-    beforeLeftTerm = leftOfPivot.substr(0, i);
+    leftTerm = leftOfPivot.substr(i)
+    beforeLeftTerm = leftOfPivot.substr(0, i)
   }
 
   // right term
-  rightTerm = "";
+  rightTerm = ''
   if (rightOfPivot.length > 0) {
-    i = 0;
-    c = rightOfPivot.substr(i, 1);
+    i = 0
+    c = rightOfPivot.substr(i, 1)
 
     while (i < rightOfPivot.length && OPERATORS.indexOf(c) === -1) {
-      i++;
+      i++
       if (i < rightOfPivot.length) {
-        c = rightOfPivot.substr(i, 1);
+        c = rightOfPivot.substr(i, 1)
       }
     }
   }
 
   if (i < rightOfPivot.length) {
-    rightTerm = rightOfPivot.substr(0, i);
-    afterRightTerm = rightOfPivot.substr(i);
+    rightTerm = rightOfPivot.substr(0, i)
+    afterRightTerm = rightOfPivot.substr(i)
   } else {
-    rightTerm = rightOfPivot;
-    afterRightTerm = "";
+    rightTerm = rightOfPivot
+    afterRightTerm = ''
   }
 
-  return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm];
-};
+  return [beforeLeftTerm, leftTerm, rightTerm, afterRightTerm]
+}
 
 export const countInstancesOf = ({
   source,
   instance,
 }: {
-  source?: string;
-  instance?: string;
+  source?: string
+  instance?: string
 } = {}) => {
   if (!isString(source) || !isString(instance)) {
-    return 0;
+    return 0
   }
-  let count = 0;
-  let i = 0;
+  let count = 0
+  let i = 0
   while (i < source.length) {
     if (source.substr(i, 1) === instance) {
-      count++;
+      count++
     }
-    i++;
+    i++
   }
-  return count;
-};
+  return count
+}
 
 export const checkBalancedBraces = (source: string) => {
   if (!containsBraces(source)) {
-    return false;
+    return false
   }
-  const leftInstances = countInstancesOf({ source, instance: "(" });
-  const rightInstances = countInstancesOf({ source, instance: ")" });
-  return leftInstances === rightInstances;
-};
+  const leftInstances = countInstancesOf({ source, instance: '(' })
+  const rightInstances = countInstancesOf({ source, instance: ')' })
+  return leftInstances === rightInstances
+}
 
 export const contains = ({
   source,
   instance,
 }: {
-  source?: string;
-  instance?: string;
+  source?: string
+  instance?: string
 } = {}) => {
   if (!isString(source) || !isString(instance)) {
-    return false;
+    return false
   }
-  return source.indexOf(instance) !== -1;
-};
+  return source.indexOf(instance) !== -1
+}
 
 export const containsBraces = (source: string) => {
-  return (
-    contains({ source, instance: "(" }) || contains({ source, instance: ")" })
-  );
-};
+  return contains({ source, instance: '(' }) || contains({ source, instance: ')' })
+}

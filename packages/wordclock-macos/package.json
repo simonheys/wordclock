@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsx ./_scripts/build",
     "update-build-number": "tsx ./_scripts/update-build-number",
-    "code-format": "tsx ./_scripts/code-format",
+    "format": "tsx ./_scripts/code-format",
     "copy-words": "tsx ./_scripts/copy-words",
     "package-dmg": "tsx ./_scripts/package-dmg",
     "make-dist": "tsx ./_scripts/make-dist",
@@ -16,11 +16,11 @@
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "@tsconfig/node16": "16.1.3",
     "dotenv": "16.4.7",
     "fs-extra": "11.2.0",
     "glob": "11.0.0",
     "moment": "2.30.1",
+    "tsx": "^4.20.3",
     "xml2js": "0.6.2"
   }
 }

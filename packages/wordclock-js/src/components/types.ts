@@ -1,41 +1,41 @@
 export interface Manifest {
-  files: string[];
-  languages: Record<string, string>;
+  files: string[]
+  languages: Record<string, string>
 }
 
 export interface WordsEntry {
-  file: string;
-  title: string;
+  file: string
+  title: string
 }
 
 export type Group =
   | {
-      type: "sequence";
-      bind: "hour" | "minute" | "second";
-      first: number;
-      text: string[];
+      type: 'sequence'
+      bind: 'hour' | 'minute' | 'second'
+      first: number
+      text: string[]
     }
   | {
-      type: "item";
+      type: 'item'
       items: {
-        highlight: string;
-        text?: string;
-      }[];
+        highlight: string
+        text?: string
+      }[]
     }
   | {
-      type: "space";
-      count: number;
-    };
+      type: 'space'
+      count: number
+    }
 
 export interface WordsJson {
   meta: {
-    language: string;
-    title: string;
-  };
-  groups: Group[][];
+    language: string
+    title: string
+  }
+  groups: Group[][]
 }
 
-export type Words = Record<string, WordsEntry[]>;
+export type Words = Record<string, WordsEntry[]>
 
-export type WordsLabel = string[][];
-export type WordsLogic = string[][];
+export type WordsLabel = string[][]
+export type WordsLogic = string[][]

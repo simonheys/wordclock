@@ -1,8 +1,8 @@
-import path from "path";
+import path from 'path'
 
-import react from "@vitejs/plugin-react-swc";
-import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
+import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig(({ mode }) => ({
   publicDir: false,
@@ -14,14 +14,14 @@ export default defineConfig(({ mode }) => ({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/components/index.ts"),
-      name: "wordclock",
+      entry: path.resolve(__dirname, 'src/components/index.ts'),
+      name: 'wordclock',
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime", "lodash-es"],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'lodash-es'],
     },
   },
   esbuild: {
-    pure: mode === "production" ? ["console.log", "console.warn"] : [],
+    pure: mode === 'production' ? ['console.log', 'console.warn'] : [],
   },
-}));
+}))

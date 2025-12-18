@@ -1,18 +1,19 @@
-import { render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
+import { render, screen } from '@testing-library/react'
+import { expect, test } from 'vitest'
 
-const json: WordsJson = require(`@simonheys/wordclock-words/json/English.json`);
+import json from '@simonheys/wordclock-words/json/English.json'
 
-import { WordsJson } from "./types";
-import { WordClock } from "./WordClock";
-import { WordClockContent } from "./WordClockContent";
+import { WordClock } from './WordClock'
+import { WordClockContent } from './WordClockContent'
+import type { WordsJson } from './types'
 
-test("renders English.json text", async () => {
+test('renders English.json text', async () => {
+  const words = json as WordsJson
   render(
-    <WordClock words={json}>
+    <WordClock words={words}>
       <WordClockContent />
     </WordClock>,
-  );
-  const fivePastText = await screen.findByText("Five past");
-  expect(fivePastText).toBeInTheDocument();
-});
+  )
+  const fivePastText = await screen.findByText('Five past')
+  expect(fivePastText).toBeInTheDocument()
+})

@@ -6,13 +6,13 @@ on:
       - main
       - develop
     paths:
-      - "packages/wordclock-js/**"
+      - 'packages/wordclock-js/**'
   pull_request:
     branches:
       - main
       - develop
     paths:
-      - "packages/wordclock-js/**"
+      - 'packages/wordclock-js/**'
 
 jobs:
   release:
@@ -39,8 +39,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
-          cache: "pnpm"
+          node-version: 'lts/*'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

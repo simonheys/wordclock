@@ -1,10 +1,10 @@
 // load process.env from .env file
-require("dotenv").config();
+require('dotenv').config()
 
-const workspace = `WordClock.xcworkspace`;
-const scheme = `Word Clock`;
-const configuration = `Release`;
+const workspace = `WordClock.xcworkspace`
+const scheme = `Word Clock`
+const configuration = `Release`
 
-const keychainProfile = process.env.MAC_NOTARIZE_KEYCHAIN_PROFILE;
+const keychainProfile = process.env.MAC_NOTARIZE_KEYCHAIN_PROFILE
 
-export { configuration, keychainProfile, scheme, workspace };
+export { configuration, keychainProfile, scheme, workspace }

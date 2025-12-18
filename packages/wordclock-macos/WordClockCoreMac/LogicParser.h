@@ -7,7 +7,7 @@
 //
 
 #import "LogicParserStringUtil.h"
-//#import "NSLog.h"
+// #import "NSLog.h"
 
 extern NSArray *LogicParserEqualityOperators;
 extern NSArray *LogicParserMathOperators;

@@ -53,13 +53,13 @@
         if (hour == 0) {
             hour = 12;
         }
-        
+
         NSInteger minute = [dateComponents minute];
-        
-        #ifdef DEMO_TIME
-            hour = 9;
-            minute = 41;
-        #endif
+
+#ifdef DEMO_TIME
+        hour = 9;
+        minute = 41;
+#endif
 
         [LogicParser sharedInstance].hour = hour;
         [LogicParser sharedInstance].twentyfourhour = twentyfourhour;

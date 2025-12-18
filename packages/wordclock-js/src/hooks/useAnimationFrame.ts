@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 const useAnimationFrame = () => {
-  const [elapsed, setTime] = useState(0);
+  const [elapsed, setTime] = useState(0)
 
   useEffect(() => {
-    let animationFrame: number, start: number;
+    let animationFrame: number
+    const start = Date.now()
 
     // Function to be executed on each animation frame
     const onFrame = () => {
-      setTime(Date.now() - start);
-      loop();
-    };
+      setTime(Date.now() - start)
+      loop()
+    }
 
     // Call onFrame() on next animation frame
     const loop = () => {
-      animationFrame = requestAnimationFrame(onFrame);
-    };
+      animationFrame = requestAnimationFrame(onFrame)
+    }
 
     // Start the loop
-    start = Date.now();
-    loop();
+    loop()
 
     // Clean things up
     return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, []);
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [])
 
-  return elapsed;
-};
+  return elapsed
+}
 
-export default useAnimationFrame;
+export default useAnimationFrame

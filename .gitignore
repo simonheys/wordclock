@@ -1,3 +1,29 @@
+# Dependencies
 node_modules
+
+# Build outputs
+dist
+.next
+.turbo
+
+# Environment
 .env
+.env.local
+.env.*.local
+
+# Cache
 .eslintcache
+*.tsbuildinfo
+
+# macOS
+.DS_Store
+
+# CocoaPods
+Pods/
+
+# IDE
+.idea
+.vscode
+
+# Claude AI
+.claude

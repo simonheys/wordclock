@@ -1,9 +1,8 @@
-import { spawnCommand } from "./util";
+import { spawnCommand } from './util'
 
-import { configuration, scheme, workspace } from "./config";
-
-(async () => {
-  console.log("Building");
+import { configuration, scheme, workspace } from './config'
+;(async () => {
+  console.log('Building')
 
   await spawnCommand(`xcodebuild`, [
     `-workspace`,
@@ -13,7 +12,7 @@ import { configuration, scheme, workspace } from "./config";
     `-configuration`,
     configuration,
     `clean`,
-  ]);
+  ])
 
   await spawnCommand(`xcodebuild`, [
     `-workspace`,
@@ -22,5 +21,5 @@ import { configuration, scheme, workspace } from "./config";
     scheme,
     `-configuration`,
     configuration,
-  ]);
-})();
+  ])
+})()
