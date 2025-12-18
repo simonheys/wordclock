@@ -196,8 +196,8 @@ importers:
   packages/wordclock-macos:
     devDependencies:
       dotenv:
-        specifier: 16.6.1
-        version: 16.6.1
+        specifier: 17.2.3
+        version: 17.2.3
       fs-extra:
         specifier: 11.3.3
         version: 11.3.3
@@ -2291,8 +2291,8 @@ packages:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
 
-  dotenv@16.6.1:
-    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+  dotenv@17.2.3:
+    resolution: {integrity: sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -6779,7 +6779,7 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
-  dotenv@16.6.1: {}
+  dotenv@17.2.3: {}
 
   dunder-proto@1.0.1:
     dependencies:
