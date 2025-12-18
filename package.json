@@ -20,9 +20,9 @@
     "lint-staged": "15.5.2",
     "prettier": "3.7.4",
     "prettier-plugin-organize-imports": "4.3.0",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tsx": "^4.21.0",
-    "turbo": "^2.6.3"
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "tsx": "4.21.0",
+    "turbo": "2.6.3"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
