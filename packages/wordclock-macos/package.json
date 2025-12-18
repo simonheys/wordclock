@@ -16,7 +16,7 @@
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "dotenv": "16.6.1",
+    "dotenv": "17.2.3",
     "fs-extra": "11.3.3",
     "glob": "11.1.0",
     "moment": "2.30.1",
