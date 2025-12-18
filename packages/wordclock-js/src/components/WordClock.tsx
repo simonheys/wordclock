@@ -1,6 +1,6 @@
 'use client'
 
-import { CSSProperties, FC, HTMLAttributes, useEffect, useState } from 'react'
+import { CSSProperties, FC, HTMLAttributes, useEffect, useMemo } from 'react'
 
 import { useResizeTextToFit } from '../hooks/useResizeTextToFit'
 import useTimeProps from '../hooks/useTimeProps'
@@ -26,20 +26,15 @@ interface WordClockProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const WordClock: FC<WordClockProps> = ({ words, children, ...rest }) => {
-  const [logic, setLogic] = useState<WordsLogic>([])
-  const [label, setLabel] = useState<WordsLabel>([])
+  const { logic, label } = useMemo<{ logic: WordsLogic; label: WordsLabel }>(() => {
+    if (!words) {
+      return { logic: [], label: [] }
+    }
+    return WordsFileParser.parseJson(words)
+  }, [words])
 
   const timeProps = useTimeProps()
   const { resizeRef, containerRef, resize } = useResizeTextToFit()
-
-  useEffect(() => {
-    if (!words) {
-      return
-    }
-    const parsed = WordsFileParser.parseJson(words)
-    setLogic(parsed.logic)
-    setLabel(parsed.label)
-  }, [words])
 
   useEffect(() => {
     resize()
