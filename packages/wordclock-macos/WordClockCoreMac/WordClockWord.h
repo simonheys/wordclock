@@ -6,8 +6,6 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-#import <OpenGL/OpenGL.h>
-
 #import "Tween.h"
 #import "WordClockPreferences.h"
 
@@ -35,8 +33,6 @@
     float _tracking;
     BOOL _isSpace;
 
-    BOOL _isMipmapRendered;
-
     NSFont *_font;
     //	CGSize _baseFontSizeForCalculation;
     NSSize _unscaledSize;
@@ -48,28 +44,25 @@
     float _unscaledTextureWidth;
     float _unscaledTextureHeight;
 
-    GLuint *_targetTexturePointer;
-    GLfloat *_colours;
+    float *_colours;
     BOOL *_highlightedPointer;
     float _scale;
 
-    GLfloat _colourComponentRed;
-    GLfloat _colourComponentGreen;
-    GLfloat _colourComponentBlue;
-    GLfloat _colourComponentAlpha;
+    float _colourComponentRed;
+    float _colourComponentGreen;
+    float _colourComponentBlue;
+    float _colourComponentAlpha;
 
     float tweenValue;
 }
 
 - (instancetype)initWithLabel:(NSString *)label tweenManager:(TweenManager *)tweenManager;
 - (void)setFontWithName:(NSString *)fontName tracking:(float)tracking caseAdjustment:(WCCaseAdjustment)caseAdjustment;
-- (void)renderToOpenGlTexture:(GLuint *)targetTexturePointer withScale:(float)scale;
-- (void)setColourPointer:(GLfloat *)colourPointer;
+- (NSData *)bitmapDataForScale:(float)scale width:(size_t *)width height:(size_t *)height;
+- (void)setColourPointer:(float *)colourPointer;
 - (void)setHighlightedPointer:(BOOL *)highlightedPointer;
 - (void)setHighlighted:(BOOL)value animated:(BOOL)animated;
 - (void)setRGBA:(uint)rgba;
-//- (void)renderInCurrentGraphicsContentAtPoint:(NSPoint)point;
-- (void)rerenderToOpenGlTexture:(GLuint *)targetTexturePointer withScale:(float)scale;
 
 @property(readonly) NSString *label;
 @property(readonly) NSString *originalLabel;
@@ -85,11 +78,10 @@
 @property(readonly) NSSize size;
 @property(readonly) NSSize unscaledSize;
 @property(readonly) NSSize spaceSize;
-@property GLuint *targetTexturePointer;
-@property(nonatomic) GLfloat colourComponentRed;
-@property(nonatomic) GLfloat colourComponentGreen;
-@property(nonatomic) GLfloat colourComponentBlue;
-@property(nonatomic) GLfloat colourComponentAlpha;
+@property(nonatomic) float colourComponentRed;
+@property(nonatomic) float colourComponentGreen;
+@property(nonatomic) float colourComponentBlue;
+@property(nonatomic) float colourComponentAlpha;
 
 @property float tweenValue;
 

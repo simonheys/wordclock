@@ -9,6 +9,7 @@
 #ifdef __OBJC__
 #define FORCE_LOGGING
 #define DEMO_TIME
+#define WORDCLOCK_WINDOW_APP 1
 
 #import <Cocoa/Cocoa.h>
 

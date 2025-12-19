@@ -8,18 +8,16 @@
 
 #import "WordClockScreenSaverView.h"
 
-#import <OpenGL/OpenGL.h>
 #import <QuartzCore/QuartzCore.h>
 
 #import "WCFileFunctionLevelFormatter.h"
-#import "WordClockGLView.h"
-#import "WordClockGLViewController.h"
 #import "WordClockOptionsWindowController.h"
 #import "WordClockPreferences.h"
+#import "WordClockRenderView.h"
+#import "WordClockViewController.h"
 
 @interface WordClockScreenSaverView ()
-@property(nonatomic, retain) WordClockGLViewController *rootViewController;
-@property(nonatomic, retain) NSOpenGLContext *mGLContext;
+@property(nonatomic, retain) WordClockViewController *rootViewController;
 @property(nonatomic, retain) WordClockOptionsWindowController *optionsWindowController;
 @property(nonatomic, retain) NSTimer *transitionTimer;
 @property(nonatomic, retain) NSDate *dateOfLastTransition;
@@ -29,7 +27,6 @@
 @implementation WordClockScreenSaverView
 
 @synthesize rootViewController = _rootViewController;
-@synthesize mGLContext = _mGLContext;
 @synthesize optionsWindowController = _optionsWindowController;
 @synthesize transitionTimer = _transitionTimer;
 @synthesize dateOfLastTransition = _dateOfLastTransition;
@@ -67,7 +64,7 @@
 - (void)startAnimation {
     DDLogVerbose(@"startAnimation");
     if (!self.rootViewController) {
-        self.rootViewController = [[WordClockGLViewController new] autorelease];
+        self.rootViewController = [[WordClockViewController new] autorelease];
         self.rootViewController.tracksMouseEvents = NO;
         self.rootViewController.view = self;
     }

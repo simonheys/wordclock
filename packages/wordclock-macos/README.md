@@ -1,6 +1,6 @@
 # WordClock macOS
 
-This is the code used for the native macOS Screensaver version. It has a long history and is complicated by its use of OpenGL to achieve my goal of running at 60fps.
+This is the code used for the native macOS Screensaver version. Rendering is Metal-based and targets 60fps.
 
 ## Initial setup
 

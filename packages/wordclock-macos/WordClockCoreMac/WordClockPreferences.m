@@ -38,6 +38,31 @@ NSString *const WCLinearMarginBottomKey = @"linearMarginBottom";
 NSString *const WCTransitionTimeKey = @"transitionTime";
 NSString *const WCTransitionStyleKey = @"transitionStyle";
 
+static NSData *WordClockArchiveColor(NSColor *color) {
+    NSError *error = nil;
+    return [NSKeyedArchiver archivedDataWithRootObject:color requiringSecureCoding:YES error:&error];
+}
+
+static NSColor *WordClockUnarchiveColor(NSData *data, NSColor *fallbackColor) {
+    if (!data) {
+        return fallbackColor;
+    }
+    NSError *error = nil;
+    NSColor *color = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSColor class] fromData:data error:&error];
+    if (color) {
+        return color;
+    }
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:&error];
+    if (!unarchiver) {
+        return fallbackColor;
+    }
+    unarchiver.requiresSecureCoding = NO;
+    color = [unarchiver decodeObjectOfClass:[NSColor class] forKey:NSKeyedArchiveRootObjectKey];
+    [unarchiver finishDecoding];
+    [unarchiver release];
+    return color ? color : fallbackColor;
+}
+
 @implementation WordClockPreferences
 
 @synthesize wordsFile = _wordsFile;
@@ -96,7 +121,7 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 }
 
 + (NSDictionary *)factoryDefaults {
-    NSDictionary *factoryDefaults = @{WCWordsFileKey : @"English.json", WCFontNameKey : @"Helvetica-Bold", WCHighlightColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0]], WCForegroundColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0]], WCBackgroundColourKey : [NSKeyedArchiver archivedDataWithRootObject:[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:0.0f alpha:1.0]], WCLeadingKey : @0.0f, WCTrackingKey : @0.0f, WCJustificationKey : @(WCJustificationLeft), WCStyleKey : @(WCStyleLinear), WCLinearTranslateXKey : @0.0f, WCLinearTranslateYKey : @0.0f, WCLinearScaleKey : @1.0f, WCRotaryTranslateXKey : @0.0f, WCRotaryTranslateYKey : @0.0f, WCRotaryScaleKey : @0.8f, WCLinearMarginLeftKey : @50.0f, WCLinearMarginRightKey : @50.0f, WCLinearMarginTopKey : @50.0f, WCLinearMarginBottomKey : @50.0f, WCTransitionTimeKey : @60, WCTransitionStyleKey : @(WCTransitionStyleSlow)};
+    NSDictionary *factoryDefaults = @{WCWordsFileKey : @"English.json", WCFontNameKey : @"Helvetica-Bold", WCHighlightColourKey : WordClockArchiveColor([NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0]), WCForegroundColourKey : WordClockArchiveColor([NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0]), WCBackgroundColourKey : WordClockArchiveColor([NSColor colorWithCalibratedRed:0.0f green:0.0f blue:0.0f alpha:1.0]), WCLeadingKey : @0.0f, WCTrackingKey : @0.0f, WCJustificationKey : @(WCJustificationLeft), WCStyleKey : @(WCStyleLinear), WCLinearTranslateXKey : @0.0f, WCLinearTranslateYKey : @0.0f, WCLinearScaleKey : @1.0f, WCRotaryTranslateXKey : @0.0f, WCRotaryTranslateYKey : @0.0f, WCRotaryScaleKey : @0.8f, WCLinearMarginLeftKey : @50.0f, WCLinearMarginRightKey : @50.0f, WCLinearMarginTopKey : @50.0f, WCLinearMarginBottomKey : @50.0f, WCTransitionTimeKey : @60, WCTransitionStyleKey : @(WCTransitionStyleSlow)};
     return factoryDefaults;
 }
 
@@ -110,7 +135,6 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
 }
 
 - (void)reset {
-    self.wordsFile = @"English.json";
     self.fontName = @"Helvetica-Bold";
     self.highlightColour = [NSColor colorWithCalibratedRed:1.0f green:1.0f blue:1.0f alpha:1.0];
     self.foregroundColour = [NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0];
@@ -131,6 +155,7 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
     self.linearMarginBottom = 50.0f;
     self.transitionTime = 60;
     self.transitionStyle = WCTransitionStyleSlow;
+    self.wordsFile = @"English.json";
 }
 
 // ____________________________________________________________________________________________________
@@ -239,10 +264,11 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
     if ([colour isEqual:_backgroundColour]) {
         return;
     }
-    NSData *theData;
-    theData = [NSKeyedArchiver archivedDataWithRootObject:colour];
-    [[WordClockPreferences defaults] setObject:theData forKey:WCBackgroundColourKey];
-    [[WordClockPreferences defaults] synchronize];
+    NSData *theData = WordClockArchiveColor(colour);
+    if (theData) {
+        [[WordClockPreferences defaults] setObject:theData forKey:WCBackgroundColourKey];
+        [[WordClockPreferences defaults] synchronize];
+    }
     [_backgroundColour release];
     _backgroundColour = [colour retain];
 }
@@ -252,10 +278,11 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
         return;
     }
     [colour retain];
-    NSData *theData;
-    theData = [NSKeyedArchiver archivedDataWithRootObject:colour];
-    [[WordClockPreferences defaults] setObject:theData forKey:WCForegroundColourKey];
-    [[WordClockPreferences defaults] synchronize];
+    NSData *theData = WordClockArchiveColor(colour);
+    if (theData) {
+        [[WordClockPreferences defaults] setObject:theData forKey:WCForegroundColourKey];
+        [[WordClockPreferences defaults] synchronize];
+    }
     [_foregroundColour release];
     _foregroundColour = colour;
 }
@@ -264,34 +291,35 @@ NSString *const WCTransitionStyleKey = @"transitionStyle";
     if ([colour isEqual:_highlightColour]) {
         return;
     }
-    NSData *theData;
-    theData = [NSKeyedArchiver archivedDataWithRootObject:colour];
-    [[WordClockPreferences defaults] setObject:theData forKey:WCHighlightColourKey];
-    [[WordClockPreferences defaults] synchronize];
+    NSData *theData = WordClockArchiveColor(colour);
+    if (theData) {
+        [[WordClockPreferences defaults] setObject:theData forKey:WCHighlightColourKey];
+        [[WordClockPreferences defaults] synchronize];
+    }
     [_highlightColour release];
     _highlightColour = [colour retain];
 }
 
 - (NSColor *)backgroundColour {
     if (!_backgroundColour) {
-        _backgroundColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[WordClockPreferences defaults] objectForKey:WCBackgroundColourKey]];
-        [_backgroundColour retain];
+        NSData *data = [[WordClockPreferences defaults] objectForKey:WCBackgroundColourKey];
+        _backgroundColour = [WordClockUnarchiveColor(data, [NSColor blackColor]) retain];
     }
     return _backgroundColour;
 }
 
 - (NSColor *)foregroundColour {
     if (!_foregroundColour) {
-        _foregroundColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[WordClockPreferences defaults] objectForKey:WCForegroundColourKey]];
-        [_foregroundColour retain];
+        NSData *data = [[WordClockPreferences defaults] objectForKey:WCForegroundColourKey];
+        _foregroundColour = [WordClockUnarchiveColor(data, [NSColor colorWithCalibratedRed:0.25f green:0.25f blue:0.25f alpha:1.0]) retain];
     }
     return _foregroundColour;
 }
 
 - (NSColor *)highlightColour {
     if (!_highlightColour) {
-        _highlightColour = [NSKeyedUnarchiver unarchiveObjectWithData:[[WordClockPreferences defaults] objectForKey:WCHighlightColourKey]];
-        [_highlightColour retain];
+        NSData *data = [[WordClockPreferences defaults] objectForKey:WCHighlightColourKey];
+        _highlightColour = [WordClockUnarchiveColor(data, [NSColor whiteColor]) retain];
     }
     return _highlightColour;
 }
