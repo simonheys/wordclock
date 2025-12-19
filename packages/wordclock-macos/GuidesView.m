@@ -16,9 +16,6 @@
 @synthesize scale = _scale;
 @synthesize view = _view;
 
-- (void)drawGlView {
-}
-
 - (void)mouseMoved:(NSEvent *)theEvent {
 }
 
@@ -34,8 +31,16 @@
 - (void)updateWithMouseDownEvent:(NSEvent *)theEvent {
 }
 
+- (BOOL)dragging {
+    return _dragging;
+}
+
 - (BOOL)shouldDrawWithLightGuideColor {
-    NSColor *normalizedColor = [[WordClockPreferences sharedInstance].backgroundColour colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    NSColor *color = [WordClockPreferences sharedInstance].backgroundColour;
+    NSColor *normalizedColor = [color colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
+    if (!normalizedColor) {
+        normalizedColor = color;
+    }
     float brightness = [normalizedColor brightnessComponent];
     return brightness < 0.5f;
 }

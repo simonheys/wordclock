@@ -1,12 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:js-lib"],
+  "schedule": ["on monday"],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "all minor and patch dependencies",
       "groupSlug": "all-minor-patch"
     }
-  ],
-  "ignoreDeps": ["eslint"]
+  ]
 }

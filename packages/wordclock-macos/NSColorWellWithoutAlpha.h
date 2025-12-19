@@ -6,7 +6,7 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-//#import
+// #import
 
 @interface NSColorWellWithoutAlpha : NSColorWell {
 }

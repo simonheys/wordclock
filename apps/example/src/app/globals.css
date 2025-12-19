@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: #0b1220;
+    --color-foreground: #e2e8f0;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: var(--font-sans);
+  }
+}

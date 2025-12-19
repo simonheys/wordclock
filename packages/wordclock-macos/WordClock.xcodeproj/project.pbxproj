@@ -37,9 +37,6 @@
 		F44D1218165952B9003A3557 /* WordClockWordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D831318EF730038C801 /* WordClockWordManager.m */; };
 		F44D1219165952B9003A3557 /* WordClockWordsManifestFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D851318EF730038C801 /* WordClockWordsManifestFileParser.m */; };
 		F44D121A165952B9003A3557 /* culling.c in Sources */ = {isa = PBXBuildFile; fileRef = F4F0FB65131A4BBE00B8D814 /* culling.c */; };
-		F44D121C1659531C003A3557 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4902D591318EF450038C801 /* OpenGL.framework */; };
-		F44D121D16595331003A3557 /* WordClockGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46786D21319081E002F899B /* WordClockGLViewController.m */; };
-		F44D121E16595334003A3557 /* WordClockGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F467866A131902F6002F899B /* WordClockGLView.m */; };
 		F44D12201659536F003A3557 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E22713190C0200893386 /* Scene.m */; };
 		F453416216745FF700D24819 /* GuidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582A8132CEACE006D9CAA /* GuidesView.m */; };
 		F453416316745FF700D24819 /* GuidesViewLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */; };
@@ -47,14 +44,6 @@
 		F453416516745FF700D24819 /* GuidesView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582A8132CEACE006D9CAA /* GuidesView.m */; };
 		F453416616745FF700D24819 /* GuidesViewLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A54AE0132BD68E009221A8 /* GuidesViewLinear.m */; };
 		F453416716745FF700D24819 /* GuidesViewRotary.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B582AB132CEDCF006D9CAA /* GuidesViewRotary.m */; };
-		F455AAFA1670CC5E00F41C22 /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAF91670CC5E00F41C22 /* linear.png */; };
-		F455AAFB1670CC6200F41C22 /* linear.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAF91670CC5E00F41C22 /* linear.png */; };
-		F455AAFD1670CD5E00F41C22 /* rotary.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFC1670CD5E00F41C22 /* rotary.png */; };
-		F455AAFE1670CD5E00F41C22 /* rotary.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFC1670CD5E00F41C22 /* rotary.png */; };
-		F455AB011670CE1E00F41C22 /* linear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFF1670CE1E00F41C22 /* linear@2x.png */; };
-		F455AB021670CE1E00F41C22 /* linear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AAFF1670CE1E00F41C22 /* linear@2x.png */; };
-		F455AB031670CE1E00F41C22 /* rotary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AB001670CE1E00F41C22 /* rotary@2x.png */; };
-		F455AB041670CE1E00F41C22 /* rotary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F455AB001670CE1E00F41C22 /* rotary@2x.png */; };
 		F455AB5D1670DBEF00F41C22 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F455AB5C1670DBEF00F41C22 /* WebKit.framework */; };
 		F455AB5E1670DBFA00F41C22 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F455AB5C1670DBEF00F41C22 /* WebKit.framework */; };
 		F45EFDE5167C3C0400D60C46 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = F45EFDE3167C3C0400D60C46 /* thumbnail.png */; };
@@ -67,6 +56,8 @@
 		F493A1FB166F63F500D43F6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44D11F4165951CE003A3557 /* Foundation.framework */; };
 		F493A1FF166F6E1B00D43F6E /* NSView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */; };
 		F493A200166F6E1B00D43F6E /* NSView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F493A1FD166F6E1B00D43F6E /* NSView+Additions.m */; };
+		F4DAC4F42EF5A73A0042EFCF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4DAC4F32EF5A73A0042EFCF /* Media.xcassets */; };
+		F4DAC4F52EF5A73A0042EFCF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4DAC4F32EF5A73A0042EFCF /* Media.xcassets */; };
 		F4E8F502165FD0B60019987F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A3E23E150537CF0066B357 /* Cocoa.framework */; };
 		F4E8F504165FD0B60019987F /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E8F503165FD0B60019987F /* ScreenSaver.framework */; };
 		F4E8F50A165FD0B60019987F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4E8F508165FD0B60019987F /* InfoPlist.strings */; };
@@ -88,10 +79,21 @@
 		F4E8F521165FD10A0019987F /* WordClockWordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D831318EF730038C801 /* WordClockWordManager.m */; };
 		F4E8F522165FD10A0019987F /* WordClockWordsManifestFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4902D851318EF730038C801 /* WordClockWordsManifestFileParser.m */; };
 		F4E8F523165FD10A0019987F /* culling.c in Sources */ = {isa = PBXBuildFile; fileRef = F4F0FB65131A4BBE00B8D814 /* culling.c */; };
-		F4E8F524165FD1120019987F /* WordClockGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46786D21319081E002F899B /* WordClockGLViewController.m */; };
-		F4E8F525165FD1120019987F /* WordClockGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F467866A131902F6002F899B /* WordClockGLView.m */; };
 		F4E8F526165FD1120019987F /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E22713190C0200893386 /* Scene.m */; };
-		F4E8F528165FD1ED0019987F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4902D591318EF450038C801 /* OpenGL.framework */; };
+		F4F4854D2EF596500030410C /* WordClockRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F4854A2EF596500030410C /* WordClockRenderView.m */; };
+		F4F4854E2EF596500030410C /* WordClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F4854C2EF596500030410C /* WordClockViewController.m */; };
+		F4F4854F2EF596500030410C /* WordClockRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F4854A2EF596500030410C /* WordClockRenderView.m */; };
+		F4F485502EF596500030410C /* WordClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F4854C2EF596500030410C /* WordClockViewController.m */; };
+		F6A100001234567800000001 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A100081234567800000009 /* Metal.framework */; };
+		F6A100011234567800000002 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A10009123456780000000A /* MetalKit.framework */; };
+		F6A100021234567800000003 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A100081234567800000009 /* Metal.framework */; };
+		F6A100031234567800000004 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A10009123456780000000A /* MetalKit.framework */; };
+		F6A100041234567800000005 /* WordClockMetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A1000B123456780000000C /* WordClockMetalRenderer.m */; };
+		F6A100051234567800000006 /* WordClockMetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A1000B123456780000000C /* WordClockMetalRenderer.m */; };
+		F6A100061234567800000007 /* WordClockMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A1000D123456780000000E /* WordClockMetalView.m */; };
+		F6A100071234567800000008 /* WordClockMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A1000D123456780000000E /* WordClockMetalView.m */; };
+		F6A100111234567800000012 /* WordClockShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F6A1000F1234567800000010 /* WordClockShaders.metal */; };
+		F6A100121234567800000013 /* WordClockShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F6A1000F1234567800000010 /* WordClockShaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,25 +119,16 @@
 		F44D1201165951CE003A3557 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F44D1202165951CE003A3557 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F44D1205165951CF003A3557 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		F455AAF91670CC5E00F41C22 /* linear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = linear.png; path = _resources/Icons/linear.png; sourceTree = "<group>"; };
-		F455AAFC1670CD5E00F41C22 /* rotary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rotary.png; path = _resources/Icons/rotary.png; sourceTree = "<group>"; };
-		F455AAFF1670CE1E00F41C22 /* linear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "linear@2x.png"; path = "_resources/Icons/linear@2x.png"; sourceTree = "<group>"; };
-		F455AB001670CE1E00F41C22 /* rotary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rotary@2x.png"; path = "_resources/Icons/rotary@2x.png"; sourceTree = "<group>"; };
 		F455AB5C1670DBEF00F41C22 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F45EFDE3167C3C0400D60C46 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = _resources/thumbnail.png; sourceTree = "<group>"; };
 		F45EFDE4167C3C0400D60C46 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thumbnail@2x.png"; path = "_resources/thumbnail@2x.png"; sourceTree = "<group>"; };
 		F46390E628DC4BFD0072B46D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F4678669131902F6002F899B /* WordClockGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockGLView.h; sourceTree = "<group>"; };
-		F467866A131902F6002F899B /* WordClockGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockGLView.m; sourceTree = "<group>"; };
-		F46786D11319081E002F899B /* WordClockGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockGLViewController.h; sourceTree = "<group>"; };
-		F46786D21319081E002F899B /* WordClockGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockGLViewController.m; sourceTree = "<group>"; };
 		F46C65D722880F3400EBFD10 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F46D496A16A3E6BB002D0A71 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = SOURCE_ROOT; };
 		F46D496B16A3E6BB002D0A71 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = SOURCE_ROOT; };
 		F47F9402132B9632002A4965 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F48D90E226989A85005F1E95 /* WCFileFunctionLevelFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCFileFunctionLevelFormatter.m; sourceTree = "<group>"; };
 		F48D90E326989A85005F1E95 /* WCFileFunctionLevelFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCFileFunctionLevelFormatter.h; sourceTree = "<group>"; };
-		F4902D591318EF450038C801 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		F4902D601318EF730038C801 /* CoordinateProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateProvider.h; sourceTree = "<group>"; };
 		F4902D611318EF730038C801 /* CoordinateProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateProvider.m; sourceTree = "<group>"; };
 		F4902D661318EF730038C801 /* easing_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easing_functions.h; sourceTree = "<group>"; };
@@ -185,6 +178,7 @@
 		F4D78808132D206F003F7416 /* NSColorWellWithAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorWellWithAlpha.m; sourceTree = "<group>"; };
 		F4D78809132D2070003F7416 /* NSColorWellWithoutAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColorWellWithoutAlpha.h; sourceTree = "<group>"; };
 		F4D7880A132D2070003F7416 /* NSColorWellWithoutAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColorWellWithoutAlpha.m; sourceTree = "<group>"; };
+		F4DAC4F32EF5A73A0042EFCF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		F4E8F501165FD0B50019987F /* Word Clock.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Word Clock.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E8F503165FD0B60019987F /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
 		F4E8F507165FD0B60019987F /* Word Clock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Word Clock-Info.plist"; sourceTree = "<group>"; };
@@ -194,6 +188,17 @@
 		F4E8F50D165FD0B60019987F /* WordClockScreenSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordClockScreenSaverView.m; sourceTree = "<group>"; };
 		F4F0FB65131A4BBE00B8D814 /* culling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = culling.c; sourceTree = "<group>"; };
 		F4F0FB66131A4BBE00B8D814 /* culling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = culling.h; sourceTree = "<group>"; };
+		F4F485492EF596500030410C /* WordClockRenderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordClockRenderView.h; sourceTree = "<group>"; };
+		F4F4854A2EF596500030410C /* WordClockRenderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordClockRenderView.m; sourceTree = "<group>"; };
+		F4F4854B2EF596500030410C /* WordClockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordClockViewController.h; sourceTree = "<group>"; };
+		F4F4854C2EF596500030410C /* WordClockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordClockViewController.m; sourceTree = "<group>"; };
+		F6A100081234567800000009 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		F6A10009123456780000000A /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		F6A1000A123456780000000B /* WordClockMetalRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockMetalRenderer.h; sourceTree = "<group>"; };
+		F6A1000B123456780000000C /* WordClockMetalRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockMetalRenderer.m; sourceTree = "<group>"; };
+		F6A1000C123456780000000D /* WordClockMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordClockMetalView.h; sourceTree = "<group>"; };
+		F6A1000D123456780000000E /* WordClockMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordClockMetalView.m; sourceTree = "<group>"; };
+		F6A1000F1234567800000010 /* WordClockShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = WordClockShaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +208,8 @@
 			files = (
 				F455AB5D1670DBEF00F41C22 /* WebKit.framework in Frameworks */,
 				F43A16651661F7AD007A0716 /* QuartzCore.framework in Frameworks */,
-				F44D121C1659531C003A3557 /* OpenGL.framework in Frameworks */,
+				F6A100001234567800000001 /* Metal.framework in Frameworks */,
+				F6A100011234567800000002 /* MetalKit.framework in Frameworks */,
 				F44D11F0165951CE003A3557 /* Cocoa.framework in Frameworks */,
 				F493A1FB166F63F500D43F6E /* Foundation.framework in Frameworks */,
 				01DB2D17FC107AA6C3DF36D2 /* libPods-Word Clock Window.a in Frameworks */,
@@ -216,7 +222,8 @@
 			files = (
 				F455AB5E1670DBFA00F41C22 /* WebKit.framework in Frameworks */,
 				F43A16661661F7B5007A0716 /* QuartzCore.framework in Frameworks */,
-				F4E8F528165FD1ED0019987F /* OpenGL.framework in Frameworks */,
+				F6A100021234567800000003 /* Metal.framework in Frameworks */,
+				F6A100031234567800000004 /* MetalKit.framework in Frameworks */,
 				F4E8F502165FD0B60019987F /* Cocoa.framework in Frameworks */,
 				F4E8F504165FD0B60019987F /* ScreenSaver.framework in Frameworks */,
 				F493A1FA166F63F500D43F6E /* Foundation.framework in Frameworks */,
@@ -232,12 +239,12 @@
 			children = (
 				F4A54ADE132BD625009221A8 /* Guides */,
 				F4144130133926C700E06793 /* Options */,
-				F46786D11319081E002F899B /* WordClockGLViewController.h */,
-				F46786D21319081E002F899B /* WordClockGLViewController.m */,
-				F4678669131902F6002F899B /* WordClockGLView.h */,
-				F467866A131902F6002F899B /* WordClockGLView.m */,
 				F4C7E22613190C0200893386 /* Scene.h */,
 				F4C7E22713190C0200893386 /* Scene.m */,
+				F4F485492EF596500030410C /* WordClockRenderView.h */,
+				F4F4854A2EF596500030410C /* WordClockRenderView.m */,
+				F4F4854B2EF596500030410C /* WordClockViewController.h */,
+				F4F4854C2EF596500030410C /* WordClockViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -284,9 +291,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F4DAC4F32EF5A73A0042EFCF /* Media.xcassets */,
 				F45EFDE3167C3C0400D60C46 /* thumbnail.png */,
 				F45EFDE4167C3C0400D60C46 /* thumbnail@2x.png */,
-				F4CE22E0132575E300F2D4B6 /* UI */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -298,8 +305,9 @@
 				F44D11F2165951CE003A3557 /* AppKit.framework */,
 				F4A3E23E150537CF0066B357 /* Cocoa.framework */,
 				F44D11F4165951CE003A3557 /* Foundation.framework */,
-				F4902D591318EF450038C801 /* OpenGL.framework */,
 				F47F9402132B9632002A4965 /* QuartzCore.framework */,
+				F6A100081234567800000009 /* Metal.framework */,
+				F6A10009123456780000000A /* MetalKit.framework */,
 				F4E8F503165FD0B60019987F /* ScreenSaver.framework */,
 				F455AB5C1670DBEF00F41C22 /* WebKit.framework */,
 				33E847F582FA45528503B529 /* libPods.a */,
@@ -385,6 +393,11 @@
 				F4902D6E1318EF730038C801 /* WordClockWordsFileParser.m */,
 				F4902D841318EF730038C801 /* WordClockWordsManifestFileParser.h */,
 				F4902D851318EF730038C801 /* WordClockWordsManifestFileParser.m */,
+				F6A1000A123456780000000B /* WordClockMetalRenderer.h */,
+				F6A1000B123456780000000C /* WordClockMetalRenderer.m */,
+				F6A1000C123456780000000D /* WordClockMetalView.h */,
+				F6A1000D123456780000000E /* WordClockMetalView.m */,
+				F6A1000F1234567800000010 /* WordClockShaders.metal */,
 			);
 			path = WordClockCoreMac;
 			sourceTree = "<group>";
@@ -415,17 +428,6 @@
 				F4902D681318EF730038C801 /* LinearCoordinateProvider.m */,
 			);
 			name = Coordinates;
-			sourceTree = "<group>";
-		};
-		F4CE22E0132575E300F2D4B6 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				F455AAF91670CC5E00F41C22 /* linear.png */,
-				F455AAFF1670CE1E00F41C22 /* linear@2x.png */,
-				F455AAFC1670CD5E00F41C22 /* rotary.png */,
-				F455AB001670CE1E00F41C22 /* rotary@2x.png */,
-			);
-			name = UI;
 			sourceTree = "<group>";
 		};
 		F4E8F505165FD0B60019987F /* Word Clock Screen Saver */ = {
@@ -505,7 +507,7 @@
 				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					F44D11ED165951CE003A3557 = {
-						DevelopmentTeam = 7P37GZG7HN;
+						DevelopmentTeam = 4YADBGMM88;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -514,7 +516,7 @@
 						};
 					};
 					F4E8F500165FD0B50019987F = {
-						DevelopmentTeam = 7P37GZG7HN;
+						DevelopmentTeam = 4YADBGMM88;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -548,11 +550,8 @@
 			files = (
 				F44D11FA165951CE003A3557 /* InfoPlist.strings in Resources */,
 				F44D1206165951CF003A3557 /* MainMenu.xib in Resources */,
+				F4DAC4F52EF5A73A0042EFCF /* Media.xcassets in Resources */,
 				F4324F811663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */,
-				F455AAFA1670CC5E00F41C22 /* linear.png in Resources */,
-				F455AAFD1670CD5E00F41C22 /* rotary.png in Resources */,
-				F455AB011670CE1E00F41C22 /* linear@2x.png in Resources */,
-				F455AB031670CE1E00F41C22 /* rotary@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,11 +561,8 @@
 			files = (
 				F4E8F50A165FD0B60019987F /* InfoPlist.strings in Resources */,
 				F4324F821663BA5800EA4DC5 /* WordClockOptionsWindowController.xib in Resources */,
-				F455AAFB1670CC6200F41C22 /* linear.png in Resources */,
-				F455AAFE1670CD5E00F41C22 /* rotary.png in Resources */,
-				F455AB021670CE1E00F41C22 /* linear@2x.png in Resources */,
-				F455AB041670CE1E00F41C22 /* rotary@2x.png in Resources */,
 				F45EFDE5167C3C0400D60C46 /* thumbnail.png in Resources */,
+				F4DAC4F42EF5A73A0042EFCF /* Media.xcassets in Resources */,
 				F45EFDE6167C3C0400D60C46 /* thumbnail@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,10 +622,11 @@
 			inputPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/copy_words_window.stamp",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm copy-words\n";
+			shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm copy-words\n";
 		};
 		F49DA2BC217C698000D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -643,10 +640,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/update_build_number_wordclock.stamp",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm update-build-number\n";
+			shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm update-build-number\n";
 		};
 		F49DA2BD217C69D700D80EA5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -660,10 +658,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/update_build_number_window.stamp",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm update-build-number\n";
+			shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm update-build-number\n";
 		};
 		F4E8F512165FD0C30019987F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -673,10 +672,11 @@
 			inputPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/copy_words_wordclock.stamp",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/zsh -l";
-			shellScript = "pnpm copy-words\n";
+			shellScript = "export PATH=\"$PNPM_HOME:$HOME/Library/pnpm:/opt/homebrew/bin:/usr/local/bin:$PATH\"\npnpm copy-words\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -694,6 +694,8 @@
 				F44D120E165952B9003A3557 /* LogicParser.m in Sources */,
 				F44D120F165952B9003A3557 /* LogicParserStringUtil.m in Sources */,
 				F44D1210165952B9003A3557 /* WordClockWordsFileParser.m in Sources */,
+				F4F4854D2EF596500030410C /* WordClockRenderView.m in Sources */,
+				F4F4854E2EF596500030410C /* WordClockViewController.m in Sources */,
 				F44D1211165952B9003A3557 /* sin_and_cos_tables.c in Sources */,
 				F44D1212165952B9003A3557 /* Tween.m in Sources */,
 				F44D1213165952B9003A3557 /* TweenManager.m in Sources */,
@@ -705,8 +707,6 @@
 				F44D1218165952B9003A3557 /* WordClockWordManager.m in Sources */,
 				F44D1219165952B9003A3557 /* WordClockWordsManifestFileParser.m in Sources */,
 				F44D121A165952B9003A3557 /* culling.c in Sources */,
-				F44D121D16595331003A3557 /* WordClockGLViewController.m in Sources */,
-				F44D121E16595334003A3557 /* WordClockGLView.m in Sources */,
 				F44D12201659536F003A3557 /* Scene.m in Sources */,
 				F4324F7F1663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */,
 				F493A1FF166F6E1B00D43F6E /* NSView+Additions.m in Sources */,
@@ -714,6 +714,9 @@
 				F453416616745FF700D24819 /* GuidesViewLinear.m in Sources */,
 				F453416716745FF700D24819 /* GuidesViewRotary.m in Sources */,
 				F46D496D16A3E6BB002D0A71 /* NSString+Additions.m in Sources */,
+				F6A100041234567800000005 /* WordClockMetalRenderer.m in Sources */,
+				F6A100061234567800000007 /* WordClockMetalView.m in Sources */,
+				F6A100111234567800000012 /* WordClockShaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,15 +743,18 @@
 				F4E8F521165FD10A0019987F /* WordClockWordManager.m in Sources */,
 				F4E8F522165FD10A0019987F /* WordClockWordsManifestFileParser.m in Sources */,
 				F4E8F523165FD10A0019987F /* culling.c in Sources */,
-				F4E8F524165FD1120019987F /* WordClockGLViewController.m in Sources */,
-				F4E8F525165FD1120019987F /* WordClockGLView.m in Sources */,
 				F4E8F526165FD1120019987F /* Scene.m in Sources */,
 				F4324F801663BA5800EA4DC5 /* WordClockOptionsWindowController.m in Sources */,
 				F493A200166F6E1B00D43F6E /* NSView+Additions.m in Sources */,
 				F453416216745FF700D24819 /* GuidesView.m in Sources */,
 				F453416316745FF700D24819 /* GuidesViewLinear.m in Sources */,
+				F4F4854F2EF596500030410C /* WordClockRenderView.m in Sources */,
+				F4F485502EF596500030410C /* WordClockViewController.m in Sources */,
 				F453416416745FF700D24819 /* GuidesViewRotary.m in Sources */,
 				F46D496E16A3E6BB002D0A71 /* NSString+Additions.m in Sources */,
+				F6A100051234567800000006 /* WordClockMetalRenderer.m in Sources */,
+				F6A100071234567800000008 /* WordClockMetalView.m in Sources */,
+				F6A100121234567800000013 /* WordClockShaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,7 +839,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 7P37GZG7HN;
+				DEVELOPMENT_TEAM = 4YADBGMM88;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -851,8 +857,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonheys.Word-Clock-Window";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -873,19 +880,21 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7P37GZG7HN;
+				DEVELOPMENT_TEAM = 4YADBGMM88;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Word Clock Window/Word Clock Window-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Word Clock Window/Word Clock Window-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.simonheys.Word-Clock-Window";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -908,7 +917,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4YADBGMM88;
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7P37GZG7HN;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 4YADBGMM88;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -926,9 +935,10 @@
 				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simonheys.wordclock.mac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = saver;
@@ -951,20 +961,22 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4YADBGMM88;
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = 7P37GZG7HN;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 4YADBGMM88;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Word Clock Screen Saver/Word Clock-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Word Clock Screen Saver/Word Clock-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simonheys.wordclock.mac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = saver;

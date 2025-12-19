@@ -1,2 +1,1 @@
 pnpm lint-staged
-pnpm run --filter wordclock-js build

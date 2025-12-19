@@ -9,14 +9,14 @@
 #import "WordClockOptionsWindowController.h"
 
 #import "NSView+Additions.h"
-#import "WordClockGLView.h"
-#import "WordClockGLViewController.h"
 #import "WordClockPreferences.h"
+#import "WordClockRenderView.h"
+#import "WordClockViewController.h"
 #import "WordClockWordsManifestFileParser.h"
 
 @interface WordClockOptionsWindowController () <WordClockWordsManifestFileParserDelegate, NSWindowDelegate>
 @property(nonatomic, retain) WordClockWordsManifestFileParser *wordClockXmlFileParser;
-@property(nonatomic, retain) WordClockGLViewController *wordClockGLViewController;
+@property(nonatomic, retain) WordClockViewController *wordClockViewController;
 
 @property(nonatomic, retain) NSMenu *fontFamilyMenu;
 
@@ -34,7 +34,7 @@
 
 @property(assign) IBOutlet NSPopUpButton *fontFamilyPopUpButton;
 @property(assign) IBOutlet NSPopUpButton *fontVariantPopUpButton;
-@property (assign) IBOutlet NSButton *defaultsButton;
+@property(assign) IBOutlet NSButton *defaultsButton;
 @end
 
 @implementation WordClockOptionsWindowController
@@ -55,7 +55,7 @@
     } @catch (NSException *exception) {
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_wordClockGLViewController release];
+    [_wordClockViewController release];
     [_wordClockXmlFileParser release];
     [_fontFamilyMenu release];
     [super dealloc];
@@ -78,7 +78,7 @@
     [self.settingsContainer setAlphaValue:1.0f];
     [self.settingsContainer setSubViewsEnabled:YES];
 
-    self.wordClockGLViewController.tracksMouseEvents = YES;
+    self.wordClockViewController.tracksMouseEvents = YES;
 
     [self updateButtons];
     [self updateXmlFileMenu];
@@ -92,9 +92,6 @@
 
 - (void)windowDidLoad {
     DDLogVerbose(@"windowDidLoad");
-    
-    // restoring the defaults does not behave well at the moment
-    [self.defaultsButton removeFromSuperview];
 
     [self resetUI];
 
@@ -103,7 +100,7 @@
     [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCStyleKey options:NSKeyValueObservingOptionNew context:NULL];
     [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCFontNameKey options:NSKeyValueObservingOptionNew context:NULL];
 
-    DDLogVerbose(@"self.wordClockGLViewController:%@", self.wordClockGLViewController);
+    DDLogVerbose(@"self.wordClockViewController:%@", self.wordClockViewController);
     //    [self performSelector:@selector(setup) withObject:nil
     //    afterDelay:5.0f];
 
@@ -125,14 +122,14 @@
 - (void)didBecomeKey:(NSNotification *)notification {
     DDLogVerbose(@"didBecomeKey:%@", notification);
     if ([notification.object isEqual:self.window]) {
-        if (!self.wordClockGLViewController) {
-            self.wordClockGLViewController = [[WordClockGLViewController new] autorelease];
-            self.wordClockGLViewController.view = self.customView;
-            self.wordClockGLViewController.tracksMouseEvents = YES;
+        if (!self.wordClockViewController) {
+            self.wordClockViewController = [[WordClockViewController new] autorelease];
+            self.wordClockViewController.view = self.customView;
+            self.wordClockViewController.tracksMouseEvents = YES;
         }
-        [self.wordClockGLViewController startAnimation];
+        [self.wordClockViewController startAnimation];
     } else {
-        [self.wordClockGLViewController stopAnimation];
+        [self.wordClockViewController stopAnimation];
     }
 }
 
@@ -285,7 +282,7 @@
     NSMenu *newMenu;
     NSMenuItem *menuItem;
 
-    newMenu = [[[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Word Clock"] autorelease];
+    newMenu = [[[NSMenu alloc] initWithTitle:@"Word Clock"] autorelease];
 
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"Slow" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:WCTransitionStyleSlow];
@@ -302,12 +299,12 @@
     [self.transitionStylePopUpButton setMenu:newMenu];
     [self.transitionStylePopUpButton selectItem:[newMenu itemWithTag:[WordClockPreferences sharedInstance].transitionStyle]];
 
-    newMenu = [[[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Word Clock"] autorelease];
+    newMenu = [[[NSMenu alloc] initWithTitle:@"Word Clock"] autorelease];
 
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"never" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:0];
     [newMenu addItem:menuItem];
-    
+
     menuItem = [[[NSMenuItem alloc] initWithTitle:@"every 10 seconds" action:nil keyEquivalent:@""] autorelease];
     [menuItem setTag:10];
     [newMenu addItem:menuItem];
@@ -352,7 +349,7 @@
     int i;
 
     NSMutableArray *xmlFiles = [[self.wordClockXmlFileParser wordsFiles] mutableCopy];
-    NSMenu *newMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Word Clock"];
+    NSMenu *newMenu = [[NSMenu alloc] initWithTitle:@"Word Clock"];
 
     NSDictionary *xmlFileDictionary;
     NSString *sectionName;
@@ -482,8 +479,21 @@
 
 - (IBAction)defaultsSelected:(id)sender {
     DDLogVerbose(@"defaultsSelected");
-    [[WordClockPreferences sharedInstance] reset];
-    [self resetUI];
+
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert setMessageText:@"Reset to Defaults"];
+    [alert setInformativeText:@"Are you sure you want to reset all settings to their default values? This action cannot be undone."];
+    [alert addButtonWithTitle:@"Reset"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setAlertStyle:NSAlertStyleWarning];
+
+    [alert beginSheetModalForWindow:self.window
+                  completionHandler:^(NSModalResponse returnCode) {
+                      if (returnCode == NSAlertFirstButtonReturn) {
+                          [[WordClockPreferences sharedInstance] reset];
+                          [self resetUI];
+                      }
+                  }];
 }
 
 - (IBAction)textTapped:(id)sender {

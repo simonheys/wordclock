@@ -1,27 +1,26 @@
 {
   "name": "wordclock-macos",
-  "version": "1.1.7",
+  "version": "1.2.1",
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-    "build": "ts-node ./_scripts/build",
-    "update-build-number": "ts-node ./_scripts/update-build-number",
-    "code-format": "ts-node ./_scripts/code-format",
-    "copy-words": "ts-node ./_scripts/copy-words",
-    "package-dmg": "ts-node ./_scripts/package-dmg",
-    "make-dist": "ts-node ./_scripts/make-dist",
-    "settings": "ts-node ./_scripts/settings",
-    "update-copyright": "ts-node ./_scripts/update-copyright",
-    "notarize": "ts-node ./_scripts/notarize",
+    "build": "tsx ./_scripts/build",
+    "update-build-number": "tsx ./_scripts/update-build-number",
+    "format": "tsx ./_scripts/code-format",
+    "copy-words": "tsx ./_scripts/copy-words",
+    "package-dmg": "tsx ./_scripts/package-dmg",
+    "make-dist": "tsx ./_scripts/make-dist",
+    "settings": "tsx ./_scripts/settings",
+    "update-copyright": "tsx ./_scripts/update-copyright",
+    "notarize": "tsx ./_scripts/notarize",
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "@tsconfig/node16": "16.1.3",
-    "dotenv": "16.4.7",
-    "fs-extra": "11.2.0",
-    "glob": "11.0.0",
+    "dotenv": "17.2.3",
+    "fs-extra": "11.3.3",
+    "glob": "13.0.0",
     "moment": "2.30.1",
-    "ts-node": "10.9.2",
+    "tsx": "4.21.0",
     "xml2js": "0.6.2"
   }
 }

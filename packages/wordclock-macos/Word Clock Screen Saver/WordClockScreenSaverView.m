@@ -8,32 +8,31 @@
 
 #import "WordClockScreenSaverView.h"
 
-#import <OpenGL/OpenGL.h>
 #import <QuartzCore/QuartzCore.h>
 
 #import "WCFileFunctionLevelFormatter.h"
-#import "WordClockGLView.h"
-#import "WordClockGLViewController.h"
 #import "WordClockOptionsWindowController.h"
 #import "WordClockPreferences.h"
+#import "WordClockRenderView.h"
+#import "WordClockViewController.h"
 
 @interface WordClockScreenSaverView ()
-@property(nonatomic, retain) WordClockGLViewController *rootViewController;
-@property(nonatomic, retain) NSOpenGLContext *mGLContext;
+@property(nonatomic, retain) WordClockViewController *rootViewController;
 @property(nonatomic, retain) WordClockOptionsWindowController *optionsWindowController;
 @property(nonatomic, retain) NSTimer *transitionTimer;
 @property(nonatomic, retain) NSDate *dateOfLastTransition;
+@property(nonatomic, assign) BOOL observersRegistered;
 @end
 
 @implementation WordClockScreenSaverView
 
 @synthesize rootViewController = _rootViewController;
-@synthesize mGLContext = _mGLContext;
 @synthesize optionsWindowController = _optionsWindowController;
 @synthesize transitionTimer = _transitionTimer;
 @synthesize dateOfLastTransition = _dateOfLastTransition;
 
 - (void)dealloc {
+    [self removeObservers];
     @try {
         [[WordClockPreferences sharedInstance] removeObserver:self forKeyPath:WCStyleKey];
     } @catch (NSException *exception) {
@@ -65,7 +64,7 @@
 - (void)startAnimation {
     DDLogVerbose(@"startAnimation");
     if (!self.rootViewController) {
-        self.rootViewController = [[WordClockGLViewController new] autorelease];
+        self.rootViewController = [[WordClockViewController new] autorelease];
         self.rootViewController.tracksMouseEvents = NO;
         self.rootViewController.view = self;
     }
@@ -75,14 +74,36 @@
             [self startTransitionTimer];
         }
     }
+    [self addObservers];
 
     [super startAnimation];
+}
+
+- (void)addObservers {
+    if (self.observersRegistered) {
+        return;
+    }
+    self.observersRegistered = YES;
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(onWillSleep:) name:NSWorkspaceWillSleepNotification object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreensaverWillStart:) name:@"com.apple.screensaver.willstart" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreensaverWillStop:) name:@"com.apple.screensaver.willstop" object:nil];
+}
+
+- (void)removeObservers {
+    if (!self.observersRegistered) {
+        return;
+    }
+    self.observersRegistered = NO;
+    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self name:NSWorkspaceWillSleepNotification object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.screensaver.willstart" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:@"com.apple.screensaver.willstop" object:nil];
 }
 
 - (void)stopAnimation {
     DDLogVerbose(@"stopAnimation");
     [self.rootViewController stopAnimation];
     [self stopTransitionTimer];
+    [self removeObservers];
     [super stopAnimation];
 }
 
@@ -136,6 +157,33 @@
             break;
     }
     [self.rootViewController startAnimation];
+}
+
+- (void)onWillSleep:(NSNotification *)notification {
+    DDLogVerbose(@"onWillSleep");
+    if ([self isAnimating]) {
+        [self stopAnimation];
+    }
+    if (@available(macOS 14.0, *)) {
+        exit(0);
+    }
+}
+
+- (void)onScreensaverWillStart:(NSNotification *)notification {
+    DDLogVerbose(@"onScreensaverWillStart");
+    if (![self isAnimating]) {
+        [self startAnimation];
+    }
+}
+
+- (void)onScreensaverWillStop:(NSNotification *)notification {
+    DDLogVerbose(@"onScreensaverWillStop");
+    if ([self isAnimating]) {
+        [self stopAnimation];
+    }
+    if (@available(macOS 14.0, *)) {
+        exit(0);
+    }
 }
 
 // ____________________________________________________________________________________________________

@@ -4,13 +4,12 @@
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-    "code-format": "ts-node ./_scripts/code-format",
+    "format": "tsx ./_scripts/code-format",
     "build": "echo 'No build script'",
     "test": "echo 'No tests'"
   },
   "devDependencies": {
-    "@tsconfig/node16": "16.1.3",
-    "glob": "11.0.0",
-    "ts-node": "10.9.2"
+    "glob": "13.0.0",
+    "tsx": "4.21.0"
   }
 }

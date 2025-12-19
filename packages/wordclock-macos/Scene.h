@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <OpenGL/OpenGL.h>
 
 @class WordClockWordManager;
 
@@ -19,7 +18,6 @@
 }
 
 - (void)setViewportRect:(NSRect)bounds;
-- (void)render;
 - (void)advanceTimeBy:(float)seconds;
 
 @property(nonatomic, retain) WordClockWordManager *wordClockWordManager;

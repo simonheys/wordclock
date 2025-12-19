@@ -12,6 +12,11 @@
 
 NSString *LogicParserOperators = @"!%&*()-+=|/<>";
 
+NSArray *LogicParserEqualityOperators;
+NSArray *LogicParserMathOperators;
+NSArray *LogicParserBooleanOperators;
+NSArray *LogicParserConversionOperators;
+
 @implementation LogicParser
 
 // ____________________________________________________________________________________________________
@@ -205,10 +210,10 @@ first allocation
     // because we repeatedly have a term starting "-"
     // and recursively subtract it from 0
     // a hack might just be to have a flag checking for this special case
-    if ([source characterAtIndex:0] == '-') {
+    if ([source length] > 0 && [source characterAtIndex:0] == '-') {
         return 0 - [self processTerm:[source substringFromIndex:1]];
     }
-    if ([source characterAtIndex:1] == '!') {
+    if ([source length] > 0 && [source characterAtIndex:0] == '!') {
         result = [self processTerm:[source substringFromIndex:1]];
         // invert result
         return result ? FALSE : TRUE;

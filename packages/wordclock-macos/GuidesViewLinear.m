@@ -8,9 +8,6 @@
 
 #import "GuidesViewLinear.h"
 
-#import <OpenGL/gl.h>
-
-#import "WordClockGLViewController.h"
 #import "WordClockPreferences.h"
 
 @interface GuidesViewLinear ()
@@ -21,64 +18,6 @@
 @end
 
 @implementation GuidesViewLinear
-
-- (void)drawGlView {
-    if (!(self.mouseInside || _dragging)) {
-        return;
-    }
-    NSSize size = [[NSScreen mainScreen] visibleFrame].size;
-    BOOL shouldDrawWithLightGuideColor = [self shouldDrawWithLightGuideColor];
-
-    glPushMatrix();
-    glTranslatef(-(0.5f + roundf(size.width * 0.5f)), -(0.5f + roundf(size.height * 0.5f)), 0);
-
-    CGFloat l = [WordClockPreferences sharedInstance].linearMarginLeft;
-    CGFloat r = size.width - [WordClockPreferences sharedInstance].linearMarginRight;
-    CGFloat t = [WordClockPreferences sharedInstance].linearMarginTop;
-    CGFloat b = size.height - [WordClockPreferences sharedInstance].linearMarginBottom;
-
-    glDisable(GL_MULTISAMPLE);
-
-    if (shouldDrawWithLightGuideColor) {
-        glColor4f(0.8f, 0.8f, 0.8f, 0.3f);
-    } else {
-        glColor4f(0.2f, 0.2f, 0.2f, 0.3f);
-    }
-
-    glBegin(GL_LINES);
-    glVertex2f(l, 0);
-    glVertex2f(l, size.height);
-    glVertex2f(r, 0);
-    glVertex2f(r, size.height);
-
-    glVertex2f(0, t);
-    glVertex2f(size.width, t);
-    glVertex2f(0, b);
-    glVertex2f(size.width, b);
-
-    glEnd();
-
-    if (shouldDrawWithLightGuideColor) {
-        glColor4f(0.8f, 0.8f, 0.8f, 0.7f);
-    } else {
-        glColor4f(0.2f, 0.2f, 0.2f, 0.7f);
-    }
-
-    glBegin(GL_LINES);
-    glVertex2f(l, t);
-    glVertex2f(l, b);
-    glVertex2f(r, t);
-    glVertex2f(r, b);
-    glVertex2f(l, t);
-    glVertex2f(r, t);
-    glVertex2f(l, b);
-    glVertex2f(r, b);
-    glEnd();
-
-    glPopMatrix();
-
-    glEnable(GL_MULTISAMPLE);
-}
 
 // ____________________________________________________________________________________________________
 // margins
@@ -189,9 +128,9 @@
             // Lock focus and take all the dragged and mouse up events until we
             // receive a mouse up.
             //
-            NSEvent *newEvent = [[self.view window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+            NSEvent *newEvent = [[self.view window] nextEventMatchingMask:(NSEventMaskLeftMouseDragged | NSEventMaskLeftMouseUp)];
 
-            if ([newEvent type] == NSLeftMouseUp) {
+            if ([newEvent type] == NSEventTypeLeftMouseUp) {
                 [self updateWithMouseUpEvent:newEvent];
                 break;
             }

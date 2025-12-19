@@ -1,0 +1,36 @@
+{
+  "name": "@simonheys/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "base.js",
+    "react.js",
+    "next.js"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./react": "./react.js",
+    "./next": "./next.js"
+  },
+  "dependencies": {
+    "@eslint/js": "9.39.2",
+    "@next/eslint-plugin-next": "16.1.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-only-warn": "1.1.0",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "typescript-eslint": "8.50.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}

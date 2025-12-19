@@ -11,17 +11,22 @@
 #define kWCEaseOvershoot 1.70158f  // 2.0f;// 1.70158f;
 
 static inline float quad_ease_in(float t) {
-    return 1 * (t /= 1) * t + 0;
+    const float x = t;
+    return x * x;
 }
 
 static inline float quad_ease_out(float t) {
-    return -1 * (t /= 1) * (t - 2) + 0;
+    const float x = t;
+    return -1.0f * x * (x - 2.0f);
 }
 
 static inline float quad_ease_in_out(float t) {
-    if ((t *= 2.0f) < 1)
-        return 0.5f * t * t;
-    return -0.5f * ((--t) * (t - 2) - 1);
+    float x = t * 2.0f;
+    if (x < 1.0f) {
+        return 0.5f * x * x;
+    }
+    x -= 1.0f;
+    return -0.5f * (x * (x - 2.0f) - 1.0f);
 }
 
 /**
@@ -35,5 +40,7 @@ static inline float quad_ease_in_out(float t) {
  * @return		The correct value.
  */
 static inline float ease_out_back(float t) {
-    return 1.0f * ((t = t / 1.0f - 1.0f) * t * ((kWCEaseOvershoot + 1) * t + kWCEaseOvershoot) + 1.0f) + 0;
+    const float x = t - 1.0f;
+    const float s = kWCEaseOvershoot;
+    return x * x * ((s + 1.0f) * x + s) + 1.0f;
 }

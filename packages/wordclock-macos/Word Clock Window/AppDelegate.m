@@ -11,12 +11,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "WCFileFunctionLevelFormatter.h"
-#import "WordClockGLView.h"
-#import "WordClockGLViewController.h"
 #import "WordClockOptionsWindowController.h"
+#import "WordClockRenderView.h"
+#import "WordClockViewController.h"
 
 @interface AppDelegate ()
-@property(nonatomic, retain) WordClockGLViewController *rootViewController;
+@property(nonatomic, retain) WordClockViewController *rootViewController;
 @property(nonatomic, retain) WordClockOptionsWindowController *optionsWindowController;
 @end
 
@@ -57,7 +57,7 @@
         return;
     }
     DDLogVerbose(@"creating");
-    self.rootViewController = [[WordClockGLViewController new] autorelease];
+    self.rootViewController = [[WordClockViewController new] autorelease];
     self.rootViewController.view = self.customView;
     self.rootViewController.userInteracitionEnabled = NO;
 

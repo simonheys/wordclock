@@ -1,35 +1,29 @@
 name: Test
 
 on:
-  push:
-    branches:
-      - main
-      - develop
   pull_request:
     branches:
       - main
       - develop
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [lts/*]
-
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          version: 9
-          run_install: false
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+          version: 10.26.0
+      - name: Use Node.js lts/*
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - name: Run tests
+          node-version: lts/*
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
+      - name: Test
         run: pnpm test

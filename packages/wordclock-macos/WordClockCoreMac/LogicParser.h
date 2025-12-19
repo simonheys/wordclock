@@ -7,12 +7,12 @@
 //
 
 #import "LogicParserStringUtil.h"
-//#import "NSLog.h"
+// #import "NSLog.h"
 
-NSArray *LogicParserEqualityOperators;
-NSArray *LogicParserMathOperators;
-NSArray *LogicParserBooleanOperators;
-NSArray *LogicParserConversionOperators;
+extern NSArray *LogicParserEqualityOperators;
+extern NSArray *LogicParserMathOperators;
+extern NSArray *LogicParserBooleanOperators;
+extern NSArray *LogicParserConversionOperators;
 
 @interface LogicParser : NSObject {
     NSInteger _day;

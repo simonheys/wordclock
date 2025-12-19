@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>Word Clock.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.simonheys.wordclock.mac</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>322</string>
+	<string>529</string>
 	<key>NSPrincipalClass</key>
 	<string>WordClockScreenSaverView</string>
 </dict>

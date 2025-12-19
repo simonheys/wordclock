@@ -23,12 +23,12 @@ typedef NS_ENUM(NSInteger, WCGuideType) { WCGuideTypeMarginLeft, WCGuideTypeMarg
 - (void)updateWithMouseUpEvent:(NSEvent *)theEvent;
 - (void)updateWithMouseDownEvent:(NSEvent *)theEvent;
 @property(NS_NONATOMIC_IOSONLY, readonly) BOOL shouldDrawWithLightGuideColor;
-- (void)drawGlView;
 - (void)mouseMoved:(NSEvent *)theEvent;
 - (void)mouseExited:(NSEvent *)theEvent;
 - (NSPoint)localPointForEvent:(NSEvent *)event;
 
 @property(nonatomic) BOOL mouseInside;
+@property(nonatomic, readonly) BOOL dragging;
 @property(nonatomic) CGFloat scale;
 @property(nonatomic, assign) NSView *view;
 
