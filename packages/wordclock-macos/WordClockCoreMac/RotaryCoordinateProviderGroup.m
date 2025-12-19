@@ -13,7 +13,6 @@
 
 const int kWCNumberOfFramesInRotationAnimation = 25;
 const float kWCWheelSpacing = 3.0f;
-// const float kWCEaseOvershoot = 1.70158f; // 2.0f;// 1.70158f;
 
 @interface RotaryCoordinateProviderGroup ()
 @property(nonatomic, retain) TweenManager *tweenManager;
@@ -139,8 +138,6 @@ const float kWCWheelSpacing = 3.0f;
 
 - (float)outsideRadius {
     float width;
-    // TODO this is a bit of a mouthful
-    // AND the wheel spacing isn't consistent with word spacing
 
     if (self.group.selectedIndex == -1) {
         return _radius;
@@ -150,7 +147,6 @@ const float kWCWheelSpacing = 3.0f;
     selectedWord = (self.group.word)[self.group.selectedIndex];
     width = self.group.selectedIndex == -1 ? 0 : selectedWord.unscaledSize.width;
 
-    // word.spaceSize.width
     return width < 2 ? _radius : _radius + width + selectedWord.spaceSize.width * _scaleFactor;
 }
 

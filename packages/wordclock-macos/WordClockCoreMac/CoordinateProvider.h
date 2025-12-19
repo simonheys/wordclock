@@ -6,8 +6,6 @@
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-// FIXME importing WordClockRenderView causes errors....why?
-// #import "WordClockRenderView.h"
 #import "WordClockCore.h"
 
 @class WordClockWordManager;

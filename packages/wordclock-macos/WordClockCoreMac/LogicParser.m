@@ -198,10 +198,7 @@ first allocation
         return [source intValue];
     }
 
-    // FIXME a minus sign causes infinite recursion at present
-    // because we repeatedly have a term starting "-"
-    // and recursively subtract it from 0
-    // a hack might just be to have a flag checking for this special case
+    // Treat leading '-' as unary minus to avoid recursive subtraction.
     if ([source length] > 0 && [source characterAtIndex:0] == '-') {
         return 0 - [self processTerm:[source substringFromIndex:1]];
     }
@@ -210,7 +207,6 @@ first allocation
         // invert result
         return result ? FALSE : TRUE;
     }
-    // TODO re-order these in terms of probability; 'seconds' is most frequent,
     // then minutes etc. swap out variable names here
     if ([source isEqualToString:@"else"]) {
         // 'else' is used as a convenient phrase for the xml, logically it's the
@@ -260,7 +256,6 @@ first allocation
         result = a + b;
     }
 	else if ( [operator isEqualToString:@"-"] ) {
-        // FIXME need to fix negative logic (cases with - sign) see above
         DDLogVerbose(@"MINUS! a=%@", @(a));
         if ([[LogicParserStringUtil trim:aString] length] == 0) {
             DDLogVerbose(@"DSDDASDS");

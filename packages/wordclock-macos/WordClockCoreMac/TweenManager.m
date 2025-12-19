@@ -43,6 +43,7 @@
 }
 
 - (void)addTween:(Tween *)tween {
+    // Display link updates run on a background thread; protect mutations from main-thread callers.
     @synchronized(self) {
         tween.tweenManager = self;
         [self.tweens addObject:tween];
@@ -86,6 +87,7 @@
 // we also remove objects here
 // so that this array can't be mutated while we are running
 - (void)update {
+    // Avoid concurrent mutation while the display link thread advances tweens.
     @synchronized(self) {
         Tween *tween;
         if ([self.tweensForRemoval count] > 0) {

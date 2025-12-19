@@ -27,3 +27,6 @@ Pods/
 
 # Claude AI
 .claude
+
+# Timestamped generated files
+*.timestamp-*.mjs

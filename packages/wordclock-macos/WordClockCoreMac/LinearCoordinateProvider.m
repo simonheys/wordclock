@@ -332,7 +332,6 @@ static inline CGRect CGRectFromArray(NSArray *a) {
         i++;
     }
 
-    // TODO a little ugly to set this here, but probably pretty reliable
     _leading = [WordClockPreferences sharedInstance].leading;
     _widthUsedInPreviousUpdate = -1;
     _heightUsedInPreviousUpdate = -1;
