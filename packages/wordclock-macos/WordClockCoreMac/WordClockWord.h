@@ -34,7 +34,6 @@
     BOOL _isSpace;
 
     NSFont *_font;
-    //	CGSize _baseFontSizeForCalculation;
     NSSize _unscaledSize;
     NSSize _size;
     NSSize _spaceSize;

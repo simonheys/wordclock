@@ -145,7 +145,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)setTracksMouseEvents:(BOOL)tracksMouseEvents {
     _tracksMouseEvents = tracksMouseEvents;
     if (_tracksMouseEvents) {
-        // NSTrackingAssumeInside because we're full screen at this point
         DDLogVerbose(@"adding tracking area:%@", NSStringFromRect([self.focusView visibleRect]));
         self.trackingArea = [[[NSTrackingArea alloc] initWithRect:[self.focusView visibleRect] options:NSTrackingInVisibleRect | NSTrackingMouseMoved | NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp | NSTrackingAssumeInside owner:self userInfo:nil] autorelease];
         [self.focusView addTrackingArea:self.trackingArea];
@@ -284,23 +283,10 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     // TODO check if new logic is needed...
     [self renderTextures];
 
-    // set background colour
-    /*
-    CGColorRef color = [[WordClockPreferences sharedInstance]
-    backgroundColour].CGColor; const CGFloat *components =
-    CGColorGetComponents(color); CGFloat red = components[0]; CGFloat green =
-    components[1]; CGFloat blue = components[2];
-  */
     [self updateBackgroundColor];
     [self updateGuidesView];
 
-    //	[[NSNotificationCenter defaultCenter]
-    //		postNotificationName:@"kWordClockRenderViewTexturesDidChangeNotification"
-    //		object:self
-    //	];
-
     [self.layout texturesDidChange];
-    //	[self drawView];
 }
 
 - (void)updateBackgroundColor {
@@ -428,7 +414,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     _rectsForCulling = malloc(_numberOfWords * sizeof(WordClockRectsForCulling));
 
     // layout should calculate all the vertices directly into this array
-    //	DDLogVerbose(@"&_vertices[0]:%d",&_vertices[0]);
     self.layout.vertices = _vertices;
     self.layout.rectsForCulling = _rectsForCulling;
 

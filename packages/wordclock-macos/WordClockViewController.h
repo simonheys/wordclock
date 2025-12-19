@@ -21,8 +21,6 @@
     WordClockWordManager *_wordClockWordManager;
     HudViewController *_hudViewController;
     WordClockWordsFileParser *_parser;
-    //	NSWindow *fullScreenWindow;
-    //	WordClockRenderView *fullScreenView;
     Scene *_scene;
     CFAbsoluteTime _renderTime;
 

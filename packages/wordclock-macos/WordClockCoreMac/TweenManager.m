@@ -51,10 +51,6 @@
 
 - (void)removeAllTweens {
     @synchronized(self) {
-        //        Tween *tween;
-        //        for ( tween in self.tweens ) {
-        //            [self removeTween:tween];
-        //        }
         [self.tweens removeAllObjects];
     }
 }
@@ -62,20 +58,15 @@
 - (void)removeTween:(Tween *)tween {
     @synchronized(self) {
         [self.tweensForRemoval addObject:tween];
-        //        [self.tweens removeObject:tween];
-        //        DDLogVerbose(@"self.tweens:%@",self.tweens);
     }
 }
 
 - (void)removeTweensWithTarget:(id)target {
     @synchronized(self) {
         Tween *tween;
-        //        NSMutableArray *tempCopy = [NSMutableArray
-        //        arrayWithArray:self.tweens];
         for (tween in self.tweens) {
             if (tween.target == target) {
                 [self removeTween:tween];
-                //                [self.tweens removeObject:tween];
             }
         }
     }
@@ -84,12 +75,9 @@
 - (void)removeTweensWithTarget:(id)target andKeyPath:(NSString *)keyPath {
     @synchronized(self) {
         Tween *tween;
-        //        NSMutableArray *tempCopy = [NSMutableArray
-        //        arrayWithArray:self.tweens];
         for (tween in self.tweens) {
             if (tween.target == target && [tween.keyPath isEqualToString:keyPath]) {
                 [self removeTween:tween];
-                //                [self.tweens removeObject:tween];
             }
         }
     }
@@ -101,7 +89,6 @@
     @synchronized(self) {
         Tween *tween;
         if ([self.tweensForRemoval count] > 0) {
-            //            DDLogVerbose(@"removing…");
             for (tween in self.tweensForRemoval) {
                 [self.tweens removeObject:tween];
             }

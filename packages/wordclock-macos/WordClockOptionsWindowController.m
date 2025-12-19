@@ -101,8 +101,6 @@
     [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCFontNameKey options:NSKeyValueObservingOptionNew context:NULL];
 
     DDLogVerbose(@"self.wordClockViewController:%@", self.wordClockViewController);
-    //    [self performSelector:@selector(setup) withObject:nil
-    //    afterDelay:5.0f];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeKey:) name:NSWindowDidBecomeKeyNotification object:nil];
 
@@ -342,8 +340,6 @@
 }
 
 - (void)wordClockWordsManifestFileParserDidCompleteParsingManifest:(WordClockWordsManifestFileParser *)parser {
-    //	[self.xmlFilePopUpButton addItemsWithTitles:[self.wordClockXmlFileParser
-    // xmlFiles]];
     DDLogVerbose(@"wordClockWordsManifestFileParserDidCompleteParsingManifest");
 
     int i;
@@ -376,7 +372,6 @@
         fileName = [xmlFileDictionary valueForKey:@"fileName"];
         sectionName = [xmlFileDictionary valueForKey:@"fileLanguageTitle"];
 
-        //		[newMenu addItemWithTitle:fileTitle];
         if (![sectionName isEqualToString:currentSectionName]) {
             if ([currentSectionName length] > 0) {
                 [newMenu addItem:[NSMenuItem separatorItem]];
@@ -401,72 +396,8 @@
     if (nil != selectedMenuItem) {
         [self.xmlFilePopUpButton selectItem:selectedMenuItem];
     }
-    for (i = 0; i < [xmlFiles count]; i++) {
-        xmlFileDictionary = xmlFiles[i];
-        /*
-        sectionName = [xmlFileDictionary objectForKey:@"fileLanguageTitle"];
-
-        // Get the region dictionary with the region name, or create it if it
-        doesn't exist NSMutableDictionary *sectionDictionary =
-        sectionDictionaryWithNameInArray(sectionName, languageSections); if
-        (sectionDictionary == nil) { sectionDictionary = [[NSMutableDictionary
-        alloc] initWithObjectsAndKeys:sectionName, @"SectionName",
-        [NSMutableArray array], @"Files", nil]; [languageSections
-        addObject:sectionDictionary]; [sectionDictionary release];
-        }
-
-        files = [sectionDictionary objectForKey:@"Files"];
-        */
-
-        fileTitle = [xmlFileDictionary valueForKey:@"fileTitle"];
-        fileName = [xmlFileDictionary valueForKey:@"fileName"];
-
-        NSDictionary *fileDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:fileTitle, @"fileTitle", fileName, @"fileName", nil];
-        //		[files addObject:fileDictionary];
-
-        if ([fileName isEqualToString:currentXmlFile]) {
-            //			self.currentFile = fileDictionary;
-        }
-
-        [fileDictionary release];
-    }
-
     [self.xmlFilePopUpButton setEnabled:YES];
     self.wordClockXmlFileParser = nil;
-
-    /*
-    // Sort the sections
-    NSSortDescriptor *sortDescriptor;
-    NSArray *sortDescriptors;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"SectionName"
-    ascending:YES]; sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    [languageSections sortUsingDescriptors:sortDescriptors];
-    [sortDescriptor release];
-
-    // Find the index of current selection
-
-    NSDictionary *section;
-
-    for ( i = 0; i < [languageSections count]; i++ ) {
-        section = [languageSections objectAtIndex:i];
-        files = [section objectForKey:@"Files"];
-
-        for ( j = 0; j < [files count]; j++ ) {
-            //DDLogVerbose(@"value:%@",[files objectAtIndex:j]);
-            if ( [[files objectAtIndex:j] isEqual:currentFile] ) {
-                NSUInteger indexes[2];
-                indexes[0] = i;
-                indexes[1] = j;
-                self.currentIndexPath = [NSIndexPath
-    indexPathWithIndexes:indexes length:2]; break;
-            }
-        }
-    }
-
-    self.displayList = languageSections;
-    [languageSections release];
-    DDLogVerbose(@"setupDisplayList:done");
-    */
     [xmlFiles release];
     [newMenu release];
 }
