@@ -8,8 +8,6 @@
 
 #import "GuidesViewRotary.h"
 
-#import <OpenGL/gl.h>
-
 #import "WordClockPreferences.h"
 
 @interface GuidesViewRotary ()
@@ -19,54 +17,6 @@
 @end
 
 @implementation GuidesViewRotary
-
-- (void)drawGlView {
-    if (!(self.mouseInside || _dragging)) {
-        return;
-    }
-    NSSize size = [[NSScreen mainScreen] visibleFrame].size;
-    BOOL shouldDrawWithLightGuideColor = [self shouldDrawWithLightGuideColor];
-
-    glPushMatrix();
-
-    CGFloat h = [WordClockPreferences sharedInstance].rotaryTranslateX;
-    CGFloat v = [WordClockPreferences sharedInstance].rotaryTranslateY;
-
-    glDisable(GL_MULTISAMPLE);
-
-    if (shouldDrawWithLightGuideColor) {
-        glColor4f(0.8f, 0.8f, 0.8f, 0.3f);
-    } else {
-        glColor4f(0.2f, 0.2f, 0.2f, 0.3f);
-    }
-
-    glBegin(GL_LINES);
-    glVertex2f(h, -0.5f * size.height);
-    glVertex2f(h, 0.5f * size.height);
-
-    glVertex2f(-0.5f * size.width, v);
-    glVertex2f(0.5f * size.width, v);
-
-    glEnd();
-
-    if (shouldDrawWithLightGuideColor) {
-        glColor4f(0.8f, 0.8f, 0.8f, 0.7f);
-    } else {
-        glColor4f(0.2f, 0.2f, 0.2f, 0.7f);
-    }
-
-    CGFloat r = 100.0f * [WordClockPreferences sharedInstance].rotaryScale;
-
-    glEnable(GL_MULTISAMPLE);
-    glTranslatef(h, v, 0);
-    glBegin(GL_LINE_STRIP);
-    for (int i = 0; i <= 360; i++) {
-        glVertex3f(sin(i * M_PI / 180) * r, cos(i * M_PI / 180) * r, 0);
-    }
-    glEnd();
-
-    glPopMatrix();
-}
 
 - (void)mouseExited:(NSEvent *)theEvent {
     self.mouseInside = NO;
@@ -153,9 +103,9 @@
             // Lock focus and take all the dragged and mouse up events until we
             // receive a mouse up.
             //
-            NSEvent *newEvent = [[self.view window] nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+            NSEvent *newEvent = [[self.view window] nextEventMatchingMask:(NSEventMaskLeftMouseDragged | NSEventMaskLeftMouseUp)];
 
-            if ([newEvent type] == NSLeftMouseUp) {
+            if ([newEvent type] == NSEventTypeLeftMouseUp) {
                 [self updateWithMouseUpEvent:newEvent];
                 break;
             }

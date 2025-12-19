@@ -1,5 +1,5 @@
 //
-//  WordClockGLViewController.h
+//  WordClockViewController.h
 //  WordClock macOS
 //
 //  Created by Simon Heys on 16/04/2011.
@@ -10,19 +10,19 @@
 
 #import "WordClockWordsFileParser.h"
 
-@class WordClockGLView;
+@class WordClockRenderView;
 @class HudViewController;
 @class Scene;
 @class WordClockWordManager;
 
-@interface WordClockGLViewController : NSViewController <WordClockWordsFileParserDelegate> {
+@interface WordClockViewController : NSViewController <WordClockWordsFileParserDelegate> {
    @private
-    WordClockGLView *_glView;
+    WordClockRenderView *_renderView;
     WordClockWordManager *_wordClockWordManager;
     HudViewController *_hudViewController;
     WordClockWordsFileParser *_parser;
     //	NSWindow *fullScreenWindow;
-    //	WordClockGLView *fullScreenView;
+    //	WordClockRenderView *fullScreenView;
     Scene *_scene;
     CFAbsoluteTime _renderTime;
 
@@ -36,7 +36,7 @@
 @property(nonatomic, retain) WordClockWordsFileParser *parser;
 @property(nonatomic, retain) Scene *scene;
 @property(nonatomic, assign) HudViewController *hudViewController;
-@property(nonatomic, retain, readonly) WordClockGLView *glView;
+@property(nonatomic, retain, readonly) WordClockRenderView *renderView;
 @property CFAbsoluteTime renderTime;
 @property BOOL isResizing;
 @property BOOL userInteracitionEnabled;

@@ -8,13 +8,12 @@
 
 #import <ScreenSaver/ScreenSaver.h>
 
-@class WordClockGLViewController;
+@class WordClockViewController;
 @class WordClockOptionsWindowController;
 
 @interface WordClockScreenSaverView : ScreenSaverView {
    @private
-    WordClockGLViewController *_rootViewController;
-    NSOpenGLContext *_mGLContext;
+    WordClockViewController *_rootViewController;
     WordClockOptionsWindowController *_optionsWindowController;
     NSTimer *_transitionTimer;
     NSDate *_dateOfLastTransition;

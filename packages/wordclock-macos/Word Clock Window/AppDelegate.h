@@ -8,12 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class WordClockGLViewController;
+@class WordClockViewController;
 @class WordClockOptionsWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
    @private
-    WordClockGLViewController *_rootViewController;
+    WordClockViewController *_rootViewController;
     WordClockOptionsWindowController *_optionsWindowController;
     NSWindow *_window;
     NSView *_customView;

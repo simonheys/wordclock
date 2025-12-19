@@ -133,7 +133,7 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
 // ____________________________________________________________________________________________________
 // orientation
 
-- (void)setTranslateX:(GLfloat)value {
+- (void)setTranslateX:(float)value {
     if (_isLinearSelected) {
         _linearTranslateX = value;
         _linear.translateX = value;
@@ -144,7 +144,7 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
     _translateX = value;
 }
 
-- (void)setTranslateY:(GLfloat)value {
+- (void)setTranslateY:(float)value {
     if (_isLinearSelected) {
         _linearTranslateY = value;
         _linear.translateY = value;
@@ -155,7 +155,7 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
     _translateY = value;
 }
 
-- (void)setScale:(GLfloat)value {
+- (void)setScale:(float)value {
     //	DDLogVerbose(@"setScale:%f",value);
     if (_isLinearSelected) {
         _linearScale = value;
@@ -279,14 +279,14 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
 }
 
 - (void)update {
-    GLfloat width, height;
+    float width, height;
 
-    GLfloat vx, vy;
-    GLfloat ox, oy;
-    GLfloat wvx;
-    GLfloat wvy;
-    GLfloat hvx;
-    GLfloat hvy;
+    float vx, vy;
+    float ox, oy;
+    float wvx;
+    float wvy;
+    float hvx;
+    float hvy;
 
     float a;
     float m;
@@ -339,7 +339,7 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
         }
     }
 
-    // GLfloat *offset = _vertices;
+    // float *offset = _vertices;
 
     uint offset = 0;
     // uint cullingoffset = 0;

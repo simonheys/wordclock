@@ -14,7 +14,7 @@
 extern float _sinTable[SIN_TABLE_SIZE];
 extern float _cosTable[SIN_TABLE_SIZE];
 
-void buildSinAndCosTables();
+void buildSinAndCosTables(void);
 
 static inline float getSinFromTable(float d) {
     return _sinTable[(int)(d * 651.8986469f) & SIN_TABLE_BITMASK];

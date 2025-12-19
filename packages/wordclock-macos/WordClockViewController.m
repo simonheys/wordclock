@@ -1,30 +1,32 @@
 //
-//  WordClockGLViewController.m
+//  WordClockViewController.m
 //  WordClock macOS
 //
 //  Created by Simon Heys on 16/04/2011.
 //  Copyright (c) Studio Heys Limited. All rights reserved.
 //
 
-#import "WordClockGLViewController.h"
+#import "WordClockViewController.h"
 
 #import "GuidesView.h"
 #import "Scene.h"
 #import "TweenManager.h"
-#import "WordClockGLView.h"
+#import "WordClockMetalView.h"
 #import "WordClockPreferences.h"
+#import "WordClockRenderView.h"
 #import "WordClockWordManager.h"
 
-@interface WordClockGLViewController ()
-@property(nonatomic, retain) WordClockGLView *glView;
+@interface WordClockViewController ()
+@property(nonatomic, retain) WordClockRenderView *renderView;
+@property(nonatomic, retain) WordClockMetalView *metalView;
 @property(nonatomic, retain) WordClockWordManager *wordClockWordManager;
 - (void)updateFromPreferences;
 @property(NS_NONATOMIC_IOSONLY, readonly) NSRect resizeRect;
 @end
 
-@implementation WordClockGLViewController
+@implementation WordClockViewController
 
-@synthesize glView = _glView;
+@synthesize renderView = _renderView;
 @synthesize wordClockWordManager = _wordClockWordManager;
 @synthesize parser = _parser;
 @synthesize scene = _scene;
@@ -44,7 +46,11 @@
     }
     [_parser release];
     [_scene release];
-    [_glView release];
+    if (_metalView) {
+        [_metalView removeFromSuperview];
+    }
+    [_renderView release];
+    [_metalView release];
     [super dealloc];
 }
 
@@ -81,17 +87,17 @@
     DDLogVerbose(@"startAnimation");
 #ifdef SCREENSAVER
     if (!_isAnimating) {
-        if (nil != self.glView) {
-            [[self glView] reshape];
-            [[self glView] startAnimation];
+        if (nil != self.renderView) {
+            [[self renderView] reshape];
+            [[self renderView] startAnimation];
         }
         _isAnimating = YES;
     }
 #else
     if (!_isAnimating && ![NSApp isHidden]) {
-        if (nil != self.glView) {
+        if (nil != self.renderView) {
             DDLogVerbose(@"doing it");
-            [[self glView] startAnimation];
+            [[self renderView] startAnimation];
         }
         _isAnimating = YES;
     } else {
@@ -103,8 +109,8 @@
 - (void)stopAnimation {
     DDLogVerbose(@"stopAnimation");
     if (_isAnimating) {
-        if (nil != self.glView) {
-            [self.glView stopAnimation];
+        if (nil != self.renderView) {
+            [self.renderView stopAnimation];
         }
         _isAnimating = NO;
     }
@@ -115,11 +121,17 @@
 
 - (void)updateFromPreferences {
     DDLogVerbose(@"updateFromPreferences");
-    if (nil != _glView) {
-        [self.glView stopAnimation];
+    if (nil != _renderView) {
+        [self.renderView stopAnimation];
+    }
+    if (nil != _metalView) {
+        self.renderView.metalView = nil;
+        [_metalView removeFromSuperview];
+        [_metalView release];
+        _metalView = nil;
     }
     self.scene = nil;
-    self.glView = nil;
+    self.renderView = nil;
     self.parser = [[[WordClockWordsFileParser alloc] init] autorelease];
     [self.parser setDelegate:self];
 
@@ -139,17 +151,25 @@
 
 - (void)wordClockWordsFileParserDidCompleteParsing:(WordClockWordsFileParser *)logicParser {
     DDLogVerbose(@"wordClockWordsFileParserDidCompleteParsing");
-    self.glView = [[[WordClockGLView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.renderView = [[[WordClockRenderView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.metalView = [[[WordClockMetalView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.renderView.metalView = self.metalView;
     self.scene = [[Scene new] autorelease];
-    self.scene.wordClockWordManager = self.glView.wordClockWordManager;
-    self.glView.controller = self;
-    self.glView.focusView = self.view;
-    [self.glView setLogic:logicParser.logic label:logicParser.label];
-    [self.glView updateFromPreferences];
-    [self.glView reshape];
-    self.glView.tracksMouseEvents = self.tracksMouseEvents;
+    self.scene.wordClockWordManager = self.renderView.wordClockWordManager;
+    self.renderView.controller = self;
+    self.renderView.focusView = self.view;
+    [self.renderView setLogic:logicParser.logic label:logicParser.label];
+    [self.renderView updateFromPreferences];
+    [self.renderView reshape];
+    self.renderView.tracksMouseEvents = self.tracksMouseEvents;
+
+    if (self.metalView && self.view) {
+        self.metalView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        self.metalView.hidden = NO;
+        [self.view addSubview:self.metalView positioned:NSWindowAbove relativeTo:nil];
+    }
     if (_isAnimating) {
-        [self.glView startAnimation];
+        [self.renderView startAnimation];
     }
     self.parser = nil;
     //	[self startAnimation];
@@ -157,7 +177,8 @@
 
 - (void)setTracksMouseEvents:(BOOL)tracksMouseEvents {
     _tracksMouseEvents = tracksMouseEvents;
-    self.glView.tracksMouseEvents = _tracksMouseEvents;
+    self.renderView.tracksMouseEvents = _tracksMouseEvents;
+    self.metalView.tracksMouseEvents = _tracksMouseEvents;
 }
 
 - (NSRect)resizeRect {

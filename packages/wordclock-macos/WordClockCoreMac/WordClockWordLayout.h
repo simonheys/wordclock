@@ -24,22 +24,22 @@ extern NSString *const kWordClockWordLayoutTargetOrientationVectorDidChangeNotif
    @private
     BOOL _isTweening;
     BOOL _isLinearSelected;
-    GLfloat *_vertices;
+    float *_vertices;
     WordClockRectsForCulling *_rectsForCulling;
     LinearCoordinateProvider *_linear;
     RotaryCoordinateProvider *_rotary;
     CoordinateProvider *tweenSnapshotCoordinateProvider;
     WCDeviceOrientation _currentOrientation;
     BOOL _needsOrientationUpdateNotification;
-    GLfloat _linearTranslateX;
-    GLfloat _linearTranslateY;
-    GLfloat _linearScale;
-    GLfloat _rotaryTranslateX;
-    GLfloat _rotaryTranslateY;
-    GLfloat _rotaryScale;
-    GLfloat _translateX;
-    GLfloat _translateY;
-    GLfloat _scale;
+    float _linearTranslateX;
+    float _linearTranslateY;
+    float _linearScale;
+    float _rotaryTranslateX;
+    float _rotaryTranslateY;
+    float _rotaryScale;
+    float _translateX;
+    float _translateY;
+    float _scale;
 
     Tween *_transitionTween;
     float _transitionTweenValue;
@@ -51,7 +51,7 @@ extern NSString *const kWordClockWordLayoutTargetOrientationVectorDidChangeNotif
 
 - (instancetype)initWithWordClockWordManager:(WordClockWordManager *)wordClockWordManager tweenManager:(TweenManager *)tweenManager;
 - (void)update;
-- (void)setTranslateX:(GLfloat)value;
+- (void)setTranslateX:(float)value;
 @property(NS_NONATOMIC_IOSONLY, getter=getTargetScale, readonly) float targetScale;
 @property(NS_NONATOMIC_IOSONLY, getter=getTargetTranslateX, readonly) float targetTranslateX;
 @property(NS_NONATOMIC_IOSONLY, getter=getTargetTranslateY, readonly) float targetTranslateY;
@@ -62,10 +62,10 @@ extern NSString *const kWordClockWordLayoutTargetOrientationVectorDidChangeNotif
 - (void)rotarySelected:(id)sender;
 - (void)texturesDidChange;
 
-@property GLfloat *vertices;
-@property(nonatomic) GLfloat scale;
-@property(nonatomic) GLfloat translateX;
-@property(nonatomic) GLfloat translateY;
+@property float *vertices;
+@property(nonatomic) float scale;
+@property(nonatomic) float translateX;
+@property(nonatomic) float translateY;
 @property BOOL isTweening;
 @property WordClockRectsForCulling *rectsForCulling;
 @property float transitionTweenValue;
