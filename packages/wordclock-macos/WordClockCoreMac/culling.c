@@ -273,7 +273,6 @@ int cull_rects(WordClockRectsForCulling *rects, int numberOfRects, CGRect rect, 
 	printf("__________sort by i:\r");
 #endif
 	
-	// TODO is this necessary?
 #ifdef DEBUG_CULL
 	for ( int i = top; i <= bottom; i++ ) {
 		printf("rect i:%d xl:%f xr:%f yt:%f yb:%f\n",rects[ i ].i,rects[ i ].xl, rects[ i ].xr, rects[i].yt, rects[i].yb);

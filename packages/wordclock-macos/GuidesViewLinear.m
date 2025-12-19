@@ -126,39 +126,37 @@
 }
 
 - (void)updateWithMouseDragEvent:(NSEvent *)theEvent {
-    @synchronized(self) {
-        if (!_dragging) {
-            return;
-        }
-        NSPoint localPoint = [self localPointForEvent:theEvent];
-        CGFloat scale = [self scale];
+    if (!_dragging) {
+        return;
+    }
+    NSPoint localPoint = [self localPointForEvent:theEvent];
+    CGFloat scale = [self scale];
 
-        if (!NSPointInRect(localPoint, [self.view bounds])) {
-            return;
-        }
+    if (!NSPointInRect(localPoint, [self.view bounds])) {
+        return;
+    }
 
-        switch (_draggingGuideType) {
-            case WCGuideTypeMarginLeft:
-                [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (localPoint.x + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginRight:
-                [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (localPoint.x + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginTop:
-                [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (localPoint.y + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginBottom:
-                [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (localPoint.y + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginAll:
-                [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (localPoint.x + _draggingOffsetLeft) / scale);
-                [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (localPoint.x + _draggingOffsetRight) / scale);
-                [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (localPoint.y + _draggingOffsetTop) / scale);
-                [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (localPoint.y + _draggingOffsetBottom) / scale);
-                break;
-            default:
-                break;
-        }
+    switch (_draggingGuideType) {
+        case WCGuideTypeMarginLeft:
+            [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (localPoint.x + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginRight:
+            [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (localPoint.x + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginTop:
+            [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (localPoint.y + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginBottom:
+            [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (localPoint.y + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginAll:
+            [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (localPoint.x + _draggingOffsetLeft) / scale);
+            [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (localPoint.x + _draggingOffsetRight) / scale);
+            [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (localPoint.y + _draggingOffsetTop) / scale);
+            [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (localPoint.y + _draggingOffsetBottom) / scale);
+            break;
+        default:
+            break;
     }
 }
 

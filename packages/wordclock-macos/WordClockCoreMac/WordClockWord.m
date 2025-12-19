@@ -305,7 +305,6 @@
     if (_colours == 0) {
         return;
     }
-    // TODO should set these properly here
     NSColor *color;
     if (_highlighted) {
         color = [WordClockPreferences sharedInstance].highlightColour;

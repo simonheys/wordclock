@@ -91,29 +91,27 @@
 }
 
 - (void)updateWithMouseDragEvent:(NSEvent *)theEvent {
-    @synchronized(self) {
-        if (!_dragging) {
-            return;
-        }
-        NSPoint localPoint = [self localPointForEvent:theEvent];
-        CGFloat scale = [self scale];
-        CGFloat length = [self radiusForEvent:theEvent];
+    if (!_dragging) {
+        return;
+    }
+    NSPoint localPoint = [self localPointForEvent:theEvent];
+    CGFloat scale = [self scale];
+    CGFloat length = [self radiusForEvent:theEvent];
 
-        if (!NSPointInRect(localPoint, [self.view bounds])) {
-            return;
-        }
+    if (!NSPointInRect(localPoint, [self.view bounds])) {
+        return;
+    }
 
-        switch (_draggingGuideType) {
-            case WCGuideTypeRadius:
-                [WordClockPreferences sharedInstance].rotaryScale = ((length + _draggingOffset) / scale) / 100.0f;
-                break;
-            case WCGuideTypeMarginAll:
-                [WordClockPreferences sharedInstance].rotaryTranslateX = (localPoint.x + _draggingOffsetX) / scale;
-                [WordClockPreferences sharedInstance].rotaryTranslateY = (localPoint.y + _draggingOffsetY) / scale;
-                break;
-            default:
-                break;
-        }
+    switch (_draggingGuideType) {
+        case WCGuideTypeRadius:
+            [WordClockPreferences sharedInstance].rotaryScale = ((length + _draggingOffset) / scale) / 100.0f;
+            break;
+        case WCGuideTypeMarginAll:
+            [WordClockPreferences sharedInstance].rotaryTranslateX = (localPoint.x + _draggingOffsetX) / scale;
+            [WordClockPreferences sharedInstance].rotaryTranslateY = (localPoint.y + _draggingOffsetY) / scale;
+            break;
+        default:
+            break;
     }
 }
 

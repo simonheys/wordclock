@@ -1,6 +1,5 @@
 //
 //  WordClockShaders.metal
-//  Placeholder Metal shader set for WordClock migration.
 //
 
 #include <metal_stdlib>

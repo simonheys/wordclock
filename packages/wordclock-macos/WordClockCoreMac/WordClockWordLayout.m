@@ -154,7 +154,6 @@
     }
 }
 
-// TODO optimise; use notification when this changes
 
 - (WordClockOrientationVector)getTargetOrientationVector {
     if (_isLinearSelected) {
@@ -242,10 +241,6 @@
         [_rotary update];
     }
 
-    // if we've rotated, send notification
-    // we do it here because the updates above cause the vectors in each
-    // coordinateproficer to update
-
     if (_isTweening) {
         tweenFrom = self.tweenSnapshotCoordinateProvider;
         if (_isLinearSelected) {
@@ -272,7 +267,6 @@
     float ybl;
     float ybr;
 
-    // TODO inform touchableView of the current vector orientation
 
     NSInteger numberOfWords = self.wordClockWordManager.numberOfWords;
     WordClockWord *word;

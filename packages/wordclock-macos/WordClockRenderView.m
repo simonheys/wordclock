@@ -260,15 +260,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 // ____________________________________________________________________________________________________
 // preferences
 
-// TODO not sure this realy belongs here
 
 - (void)updateFromPreferences {
     DDLogVerbose(@"updateFromPreferences");
     WordClockWord *w;
 
-    // check what's changed and act accrodingly
-    // just kerning? just leading?
-    // typeface changes? etc.
 
     // update base size calulcations for all the words
     NSString *fontName = [WordClockPreferences sharedInstance].fontName;
@@ -280,7 +276,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     }
 
     [self deleteTextures];
-    // TODO check if new logic is needed...
     [self renderTextures];
 
     [self updateBackgroundColor];
@@ -432,22 +427,20 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 #pragma mark - guides
 
 - (void)updateGuidesView {
-    @synchronized(self) {
-        if (nil != self.guidesView || !self.tracksMouseEvents) {
-            self.guidesView = nil;
-        }
-
-        switch ([WordClockPreferences sharedInstance].style) {
-            case WCStyleLinear:
-                self.guidesView = [[[GuidesViewLinear alloc] init] autorelease];
-                break;
-            case WCStyleRotary:
-                self.guidesView = [[[GuidesViewRotary alloc] init] autorelease];
-                break;
-        }
-        self.guidesView.scale = [[self controller] scene].scale;
-        self.guidesView.view = self.focusView;
+    if (nil != self.guidesView || !self.tracksMouseEvents) {
+        self.guidesView = nil;
     }
+
+    switch ([WordClockPreferences sharedInstance].style) {
+        case WCStyleLinear:
+            self.guidesView = [[[GuidesViewLinear alloc] init] autorelease];
+            break;
+        case WCStyleRotary:
+            self.guidesView = [[[GuidesViewRotary alloc] init] autorelease];
+            break;
+    }
+    self.guidesView.scale = [[self controller] scene].scale;
+    self.guidesView.view = self.focusView;
 }
 
 - (void)updateSceneAndMetal {
