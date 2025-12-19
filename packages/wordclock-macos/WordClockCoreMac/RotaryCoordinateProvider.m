@@ -34,8 +34,6 @@
     self = [super initWithWordClockWordManager:wordClockWordManager tweenManager:tweenManager];
     if (self != nil) {
         [self updateLayout];
-        //		_orientationVector.vx = 1.0f;
-        //		_orientationVector.vy = 0.0f;
         [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCRotaryScaleKey options:NSKeyValueObservingOptionNew context:NULL];
         [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCRotaryTranslateXKey options:NSKeyValueObservingOptionNew context:NULL];
         [[WordClockPreferences sharedInstance] addObserver:self forKeyPath:WCRotaryTranslateYKey options:NSKeyValueObservingOptionNew context:NULL];
@@ -68,7 +66,6 @@
 // values to adjust when orientation changes
 - (void)setupForOrientation:(WCDeviceOrientation)orientation andBounds:(WCRect)screenBounds {
     // we have separate vectors for display and interaction
-    //	CGRect screenBounds = [[UIScreen mainScreen] bounds];
     float proportion = screenBounds.size.width / screenBounds.size.height;
     switch (orientation) {
         case WCDeviceOrientationPortraitUpsideDown:
@@ -120,9 +117,6 @@
     NSInteger numberOfWordsInGroup;
 
     float a;
-    // float currentRadius;
-
-    //	currentRadius = 30.0f;
     float groupAngle;
     float groupRadius;
     float baselineOffset;
@@ -156,27 +150,13 @@
                 vx = getSinFromTable(a);
                 vy = getCosFromTable(a);
                 baselineOffset = 1.0f * -word.unscaledSize.height * 0.55f;  // 0.55f seems to get x-height in centre
-                                                                            //				_coordinates[ coordinateIndex
-                                                                            //].x = _orientationScale * _scale * ( tx + vx *
-                                                                            // groupRadius + 0 *
-                                                                            // vx - baselineOffset * vy );
-                                                                            // _coordinates[ coordinateIndex
-                                                                            //].y = _orientationScale * _scale * ( ty + vy *
-                                                                            // groupRadius
-                                                                            //+ 0 * vy + baselineOffset * vx );
                 _coordinates[coordinateIndex].x = tx + _orientationScale * _scale * (vx * groupRadius + 0 * vx - baselineOffset * vy);
                 _coordinates[coordinateIndex].y = ty + _orientationScale * _scale * (vy * groupRadius + 0 * vy + baselineOffset * vx);
                 _coordinates[coordinateIndex].r = a - M_PI_2;
                 _coordinates[coordinateIndex].w = _orientationScale * _scale * (float)word.unscaledTextureWidth;
                 _coordinates[coordinateIndex].h = _orientationScale * _scale * (float)word.unscaledTextureHeight;
-                _coordinates[coordinateIndex].w_bounds = _orientationScale * _scale * word.unscaledSize.width;
-                _coordinates[coordinateIndex].h_bounds = _orientationScale * _scale * word.unscaledSize.height;
-                //				_coordinates[ i ].w = (float)
-                // word.textureWidth; 				_coordinates[ i ].h =
-                // (float) word.textureHeight;
-
-                //				DDLogVerbose(@"label:%@ w:%f h:%f",[word
-                // label],word.unscaledTextureWidth,word.unscaledTextureHeight);
+                _coordinates[coordinateIndex].wBounds = _orientationScale * _scale * word.unscaledSize.width;
+                _coordinates[coordinateIndex].hBounds = _orientationScale * _scale * word.unscaledSize.height;
                 coordinateIndex++;
             }
             wordIndexInGroup++;
@@ -214,8 +194,8 @@
         _coordinates[i].y = 0;  // 240.0 + (float) rand() * 240.0f / RAND_MAX;
         _coordinates[i].w = (float)word.unscaledTextureWidth;
         _coordinates[i].h = (float)word.unscaledTextureHeight;
-        _coordinates[i].w_bounds = word.unscaledSize.width;
-        _coordinates[i].h_bounds = word.unscaledSize.height;
+        _coordinates[i].wBounds = word.unscaledSize.width;
+        _coordinates[i].hBounds = word.unscaledSize.height;
         _coordinates[i].r = 0.0f;
         i++;
     }

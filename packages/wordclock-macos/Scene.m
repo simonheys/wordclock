@@ -35,7 +35,6 @@
 }
 
 - (void)advanceTimeBy:(float)seconds {
-    //	DDLogVerbose(@"advance time by:");
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSCalendarUnit unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday;
     NSDate *date = [NSDate date];
@@ -64,10 +63,8 @@
         [LogicParser sharedInstance].minute = minute;
         [LogicParser sharedInstance].second = second;
         [LogicParser sharedInstance].day = [dateComponents weekday] - 1;  //-1 for compatibility with flash d.getDay();
-        // DDLogVerbose(@"day:%d",[LogicParser sharedInstance].day);
-        [LogicParser sharedInstance].date = [dateComponents day];         // d.getDate();
+        [LogicParser sharedInstance].date = [dateComponents day];
         [LogicParser sharedInstance].month = [dateComponents month] - 1;  //-1 for compatibility with flash d.getMonth();
-        //[(WordClockRenderView *)self.view highlightForCurrentTime];
         [self.wordClockWordManager highlightForCurrentTime];
         _previousSecond = second;
     }

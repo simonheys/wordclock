@@ -33,8 +33,6 @@ static inline CGRect CGRectFromArray(NSArray *a) {
 {
     self = [super initWithWordClockWordManager:wordClockWordManager tweenManager:tweenManager];
     if (self != nil) {
-        //		self.width = 320.0f;
-        //		self.height = 480.0f;
         _wordScale = 1.0f;
         _widthUsedInPreviousUpdate = -1;
         _heightUsedInPreviousUpdate = -1;
@@ -81,8 +79,6 @@ static inline CGRect CGRectFromArray(NSArray *a) {
 
 - (void)setupForDefaultOrientation {
     [self updateLayout];
-    //	[self setupForOrientation:WCDeviceOrientationPortrait
-    // andBounds:WCRectMake(0,0,400,400)];
 }
 
 - (void)updateLayout {
@@ -93,8 +89,6 @@ static inline CGRect CGRectFromArray(NSArray *a) {
 
 // values to adjust when orientation changes
 - (void)setupForOrientation:(WCDeviceOrientation)orientation andBounds:(WCRect)screenBounds {
-    // CGRect bounds = [UIScreen mainScreen].bounds;
-    //	CGRect screenBounds = [[UIScreen mainScreen] bounds];
     float w = screenBounds.size.width;
     float h = screenBounds.size.height;
     _x = screenBounds.origin.x;
@@ -167,11 +161,9 @@ static inline CGRect CGRectFromArray(NSArray *a) {
     x = left;
     y = top;
 
-    //	_tracking = [WordClockPreferences sharedInstance].tracking;
     _leading = [WordClockPreferences sharedInstance].leading;
 
     if (_width == _widthUsedInPreviousUpdate && _height == _heightUsedInPreviousUpdate) {
-        //	return;
     } else {
         _wordScale = [self computeScaleForRect:CGRectMake(0, 0, _width, _height)];
     }
@@ -183,12 +175,9 @@ static inline CGRect CGRectFromArray(NSArray *a) {
             for (word in self.wordClockWordManager.word) {
                 _coordinates[i].w = _scale * _wordScale * word.unscaledTextureWidth;
                 _coordinates[i].h = _scale * _wordScale * word.unscaledTextureHeight;
-                _coordinates[i].w_bounds = _scale * _wordScale * word.unscaledSize.width;
-                _coordinates[i].h_bounds = _scale * _wordScale * word.unscaledSize.height;
+                _coordinates[i].wBounds = _scale * _wordScale * word.unscaledSize.width;
+                _coordinates[i].hBounds = _scale * _wordScale * word.unscaledSize.height;
                 _coordinates[i].r = _rotation;
-                //		printf("w_bounds:%f\r",_wordScale * word.size.width);
-                //		printf("h_bounds:%f\r",_wordScale *
-                // word.sizeword.height);
 
                 if (x + _wordScale * word.unscaledSize.width > left + _width) {
                     x = left;
@@ -216,8 +205,8 @@ static inline CGRect CGRectFromArray(NSArray *a) {
             for (word in self.wordClockWordManager.word) {
                 _coordinates[i].w = _scale * _wordScale * word.unscaledTextureWidth;
                 _coordinates[i].h = _scale * _wordScale * word.unscaledTextureHeight;
-                _coordinates[i].w_bounds = _scale * _wordScale * word.unscaledSize.width;
-                _coordinates[i].h_bounds = _scale * _wordScale * word.unscaledSize.height;
+                _coordinates[i].wBounds = _scale * _wordScale * word.unscaledSize.width;
+                _coordinates[i].hBounds = _scale * _wordScale * word.unscaledSize.height;
                 _coordinates[i].r = _rotation;
 
                 if (x + _wordScale * word.unscaledSize.width > _width * 0.5f) {
@@ -254,8 +243,8 @@ static inline CGRect CGRectFromArray(NSArray *a) {
             for (word in self.wordClockWordManager.word) {
                 _coordinates[i].w = _scale * _wordScale * word.unscaledTextureWidth;
                 _coordinates[i].h = _scale * _wordScale * word.unscaledTextureHeight;
-                _coordinates[i].w_bounds = _scale * _wordScale * word.unscaledSize.width;
-                _coordinates[i].h_bounds = _scale * _wordScale * word.unscaledSize.height;
+                _coordinates[i].wBounds = _scale * _wordScale * word.unscaledSize.width;
+                _coordinates[i].hBounds = _scale * _wordScale * word.unscaledSize.height;
                 _coordinates[i].r = _rotation;
 
                 if (x + _wordScale * word.unscaledSize.width > _width * 0.5f) {
@@ -292,8 +281,8 @@ static inline CGRect CGRectFromArray(NSArray *a) {
             for (word in self.wordClockWordManager.word) {
                 _coordinates[i].w = _scale * _wordScale * word.unscaledTextureWidth;
                 _coordinates[i].h = _scale * _wordScale * word.unscaledTextureHeight;
-                _coordinates[i].w_bounds = _scale * _wordScale * word.unscaledSize.width;
-                _coordinates[i].h_bounds = _scale * _wordScale * word.unscaledSize.height;
+                _coordinates[i].wBounds = _scale * _wordScale * word.unscaledSize.width;
+                _coordinates[i].hBounds = _scale * _wordScale * word.unscaledSize.height;
                 _coordinates[i].r = _rotation;
 
                 if (x + _wordScale * word.unscaledSize.width > _width * 0.5f) {
@@ -337,14 +326,13 @@ static inline CGRect CGRectFromArray(NSArray *a) {
         _coordinates[i].y = 0;  //-_height*0.5f+(float) rand() * _height / RAND_MAX;
         _coordinates[i].w = (float)word.unscaledTextureWidth;
         _coordinates[i].h = (float)word.unscaledTextureHeight;
-        _coordinates[i].w_bounds = word.unscaledSize.width;
-        _coordinates[i].h_bounds = word.unscaledSize.height;
+        _coordinates[i].wBounds = word.unscaledSize.width;
+        _coordinates[i].hBounds = word.unscaledSize.height;
         _coordinates[i].r = 0.0f;
         i++;
     }
 
     // TODO a little ugly to set this here, but probably pretty reliable
-    //	_tracking = [WordClockPreferences sharedInstance].tracking;
     _leading = [WordClockPreferences sharedInstance].leading;
     _widthUsedInPreviousUpdate = -1;
     _heightUsedInPreviousUpdate = -1;
@@ -361,19 +349,13 @@ static inline CGRect CGRectFromArray(NSArray *a) {
     float s;
     float lineSpacing;
 
-    //	DDLogVerbose(@"doesScaleFit:%f inRect:%f x
-    //%f",scale,rect.size.width,rect.size.height);
-
     WordClockWord *word;
 
     x = 0;
     y = 0;
     lineSpacing = scale * kWordClockWordUnscaledFontSize * (1.0f + _leading);
     for (word in self.wordClockWordManager.word) {
-        //	s = [word sizeWithFont:font];
         s = scale * word.unscaledSize.width;
-        //		DDLogVerbose(@"scale:%f word.unscaledSize.width:%f
-        // word.spaceSize.width:%f",scale,word.unscaledSize.width,word.spaceSize.width);
         if (x + s > rect.size.width) {
             x = 0;
             y += lineSpacing;
@@ -385,18 +367,12 @@ static inline CGRect CGRectFromArray(NSArray *a) {
         x += scale * word.spaceSize.width;
     }
 
-    //	DDLogVerbose(@"YES:%f < %f",y,rect.size.height);
     return YES;
 }
 
 - (float)computeScaleForRect:(CGRect)rect {
-    //	DDLogVerbose(@"computeScaleForRect:%f x
-    //%f",rect.size.width,rect.size.height);
-    //		DDLogVerbose(@"_leading:%f",_leading);
-    //		DDLogVerbose(@"_tracking:%f",_tracking);
     float size = [self cachedScaleForRect:rect];
     if (size != -1) {
-        //		DDLogVerbose(@"returning cached size:%f",size);
         return size;
     }
 
@@ -434,12 +410,10 @@ static inline CGRect CGRectFromArray(NSArray *a) {
             done = YES;
         }
     }
-    //	DDLogVerbose(@"going with:%f",low);
     // go with the low one
 
     [self addCachedScaleForRect:rect size:low];
 
-    //	DDLogVerbose(@"computeScaleForRect=%f",low);
     return low;
 }
 
@@ -455,7 +429,6 @@ static inline CGRect CGRectFromArray(NSArray *a) {
 }
 
 - (void)addCachedScaleForRect:(CGRect)rect size:(float)size {
-    //	DDLogVerbose(@"cacheing rect:%@",ArrayFromCGRect(rect));
     [_sizeCache addObject:@(size)];
     [_rectCache addObject:ArrayFromCGRect(rect)];
 }

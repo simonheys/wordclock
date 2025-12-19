@@ -15,8 +15,6 @@
    @private
     NSMutableArray *_sizeCache;
     NSMutableArray *_rectCache;
-
-    //	float _tracking;
     float _leading;
 
     float _width;

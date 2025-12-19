@@ -24,7 +24,6 @@
 @synthesize tweenValue;
 
 - (void)dealloc {
-    //	DDLogVerbose(@"dealloc");
     [self.tweenManager removeTweensWithTarget:self];
     [_tweenManager release];
     @try {
@@ -45,8 +44,6 @@
 - (instancetype)initWithLabel:(NSString *)label tweenManager:(TweenManager *)tweenManager {
     self = [super init];
     if (self) {
-        //		DDLogVerbose(@"initWithLabel:%@ length:%d",label,[label
-        // length]);
         self.tweenManager = tweenManager;
         if ([label length] < 1) {
             _isSpace = YES;
@@ -120,14 +117,11 @@
         [_labelCharacterStringArray addObject:[_label substringWithRange:NSMakeRange(i, 1)]];
     }
 
-    // NSKernAttributeName
-
     NSSize result;
 
     // this will set the correct height
     NSDictionary *fontAttributes = @{NSFontAttributeName : _font};
     result = [_originalLabel sizeWithAttributes:fontAttributes];
-    //	result = [_originalLabel sizeWithFont:_font];
 
     result.width = 0;
 
@@ -162,8 +156,6 @@
     if (_isSpace) {
         return;
     }
-
-    // return;
 
     if (value != _highlighted || !animated) {
         _highlighted = value;
@@ -207,28 +199,6 @@
         }
     }
 }
-
-// ____________________________________________________________________________________________________
-// preview
-
-// this shoudl be exactly the same as the routine below
-/*
-- (void)renderInCurrentGraphicsContentAtPoint:(NSPoint)point
-{
-    NSString *c;
-    float t = _tracking * kWordClockWordUnscaledFontSize;
-    NSDictionary *fontAttributes = [NSDictionary dictionaryWithObject:_font
-forKey:NSFontAttributeName];
-
-    for ( c in _labelCharacterStringArray ) {
-//		[c drawAtPoint:point withFont:_font];
-//		point.x += [c sizeWithFont:_font].width;
-        [c drawAtPoint:point withAttributes:fontAttributes];
-        point.x += [c sizeWithAttributes:fontAttributes].width;
-        point.x += t;
-    }
-}
-*/
 
 // ____________________________________________________________________________________________________
 // gl texture
@@ -327,7 +297,6 @@ forKey:NSFontAttributeName];
 // colour
 
 - (void)setColourPointer:(float *)colourPointer {
-    //	DDLogVerbose(@"setColourPointer:%d",colourPointer);
     _colours = colourPointer;
     [self updateColour];
 }
@@ -355,8 +324,6 @@ forKey:NSFontAttributeName];
     CGFloat green = components[1];
     CGFloat blue = components[2];
     */
-    //	DDLogVerbose(@"_colours:%d",_colours);
-    //	DDLogVerbose(@"red:%d",red);
 
     self.colourComponentRed = red;
     self.colourComponentGreen = green;
@@ -408,15 +375,15 @@ forKey:NSFontAttributeName];
     if (!_colours) {
         return;
     }
-    uint r_int = (rgba & 0xff000000) >> 24;
-    uint g_int = (rgba & 0xff0000) >> 16;
-    uint b_int = (rgba & 0xff00) >> 8;
-    uint a_int = (rgba & 0xff);
+    uint rInt = (rgba & 0xff000000) >> 24;
+    uint gInt = (rgba & 0xff0000) >> 16;
+    uint bInt = (rgba & 0xff00) >> 8;
+    uint aInt = (rgba & 0xff);
 
-    float r = (float)r_int / 255;
-    float g = (float)g_int / 255;
-    float b = (float)b_int / 255;
-    float a = (float)a_int / 255;
+    float r = (float)rInt / 255;
+    float g = (float)gInt / 255;
+    float b = (float)bInt / 255;
+    float a = (float)aInt / 255;
 
     uint offset = 0;
     _colours[offset++] = r;

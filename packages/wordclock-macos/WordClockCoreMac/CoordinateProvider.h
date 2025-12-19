@@ -19,8 +19,8 @@ typedef struct _WordClockWordCoordinates {
     float w;
     float h;
     float r;
-    float w_bounds;
-    float h_bounds;
+    float wBounds;
+    float hBounds;
 } WordClockWordCoordinates;
 
 typedef struct _WordClockOrientationVector {

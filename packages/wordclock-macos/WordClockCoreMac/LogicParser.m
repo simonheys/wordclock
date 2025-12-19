@@ -93,8 +93,6 @@ first allocation
 }
 
 - (NSInteger)parse:(NSString *)source {
-    //	DDLogVerbose(@"------------------------");
-    //	DDLogVerbose(@"parse:<<<<%@>>>>",source);
     if (![LogicParserStringUtil checkBalancedBraces:source]) {
         DDLogVerbose(@"Syntax Error: mismatching braces: %@", source);
         return 0;
@@ -121,15 +119,12 @@ first allocation
     BOOL parsing;
     NSInteger result;
 
-    //	DDLogVerbose(@"term input:<%@>",source);
-
     parsing = YES;
 
     while (parsing) {
         // parse brackets
         if ([LogicParserStringUtil containsBraces:source]) {
             terms = [LogicParserStringUtil extractStringContainedInOutermostBraces:source];
-            //			DDLogVerbose(@"extracted braces:%@",terms);
             source = [NSString stringWithFormat:@"%@%@%@", terms[0], [self term:terms[1]], terms[2]];
         } else {
             // parse math operators
@@ -188,7 +183,6 @@ first allocation
             }
         }
     }
-    //	DDLogVerbose(@"term output:<%@>",source);
     return source;
 }
 
@@ -197,12 +191,10 @@ first allocation
 
 // check for var names, - and !
 - (NSInteger)processTerm:(NSString *)source {
-    //	DDLogVerbose(@"processTerm:%@",source);
     NSInteger result;
     source = [LogicParserStringUtil trim:source];  // StringUtils.trim(source);
 
     if ([source length] == 1) {
-        //		DDLogVerbose(@"returning:%d",[source intValue]);
         return [source intValue];
     }
 
@@ -229,7 +221,6 @@ first allocation
     } else if ([source isEqualToString:@"true"]) {
         return TRUE;
     } else if ([source isEqualToString:@"day"]) {
-        //		DDLogVerbose(@"returning day:%d",_day);
         return _day;
     } else if ([source isEqualToString:@"daystartingmonday"]) {
         return _daystartingmonday;
@@ -238,7 +229,6 @@ first allocation
     } else if ([source isEqualToString:@"month"]) {
         return _month;
     } else if ([source isEqualToString:@"hour"]) {
-        //		DDLogVerbose(@"returning hour:%d",_hour);
         return _hour;
     } else if ([source isEqualToString:@"twentyfourhour"]) {
         return _twentyfourhour;
@@ -247,7 +237,6 @@ first allocation
     } else if ([source isEqualToString:@"second"]) {
         return _second;
     }
-    //	DDLogVerbose(@"returning:%d",[source intValue]);
     return [source intValue];
 }
 
@@ -323,7 +312,6 @@ first allocation
 
 // 0 for Sunday, 1 for Monday, and so on
 - (void)setDay:(NSInteger)value {
-    //	DDLogVerbose(@"SetDay!");
     _day = value;
     _daystartingmonday = value - 1;
     if (_daystartingmonday < 0) {

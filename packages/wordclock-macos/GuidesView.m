@@ -46,9 +46,9 @@
 }
 
 - (NSPoint)localPointForEvent:(NSEvent *)event {
-    NSPoint event_location = [event locationInWindow];
-    NSPoint local_point = [self.view convertPoint:event_location fromView:nil];
-    return NSMakePoint(local_point.x, self.view.bounds.size.height - local_point.y);
+    NSPoint eventLocation = [event locationInWindow];
+    NSPoint localPoint = [self.view convertPoint:eventLocation fromView:nil];
+    return NSMakePoint(localPoint.x, self.view.bounds.size.height - localPoint.y);
 }
 
 @end

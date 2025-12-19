@@ -54,12 +54,6 @@
     [super dealloc];
 }
 
-//- (void)loadView
-//{
-//    DDLogVerbose(@"loadView");
-//    [super loadView];
-//}
-
 - (void)setView:(NSView *)view {
     [super setView:view];
     [self updateFromPreferences];
@@ -72,10 +66,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:WCWordsFileKey]) {
-        //		[self stopAnimation];
         [self updateFromPreferences];
     } else if ([keyPath isEqual:WCFontNameKey]) {
-        //		[self stopAnimation];
         [self updateFromPreferences];
     }
 }
@@ -172,7 +164,6 @@
         [self.renderView startAnimation];
     }
     self.parser = nil;
-    //	[self startAnimation];
 }
 
 - (void)setTracksMouseEvents:(BOOL)tracksMouseEvents {
