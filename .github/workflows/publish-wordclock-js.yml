@@ -1,6 +1,7 @@
-name: Release @simonheys/wordclock
+name: Publish @simonheys/wordclock
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -16,17 +17,18 @@ on:
 
 jobs:
   release:
-    name: Release
+    name: Publish
     runs-on: ubuntu-latest
     permissions:
       contents: write
       issues: write
       pull-requests: write
       packages: write
+      id-token: write
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -37,10 +39,13 @@ jobs:
           run_install: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
+
+      - name: Upgrade npm CLI (OIDC support)
+        run: npm i -g npm@11.5.1
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -48,9 +53,8 @@ jobs:
       - name: Build package
         run: cd packages/wordclock-js && pnpm build
 
-      - name: Release
+      - name: Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HUSKY: 0
         run: cd packages/wordclock-js && npx semantic-release
