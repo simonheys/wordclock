@@ -56,7 +56,6 @@
 // highlight
 
 - (void)highlightForCurrentTime {
-    //	DDLogVerbose(@"highlightForCurrentTime");
     // go through each logic, find something that's true and rotate to it
     BOOL found = NO;
     NSInteger i;
@@ -72,17 +71,10 @@
 
     while (!found && i < [self.logic count]) {
         test = (i + offset) % [self.logic count];
-        //		DDLogVerbose(@"test:%d  logic:%@",test,[_logic
-        // objectAtIndex:test]);
-        // trace(_logic[test]);
-        // if ( _logic[test].length != 0 ){
         if ([(self.logic)[test] length] != 0) {
             // result = LogicParser.getInstance().parse(_logic[test]);
 
             result = [[LogicParser sharedInstance] parse:(self.logic)[test]];
-            //			DDLogVerbose(@"testing:%@  result:%@",[_logic
-            // objectAtIndex:test], result ? @"true" : @"false");
-            // trace("index:"+i+" testing '"+_logic[i]+"' result="+result);
             if (result == TRUE) {
                 found = YES;
                 [self highlightForIndex:test];
@@ -96,8 +88,6 @@
 // highlight
 
 - (void)highlightForIndex:(NSInteger)value {
-    //	DDLogVerbose(@"highlightForIndex:%d",value);
-
     if (value != self.selectedIndex) {
         if (self.selectedIndex != -1) {
             [(WordClockWord *)(self.word)[self.selectedIndex] setHighlighted:NO];
@@ -112,7 +102,6 @@
 // parent / child
 
 - (void)setParent:(WordClockWordGroup *)value {
-    //	DDLogVerbose(@"setParent:%@",value);
     // we'll need to implement this
     _parent = value;
     [_parent setChild:self];

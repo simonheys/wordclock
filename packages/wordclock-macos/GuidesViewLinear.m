@@ -54,14 +54,8 @@
 // mouse events
 
 - (void)mouseMoved:(NSEvent *)theEvent {
-    //	NSPoint event_location = [theEvent locationInWindow];
-    //	NSPoint local_point = [self.view convertPoint:event_location
-    // fromView:nil];
-    NSPoint local_point = [self localPointForEvent:theEvent];
-    //    DDLogVerbose(@"local_point:%@",NSStringFromPoint(local_point));
-    self.mouseInside = NSPointInRect(local_point, NSInsetRect([self marginAll], -MINIMUM_DRAG_DISTANCE, -MINIMUM_DRAG_DISTANCE));
-    //    DDLogVerbose(@"self.mouseInside:%@",self.mouseInside ? @"YES" :
-    //    @"NO");
+    NSPoint localPoint = [self localPointForEvent:theEvent];
+    self.mouseInside = NSPointInRect(localPoint, NSInsetRect([self marginAll], -MINIMUM_DRAG_DISTANCE, -MINIMUM_DRAG_DISTANCE));
 }
 
 - (void)mouseExited:(NSEvent *)theEvent {
@@ -73,56 +67,48 @@
         return;
     }
 
-    //	NSPoint event_location = [theEvent locationInWindow];
-    //	NSPoint local_point = [self.view convertPoint:event_location
-    // fromView:nil];
-    NSPoint local_point = [self localPointForEvent:theEvent];
+    NSPoint localPoint = [self localPointForEvent:theEvent];
     CGFloat draggingOffset;
 
-    DDLogVerbose(@"local_point:%@", NSStringFromPoint(local_point));
+    DDLogVerbose(@"localPoint:%@", NSStringFromPoint(localPoint));
     DDLogVerbose(@"bound:%@", NSStringFromRect([[self.view window] frame]));
 
-    draggingOffset = [self leftMarginPosition] - local_point.x;
-    //    DDLogVerbose(@"draggingOffset:%f",draggingOffset);
-    //    DDLogVerbose(@"fabs( draggingOffset ):%f",fabs( draggingOffset ));
+    draggingOffset = [self leftMarginPosition] - localPoint.x;
     if (fabs(draggingOffset) < MINIMUM_DRAG_DISTANCE) {
-        //       DDLogVerbose(@"DRAGGING LEFT");
         _dragging = YES;
         _draggingGuideType = WCGuideTypeMarginLeft;
         _draggingOffset = draggingOffset;
     } else {
-        draggingOffset = [self rightMarginPosition] - local_point.x;
+        draggingOffset = [self rightMarginPosition] - localPoint.x;
         if (fabs(draggingOffset) < MINIMUM_DRAG_DISTANCE) {
             _dragging = YES;
             _draggingGuideType = WCGuideTypeMarginRight;
             _draggingOffset = draggingOffset;
         } else {
-            draggingOffset = [self topMarginPosition] - local_point.y;
+            draggingOffset = [self topMarginPosition] - localPoint.y;
             if (fabs(draggingOffset) < MINIMUM_DRAG_DISTANCE) {
                 _dragging = YES;
                 _draggingGuideType = WCGuideTypeMarginTop;
                 _draggingOffset = draggingOffset;
             } else {
-                draggingOffset = [self bottomMarginPosition] - local_point.y;
+                draggingOffset = [self bottomMarginPosition] - localPoint.y;
                 if (fabs(draggingOffset) < MINIMUM_DRAG_DISTANCE) {
                     _dragging = YES;
                     _draggingGuideType = WCGuideTypeMarginBottom;
                     _draggingOffset = draggingOffset;
                 } else {
                     // drag the whole thing
-                    _draggingOffsetLeft = [self leftMarginPosition] - local_point.x;
-                    _draggingOffsetRight = [self rightMarginPosition] - local_point.x;
-                    _draggingOffsetTop = [self topMarginPosition] - local_point.y;
-                    _draggingOffsetBottom = [self bottomMarginPosition] - local_point.y;
+                    _draggingOffsetLeft = [self leftMarginPosition] - localPoint.x;
+                    _draggingOffsetRight = [self rightMarginPosition] - localPoint.x;
+                    _draggingOffsetTop = [self topMarginPosition] - localPoint.y;
+                    _draggingOffsetBottom = [self bottomMarginPosition] - localPoint.y;
                     _dragging = YES;
                     _draggingGuideType = WCGuideTypeMarginAll;
                 }
             }
         }
     }
-    if (!_dragging) {
-        //       [super mouseDown:theEvent];
-    } else {
+    if (_dragging) {
         while (_dragging) {
             //
             // Lock focus and take all the dragged and mouse up events until we
@@ -140,46 +126,42 @@
 }
 
 - (void)updateWithMouseDragEvent:(NSEvent *)theEvent {
-    @synchronized(self) {
-        if (!_dragging) {
-            return;
-        }
-        NSPoint local_point = [self localPointForEvent:theEvent];
-        CGFloat scale = [self scale];
+    if (!_dragging) {
+        return;
+    }
+    NSPoint localPoint = [self localPointForEvent:theEvent];
+    CGFloat scale = [self scale];
 
-        if (!NSPointInRect(local_point, [self.view bounds])) {
-            return;
-        }
+    if (!NSPointInRect(localPoint, [self.view bounds])) {
+        return;
+    }
 
-        switch (_draggingGuideType) {
-            case WCGuideTypeMarginLeft:
-                [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (local_point.x + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginRight:
-                [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (local_point.x + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginTop:
-                [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (local_point.y + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginBottom:
-                [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (local_point.y + _draggingOffset) / scale);
-                break;
-            case WCGuideTypeMarginAll:
-                [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (local_point.x + _draggingOffsetLeft) / scale);
-                [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (local_point.x + _draggingOffsetRight) / scale);
-                [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (local_point.y + _draggingOffsetTop) / scale);
-                [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (local_point.y + _draggingOffsetBottom) / scale);
-                break;
-            default:
-                break;
-        }
+    switch (_draggingGuideType) {
+        case WCGuideTypeMarginLeft:
+            [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (localPoint.x + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginRight:
+            [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (localPoint.x + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginTop:
+            [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (localPoint.y + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginBottom:
+            [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (localPoint.y + _draggingOffset) / scale);
+            break;
+        case WCGuideTypeMarginAll:
+            [WordClockPreferences sharedInstance].linearMarginLeft = MAX(0, (localPoint.x + _draggingOffsetLeft) / scale);
+            [WordClockPreferences sharedInstance].linearMarginRight = MAX(0, [[NSScreen mainScreen] visibleFrame].size.width - (localPoint.x + _draggingOffsetRight) / scale);
+            [WordClockPreferences sharedInstance].linearMarginTop = MAX(0, (localPoint.y + _draggingOffsetTop) / scale);
+            [WordClockPreferences sharedInstance].linearMarginBottom = MAX(0, [[NSScreen mainScreen] visibleFrame].size.height - (localPoint.y + _draggingOffsetBottom) / scale);
+            break;
+        default:
+            break;
     }
 }
 
 - (void)updateWithMouseUpEvent:(NSEvent *)theEvent {
-    //	DDLogVerbose(@"mouseUp");
     if (!_dragging) {
-        //        [super mouseUp:theEvent];
         return;
     }
     _dragging = NO;

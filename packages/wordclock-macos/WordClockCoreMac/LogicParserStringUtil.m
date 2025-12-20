@@ -24,9 +24,6 @@ NSString *LogicParserStringUtilOperators = @"!%&*()-+=|/<>";
     char c;
 
     leftOfBraces = [source substringToIndex:i - 1];
-    //	DDLogVerbose(@"leftOfBraces:%@",leftOfBraces);
-
-    //	c = [source characterAtIndex:i];
 
     while (count > 0 && i < [source length]) {
         c = [source characterAtIndex:i];
@@ -43,15 +40,11 @@ NSString *LogicParserStringUtilOperators = @"!%&*()-+=|/<>";
     } else {
         rightOfBraces = @"";
     }
-    //	DDLogVerbose(@"rightOfBraces:%@",rightOfBraces);
     insideBraces = [source substringWithRange:NSMakeRange(1 + firstBrace, i - 1 - (1 + firstBrace))];
-    //	DDLogVerbose(@"insideBraces:%@",insideBraces);
     return @[ leftOfBraces, insideBraces, rightOfBraces ];
 }
 
 + (int)scanForInstanceOf:(NSString *)source inArray:(NSArray *)arrayOfStrings {
-    //	DDLogVerbose(@"scanForInstanceOf:%@",source);
-    //	DDLogVerbose(@"inArray:%@",arrayOfStrings);
     for (int i = 0; i < [arrayOfStrings count]; i++) {
         if ([source rangeOfString:arrayOfStrings[i]].location != NSNotFound) {
             return i;
@@ -77,8 +70,6 @@ NSString *LogicParserStringUtilOperators = @"!%&*()-+=|/<>";
     leftOfPivot = [source substringToIndex:[source rangeOfString:pivot].location];
     // rightOfPivot = source.substr(source.indexOf(pivot)+pivot.length);
     rightOfPivot = [source substringFromIndex:[source rangeOfString:pivot].location + [pivot length]];
-    //	DDLogVerbose(@"leftOfPivot:%@",leftOfPivot);
-    //	DDLogVerbose(@"rightOfPivot:%@",rightOfPivot);
 
     // left term
     leftTerm = @"";
@@ -92,35 +83,23 @@ NSString *LogicParserStringUtilOperators = @"!%&*()-+=|/<>";
     }
 
     if ([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]].location != NSNotFound) {
-        //		if ( OPERATORS.indexOf(c) != -1 ) {
-        leftTerm = [leftOfPivot substringFromIndex:i + 1];  // .substr(i+1);
-        // beforeLeftTerm = leftOfPivot.substr(0,i+1);
+        leftTerm = [leftOfPivot substringFromIndex:i + 1];
         beforeLeftTerm = [leftOfPivot substringToIndex:i + 1];
     } else {
-        //		leftTerm = leftOfPivot.substr(i);
         leftTerm = [leftOfPivot substringFromIndex:i];
-        //		beforeLeftTerm = leftOfPivot.substr(0,i);
         beforeLeftTerm = [leftOfPivot substringToIndex:i];
     }
-    //	DDLogVerbose(@"leftTerm:%@",leftTerm);
-    //	DDLogVerbose(@"beforeLeftTerm:%@",beforeLeftTerm);
-
-    //	DDLogVerbose(@"rightOfPivot length:%d",[rightOfPivot length]);
-    //	DDLogVerbose(@"rightOfPivot:%@",rightOfPivot);
     // right term
     rightTerm = @"";
     if ([rightOfPivot length] > 0) {
         i = 0;
-        c = [rightOfPivot characterAtIndex:i];  //.substr(i,1);
-        //		while ( OPERATORS.indexOf(c) == -1 && i < rightOfPivot.length )
+        c = [rightOfPivot characterAtIndex:i];
         while (([LogicParserStringUtilOperators rangeOfString:[NSString stringWithFormat:@"%c", c]]).location == NSNotFound && i < [rightOfPivot length]) {
             i++;
             if (i < [rightOfPivot length]) {
                 c = [rightOfPivot characterAtIndex:i];
             }
         }
-        //		rightTerm = rightOfPivot.substr(0,i);
-        //		afterRightTerm = rightOfPivot.substr(i);
     }
 
     if (i < [rightOfPivot length]) {
@@ -130,10 +109,6 @@ NSString *LogicParserStringUtilOperators = @"!%&*()-+=|/<>";
         rightTerm = rightOfPivot;
         afterRightTerm = @"";
     }
-
-    //	DDLogVerbose(@"rightTerm:%@",rightTerm);
-    //	DDLogVerbose(@"afterRightTerm:%@",afterRightTerm);
-    // return [beforeLeftTerm,leftTerm,rightTerm,afterRightTerm];
 
     return @[ beforeLeftTerm, leftTerm, rightTerm, afterRightTerm ];
 }
@@ -151,7 +126,6 @@ NSString *LogicParserStringUtilOperators = @"!%&*()-+=|/<>";
         }
         i++;
     }
-    //	DDLogVerbose(@"countInstancesOf:%@ - %c = %d",source,instance,count);
     return count;
 }
 
@@ -217,7 +191,6 @@ void LogicParserStringUtilExtractStringContainedInOutermostBraces(char
     length = characterPtr - source;
     printf("left length:%d",length);
     strncpy(leftOfBraces, source, length); // not null terminated, so;
-//	(char *)(leftOfBraces + length) = '\0';
     while ( *characterPtr != '\0') {
         if ( *characterPtr == '(' )
             count++;

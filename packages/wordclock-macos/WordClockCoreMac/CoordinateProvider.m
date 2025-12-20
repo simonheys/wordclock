@@ -87,8 +87,6 @@
 
 - (void)update {
     // get words / groups from shared provider
-    // self.wordClockWordManager.group;
-
     // figure out where they all go
 }
 
@@ -114,8 +112,8 @@
         clone.coordinates[i].w = _coordinates[i].w;
         clone.coordinates[i].h = _coordinates[i].h;
         clone.coordinates[i].r = _coordinates[i].r;
-        clone.coordinates[i].w_bounds = _coordinates[i].w_bounds;
-        clone.coordinates[i].h_bounds = _coordinates[i].h_bounds;
+        clone.coordinates[i].wBounds = _coordinates[i].wBounds;
+        clone.coordinates[i].hBounds = _coordinates[i].hBounds;
     }
     clone.translateX = _translateX;
     clone.translateY = _translateY;

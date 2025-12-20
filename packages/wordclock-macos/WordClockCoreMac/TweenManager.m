@@ -43,6 +43,7 @@
 }
 
 - (void)addTween:(Tween *)tween {
+    // Display link updates run on a background thread; protect mutations from main-thread callers.
     @synchronized(self) {
         tween.tweenManager = self;
         [self.tweens addObject:tween];
@@ -51,10 +52,6 @@
 
 - (void)removeAllTweens {
     @synchronized(self) {
-        //        Tween *tween;
-        //        for ( tween in self.tweens ) {
-        //            [self removeTween:tween];
-        //        }
         [self.tweens removeAllObjects];
     }
 }
@@ -62,20 +59,15 @@
 - (void)removeTween:(Tween *)tween {
     @synchronized(self) {
         [self.tweensForRemoval addObject:tween];
-        //        [self.tweens removeObject:tween];
-        //        DDLogVerbose(@"self.tweens:%@",self.tweens);
     }
 }
 
 - (void)removeTweensWithTarget:(id)target {
     @synchronized(self) {
         Tween *tween;
-        //        NSMutableArray *tempCopy = [NSMutableArray
-        //        arrayWithArray:self.tweens];
         for (tween in self.tweens) {
             if (tween.target == target) {
                 [self removeTween:tween];
-                //                [self.tweens removeObject:tween];
             }
         }
     }
@@ -84,12 +76,9 @@
 - (void)removeTweensWithTarget:(id)target andKeyPath:(NSString *)keyPath {
     @synchronized(self) {
         Tween *tween;
-        //        NSMutableArray *tempCopy = [NSMutableArray
-        //        arrayWithArray:self.tweens];
         for (tween in self.tweens) {
             if (tween.target == target && [tween.keyPath isEqualToString:keyPath]) {
                 [self removeTween:tween];
-                //                [self.tweens removeObject:tween];
             }
         }
     }
@@ -98,10 +87,10 @@
 // we also remove objects here
 // so that this array can't be mutated while we are running
 - (void)update {
+    // Avoid concurrent mutation while the display link thread advances tweens.
     @synchronized(self) {
         Tween *tween;
         if ([self.tweensForRemoval count] > 0) {
-            //            DDLogVerbose(@"removing…");
             for (tween in self.tweensForRemoval) {
                 [self.tweens removeObject:tween];
             }

@@ -108,7 +108,6 @@ NSString *const kWordClockWordManagerLogicaAndLabelsWillChangeNotification = @"k
 // highlight
 
 - (void)highlightForCurrentTime {
-    //	DDLogVerbose(@"highlightForCurrentTime");
     for (WordClockWordGroup *group in self.group) {
         [group highlightForCurrentTime];
     }

@@ -21,17 +21,17 @@ typedef struct {
 } VSUniforms;
 
 static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat bottom, CGFloat top, CGFloat nearZ, CGFloat farZ) {
-    const float r_l = (float)(right - left);
-    const float t_b = (float)(top - bottom);
-    const float f_n = (float)(farZ - nearZ);
+    const float rL = (float)(right - left);
+    const float tB = (float)(top - bottom);
+    const float fN = (float)(farZ - nearZ);
 
     matrix_float4x4 m = matrix_identity_float4x4;
-    m.columns[0].x = 2.0f / r_l;
-    m.columns[1].y = 2.0f / t_b;
-    m.columns[2].z = 1.0f / f_n;
-    m.columns[3].x = -((float)(right + left) / r_l);
-    m.columns[3].y = -((float)(top + bottom) / t_b);
-    m.columns[3].z = -((float)nearZ / f_n);
+    m.columns[0].x = 2.0f / rL;
+    m.columns[1].y = 2.0f / tB;
+    m.columns[2].z = 1.0f / fN;
+    m.columns[3].x = -((float)(right + left) / rL);
+    m.columns[3].y = -((float)(top + bottom) / tB);
+    m.columns[3].z = -((float)nearZ / fN);
     return m;
 }
 

@@ -95,42 +95,6 @@
 }
 
 // ____________________________________________________________________________________________________
-// shake
-/*
-- (void)accelerometer:(UIAccelerometer *)accelerometer
-didAccelerate:(UIAcceleration *)acceleration
-{
-    UIAccelerationValue length, x, y, z;
-    _accelerometerValues[0] = acceleration.x * kFilteringFactor +
-_accelerometerValues[0] * (1.0 - kFilteringFactor); _accelerometerValues[1] =
-acceleration.y * kFilteringFactor + _accelerometerValues[1] * (1.0 -
-kFilteringFactor); _accelerometerValues[2] = acceleration.z * kFilteringFactor +
-_accelerometerValues[2] * (1.0 - kFilteringFactor); x = acceleration.x -
-_accelerometerValues[0]; y = acceleration.y - _accelerometerValues[0]; z =
-acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
-
-    if((length >= kEraseAccelerationThreshold)
-      && (CFAbsoluteTimeGetCurrent() > _lastShakeTime + kMinEraseInterval)) {
-        _lastShakeTime = CFAbsoluteTimeGetCurrent();
-
-        [self shake];
-    }
-}
-
-- (void)shake
-{
-    if ( _isLinearSelected ) {
-        [_linear shake];
-        [self tweenFromCoordinateProvider:_linear duration:1.0f];
-    }
-    else {
-        [_rotary shake];
-        [self tweenFromCoordinateProvider:_rotary duration:1.0f];
-    }
-
-}
-*/
-// ____________________________________________________________________________________________________
 // orientation
 
 - (void)setTranslateX:(float)value {
@@ -156,7 +120,6 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
 }
 
 - (void)setScale:(float)value {
-    //	DDLogVerbose(@"setScale:%f",value);
     if (_isLinearSelected) {
         _linearScale = value;
         _linear.scale = value;
@@ -191,7 +154,6 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
     }
 }
 
-// TODO optimise; use notification when this changes
 
 - (WordClockOrientationVector)getTargetOrientationVector {
     if (_isLinearSelected) {
@@ -204,26 +166,6 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
 - (void)tweenFromCoordinateProvider:(CoordinateProvider *)target reverse:(BOOL)reverse {
     self.tweenSnapshotCoordinateProvider = [target clone];
     _isTweening = YES;
-
-    /*
-    self.transitionTweenValue = 0.0f;
-
-    if ( _transitionTween ) {
-        [_transitionTween cancel];
-    }
-    _transitionTween = [[Tween alloc]
-        initWithTarget:self
-        keyPath:@"transitionTweenValue"
-        toFloatValue:1.0f
-        delay:0.0f
-        duration:duration
-        ease:kTweenQuadEaseInOut
-        onComplete:@selector(transitionTweenComplete:)
-        onCompleteTarget:self
-    ];
-
-    [_transitionTween retain];
-    */
 
     NSInteger numberOfWords = self.wordClockWordManager.numberOfWords;
     WordClockWord *word;
@@ -299,36 +241,11 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
         [_rotary update];
     }
 
-    // if we've rotated, send notification
-    // we do it here because the updates above cause the vectors in each
-    // coordinateproficer to update
-
-    /*
-    WCDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if ( orientation != _currentOrientation ||
-    _needsOrientationUpdateNotification ) {
-        [[NSNotificationCenter defaultCenter]
-            postNotificationName:kWordClockWordLayoutTargetOrientationVectorDidChangeNotification
-            object:self
-        ];
-        _currentOrientation = orientation;
-        _needsOrientationUpdateNotification = NO;
-    }
-    */
-
     if (_isTweening) {
         tweenFrom = self.tweenSnapshotCoordinateProvider;
-        //        [tweenFrom retain];
-        //		m = self.transitionTweenValue;
-
-        //		m = quad_ease_in_out( _tweenTime / kTweenTimeMaximum );
-        //		DDLogVerbose(@"transitionTweenValue:%f",self.transitionTweenValue);
-        //		printf("transitionTweenValue:%f",0.5f);
         if (_isLinearSelected) {
-            //			tweenFrom = _rotary;
             tweenTo = _linear;
         } else {
-            //			tweenFrom = _linear;
             tweenTo = _rotary;
         }
     } else {
@@ -339,44 +256,24 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
         }
     }
 
-    // float *offset = _vertices;
-
     uint offset = 0;
-    // uint cullingoffset = 0;
 
-    float xtl;  // = ox;
-    float xtr;  // = ox + wvx;
-    float xbl;  // = ox - hvy;
-    float xbr;  // = ox + wvx - hvy;
-    float ytl;  // = oy;
-    float ytr;  // = oy + wvy;
-    float ybl;  // = oy + hvx;
-    float ybr;  // = oy + wvy + hvx;
+    float xtl;
+    float xtr;
+    float xbl;
+    float xbr;
+    float ytl;
+    float ytr;
+    float ybl;
+    float ybr;
 
-    // TODO inform touchableView of the current vector orientation
-
-    //    static float timeAdjustmentFactor = 1.0f;
 
     NSInteger numberOfWords = self.wordClockWordManager.numberOfWords;
     WordClockWord *word;
 
     if (_isTweening) {
-        //		DDLogVerbose(@"transitionTweenValue:%f",_transitionTweenValue);
         for (NSInteger i = 0; i < numberOfWords; i++) {
             word = (self.wordClockWordManager.word)[i];
-            // map m from transitionTweenValue
-            // 0..1
-            // to achieve an offset
-            // m = self.transitionTweenValue + i / numberOfWords - 1.0f;
-
-            /*
-            m = -timeAdjustmentFactor + (float) i / numberOfWords +
-            self.transitionTweenValue * 2.0f * timeAdjustmentFactor;
-
-            if ( m < 0 ) { m = 0; }
-            if ( m > 1 ) { m = 1; }
-                */
-
             m = word.tweenValue;
 
             a = tweenFrom.coordinates[i].r + m * (tweenTo.coordinates[i].r - tweenFrom.coordinates[i].r);
@@ -419,8 +316,8 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
 
 #ifdef ENABLE_CULL
             // printf("cull");
-            width = tweenFrom.coordinates[i].w_bounds + m * (tweenTo.coordinates[i].w_bounds - tweenFrom.coordinates[i].w_bounds);
-            height = tweenFrom.coordinates[i].h_bounds + m * (tweenTo.coordinates[i].h_bounds - tweenFrom.coordinates[i].h_bounds);
+            width = tweenFrom.coordinates[i].wBounds + m * (tweenTo.coordinates[i].wBounds - tweenFrom.coordinates[i].wBounds);
+            height = tweenFrom.coordinates[i].hBounds + m * (tweenTo.coordinates[i].hBounds - tweenFrom.coordinates[i].hBounds);
 
             wvx = width * vx;
             wvy = width * vy;
@@ -444,17 +341,6 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
             _rectsForCulling[i].yb = MAX4(ytl, ytr, ybl, ybr);
 #endif
         }
-        /*
-        if ( _tweenTime < kTweenTimeMaximum ) {
-            _tweenTime += 0.01f;
-        }
-        else {
-            _tweenTime = kTweenTimeMaximum;
-            _isTweening = NO;
-        }
-        */
-        //        [tweenFrom release];
-
     } else {
         for (NSInteger i = 0; i < numberOfWords; i++) {
             a = current.coordinates[i].r;
@@ -496,8 +382,8 @@ acceleration.z - _accelerometerValues[0]; length = sqrt(x * x + y * y + z * z);
             _vertices[offset++] = ybr;
 
 #ifdef ENABLE_CULL
-            width = current.coordinates[i].w_bounds;   //+m*(tweenTo.coordinates[i].w_bounds-tweenFrom.coordinates[i].w_bounds);
-            height = current.coordinates[i].h_bounds;  //+m*(tweenTo.coordinates[i].h_bounds-tweenFrom.coordinates[i].h_bounds);
+            width = current.coordinates[i].wBounds;
+            height = current.coordinates[i].hBounds;
 
             wvx = width * vx;
             wvy = width * vy;

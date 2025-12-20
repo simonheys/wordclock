@@ -53,7 +53,6 @@ static int bsearchLowerBoundCheckXrXl(const void *a, const void *b)
 	WordClockRectsForCulling *ia = ( WordClockRectsForCulling *)a;
 	WordClockRectsForCulling *ib = ( WordClockRectsForCulling *)b;
 
-//	printf("ia->xr:%f ib->xl:%f ia->i:%d\r",ia->xr,ib->xl,ia->i);
 	if ( ia->xr == ib->xl ) {
 		return 0;
 	}
@@ -68,7 +67,6 @@ static int bsearchLowerBoundCheckXlXr(const void *a, const void *b)
 	WordClockRectsForCulling *ia = ( WordClockRectsForCulling *)a;
 	WordClockRectsForCulling *ib = ( WordClockRectsForCulling *)b;
 
-//	printf("ia->xr:%f ib->xl:%f ia->i:%d\r",ia->xr,ib->xl,ia->i);
 	if ( ia->xl == ib->xr ) {
 		return 0;
 	}
@@ -190,17 +188,6 @@ int cull_rects(WordClockRectsForCulling *rects, int numberOfRects, CGRect rect, 
 	printf("key.xl:%f\r",key.xl);
 	printf("left:%d\r",left);
 #endif	
-//	printf("found index %d x:%f,y:%f\r", rects[left].i,rects[left].x,rects[left].y);
-	
-	
-	//	printf("found index %d x:%f,y:%f\r", left->i,left->x,left->y);
-//	}
-//	else {
-//		printf("NOT FOUND\r");
-//		left = &rects[0];
-//	}
-//	printf("left:%d left-rects:%d\r",left,left-rects);
-	
 	// step 3
 	// find the right edge; start the serach at left
 	// if nto found then jsut use the last one
@@ -277,7 +264,6 @@ int cull_rects(WordClockRectsForCulling *rects, int numberOfRects, CGRect rect, 
 	
 	printf("__________y sorted and trimmed:\r");
 	
-//	for ( WordClockVerticesForCulling*i = left; i != right; ++i ) {
 	for ( int i = top; i <= bottom; i++ ) {
 		printf("rect i:%d xl:%f xr:%f yt:%f yb:%f\n",rects[ i ].i,rects[ i ].xl, rects[ i ].xr, rects[i].yt, rects[i].yb);
 	}
@@ -287,44 +273,11 @@ int cull_rects(WordClockRectsForCulling *rects, int numberOfRects, CGRect rect, 
 	printf("__________sort by i:\r");
 #endif
 	
-	// TODO is this necessary?
-//	qsort(&rects[top],bottom-top,sizeof(WordClockRectsForCulling),compareI);
 #ifdef DEBUG_CULL
 	for ( int i = top; i <= bottom; i++ ) {
 		printf("rect i:%d xl:%f xr:%f yt:%f yb:%f\n",rects[ i ].i,rects[ i ].xl, rects[ i ].xr, rects[i].yt, rects[i].yb);
 	}
 #endif
-	/*
-	printf("__________filter unique i:\r");
-	
-//	int result[1+bottom-top];
-	int currentFind;
-	int resultIndex = 0;
-	currentFind = -1;
-	for ( int i = top; i <= bottom; i++ ) {
-		printf("coordinate x:%f y:%f i:%d\r",rects[i].x,rects[i].y,rects[i].i);
-		printf("currentFind:%d\r",currentFind);
-		if ( currentFind < rects[i].i ) {
-			currentFind = rects[i].i;
-			printf("unique:%d\r",currentFind);
-			result[resultIndex++] = currentFind;
-		}
-	}
-	
-	printf("__________resulting unique i:\r");
-	for ( int i = 0; i < resultIndex; i++ ) {
-		printf("result:%d\r",result[i]);
-	}
-	
-	
-	
-	
-	//result[0] = 5;
-	//return 0;
-
-	return resultIndex;
-	*/
-//	int result[1+bottom-top];
 	int resultIndex = 0;
 	for ( int i = top; i <= bottom; i++ ) {
 #ifdef DEBUG_CULL

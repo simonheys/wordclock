@@ -13,7 +13,6 @@
 
 const int kWCNumberOfFramesInRotationAnimation = 25;
 const float kWCWheelSpacing = 3.0f;
-// const float kWCEaseOvershoot = 1.70158f; // 2.0f;// 1.70158f;
 
 @interface RotaryCoordinateProviderGroup ()
 @property(nonatomic, retain) TweenManager *tweenManager;
@@ -39,7 +38,6 @@ const float kWCWheelSpacing = 3.0f;
 
 - (instancetype)initWithGroup:(WordClockWordGroup *)aGroup tweenManager:(TweenManager *)tweenManager;
 {
-    //	DDLogVerbose(@"initWithGroup:%@",group);
     self = [super init];
     if (self != nil) {
         self.group = aGroup;
@@ -56,8 +54,6 @@ const float kWCWheelSpacing = 3.0f;
 
         [self.group addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:NULL];
         _observingGroup = YES;
-
-        //		DDLogVerbose(@"_maximumLabelWidth:%f",_maximumLabelWidth);
     }
     return self;
 }
@@ -72,9 +68,6 @@ const float kWCWheelSpacing = 3.0f;
 // stop observing our groups, they are about to change
 - (void)logicWillChange:(NSNotification *)notification {
     @try {
-        //        [self.group removeObserver:self
-        //            forKeyPath:@"selectedIndex"
-        //        ];
     } @catch (NSException *exception) {
     }
     _observingGroup = NO;
@@ -128,7 +121,6 @@ const float kWCWheelSpacing = 3.0f;
 // radius
 
 - (void)parentOutsideRadiusWasUpdated {
-    //	DDLogVerbose(@"parentOutsideRadiusWasUpdated");
     float radius;
 
     radius = _parent ? [_parent outsideRadius] : _radius;
@@ -139,8 +131,6 @@ const float kWCWheelSpacing = 3.0f;
 
     _radius = radius;
 
-    //	DDLogVerbose(@"radius:%f",_radius);
-
     if (_child) {
         [_child parentOutsideRadiusWasUpdated];
     }
@@ -148,8 +138,6 @@ const float kWCWheelSpacing = 3.0f;
 
 - (float)outsideRadius {
     float width;
-    // TODO this is a bit of a mouthful
-    // AND the wheel spacing isn't consistent with word spacing
 
     if (self.group.selectedIndex == -1) {
         return _radius;
@@ -159,9 +147,6 @@ const float kWCWheelSpacing = 3.0f;
     selectedWord = (self.group.word)[self.group.selectedIndex];
     width = self.group.selectedIndex == -1 ? 0 : selectedWord.unscaledSize.width;
 
-    // word.spaceSize.width
-    // return width < 2 ? _radius : _radius + width + kWCWheelSpacing *
-    // _scaleFactor;
     return width < 2 ? _radius : _radius + width + selectedWord.spaceSize.width * _scaleFactor;
 }
 
@@ -196,15 +181,10 @@ const float kWCWheelSpacing = 3.0f;
     int selectedIndex;
 
     if ([keyPath isEqual:@"selectedIndex"]) {
-        //		DDLogVerbose(@"selectedIndex:%d", [[change
-        // objectForKey:NSKeyValueChangeNewKey] intValue]);
-
         selectedIndex = [change[NSKeyValueChangeNewKey] intValue];
 
         [self updateForSelectedIndex:selectedIndex];
     }
-
-    //	DDLogVerbose(@"_angle:%f",_angle);
 }
 
 @synthesize angle = _angle;
