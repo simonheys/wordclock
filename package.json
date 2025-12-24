@@ -2,7 +2,7 @@
   "name": "wordclock",
   "version": "1.2.1",
   "private": true,
-  "packageManager": "pnpm@10.26.0",
+  "packageManager": "pnpm@10.26.2",
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
@@ -23,7 +23,7 @@
     "prettier-plugin-organize-imports": "4.3.0",
     "prettier-plugin-tailwindcss": "0.7.2",
     "tsx": "4.21.0",
-    "turbo": "2.6.3"
+    "turbo": "2.7.2"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
