@@ -1,11 +1,12 @@
 import { resolve } from 'node:path'
 
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 const external = ['react', 'react-dom', 'react/jsx-runtime', 'resize-observer-polyfill']
 const clientDirective = "'use client';"
+const pureConsoleCalls = ['console.log', 'console.warn']
 
 export default defineConfig(({ mode }) => ({
   publicDir: false,
@@ -28,15 +29,19 @@ export default defineConfig(({ mode }) => ({
       formats: ['es', 'cjs'],
       name: 'wordclock',
     },
-    rollupOptions: {
+    rolldownOptions: {
       external,
+      ...(mode === 'production'
+        ? {
+            treeshake: {
+              manualPureFunctions: pureConsoleCalls,
+            },
+          }
+        : {}),
       output: {
         banner: clientDirective,
         exports: 'named',
       },
     },
-  },
-  esbuild: {
-    pure: mode === 'production' ? ['console.log', 'console.warn'] : [],
   },
 }))

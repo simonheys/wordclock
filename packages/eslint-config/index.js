@@ -1,3 +1,3 @@
-const baseConfig = require('./base')
+import baseConfig from './base.js'
 
-module.exports = baseConfig
+export default baseConfig

@@ -1,32 +1,23 @@
-const { fixupConfigRules } = require('@eslint/compat')
-const pluginReact = require('eslint-plugin-react')
-const pluginReactHooks = require('eslint-plugin-react-hooks')
+import eslintReact from '@eslint-react/eslint-plugin'
+import pluginReactHooks from 'eslint-plugin-react-hooks'
 
-const baseConfig = require('./base')
-const [reactRecommended] = fixupConfigRules(pluginReact.configs.flat.recommended)
+import baseConfig from './base.js'
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const reactConfig = [
   ...baseConfig,
-  {
-    ...reactRecommended,
-    settings: {
-      ...reactRecommended.settings,
-      react: {
-        version: 'detect',
-      },
-    },
-  },
+  eslintReact.configs['recommended-typescript'],
   {
     plugins: {
       'react-hooks': pluginReactHooks,
     },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-curly-brace-presence': 'error',
+      '@eslint-react/no-array-index-key': 'off',
+      '@eslint-react/no-use-context': 'off',
+      '@eslint-react/set-state-in-effect': 'off',
     },
   },
 ]
 
-module.exports = reactConfig
+export default reactConfig

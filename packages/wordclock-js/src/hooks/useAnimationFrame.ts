@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const useAnimationFrame = () => {
-  const [elapsed, setTime] = useState(0)
+  const [elapsed, setElapsed] = useState(0)
 
   useEffect(() => {
     let animationFrame: number
@@ -9,7 +9,7 @@ const useAnimationFrame = () => {
 
     // Function to be executed on each animation frame
     const onFrame = () => {
-      setTime(Date.now() - start)
+      setElapsed(Date.now() - start)
       loop()
     }
 

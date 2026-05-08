@@ -2,6 +2,7 @@
   "name": "@simonheys/eslint-config",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "main": "index.js",
   "files": [
     "index.js",
@@ -16,11 +17,10 @@
     "./next": "./next.js"
   },
   "dependencies": {
-    "@eslint/compat": "2.1.0",
+    "@eslint-react/eslint-plugin": "5.7.5",
     "@eslint/js": "10.0.1",
     "@next/eslint-plugin-next": "16.2.6",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1",
     "typescript-eslint": "8.59.2"
   },

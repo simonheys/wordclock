@@ -8,30 +8,30 @@ const createResizeObserver = (callback: ResizeObserverCallback) => {
 
 const useSize = () => {
   const ref = React.useRef<HTMLDivElement | null>(null)
-  const resizeObserver = React.useRef<ResizeObserver | null>(null)
+  const resizeObserverRef = React.useRef<ResizeObserver | null>(null)
   const [size, setSize] = React.useState({
     width: 0,
     height: 0,
   })
 
   const teardownResizeObserver = React.useCallback(() => {
-    if (resizeObserver.current) {
+    if (resizeObserverRef.current) {
       if (ref.current) {
-        resizeObserver.current.unobserve(ref.current)
+        resizeObserverRef.current.unobserve(ref.current)
       }
-      resizeObserver.current.disconnect()
-      resizeObserver.current = null
+      resizeObserverRef.current.disconnect()
+      resizeObserverRef.current = null
     }
   }, [])
 
   const setupResizeObserver = React.useCallback(() => {
-    if (resizeObserver.current) {
+    if (resizeObserverRef.current) {
       teardownResizeObserver()
     }
     if (!ref.current) {
       return
     }
-    resizeObserver.current = createResizeObserver((entries) => {
+    resizeObserverRef.current = createResizeObserver((entries) => {
       const currentRefEntry = entries.find(({ target }) => target === ref.current)
       if (currentRefEntry) {
         const { width, height } = currentRefEntry.contentRect
@@ -43,7 +43,7 @@ const useSize = () => {
         })
       }
     })
-    resizeObserver.current.observe(ref.current)
+    resizeObserverRef.current.observe(ref.current)
   }, [teardownResizeObserver])
 
   const setRef = React.useCallback(

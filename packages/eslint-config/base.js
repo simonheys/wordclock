@@ -1,6 +1,6 @@
-const js = require('@eslint/js')
-const eslintConfigPrettier = require('eslint-config-prettier')
-const tseslint = require('typescript-eslint')
+import js from '@eslint/js'
+import eslintConfigPrettier from 'eslint-config-prettier'
+import tseslint from 'typescript-eslint'
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const baseConfig = [
@@ -25,4 +25,4 @@ const baseConfig = [
   },
 ]
 
-module.exports = baseConfig
+export default baseConfig
