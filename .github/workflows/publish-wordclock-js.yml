@@ -43,8 +43,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint package
+        run: pnpm --filter @simonheys/wordclock lint
+
+      - name: Typecheck package
+        run: pnpm --filter @simonheys/wordclock typecheck
+
+      - name: Test package
+        run: pnpm --filter @simonheys/wordclock test
+
       - name: Build package
-        run: cd packages/wordclock-js && pnpm build
+        run: pnpm --filter @simonheys/wordclock build
 
       - name: Publish
         env:

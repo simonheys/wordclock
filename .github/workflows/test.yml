@@ -1,6 +1,10 @@
 name: Test
 
 on:
+  push:
+    branches:
+      - main
+      - develop
   pull_request:
     branches:
       - main
@@ -28,3 +32,22 @@ jobs:
         run: pnpm build
       - name: Test
         run: pnpm test
+
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+      - name: Use Node.js lts/*
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright
+        run: pnpm --filter @simonheys/wordclock-example exec playwright install --with-deps chromium
+      - name: Run e2e tests
+        run: pnpm --filter @simonheys/wordclock-example test:e2e
