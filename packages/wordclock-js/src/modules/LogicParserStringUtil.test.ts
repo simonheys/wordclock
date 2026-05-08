@@ -50,6 +50,26 @@ describe('LogicParserStringUtil', () => {
         expect(rightTerm).toEqual('25')
         expect(afterRightTerm).toEqual('+6')
       })
+      it('keeps unary operators attached to their terms', () => {
+        expect(
+          extractTermsAroundPivot({
+            source: '-2*3',
+            pivot: '*',
+          }),
+        ).toEqual(['', '-2', '3', ''])
+        expect(
+          extractTermsAroundPivot({
+            source: '2*-3+4',
+            pivot: '*',
+          }),
+        ).toEqual(['', '2', '-3', '+4'])
+        expect(
+          extractTermsAroundPivot({
+            source: '2 - -3',
+            pivot: '-',
+          }),
+        ).toEqual(['', '2 ', ' -3', ''])
+      })
     })
     describe('when invalid', () => {
       it('throws an error', () => {
@@ -93,6 +113,11 @@ describe('LogicParserStringUtil', () => {
           expect(checkBalancedBraces('(((foo))')).toBeFalsy()
         })
       })
+      describe('when braces close before they open', () => {
+        it('returns false', () => {
+          expect(checkBalancedBraces(')foo(')).toBeFalsy()
+        })
+      })
     })
     describe('when invalid', () => {
       it('return false', () => {
@@ -106,6 +131,11 @@ describe('LogicParserStringUtil', () => {
     describe('when array contains instance', () => {
       it('returns the index of the instance in the array', () => {
         expect(scanForInstanceOf({ source: 'foo=bar', array: ['*', '='] })).toEqual(1)
+      })
+      it('ignores unary minus when scanning for binary operators', () => {
+        expect(scanForInstanceOf({ source: '-2', array: ['-'] })).toEqual(-1)
+        expect(scanForInstanceOf({ source: '-2-3', array: ['-'] })).toEqual(0)
+        expect(scanForInstanceOf({ source: '2*-3', array: ['*', '-'] })).toEqual(0)
       })
     })
     describe('when array does not contains instance', () => {

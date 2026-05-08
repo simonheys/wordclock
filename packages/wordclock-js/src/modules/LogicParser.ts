@@ -49,7 +49,7 @@ export const term = (source: string, props?: Props) => {
   parsing = true
   while (parsing) {
     // parse brackets
-    if (LogicParserStringUtil.containsBraces(source)) {
+    if (LogicParserStringUtil.checkBalancedBraces(source)) {
       terms = LogicParserStringUtil.extractStringContainedInOutermostBraces(source)
       const termResult = term(terms[1], props)
       source = `${terms[0]}${termResult}${terms[2]}`

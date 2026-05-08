@@ -60,6 +60,19 @@ describe('LogicParser', () => {
           expect(term('(27*3+(5+10))%(7*2)')).toEqual(12)
         })
       })
+      describe('when using unary operators', () => {
+        it('returns the expected result', () => {
+          expect(term('-2')).toEqual(-2)
+          expect(term('--2')).toEqual(2)
+          expect(term('-2*3')).toEqual(-6)
+          expect(term('2*-3')).toEqual(-6)
+          expect(term('-2-3')).toEqual(-5)
+          expect(term('2--3')).toEqual(5)
+          expect(term('2 - -3')).toEqual(5)
+          expect(term('!false')).toEqual(true)
+          expect(term('2*!false')).toEqual(2)
+        })
+      })
       describe('when using numbers and props', () => {
         it('returns the expected result', () => {
           const props = {
@@ -86,6 +99,13 @@ describe('LogicParser', () => {
           expect(term('(second%10)==2 && !(second>10 && second<21)', { second: 2 })).toEqual(true)
           expect(term('(second%10)==2 && !(second>10 && second<21)', { second: 12 })).toEqual(false)
           expect(term('(second%10)==2 && !(second>10 && second<21)', { second: 22 })).toEqual(true)
+        })
+      })
+      describe('when braces are malformed', () => {
+        it('leaves the malformed term intact', () => {
+          expect(term('(true')).toEqual('(true')
+          expect(term('true)')).toEqual('true)')
+          expect(term(')(')).toEqual(')(')
         })
       })
     })

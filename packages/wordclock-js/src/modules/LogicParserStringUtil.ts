@@ -16,6 +16,36 @@ export const isNumericString = (string: string) => {
   return /^-?\d+$/.test(string)
 }
 
+const isUnaryMinus = (source: string, index: number) => {
+  if (source.charAt(index) !== '-') {
+    return false
+  }
+
+  const previous = source.slice(0, index).trimEnd().at(-1)
+  return previous === undefined || (previous !== ')' && OPERATORS.indexOf(previous) !== -1)
+}
+
+const isUnaryRightTermOperator = (source: string, index: number) => {
+  const character = source.charAt(index)
+  if (character !== '-' && character !== '!') {
+    return false
+  }
+
+  return source.slice(0, index).trim() === ''
+}
+
+const getOperatorIndex = (source: string, operator: string) => {
+  let index = source.indexOf(operator)
+  while (index !== -1) {
+    if (operator !== '-' || !isUnaryMinus(source, index)) {
+      return index
+    }
+    index = source.indexOf(operator, index + operator.length)
+  }
+
+  return -1
+}
+
 export function extractStringContainedInOutermostBraces(source: string): BraceTerms
 export function extractStringContainedInOutermostBraces(source?: string): BraceTerms | ''
 export function extractStringContainedInOutermostBraces(source?: string): BraceTerms | '' {
@@ -64,7 +94,7 @@ export const scanForInstanceOf = ({
   if (!isString(source) || !Array.isArray(array)) {
     return -1
   }
-  return array.findIndex((instance) => source.indexOf(instance) !== -1)
+  return array.findIndex((instance) => getOperatorIndex(source, instance) !== -1)
 }
 
 export const extractTermsAroundPivot = ({
@@ -81,7 +111,7 @@ export const extractTermsAroundPivot = ({
   let c
   let i
 
-  const pivotLocation = source.indexOf(pivot)
+  const pivotLocation = getOperatorIndex(source, pivot)
 
   const leftOfPivot = source.substr(0, pivotLocation)
   const rightOfPivot = source.substr(pivotLocation + pivot.length)
@@ -96,7 +126,10 @@ export const extractTermsAroundPivot = ({
     c = leftOfPivot.substr(i, 1)
   }
 
-  if (OPERATORS.indexOf(c) !== -1) {
+  if (c === '-' && isUnaryMinus(leftOfPivot, i)) {
+    leftTerm = leftOfPivot.substr(i)
+    beforeLeftTerm = leftOfPivot.substr(0, i)
+  } else if (OPERATORS.indexOf(c) !== -1) {
     leftTerm = leftOfPivot.substr(i + 1)
     beforeLeftTerm = leftOfPivot.substr(0, i + 1)
   } else {
@@ -110,7 +143,10 @@ export const extractTermsAroundPivot = ({
     i = 0
     c = rightOfPivot.substr(i, 1)
 
-    while (i < rightOfPivot.length && OPERATORS.indexOf(c) === -1) {
+    while (
+      i < rightOfPivot.length &&
+      (OPERATORS.indexOf(c) === -1 || isUnaryRightTermOperator(rightOfPivot, i))
+    ) {
       i++
       if (i < rightOfPivot.length) {
         c = rightOfPivot.substr(i, 1)
@@ -154,9 +190,22 @@ export const checkBalancedBraces = (source: string) => {
   if (!containsBraces(source)) {
     return false
   }
-  const leftInstances = countInstancesOf({ source, instance: '(' })
-  const rightInstances = countInstancesOf({ source, instance: ')' })
-  return leftInstances === rightInstances
+
+  let depth = 0
+  for (let i = 0; i < source.length; i++) {
+    const character = source.substr(i, 1)
+    if (character === '(') {
+      depth++
+    }
+    if (character === ')') {
+      depth--
+    }
+    if (depth < 0) {
+      return false
+    }
+  }
+
+  return depth === 0
 }
 
 export const contains = ({
