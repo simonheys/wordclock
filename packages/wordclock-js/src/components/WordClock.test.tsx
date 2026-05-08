@@ -1,4 +1,5 @@
 import { act, cleanup, render, screen } from '@testing-library/react'
+import { renderToString } from 'react-dom/server'
 import { afterEach, beforeEach, expect, test, vi } from 'vitest'
 
 import json from '@simonheys/wordclock-words/json/English.json'
@@ -62,6 +63,19 @@ test('passes HTML attributes to the rendered words container', () => {
     height: '100%',
     alignContent: 'space-between',
   })
+})
+
+test('does not render time-dependent highlights during server render', () => {
+  vi.setSystemTime(new Date(2024, 0, 1, 12, 0, 0))
+
+  const html = renderToString(
+    <WordClock words={secondsWords}>
+      <WordClockContent />
+    </WordClock>,
+  )
+
+  expect(html).toContain('zero seconds')
+  expect(html).not.toContain('#ff0000')
 })
 
 test('highlights words for the current second and updates every second', () => {

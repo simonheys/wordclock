@@ -5,7 +5,7 @@ import { WordsLabel, WordsLogic } from './types'
 interface WordClockContentProps {
   logic: WordsLogic
   label: WordsLabel
-  timeProps: TimeProps
+  timeProps: TimeProps | null
 }
 
 const WordClockContext = createContext<WordClockContentProps | null>(null)

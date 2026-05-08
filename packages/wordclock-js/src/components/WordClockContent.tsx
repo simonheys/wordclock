@@ -20,7 +20,7 @@ export const WordClockContent: FC<WordClockContentProps> = ({
         // only allow a single highlight per group
         return labelGroup.map((label, labelGroupIndex) => {
           highlighted = false
-          if (!hasPreviousHighlight) {
+          if (timeProps && !hasPreviousHighlight) {
             const logic = logicGroup[labelGroupIndex]
             highlighted = LogicParser.term(logic, timeProps)
             if (highlighted) {
