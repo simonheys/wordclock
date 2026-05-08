@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "@simonheys/wordclock-words": "*",
-    "lodash-es": "^4.17.21",
-    "resize-observer-polyfill": "^1.5.1"
+    "lodash-es": "4.17.21",
+    "resize-observer-polyfill": "1.5.1"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "13.0.1",
@@ -47,6 +47,8 @@
     "eslint-plugin-react-hooks": "7.0.1",
     "happy-dom": "20.9.0",
     "lodash": "4.17.21",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "semantic-release": "25.0.2",
     "typescript": "5.9.3",
     "vite": "7.3.0",
