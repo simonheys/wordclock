@@ -1,4 +1,4 @@
-import { CSSProperties, FC, PropsWithChildren } from 'react'
+import type { CSSProperties, FC, PropsWithChildren } from 'react'
 
 export interface WordClockWordProps extends PropsWithChildren {
   highlighted: boolean

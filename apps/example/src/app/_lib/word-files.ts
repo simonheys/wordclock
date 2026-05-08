@@ -6,9 +6,21 @@ import { loadWordFile } from './load-word-file'
 
 const manifest = manifestJson as Manifest
 const preferredInitialFile = 'English_simple_fragmented.json'
-const initialFile = manifest.files.includes(preferredInitialFile)
-  ? preferredInitialFile
-  : manifest.files[0]
+
+const getInitialFile = () => {
+  if (manifest.files.includes(preferredInitialFile)) {
+    return preferredInitialFile
+  }
+
+  const [firstFile] = manifest.files
+  if (!firstFile) {
+    throw new Error('Word file manifest does not list any files')
+  }
+
+  return firstFile
+}
+
+const initialFile = getInitialFile()
 
 type LoadedWordFile = {
   file: string
@@ -32,21 +44,20 @@ const loadWordFileOption = async (file: string): Promise<LoadedWordFile> => {
 const groupWordFiles = (wordFiles: LoadedWordFile[]): WordFileGroup[] => {
   const groupsByLanguage = wordFiles.reduce<Record<string, WordFileGroup['options']>>(
     (groups, { file, languageTitle, title }) => {
-      if (!groups[languageTitle]) {
-        groups[languageTitle] = []
-      }
+      const options = groups[languageTitle] ?? []
+      groups[languageTitle] = options
 
-      groups[languageTitle].push({ file, title })
+      options.push({ file, title })
       return groups
     },
     {},
   )
 
-  return Object.keys(groupsByLanguage)
-    .sort()
-    .map((languageTitle) => ({
+  return Object.entries(groupsByLanguage)
+    .sort(([languageTitleA], [languageTitleB]) => languageTitleA.localeCompare(languageTitleB))
+    .map(([languageTitle, options]) => ({
       languageTitle,
-      options: groupsByLanguage[languageTitle],
+      options,
     }))
 }
 
