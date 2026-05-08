@@ -32,8 +32,9 @@ describe('LogicParserStringUtil', () => {
       })
     })
     describe('when invalid', () => {
-      it('returns an empty string', () => {
-        expect(extractStringContainedInOutermostBraces()).toEqual('')
+      it('throws an error', () => {
+        // @ts-expect-error testing invalid input
+        expect(() => extractStringContainedInOutermostBraces()).toThrow()
       })
     })
   })

@@ -46,13 +46,7 @@ const getOperatorIndex = (source: string, operator: string) => {
   return -1
 }
 
-export function extractStringContainedInOutermostBraces(source: string): BraceTerms
-export function extractStringContainedInOutermostBraces(source?: string): BraceTerms | ''
-export function extractStringContainedInOutermostBraces(source?: string): BraceTerms | '' {
-  if (!isString(source)) {
-    return ''
-  }
-
+export const extractStringContainedInOutermostBraces = (source: string): BraceTerms => {
   let rightOfBraces: string
   let count
   let i
