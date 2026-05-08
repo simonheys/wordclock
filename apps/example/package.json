@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "test:e2e": "playwright test",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "format": "prettier --ignore-unknown --write .",
+    "format:check": "prettier --ignore-unknown --check ."
   },
   "dependencies": {
     "@simonheys/wordclock": "workspace:*",
@@ -19,12 +22,16 @@
   "devDependencies": {
     "@playwright/test": "1.59.1",
     "@simonheys/eslint-config": "workspace:*",
+    "@simonheys/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "4.2.4",
     "@types/node": "24.10.4",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.2",
     "eslint-config-next": "16.2.6",
+    "prettier": "3.7.4",
+    "prettier-plugin-organize-imports": "4.3.0",
+    "prettier-plugin-tailwindcss": "0.8.0",
     "tailwindcss": "4.2.4",
     "typescript": "5.9.3"
   }

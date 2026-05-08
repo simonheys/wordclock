@@ -11,7 +11,15 @@ export interface WordsEntry {
 export type Group =
   | {
       type: 'sequence'
-      bind: 'hour' | 'minute' | 'second'
+      bind:
+        | 'date'
+        | 'day'
+        | 'daystartingmonday'
+        | 'hour'
+        | 'minute'
+        | 'month'
+        | 'second'
+        | 'twentyfourhour'
       first: number
       text: string[]
     }

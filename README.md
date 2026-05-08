@@ -8,41 +8,59 @@ https://www.simonheys.com/wordclock/
 
 ## Downloads
 
-Currently avaiaible to download as a screen saver for macOS
+Currently available to download as a screen saver for macOS:
 
 https://github.com/simonheys/wordclock/releases
 
-## Packages
+## Web Packages
 
-- [WordClock Flash](/packages/wordclock-flash)
+- [WordClock React](/packages/wordclock-js)
 
-  The original prototype from 2003
-
-- [WordClock iOS](/packages/wordclock-ios)
-
-  This was written in 2008 for the original iPod Touch running iPhoneOS 2, and achieved my goal of running at 60fps
-
-- [WordClock JS](/packages/wordclock-js)
-
-  Simple react component that can run in a web browser
-
-- [WordClock macOS](/packages/wordclock-macos)
-
-  macOS screensaver
+  React components published as `@simonheys/wordclock`. The package renders a supplied word definition; consumers decide how to load those definitions.
 
 - [WordClock Words](/packages/wordclock-words)
 
-  The words and expressions that influence how time is displayed in different variations or languages
+  Raw JSON word definitions published as `@simonheys/wordclock-words`. The package is intentionally thin: it contains JSON files and a manifest, not loader helpers.
+
+- [WordClock Example](/apps/example)
+
+  Next.js app used to exercise the React package against the bundled word definitions.
+
+## Legacy And Native Packages
+
+- [WordClock Flash](/packages/wordclock-flash)
+
+  The original prototype from 2003.
+
+- [WordClock iOS](/packages/wordclock-ios)
+
+  This was written in 2008 for the original iPod Touch running iPhoneOS 2, and achieved my goal of running at 60fps.
+
+- [WordClock macOS](/packages/wordclock-macos)
+
+  Native macOS screen saver.
 
 ## Getting Started
 
-Install common dependencies
+Install common dependencies:
 
-```
-$ pnpm install
+```bash
+pnpm install
 ```
 
 See individual packages for further steps.
+
+## Checks
+
+Run repository-level checks from the root:
+
+```bash
+pnpm format:check
+pnpm lint
+pnpm typecheck
+pnpm build
+pnpm test
+```
 
 ## License
 

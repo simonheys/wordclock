@@ -2,38 +2,33 @@
 
 Word definitions used by `@simonheys/wordclock` to describe time in different languages and styles.
 
-The package entry point is `json/Manifest.json`. Individual word files are published from the `json` directory.
+This package is intentionally thin: it publishes the raw word-definition JSON files and a manifest.
+Consumers decide how to inspect, load, validate, cache, or bundle those files.
+It does not publish loader helpers, generated TypeScript modules, or duplicated selector metadata.
 
 ## For Consumers
 
 Import the manifest to list available word files:
 
 ```ts
-import type { Manifest } from '@simonheys/wordclock'
 import manifest from '@simonheys/wordclock-words/json/Manifest.json'
 
-const files = (manifest as Manifest).files
+const files = manifest.files
 ```
 
-Import a specific word file to render it with the React package:
+Import a specific word file when the consumer wants a static dependency:
 
-```tsx
-import { WordClock, WordClockContent, type WordsJson } from '@simonheys/wordclock'
+```ts
 import english from '@simonheys/wordclock-words/json/English_simple_fragmented.json'
-
-export function Clock() {
-  return (
-    <WordClock words={english as WordsJson}>
-      <WordClockContent />
-    </WordClock>
-  )
-}
 ```
 
 `Manifest.json` contains:
 
 - `files`: JSON files available in this package
 - `languages`: language-code to language-name mapping used for grouping selectors
+
+The manifest is not an index of every word-file title. If a consumer needs titles or other selector
+metadata, it should read the canonical `meta` object from the relevant word files.
 
 ## Word File Shape
 
@@ -46,7 +41,7 @@ Each word file contains:
 Group entries can be:
 
 - `item`: one or more explicit words with highlight expressions
-- `sequence`: generated words bound to `hour`, `minute`, or `second`
+- `sequence`: generated words bound to date/time fields such as `hour`, `minute`, or `month`
 - `space`: blank slots used to influence layout
 
 Highlight expressions are evaluated against time props such as `hour`, `twentyfourhour`, `minute`, `second`, `day`, `daystartingmonday`, `date`, and `month`.

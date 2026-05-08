@@ -79,3 +79,16 @@ test('word clock refits when its container width changes', async ({ page }) => {
   await expectFontSizeGreaterThan(words, narrowMetrics.fontSize + fontSizeTolerance)
   await expectToFit(words)
 })
+
+test('word clock loads the selected word file', async ({ page }) => {
+  await page.goto('/')
+
+  const languageSelect = page.getByLabel('Select language and style:')
+  const words = page.getByTestId('word-clock-words')
+
+  await languageSelect.selectOption('French_simple_fragmented.json')
+
+  await expect(languageSelect).toHaveValue('French_simple_fragmented.json')
+  await expect(page.getByText('Unable to load word file')).toHaveCount(0)
+  await expect.poll(async () => words.innerText()).toContain('Zéro')
+})

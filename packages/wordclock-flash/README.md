@@ -1,3 +1,3 @@
 # WordClock Flash
 
-The original prototype from 2003
+The original prototype from 2003.
