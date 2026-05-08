@@ -42,8 +42,7 @@ export const fitTextToHeight = (
   let oldLow = -1
   let oldHigh = -1
   let lowFits = false,
-    highFits = false,
-    midFits = false
+    highFits = false
   let fontSizeMid
 
   while (!done && Math.abs(fontSizeLow - fontSizeHigh) > minimumFontSizeAdjustment) {
@@ -60,7 +59,7 @@ export const fitTextToHeight = (
     if (lowFits && !highFits) {
       fontSizeMid = (fontSizeLow + fontSizeHigh) * 0.5
       element.style.fontSize = `${fontSizeMid}px`
-      midFits = element.scrollHeight < targetHeight
+      const midFits = element.scrollHeight < targetHeight
       if (midFits) {
         fontSizeLow = fontSizeMid
       } else {
