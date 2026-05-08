@@ -1,6 +1,8 @@
-import { isArray, isString } from 'lodash-es'
-
 export const OPERATORS = '!%&*()-+=|/<>'
+
+const objectToString = Object.prototype.toString
+const isString = (value: unknown): value is string =>
+  typeof value === 'string' || objectToString.call(value) === '[object String]'
 
 export const isNumericString = (string: string) => {
   return /^-?\d+$/.test(string)
@@ -49,7 +51,7 @@ export const scanForInstanceOf = ({
   source?: string
   array?: string[] | readonly string[]
 } = {}) => {
-  if (!isString(source) || !isArray(array)) {
+  if (!isString(source) || !Array.isArray(array)) {
     return -1
   }
   for (let i = 0; i < array.length; i++) {

@@ -71,6 +71,15 @@ describe('LogicParserStringUtil', () => {
         expect(countInstancesOf()).toEqual(0)
       })
     })
+    it('accepts String objects', () => {
+      expect(
+        countInstancesOf({
+          // @ts-expect-error testing compatibility with previous string guard behavior
+          source: new String('1001'),
+          instance: '1',
+        }),
+      ).toEqual(2)
+    })
   })
 
   describe('checkBalancedBraces', () => {

@@ -1,4 +1,3 @@
-import { isString } from 'lodash-es'
 import * as LogicParserStringUtil from './LogicParserStringUtil'
 
 // /** Extract the 'data' type of each item in the union if it exists */
@@ -27,6 +26,10 @@ export type AllOperatorValues = ExtractArrayValues<Operators[OperatorKeys]>
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Result = any
 type Props = Record<string, Result>
+
+const objectToString = Object.prototype.toString
+const isString = (value: unknown): value is string =>
+  typeof value === 'string' || objectToString.call(value) === '[object String]'
 
 export const term = (source: string, props?: Props) => {
   let terms

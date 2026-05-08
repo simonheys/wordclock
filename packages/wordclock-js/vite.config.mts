@@ -4,13 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
-const external = [
-  'lodash-es',
-  'react',
-  'react-dom',
-  'react/jsx-runtime',
-  'resize-observer-polyfill',
-]
+const external = ['react', 'react-dom', 'react/jsx-runtime', 'resize-observer-polyfill']
 const clientDirective = "'use client';"
 
 export default defineConfig(({ mode }) => ({
