@@ -1,5 +1,10 @@
 import * as React from 'react'
-import ResizeObserver from 'resize-observer-polyfill'
+import ResizeObserverPolyfill from 'resize-observer-polyfill'
+
+const createResizeObserver = (callback: ResizeObserverCallback) => {
+  const ResizeObserverImplementation = globalThis.ResizeObserver ?? ResizeObserverPolyfill
+  return new ResizeObserverImplementation(callback)
+}
 
 const useSize = () => {
   const ref = React.useRef<HTMLDivElement | null>(null)
@@ -26,7 +31,7 @@ const useSize = () => {
     if (!ref.current) {
       return
     }
-    resizeObserver.current = new ResizeObserver((entries) => {
+    resizeObserver.current = createResizeObserver((entries) => {
       const currentRefEntry = entries.find(({ target }) => target === ref.current)
       if (currentRefEntry) {
         const { width, height } = currentRefEntry.contentRect

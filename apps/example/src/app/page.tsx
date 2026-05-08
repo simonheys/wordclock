@@ -95,11 +95,12 @@ export default function Home() {
         </select>
       </div>
       <div
-        className="w-full bg-gray-100 leading-[1.1] font-bold tracking-tight text-gray-400 [font-feature-settings:'liga'_1,'kern'_1] dark:bg-gray-900 dark:text-gray-700"
+        data-testid="word-clock-frame"
+        className="w-full bg-gray-100 [font-feature-settings:'liga'_1,'kern'_1] leading-[1.1] font-bold tracking-tight text-gray-400 dark:bg-gray-900 dark:text-gray-700"
         style={{ height: `${height}px` }}
       >
         {mounted && (
-          <WordClock words={words}>
+          <WordClock data-testid="word-clock-words" words={words}>
             <WordClockContent />
           </WordClock>
         )}

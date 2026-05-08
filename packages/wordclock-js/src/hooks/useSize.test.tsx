@@ -34,9 +34,12 @@ const createResizeObserverEntry = (
 afterEach(() => {
   resizeObserverMock.callback = undefined
   vi.clearAllMocks()
+  vi.unstubAllGlobals()
 })
 
-test('preserves the size object when the observed dimensions are unchanged', () => {
+test('uses the polyfill when native ResizeObserver is unavailable', () => {
+  vi.stubGlobal('ResizeObserver', undefined)
+
   const { result } = renderHook(() => useSize())
   const element = document.createElement('div')
   const entry = createResizeObserverEntry(element, {
@@ -64,4 +67,46 @@ test('preserves the size object when the observed dimensions are unchanged', () 
   })
 
   expect(result.current.size).toBe(sizeAfterFirstResize)
+})
+
+test('uses native ResizeObserver when available', () => {
+  const nativeResizeObserverMock = {
+    callback: undefined as ResizeObserverCallback | undefined,
+    disconnect: vi.fn(),
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+  }
+  const NativeResizeObserver = vi.fn(function ResizeObserver(callback: ResizeObserverCallback) {
+    nativeResizeObserverMock.callback = callback
+
+    return {
+      disconnect: nativeResizeObserverMock.disconnect,
+      observe: nativeResizeObserverMock.observe,
+      unobserve: nativeResizeObserverMock.unobserve,
+    }
+  })
+  vi.stubGlobal('ResizeObserver', NativeResizeObserver)
+
+  const { result } = renderHook(() => useSize())
+  const element = document.createElement('div')
+  const entry = createResizeObserverEntry(element, {
+    height: 75,
+    width: 125,
+  })
+
+  act(() => {
+    result.current.ref(element)
+  })
+
+  expect(NativeResizeObserver).toHaveBeenCalledTimes(1)
+  expect(resizeObserverMock.observe).not.toHaveBeenCalled()
+
+  act(() => {
+    nativeResizeObserverMock.callback?.([entry], {} as ResizeObserver)
+  })
+
+  expect(result.current.size).toEqual({
+    height: 75,
+    width: 125,
+  })
 })
