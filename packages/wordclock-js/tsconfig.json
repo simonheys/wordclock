@@ -1,7 +1,7 @@
 {
   "extends": "@simonheys/typescript-config/react-library.json",
   "compilerOptions": {
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

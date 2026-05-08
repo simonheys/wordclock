@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import type { WordsJson } from '../components/types'
 import { performOperation, processTerm, term } from './LogicParser'
 import { parseJson } from './WordsFileParser'
