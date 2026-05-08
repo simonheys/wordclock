@@ -11,8 +11,8 @@ export default defineConfig(({ mode }) => ({
   publicDir: false,
   plugins: [
     dts({
+      bundleTypes: true,
       exclude: ['src/**/*.test.*', 'test/**'],
-      rollupTypes: true,
     }),
     react(),
   ],
