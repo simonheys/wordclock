@@ -3,6 +3,7 @@
   "extends": "./base.json",
   "compilerOptions": {
     "incremental": true,
+    "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "bundler",

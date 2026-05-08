@@ -21,6 +21,17 @@ type ExtractArrayValues<T> = T extends readonly (infer U)[] ? U : never
 
 export type AllOperatorValues = ExtractArrayValues<Operators[OperatorKeys]>
 
+const getOperator = <Operator extends AllOperatorValues>(
+  operators: readonly Operator[],
+  index: number,
+): Operator => {
+  const operator = operators[index]
+  if (operator === undefined) {
+    throw new Error(`No operator found at index ${index}`)
+  }
+  return operator
+}
+
 // ____________________________________________________________________________________________________ term
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -49,14 +60,15 @@ export const term = (source: string, props?: Props) => {
         array: OPERATORS.MATH,
       })
       if (result !== -1) {
+        const operator = getOperator(OPERATORS.MATH, result)
         terms = LogicParserStringUtil.extractTermsAroundPivot({
           source,
-          pivot: OPERATORS.MATH[result],
+          pivot: operator,
         })
         const operationResult = performOperation({
           termOne: terms[1],
           termTwo: terms[2],
-          operator: OPERATORS.MATH[result],
+          operator,
           props,
         })
         source = `${terms[0]}${operationResult}${terms[3]}`
@@ -67,14 +79,15 @@ export const term = (source: string, props?: Props) => {
           array: OPERATORS.EQUALITY,
         })
         if (result !== -1) {
+          const operator = getOperator(OPERATORS.EQUALITY, result)
           terms = LogicParserStringUtil.extractTermsAroundPivot({
             source,
-            pivot: OPERATORS.EQUALITY[result],
+            pivot: operator,
           })
           const operationResult = performOperation({
             termOne: terms[1],
             termTwo: terms[2],
-            operator: OPERATORS.EQUALITY[result],
+            operator,
             props,
           })
           source = `${terms[0]}${operationResult}${terms[3]}`
@@ -85,14 +98,15 @@ export const term = (source: string, props?: Props) => {
             array: OPERATORS.BOOLEAN,
           })
           if (result !== -1) {
+            const operator = getOperator(OPERATORS.BOOLEAN, result)
             terms = LogicParserStringUtil.extractTermsAroundPivot({
               source,
-              pivot: OPERATORS.BOOLEAN[result],
+              pivot: operator,
             })
             const operationResult = performOperation({
               termOne: terms[1],
               termTwo: terms[2],
-              operator: OPERATORS.BOOLEAN[result],
+              operator,
               props,
             })
             source = `${terms[0]}${operationResult}${terms[3]}`
@@ -153,7 +167,7 @@ export const performOperation = ({
   termOne?: string
   termTwo?: string
   operator?: AllOperatorValues
-  props?: Props
+  props?: Props | undefined
 } = {}) => {
   // replace variable names where appropriate
   const a = processTerm(termOne, props)

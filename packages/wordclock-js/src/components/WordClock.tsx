@@ -1,7 +1,8 @@
 'use client'
 
-import { CSSProperties, FC, HTMLAttributes, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
+import type { CSSProperties, FC, HTMLAttributes } from 'react'
 import { useResizeTextToFit } from '../hooks/useResizeTextToFit'
 import useTimeProps from '../hooks/useTimeProps'
 import * as WordsFileParser from '../modules/WordsFileParser'

@@ -4,16 +4,26 @@ const objectToString = Object.prototype.toString
 const isString = (value: unknown): value is string =>
   typeof value === 'string' || objectToString.call(value) === '[object String]'
 
+type BraceTerms = [leftOfBraces: string, insideBraces: string, rightOfBraces: string]
+type PivotTerms = [
+  beforeLeftTerm: string,
+  leftTerm: string,
+  rightTerm: string,
+  afterRightTerm: string,
+]
+
 export const isNumericString = (string: string) => {
   return /^-?\d+$/.test(string)
 }
 
-export const extractStringContainedInOutermostBraces = (source: string) => {
+export function extractStringContainedInOutermostBraces(source: string): BraceTerms
+export function extractStringContainedInOutermostBraces(source?: string): BraceTerms | ''
+export function extractStringContainedInOutermostBraces(source?: string): BraceTerms | '' {
   if (!isString(source)) {
     return ''
   }
 
-  let rightOfBraces
+  let rightOfBraces: string
   let count
   let i
   let c
@@ -54,19 +64,20 @@ export const scanForInstanceOf = ({
   if (!isString(source) || !Array.isArray(array)) {
     return -1
   }
-  for (let i = 0; i < array.length; i++) {
-    if (source.indexOf(array[i]) !== -1) {
-      return i
-    }
-  }
-  return -1
+  return array.findIndex((instance) => source.indexOf(instance) !== -1)
 }
 
-export const extractTermsAroundPivot = ({ source, pivot }: { source: string; pivot: string }) => {
-  let leftTerm
-  let rightTerm
-  let beforeLeftTerm
-  let afterRightTerm
+export const extractTermsAroundPivot = ({
+  source,
+  pivot,
+}: {
+  source: string
+  pivot: string
+}): PivotTerms => {
+  let leftTerm: string
+  let rightTerm: string
+  let beforeLeftTerm: string
+  let afterRightTerm: string
   let c
   let i
 

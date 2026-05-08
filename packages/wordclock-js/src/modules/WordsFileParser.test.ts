@@ -75,9 +75,14 @@ describe('WordsFileParser', () => {
       'hour==11',
       'hour==12',
     ])
-    expect(label[3]).toHaveLength(60)
-    expect(logic[3]).toHaveLength(60)
-    expect(label[3][1]).toBe('and')
-    expect(logic[3][1]).toBe('second!=0')
+    const minuteLabels = label[3]
+    const minuteLogic = logic[3]
+    if (!minuteLabels || !minuteLogic) {
+      throw new Error('Expected parsed minute groups')
+    }
+    expect(minuteLabels).toHaveLength(60)
+    expect(minuteLogic).toHaveLength(60)
+    expect(minuteLabels[1]).toBe('and')
+    expect(minuteLogic[1]).toBe('second!=0')
   })
 })
