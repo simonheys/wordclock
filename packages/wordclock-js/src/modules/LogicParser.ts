@@ -44,9 +44,8 @@ const isString = (value: unknown): value is string =>
 
 export const term = (source: string, props?: Props) => {
   let terms
-  let parsing = false
+  let parsing = true
   let result
-  parsing = true
   while (parsing) {
     // parse brackets
     if (LogicParserStringUtil.checkBalancedBraces(source)) {

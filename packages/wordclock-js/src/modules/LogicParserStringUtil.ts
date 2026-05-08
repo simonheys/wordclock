@@ -111,7 +111,6 @@ export const extractTermsAroundPivot = ({
   const rightOfPivot = source.substr(pivotLocation + pivot.length)
 
   // left term
-  leftTerm = ''
   i = leftOfPivot.length - 1
   c = leftOfPivot.substr(i, 1)
 
@@ -132,9 +131,8 @@ export const extractTermsAroundPivot = ({
   }
 
   // right term
-  rightTerm = ''
+  i = 0
   if (rightOfPivot.length > 0) {
-    i = 0
     c = rightOfPivot.substr(i, 1)
 
     while (
