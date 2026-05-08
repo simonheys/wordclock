@@ -9,7 +9,7 @@ When creating or updating a pull request, write for reviewer throughput and futu
 - Structure the description with `Summary`, `Why`, `Review Notes`, `Validation`, and `Risk` when the change is non-trivial.
 - Explain both what changed and why it was needed. Include important tradeoffs that are not obvious from the diff.
 - Give reviewers a map when multiple areas changed: where to start, what files matter most, and what deserves extra scrutiny.
-- List concrete validation commands and manual checks. Say clearly when something was not tested.
+- List concrete validation commands and manual checks. Prefer project/package scripts over direct local binary paths or sandbox-specific workaround commands. Say clearly when something was not tested.
 - Avoid machine-specific details in pull request text, including absolute local paths, personal usernames, local hostnames, and incidental ports. Use project-relative paths and generic local-server descriptions instead.
 - Link related issues, pull requests, design notes, or follow-up work when available.
 - Do not add screenshots unless visual appearance is part of the review.
