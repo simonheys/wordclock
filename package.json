@@ -2,7 +2,7 @@
   "name": "wordclock",
   "version": "1.2.1",
   "private": true,
-  "packageManager": "pnpm@10.26.0",
+  "packageManager": "pnpm@10.33.4",
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
@@ -18,13 +18,13 @@
     "publish-npm": "pnpm run -r --parallel --stream publish-npm"
   },
   "devDependencies": {
-    "eslint": "9.39.2",
+    "eslint": "9.39.4",
     "husky": "9.1.7",
-    "lint-staged": "16.2.7",
-    "prettier": "3.7.4",
+    "lint-staged": "16.4.0",
+    "prettier": "3.8.3",
     "prettier-plugin-organize-imports": "4.3.0",
     "tsx": "4.21.0",
-    "turbo": "2.6.3"
+    "turbo": "2.9.10"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
