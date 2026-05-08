@@ -143,6 +143,9 @@ importers:
         specifier: 1.5.1
         version: 1.5.1
     devDependencies:
+      '@microsoft/api-extractor':
+        specifier: 7.55.2
+        version: 7.55.2(@types/node@24.12.3)
       '@semantic-release/commit-analyzer':
         specifier: 13.0.1
         version: 13.0.1(semantic-release@25.0.3(typescript@5.9.3))
@@ -5261,13 +5264,11 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@isaacs/balanced-match@4.0.1':
-    optional: true
+  '@isaacs/balanced-match@4.0.1': {}
 
   '@isaacs/brace-expansion@5.0.0':
     dependencies:
       '@isaacs/balanced-match': 4.0.1
-    optional: true
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -5295,7 +5296,6 @@ snapshots:
       '@rushstack/node-core-library': 5.19.1(@types/node@24.12.3)
     transitivePeerDependencies:
       - '@types/node'
-    optional: true
 
   '@microsoft/api-extractor@7.55.2(@types/node@24.12.3)':
     dependencies:
@@ -5315,7 +5315,6 @@ snapshots:
       typescript: 5.8.2
     transitivePeerDependencies:
       - '@types/node'
-    optional: true
 
   '@microsoft/tsdoc-config@0.18.0':
     dependencies:
@@ -5323,10 +5322,8 @@ snapshots:
       ajv: 8.12.0
       jju: 1.4.0
       resolve: 1.22.11
-    optional: true
 
-  '@microsoft/tsdoc@0.16.0':
-    optional: true
+  '@microsoft/tsdoc@0.16.0': {}
 
   '@napi-rs/wasm-runtime@1.1.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
@@ -5658,18 +5655,15 @@ snapshots:
       semver: 7.5.4
     optionalDependencies:
       '@types/node': 24.12.3
-    optional: true
 
   '@rushstack/problem-matcher@0.1.1(@types/node@24.12.3)':
     optionalDependencies:
       '@types/node': 24.12.3
-    optional: true
 
   '@rushstack/rig-package@0.6.0':
     dependencies:
       resolve: 1.22.11
       strip-json-comments: 3.1.1
-    optional: true
 
   '@rushstack/terminal@0.19.5(@types/node@24.12.3)':
     dependencies:
@@ -5678,7 +5672,6 @@ snapshots:
       supports-color: 8.1.1
     optionalDependencies:
       '@types/node': 24.12.3
-    optional: true
 
   '@rushstack/ts-command-line@5.1.5(@types/node@24.12.3)':
     dependencies:
@@ -5688,7 +5681,6 @@ snapshots:
       string-argv: 0.3.2
     transitivePeerDependencies:
       - '@types/node'
-    optional: true
 
   '@sec-ant/readable-stream@0.4.1': {}
 
@@ -5967,8 +5959,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@types/argparse@1.0.38':
-    optional: true
+  '@types/argparse@1.0.38': {}
 
   '@types/aria-query@5.0.4': {}
 
@@ -6367,12 +6358,10 @@ snapshots:
   ajv-draft-04@1.0.0(ajv@8.13.0):
     optionalDependencies:
       ajv: 8.13.0
-    optional: true
 
   ajv-formats@3.0.1(ajv@8.13.0):
     optionalDependencies:
       ajv: 8.13.0
-    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -6394,7 +6383,6 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
-    optional: true
 
   ajv@8.13.0:
     dependencies:
@@ -6402,7 +6390,6 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
-    optional: true
 
   ansi-escapes@7.0.0:
     dependencies:
@@ -6429,7 +6416,6 @@ snapshots:
   argparse@1.0.10:
     dependencies:
       sprintf-js: 1.0.3
-    optional: true
 
   argparse@2.0.1: {}
 
@@ -6851,8 +6837,7 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  diff@8.0.2:
-    optional: true
+  diff@8.0.2: {}
 
   dir-glob@3.0.1:
     dependencies:
@@ -7760,8 +7745,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  import-lazy@4.0.0:
-    optional: true
+  import-lazy@4.0.0: {}
 
   import-meta-resolve@4.1.0: {}
 
@@ -7945,8 +7929,7 @@ snapshots:
 
   jiti@2.6.1: {}
 
-  jju@1.4.0:
-    optional: true
+  jju@1.4.0: {}
 
   js-tokens@4.0.0: {}
 
@@ -7999,8 +7982,7 @@ snapshots:
 
   json-schema-traverse@0.4.1: {}
 
-  json-schema-traverse@1.0.0:
-    optional: true
+  json-schema-traverse@1.0.0: {}
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 
@@ -8145,8 +8127,7 @@ snapshots:
 
   lodash.uniqby@4.7.0: {}
 
-  lodash@4.17.21:
-    optional: true
+  lodash@4.17.21: {}
 
   log-update@6.1.0:
     dependencies:
@@ -8171,7 +8152,6 @@ snapshots:
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
-    optional: true
 
   lz-string@1.5.0: {}
 
@@ -8224,7 +8204,6 @@ snapshots:
   minimatch@10.0.3:
     dependencies:
       '@isaacs/brace-expansion': 5.0.0
-    optional: true
 
   minimatch@10.2.5:
     dependencies:
@@ -8680,8 +8659,7 @@ snapshots:
 
   require-directory@2.1.1: {}
 
-  require-from-string@2.0.2:
-    optional: true
+  require-from-string@2.0.2: {}
 
   requires-port@1.0.0:
     optional: true
@@ -8855,7 +8833,6 @@ snapshots:
   semver@7.5.4:
     dependencies:
       lru-cache: 6.0.0
-    optional: true
 
   semver@7.7.3: {}
 
@@ -8992,8 +8969,7 @@ snapshots:
     dependencies:
       through2: 2.0.5
 
-  sprintf-js@1.0.3:
-    optional: true
+  sprintf-js@1.0.3: {}
 
   stackback@0.0.2: {}
 
@@ -9321,8 +9297,7 @@ snapshots:
 
   typescript@5.7.2: {}
 
-  typescript@5.8.2:
-    optional: true
+  typescript@5.8.2: {}
 
   typescript@5.9.3: {}
 
@@ -9600,8 +9575,7 @@ snapshots:
 
   yallist@3.1.1: {}
 
-  yallist@4.0.0:
-    optional: true
+  yallist@4.0.0: {}
 
   yaml@2.8.2: {}
 
