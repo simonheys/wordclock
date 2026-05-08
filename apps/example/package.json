@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test:e2e": "playwright test",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "react-dom": "19.2.6"
   },
   "devDependencies": {
+    "@playwright/test": "1.59.1",
     "@simonheys/eslint-config": "workspace:*",
     "@tailwindcss/postcss": "4.2.4",
     "@types/node": "24.10.4",

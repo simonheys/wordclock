@@ -29,11 +29,14 @@ export const getTimeProps = (dateInstance = new Date()) => {
 }
 
 const useTimeProps = () => {
-  const [timeProps, setTimeProps] = useState(getTimeProps())
+  const [timeProps, setTimeProps] = useState<TimeProps | null>(null)
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateTimeProps = () => {
       setTimeProps(getTimeProps())
-    }, 1000)
+    }
+
+    updateTimeProps()
+    const interval = setInterval(updateTimeProps, 1000)
     return () => clearInterval(interval)
   }, [])
   return timeProps
