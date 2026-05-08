@@ -30,14 +30,19 @@ const useSize = () => {
       const currentRefEntry = entries.find(({ target }) => target === ref.current)
       if (currentRefEntry) {
         const { width, height } = currentRefEntry.contentRect
-        setSize({ width, height })
+        setSize((currentSize) => {
+          if (currentSize.width === width && currentSize.height === height) {
+            return currentSize
+          }
+          return { width, height }
+        })
       }
     })
     resizeObserver.current.observe(ref.current)
   }, [teardownResizeObserver])
 
   const setRef = React.useCallback(
-    (nextRef: HTMLDivElement) => {
+    (nextRef: HTMLDivElement | null) => {
       teardownResizeObserver()
       ref.current = nextRef
       setupResizeObserver()
