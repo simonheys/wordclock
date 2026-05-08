@@ -52,6 +52,10 @@ describe('wordclock-words JSON validation', () => {
           expect(typeof content.meta.language).toBe('string')
         })
 
+        it('should reference a manifest language', () => {
+          expect(manifest.languages[content.meta.language]).toBeDefined()
+        })
+
         it('should have groups array', () => {
           expect(content.groups).toBeDefined()
           expect(Array.isArray(content.groups)).toBe(true)
@@ -59,9 +63,9 @@ describe('wordclock-words JSON validation', () => {
         })
 
         it('should have valid group structure', () => {
-          content.groups.forEach((group, groupIndex) => {
+          content.groups.forEach((group) => {
             expect(Array.isArray(group)).toBe(true)
-            group.forEach((item, itemIndex) => {
+            group.forEach((item) => {
               expect(item.type).toBeDefined()
               expect(['item', 'sequence', 'space']).toContain(item.type)
             })

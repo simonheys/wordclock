@@ -6,7 +6,6 @@
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-    "build": "echo 'No build script'",
     "test": "vitest run",
     "publish-npm": "npm publish --public"
   },

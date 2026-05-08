@@ -4,9 +4,7 @@
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
   "scripts": {
-    "format": "tsx ./_scripts/code-format",
-    "build": "echo 'No build script'",
-    "test": "echo 'No tests'"
+    "format": "tsx ./_scripts/code-format"
   },
   "devDependencies": {
     "glob": "13.0.0",

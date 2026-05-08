@@ -5,7 +5,7 @@ import { CSSProperties, FC, HTMLAttributes, useEffect, useMemo } from 'react'
 import { useResizeTextToFit } from '../hooks/useResizeTextToFit'
 import useTimeProps from '../hooks/useTimeProps'
 import * as WordsFileParser from '../modules/WordsFileParser'
-import { WordsJson, WordsLabel, WordsLogic } from './types'
+import type { WordsJson, WordsLabel, WordsLogic } from './types'
 import { WordClockProvider } from './useWordClock'
 
 const containerStyle: CSSProperties = {

@@ -1,10 +1,20 @@
 # Dependencies
 node_modules
+.pnpm-store
 
 # Build outputs
+build
+coverage
 dist
 .next
 .turbo
+out
+playwright-report
+test-results
+.vercel
+
+# Next.js generated types
+next-env.d.ts
 
 # Environment
 .env

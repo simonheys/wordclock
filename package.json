@@ -8,8 +8,10 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --ignore-unknown --write . && turbo run format",
+    "format:check": "prettier --ignore-unknown --check .",
     "build": "turbo run build --filter='!wordclock-macos'",
     "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
     "test": "CI=true turbo run test --filter='!wordclock-macos'",
     "dev": "turbo run dev",
     "prepare": "husky",
@@ -21,7 +23,6 @@
     "lint-staged": "16.2.7",
     "prettier": "3.7.4",
     "prettier-plugin-organize-imports": "4.3.0",
-    "prettier-plugin-tailwindcss": "0.7.2",
     "tsx": "4.21.0",
     "turbo": "2.6.3"
   },
