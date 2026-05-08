@@ -2,23 +2,28 @@
   "name": "@simonheys/wordclock",
   "version": "1.2.0",
   "private": false,
+  "type": "module",
   "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
-  "main": "./dist/wordclock.umd.js",
-  "module": "./dist/wordclock.mjs",
+  "main": "./dist/wordclock.cjs",
+  "module": "./dist/wordclock.js",
   "types": "./dist/wordclock.d.ts",
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/wordclock.d.ts",
-      "import": "./dist/wordclock.mjs",
-      "require": "./dist/wordclock.umd.js"
+      "import": "./dist/wordclock.js",
+      "require": "./dist/wordclock.cjs",
+      "default": "./dist/wordclock.js"
     }
   },
   "dependencies": {
-    "@simonheys/wordclock-words": "*"
+    "@simonheys/wordclock-words": "*",
+    "lodash-es": "^4.17.21",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "13.0.1",
@@ -27,41 +32,40 @@
     "@semantic-release/release-notes-generator": "14.1.0",
     "@simonheys/eslint-config": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",
-    "@testing-library/react": "16.3.1",
+    "@testing-library/react": "16.3.2",
     "@testing-library/user-event": "14.6.1",
     "@types/lodash": "4.17.21",
     "@types/lodash-es": "4.17.12",
-    "@types/react": "19.2.7",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@typescript-eslint/eslint-plugin": "8.50.0",
     "@typescript-eslint/parser": "8.50.0",
-    "@vitejs/plugin-react-swc": "4.2.2",
+    "@vitejs/plugin-react-swc": "4.3.0",
     "concurrently": "9.2.1",
     "eslint": "9.39.2",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
-    "happy-dom": "20.0.11",
+    "happy-dom": "20.9.0",
     "lodash": "4.17.21",
     "semantic-release": "25.0.2",
     "typescript": "5.9.3",
     "vite": "7.3.0",
     "vite-plugin-dts": "4.5.4",
-    "vitest": "4.0.16"
+    "vitest": "4.1.5"
   },
   "peerDependencies": {
-    "lodash-es": "^4.17.21",
     "react": "^18.2.0 || ^19.0.0",
-    "react-dom": "^18.2.0 || ^19.0.0",
-    "resize-observer-polyfill": "^1.5.1"
+    "react-dom": "^18.2.0 || ^19.0.0"
   },
   "scripts": {
     "build": "vite build",
     "build:watch": "vite build --watch",
     "dev": "concurrently \"pnpm build:watch\" \"pnpm dev:example\"",
     "dev:example": "cd example && pnpm dev",
-    "publish-npm": "pnpm build && npm publish --public",
+    "publish-npm": "pnpm build && npm publish --access public",
     "test": "vitest run",
     "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
   "browserslist": {
@@ -86,6 +90,9 @@
   ],
   "bugs": {
     "url": "https://github.com/simonheys/wordclock/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "homepage": "https://github.com/simonheys/wordclock#readme"
 }
