@@ -15,6 +15,10 @@ describe('LogicParser', () => {
           expect(processTerm('false')).toEqual(false)
         })
       })
+      it('accepts String objects', () => {
+        // @ts-expect-error testing compatibility with previous string guard behavior
+        expect(processTerm(new String(' true '))).toEqual(true)
+      })
     })
     describe('when invalid', () => {
       it('returns empty string', () => {

@@ -125,9 +125,6 @@ importers:
       '@simonheys/wordclock-words':
         specifier: '*'
         version: 1.1.7
-      lodash-es:
-        specifier: 4.17.21
-        version: 4.17.21
       resize-observer-polyfill:
         specifier: 1.5.1
         version: 1.5.1
@@ -156,12 +153,6 @@ importers:
       '@testing-library/user-event':
         specifier: 14.6.1
         version: 14.6.1(@testing-library/dom@10.1.0)
-      '@types/lodash':
-        specifier: 4.17.21
-        version: 4.17.21
-      '@types/lodash-es':
-        specifier: 4.17.12
-        version: 4.17.12
       '@types/react':
         specifier: 19.2.14
         version: 19.2.14
@@ -192,9 +183,6 @@ importers:
       happy-dom:
         specifier: 20.9.0
         version: 20.9.0
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -1392,12 +1380,6 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
-
-  '@types/lodash-es@4.17.12':
-    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
-
-  '@types/lodash@4.17.21':
-    resolution: {integrity: sha512-FOvQ0YPD5NOfPgMzJihoT+Za5pdkDJWcbpuj1DjaKZIr/gxodQjY/uWEFlTNqW2ugXHUiL8lRQgw63dzKHZdeQ==}
 
   '@types/node@24.10.4':
     resolution: {integrity: sha512-vnDVpYPMzs4wunl27jHrfmwojOGKya0xyM3sH+UE5iv5uPS6vX7UIoh6m+vQc5LGBq52HBKPIn/zcSZVzeDEZg==}
@@ -5616,12 +5598,6 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
-
-  '@types/lodash-es@4.17.12':
-    dependencies:
-      '@types/lodash': 4.17.21
-
-  '@types/lodash@4.17.21': {}
 
   '@types/node@24.10.4':
     dependencies:
