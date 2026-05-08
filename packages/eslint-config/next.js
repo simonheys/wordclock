@@ -1,6 +1,6 @@
-const pluginNext = require('@next/eslint-plugin-next')
+import pluginNext from '@next/eslint-plugin-next'
 
-const reactConfig = require('./react')
+import reactConfig from './react.js'
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const nextConfig = [
@@ -22,4 +22,4 @@ const nextConfig = [
   },
 ]
 
-module.exports = nextConfig
+export default nextConfig
