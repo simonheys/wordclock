@@ -121,9 +121,11 @@ The canvas is not readable by assistive technology. Render the highlighted phras
 
 ## Scripts
 
+From the repository root:
+
 ```bash
-pnpm build
-pnpm test
-pnpm typecheck
+pnpm --filter @simonheys/wordclock-canvas build
+pnpm --filter @simonheys/wordclock-canvas test
+pnpm --filter @simonheys/wordclock-canvas typecheck
 pnpm lint
 ```

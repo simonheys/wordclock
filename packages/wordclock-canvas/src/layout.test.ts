@@ -102,6 +102,18 @@ describe('fitScale', () => {
     const small = fitScale(definition, { width: 400, height: 300 })
     expect(small).toBeLessThan(big)
   })
+
+  it('is not capped when a larger scale fits', () => {
+    const definition = measured(sequence('minute', 1))
+    const scale = fitScale(definition, { width: 1000, height: 1000 })
+    expect(scale).toBeGreaterThan(4)
+  })
+
+  it('returns zero for an unusable box', () => {
+    const definition = measured(sequence('minute', 1))
+    expect(fitScale(definition, { width: 0, height: 1000 })).toBe(0)
+    expect(fitScale(definition, { width: 1000, height: Number.POSITIVE_INFINITY })).toBe(0)
+  })
 })
 
 describe('layoutLinear', () => {

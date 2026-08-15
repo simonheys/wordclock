@@ -74,6 +74,18 @@ importers:
 
   packages/wordclock-canvas:
     devDependencies:
+      '@semantic-release/commit-analyzer':
+        specifier: 13.0.1
+        version: 13.0.1(semantic-release@25.0.3(typescript@7.0.2))
+      '@semantic-release/github':
+        specifier: 12.0.8
+        version: 12.0.8(semantic-release@25.0.3(typescript@7.0.2))
+      '@semantic-release/npm':
+        specifier: 13.1.5
+        version: 13.1.5(semantic-release@25.0.3(typescript@7.0.2))
+      '@semantic-release/release-notes-generator':
+        specifier: 14.1.1
+        version: 14.1.1(semantic-release@25.0.3(typescript@7.0.2))
       '@simonheys/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
@@ -83,6 +95,9 @@ importers:
       '@types/node':
         specifier: 24.12.4
         version: 24.12.4
+      semantic-release:
+        specifier: 25.0.3
+        version: 25.0.3(typescript@7.0.2)
       tsdown:
         specifier: 0.22.14
         version: 0.22.14(tsx@4.22.3)(typescript@7.0.2)

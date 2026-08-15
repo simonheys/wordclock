@@ -78,15 +78,37 @@ export function wrap(
 export function fitScale(definition: Definition, options: LinearOptions): number {
   const { width, height, tracking = 1, leading = 0.1 } = options
   const lineHeight = definition.emHeight * (1 + leading)
-  let low = 0.001
-  let high = 4
+  if (
+    !Number.isFinite(width) ||
+    !Number.isFinite(height) ||
+    !Number.isFinite(lineHeight) ||
+    width <= 0 ||
+    height <= 0 ||
+    lineHeight <= 0
+  ) {
+    return 0
+  }
+
+  const fits = (scale: number) => {
+    const lines = wrap(definition, { maxWidth: width, scale, tracking })
+    return (
+      lines.length > 0 &&
+      lines.length * lineHeight * scale <= height &&
+      lines.every((line) => line.width <= width)
+    )
+  }
+
+  let low = 0
+  let high = 1
+
+  while (fits(high)) {
+    low = high
+    high *= 2
+  }
 
   for (let i = 0; i < 24; i++) {
     const mid = (low + high) / 2
-    const lines = wrap(definition, { maxWidth: width, scale: mid, tracking })
-    const fits =
-      lines.length * lineHeight * mid <= height && lines.every((line) => line.width <= width)
-    if (fits) {
+    if (fits(mid)) {
       low = mid
     } else {
       high = mid

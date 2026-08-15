@@ -175,4 +175,17 @@ describe('updateColours', () => {
     updateColours(state, mask, DEFAULT_PALETTE, 150)
     expect(state.words[0]?.current).toEqual([1, 1, 1, 1])
   })
+
+  it('transitions to a changed palette without waiting for the mask to change', () => {
+    const { state, mask } = single()
+    const palette = {
+      ...DEFAULT_PALETTE,
+      foreground: [0.75, 0.5, 0.25, 1] as const,
+    }
+
+    updateColours(state, mask, palette, 0)
+    updateColours(state, mask, palette, 150)
+
+    expect(state.words[0]?.current).toEqual(palette.foreground)
+  })
 })

@@ -73,6 +73,8 @@ describe('compile', () => {
     expect(() => compile('minute ==')).toThrow(SyntaxError)
     expect(() => compile('(minute==1')).toThrow(SyntaxError)
     expect(() => compile('nonsense==1')).toThrow(SyntaxError)
+    expect(() => compile('minute @ == 41')).toThrow(SyntaxError)
+    expect(() => compile('minute==41@')).toThrow(SyntaxError)
   })
 
   it('compiles once and is reusable across evaluations', () => {

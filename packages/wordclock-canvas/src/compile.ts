@@ -46,7 +46,7 @@ const BINARY: Record<string, (a: Evaluate, b: Evaluate) => Evaluate> = {
   '%': (a, b) => (t) => Number(a(t)) % Number(b(t)),
 }
 
-const TOKEN = /\s*(===|!==|==|!=|>=|<=|&&|\|\||[<>%*/+\-()!]|\d+|[A-Za-z_][A-Za-z0-9_]*)/g
+const TOKEN = /\s*(===|!==|==|!=|>=|<=|&&|\|\||[<>%*/+\-()!]|\d+|[A-Za-z_][A-Za-z0-9_]*)/y
 
 const isTimeField = (token: string): token is TimeField =>
   (TIME_FIELDS as readonly string[]).includes(token)
@@ -68,13 +68,19 @@ export function compile(source: string): Compiled {
 
   const tokens: string[] = []
   TOKEN.lastIndex = 0
-  let match = TOKEN.exec(source)
-  while (match !== null) {
+  while (TOKEN.lastIndex < source.length) {
+    const start = TOKEN.lastIndex
+    const match = TOKEN.exec(source)
+    if (match === null) {
+      if (source.slice(start).trim() === '') {
+        break
+      }
+      throw new SyntaxError(`Unexpected token at position ${start} in "${source}"`)
+    }
     const token = match[1]
     if (token !== undefined) {
       tokens.push(token)
     }
-    match = TOKEN.exec(source)
   }
 
   let position = 0

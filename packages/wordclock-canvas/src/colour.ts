@@ -58,19 +58,22 @@ export function updateColours(
 
   state.words.forEach((word, i) => {
     const wanted = mask[i] === 1
+    const target = wanted ? palette.highlight : palette.foreground
 
     if (first) {
-      const target = wanted ? palette.highlight : palette.foreground
       for (let k = 0; k < 4; k++) {
-        word.current[k] = target[k] ?? 0
+        const value = target[k] ?? 0
+        word.current[k] = value
+        word.from[k] = value
+        word.to[k] = value
       }
       word.highlighted = wanted
       return
     }
 
-    if (wanted !== word.highlighted) {
+    const targetChanged = target.some((value, k) => value !== word.to[k])
+    if (wanted !== word.highlighted || targetChanged) {
       word.highlighted = wanted
-      const target = wanted ? palette.highlight : palette.foreground
       for (let k = 0; k < 4; k++) {
         word.from[k] = word.current[k] ?? 0 // start from the live value
         word.to[k] = target[k] ?? 0
