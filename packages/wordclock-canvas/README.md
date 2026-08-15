@@ -1,0 +1,129 @@
+# WordClock Canvas
+
+Framework-free canvas renderer for WordClock, published as `@simonheys/wordclock-canvas`.
+
+Where [WordClock React](/packages/wordclock-js) lays words out with flexbox, this package computes an explicit position for every word and draws it to a canvas. That makes two things possible that the DOM version cannot do: the **rotary** layout from the [macOS screen saver](/packages/wordclock-macos), and the staggered **transition** between linear and rotary.
+
+Zero runtime dependencies. No React, no DOM measurement, no reflow.
+
+## Why canvas
+
+Canvas `fillText` goes through the same platform text engine as DOM text — CoreText, DirectWrite, HarfBuzz — so kerning, standard ligatures and complex-script shaping are identical, provided each word is measured and drawn as a single run. Measured against the DOM across Latin, Arabic, Devanagari, Thai and CJK, advance widths agree to under 0.01px.
+
+The one exception is kerning pairs that span a space, which canvas does not apply. No token in the bundled corpus is affected.
+
+Canvas also means `measureText` is both the measuring and the drawing path, so layout and render agree by construction, and rotated words are rasterised at their true angle rather than being rotated bitmaps.
+
+## Pipeline
+
+```
+parseWords  ->  measure  ->  layoutLinear / layoutRotary  ->  draw
+                             (pure arithmetic)               (canvas)
+```
+
+Everything between `measure` and `draw` is arithmetic on measured widths. It touches no DOM, allocates nothing per frame, and is deterministic — which is what makes the transition testable without a timer.
+
+```ts
+import {
+  createCanvasMetrics,
+  createColourState,
+  DEFAULT_PALETTE,
+  draw,
+  getTimeProps,
+  layoutLinear,
+  measure,
+  parseWords,
+  resizeCanvas,
+  resolve,
+  updateColours,
+} from '@simonheys/wordclock-canvas'
+import words from '@simonheys/wordclock-words/json/English.json'
+
+const font = { family: 'system-ui, sans-serif', weight: 700 }
+const context = canvas.getContext('2d')
+
+// measureText silently falls back to a substitute font until the real one loads
+await document.fonts.load(`${font.weight} 100px ${font.family}`)
+
+const definition = measure(parseWords(words), createCanvasMetrics(context, font))
+const colours = createColourState(definition.words.length)
+const mask = new Uint8Array(definition.words.length)
+
+const { width, height } = resizeCanvas(canvas, context, window.devicePixelRatio)
+const { coordinates } = layoutLinear(definition, { width, height })
+
+resolve(definition, getTimeProps(), mask)
+updateColours(colours, mask, DEFAULT_PALETTE, performance.now())
+draw(context, definition, coordinates, colours, { font })
+```
+
+## Rotary
+
+One concentric ring per word group. Words are spokes reading radially outward, and each ring's radius starts where the previous ring's selected word ended — so the selected words lay end to end and the phrase reads straight across the wheel.
+
+```ts
+const state = refreshRotaryMetrics(createRotaryState(definition), definition)
+
+// each frame
+resolve(definition, getTimeProps(), mask)
+updateRotaryState(state, definition, mask, performance.now(), deltaMs)
+const { coordinates } = layoutRotary(definition, state, { width, height })
+```
+
+Rings animate to bring the selected word to the reading line, taking the shorter way round, with the same `easeOutBack` over 300ms as the native version.
+
+## Transition
+
+Every word gets its own delay, so the layout unfurls rather than snapping, and the order reverses on the way back to linear.
+
+```ts
+const transition = createTransition(definition, { style: 'slow', now: performance.now() })
+const snapshot = cloneCoordinates(current) // freeze where we are
+
+// each frame: the target stays live, so rings keep turning underneath
+const done = advanceTransition(transition, performance.now())
+const coordinates = tweenCoordinates(snapshot, target, transition.values)
+```
+
+Because progress is a pure function of elapsed time, a transition can be evaluated at any point without animating to it — useful for tests and for rendering a filmstrip.
+
+## Scheduling
+
+`parseWords` records which time fields the compiled expressions actually read, so a file that never mentions `second` need not tick every second:
+
+```ts
+setTimeout(tick, millisecondsUntilNextChange(definition))
+```
+
+## Options
+
+|                                |                                                                                                                                                   |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pivot`                        | `'leading'` (default, matches macOS) or `'centre'`. Where a word rotates about. Settled layouts are identical; only the transition path differs.  |
+| `shortestRotation`             | Default `true`. Takes each word by the smaller arc to the same final orientation. macOS lerps raw, which spins far-side words almost a full turn. |
+| `highlightInFront`             | Default `true`. Draws highlighted words last so the dense rings cannot occlude them.                                                              |
+| `tracking`, `leading`, `align` | Linear layout metrics.                                                                                                                            |
+| `typeDivisor`                  | Rotary type size relative to the smaller container edge.                                                                                          |
+
+## Colours
+
+Highlight transitions are ported component by component from the native version, including its asymmetry: highlighting on runs RGB through `quadEaseIn` while alpha uses `quadEaseOut`; highlighting off runs all four through `quadEaseOut`. Each component tweens from its live value, so an interrupted fade resumes rather than snapping.
+
+`DEFAULT_PALETTE` is the macOS factory default — black background, `0.25` grey foreground, white highlight.
+
+## Direction
+
+No token in the bundled corpus mixes scripts, so direction is a per-file property derived from `meta.language` rather than requiring the Unicode bidirectional algorithm. RTL files lay out from the right in linear, and read outward from 9 o'clock in rotary.
+
+## Accessibility
+
+The canvas is not readable by assistive technology. Render the highlighted phrase alongside it — a visually hidden `<time role="timer">` built from the words whose mask bit is set — and mark the canvas `aria-hidden`.
+
+## Scripts
+
+```bash
+pnpm build
+pnpm test
+pnpm typecheck
+pnpm lint
+```

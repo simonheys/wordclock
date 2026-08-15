@@ -1,0 +1,7 @@
+{
+  "extends": "@simonheys/typescript-config/react-library.json",
+  "compilerOptions": {
+    "types": ["vite/client", "vitest/globals", "node"]
+  },
+  "include": ["src"]
+}

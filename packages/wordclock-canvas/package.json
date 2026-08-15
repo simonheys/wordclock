@@ -1,0 +1,61 @@
+{
+  "name": "@simonheys/wordclock-canvas",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "author": "Simon Heys <si@simonheys.com>",
+  "license": "MIT",
+  "main": "./dist/wordclock-canvas.cjs",
+  "module": "./dist/wordclock-canvas.js",
+  "types": "./dist/wordclock-canvas.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/wordclock-canvas.d.ts",
+      "import": "./dist/wordclock-canvas.js",
+      "require": "./dist/wordclock-canvas.cjs",
+      "default": "./dist/wordclock-canvas.js"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@simonheys/eslint-config": "workspace:*",
+    "@simonheys/typescript-config": "workspace:*",
+    "@simonheys/wordclock-words": "workspace:*",
+    "@types/node": "25.2.0",
+    "eslint": "10.4.0",
+    "typescript": "6.0.3",
+    "vite": "8.0.14",
+    "vite-plugin-dts": "5.0.1",
+    "vitest": "4.1.7"
+  },
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --ignore-unknown --write .",
+    "format:check": "prettier --ignore-unknown --check ."
+  },
+  "description": "Framework-free canvas renderer for WordClock, with linear and rotary layouts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonheys/wordclock.git"
+  },
+  "keywords": [
+    "wordclock",
+    "canvas"
+  ],
+  "bugs": {
+    "url": "https://github.com/simonheys/wordclock/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/simonheys/wordclock#readme"
+}
