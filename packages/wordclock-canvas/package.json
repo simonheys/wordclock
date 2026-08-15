@@ -1,0 +1,61 @@
+{
+  "name": "@simonheys/wordclock-canvas",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Framework-free canvas renderer for WordClock, with linear and rotary layouts",
+  "keywords": [
+    "canvas",
+    "wordclock"
+  ],
+  "homepage": "https://github.com/simonheys/wordclock#readme",
+  "bugs": {
+    "url": "https://github.com/simonheys/wordclock/issues"
+  },
+  "license": "MIT",
+  "author": "Simon Heys <si@simonheys.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonheys/wordclock.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown src/index.ts --format esm,cjs --dts --platform neutral",
+    "build:watch": "pnpm build --watch",
+    "publish-npm": "pnpm build && npm publish --access public",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/github": "12.0.8",
+    "@semantic-release/npm": "13.1.5",
+    "@semantic-release/release-notes-generator": "14.1.1",
+    "@simonheys/typescript-config": "workspace:*",
+    "@simonheys/wordclock-words": "workspace:*",
+    "@types/node": "24.12.4",
+    "semantic-release": "25.0.3",
+    "tsdown": "0.22.14",
+    "typescript": "7.0.2",
+    "vitest": "4.1.7"
+  }
+}

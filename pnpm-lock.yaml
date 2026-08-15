@@ -72,6 +72,42 @@ importers:
 
   packages/typescript-config: {}
 
+  packages/wordclock-canvas:
+    devDependencies:
+      '@semantic-release/commit-analyzer':
+        specifier: 13.0.1
+        version: 13.0.1(semantic-release@25.0.3(typescript@7.0.2))
+      '@semantic-release/github':
+        specifier: 12.0.8
+        version: 12.0.8(semantic-release@25.0.3(typescript@7.0.2))
+      '@semantic-release/npm':
+        specifier: 13.1.5
+        version: 13.1.5(semantic-release@25.0.3(typescript@7.0.2))
+      '@semantic-release/release-notes-generator':
+        specifier: 14.1.1
+        version: 14.1.1(semantic-release@25.0.3(typescript@7.0.2))
+      '@simonheys/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@simonheys/wordclock-words':
+        specifier: workspace:*
+        version: link:../wordclock-words
+      '@types/node':
+        specifier: 24.12.4
+        version: 24.12.4
+      semantic-release:
+        specifier: 25.0.3
+        version: 25.0.3(typescript@7.0.2)
+      tsdown:
+        specifier: 0.22.14
+        version: 0.22.14(tsx@4.22.3)(typescript@7.0.2)
+      typescript:
+        specifier: 7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: 4.1.7
+        version: 4.1.7(@types/node@24.12.4)(happy-dom@20.9.0)(vite@8.0.14(@types/node@24.12.4)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.22.3)(yaml@2.9.0))
+
   packages/wordclock-flash: {}
 
   packages/wordclock-ios:
@@ -2614,9 +2650,6 @@ packages:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
 
-  obug@2.1.1:
-    resolution: {integrity: sha512-uTqF9MuPraAQ+IsnPf366RG4cP9RtUi7MLO1N3KEc+wb0a6yKpeL0lmk2IB1jY5KHPAlTc6T/JRdC/YqxHNwkQ==}
-
   obug@2.1.4:
     resolution: {integrity: sha512-4a+OsYv9UktOJKE+l1A4OufDgdRF9PifWj+tJnHURo/P+WOxpG4GzUFL9qCalmWauao6ogiG+QvnCovwPoyAWA==}
     engines: {node: '>=12.20.0'}
@@ -3130,10 +3163,6 @@ packages:
 
   tinyglobby@0.2.15:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
-    engines: {node: '>=12.0.0'}
-
-  tinyglobby@0.2.16:
-    resolution: {integrity: sha512-pn99VhoACYR8nFHhxqix+uvsbXineAasWm5ojXoN8xEwK5Kd3/TrhNn1wByuD52UxWRLy8pu+kRMniEi6Eq9Zg==}
     engines: {node: '>=12.0.0'}
 
   tinyglobby@0.2.17:
@@ -5273,8 +5302,6 @@ snapshots:
 
   object-assign@4.1.1: {}
 
-  obug@2.1.1: {}
-
   obug@2.1.4: {}
 
   onetime@6.0.0:
@@ -5851,11 +5878,6 @@ snapshots:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
 
-  tinyglobby@0.2.16:
-    dependencies:
-      fdir: 6.5.0(picomatch@4.0.4)
-      picomatch: 4.0.4
-
   tinyglobby@0.2.17:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.5)
@@ -6017,13 +6039,13 @@ snapshots:
       es-module-lexer: 2.1.0
       expect-type: 1.3.0
       magic-string: 0.30.21
-      obug: 2.1.1
+      obug: 2.1.4
       pathe: 2.0.3
-      picomatch: 4.0.4
+      picomatch: 4.0.5
       std-env: 4.1.0
       tinybench: 2.9.0
-      tinyexec: 1.1.2
-      tinyglobby: 0.2.16
+      tinyexec: 1.3.0
+      tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
       vite: 8.0.14(@types/node@24.12.4)(esbuild@0.28.0)(jiti@2.6.1)(tsx@4.22.3)(yaml@2.9.0)
       why-is-node-running: 2.3.0
