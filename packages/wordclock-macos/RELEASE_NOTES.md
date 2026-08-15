@@ -1,0 +1,5 @@
+- Adds workarounds for broken user preferences and screensaver not exiting
+- Migrates from legacy OpenGL to Metal
+- Updates legacy icons for dark / light mode
+- Adds 'reset' button in settings
+- Numerous small memory-related bug fixes

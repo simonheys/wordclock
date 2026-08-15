@@ -1,0 +1,43 @@
+name: Append sponsor footer to release
+
+on:
+  release:
+    types:
+      - published
+      - edited
+
+jobs:
+  append-footer:
+    name: Append footer
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Append footer to release notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+
+          footer="$(cat .github/release-footer.md)"
+          body="$(gh release view "$TAG" --repo "$REPO" --json body --jq .body)"
+
+          if printf '%s' "$body" | grep -qF 'sponsors/simonheys'; then
+            echo "Footer already present on $TAG, nothing to do."
+            exit 0
+          fi
+
+          if [ -z "$body" ]; then
+            printf '%s\n' "$footer" > notes.md
+          else
+            printf '%s\n\n---\n\n%s\n' "$body" "$footer" > notes.md
+          fi
+
+          gh release edit "$TAG" --repo "$REPO" --notes-file notes.md
+          echo "Footer appended to $TAG."
