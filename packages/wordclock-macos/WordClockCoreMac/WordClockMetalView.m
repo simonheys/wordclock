@@ -45,8 +45,8 @@
     [super dealloc];
 }
 
-- (void)updateWordVertices:(const float *)positions colors:(const float *)colors texCoords:(const short *)texCoords wordCount:(NSUInteger)wordCount scale:(float)scale {
-    [_renderer updateWordVertices:positions colors:colors texCoords:texCoords wordCount:wordCount scale:scale];
+- (void)updateWordVertices:(const float *)positions colors:(const float *)colors texCoords:(const short *)texCoords highlighted:(const BOOL *)highlighted wordCount:(NSUInteger)wordCount scale:(float)scale {
+    [_renderer updateWordVertices:positions colors:colors texCoords:texCoords highlighted:highlighted wordCount:wordCount scale:scale];
 }
 
 - (void)updateWordTextures:(NSArray<id<MTLTexture>> *)textures {
