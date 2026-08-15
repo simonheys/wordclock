@@ -30,6 +30,9 @@ const publish = process.argv.includes('--publish')
   console.log('Verifying notarization')
   await spawnCommand(`xcrun`, [`stapler`, `validate`, dmgPath])
 
+  const { stdout: commitOutput } = await spawnCommand(`git`, [`rev-parse`, `HEAD`])
+  const commit = commitOutput.trim()
+
   const notes = (await fs.pathExists(notesPath))
     ? (await fs.readFile(notesPath, 'utf8')).trim()
     : ''
@@ -47,6 +50,8 @@ const publish = process.argv.includes('--publish')
     dmgPath,
     `--title`,
     tag,
+    `--target`,
+    commit,
     `--notes-file`,
     bodyPath,
     ...(publish ? [] : [`--draft`]),

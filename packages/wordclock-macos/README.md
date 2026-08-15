@@ -39,10 +39,11 @@ Run package scripts from `packages/wordclock-macos`, or from the repository root
   pnpm release
   ```
 
-  This verifies the DMG is stapled, attaches it, and appends the footer from
-  `.github/release-footer.md` to the notes. It creates a draft so the notes can be
-  reviewed before going live; pass `--publish` to release directly. Requires the
-  [GitHub CLI](https://cli.github.com) to be installed and authenticated.
+  This verifies the DMG is stapled, tags the current commit, attaches the DMG, and
+  appends the footer from `.github/release-footer.md` to the notes. It creates a
+  draft so the notes can be reviewed before going live; pass `--publish` to release
+  directly. Requires the [GitHub CLI](https://cli.github.com) to be installed and
+  authenticated.
 
 ## Signing And Notarization
 
