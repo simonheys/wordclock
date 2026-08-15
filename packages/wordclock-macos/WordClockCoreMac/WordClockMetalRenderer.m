@@ -53,6 +53,7 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
     NSMutableArray<id<MTLTexture>> *_wordTextures;
     BOOL *_wordHighlighted;
     NSUInteger _wordHighlightedCapacity;
+    NSLock *_renderStateLock;
     MTKView *_view;
 }
 @end
@@ -127,6 +128,7 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
         _quadVertexBuffer = [self buildQuad];
         _uniformBuffer = [_device newBufferWithLength:sizeof(VSUniforms) options:MTLResourceStorageModeShared];
         _wordTextures = [[NSMutableArray alloc] init];
+        _renderStateLock = [[NSLock alloc] init];
         MTLSamplerDescriptor *samplerDesc = [[[MTLSamplerDescriptor alloc] init] autorelease];
         samplerDesc.minFilter = MTLSamplerMinMagFilterLinear;
         samplerDesc.magFilter = MTLSamplerMinMagFilterLinear;
@@ -155,6 +157,7 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
     [_guideVertexBuffer release];
     [_wordTextures release];
     free(_wordHighlighted);
+    [_renderStateLock release];
     [_samplerState release];
     [_opaqueTexture release];
     [_transparentTexture release];
@@ -221,8 +224,10 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
 - (void)mtkView:(MTKView *)view drawableSizeWillChange:(CGSize)size {
     (void)view;
     (void)size;
+    [_renderStateLock lock];
     [self updateUniformsForSize:view.bounds.size];
     [self updateQuadForSize:view.bounds.size];
+    [_renderStateLock unlock];
 }
 
 - (void)drawInMTKView:(MTKView *)view {
@@ -237,6 +242,7 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
         return;
     }
     id<MTLRenderCommandEncoder> encoder = [commandBuffer renderCommandEncoderWithDescriptor:pass];
+    [_renderStateLock lock];
     if (_pipelineState) {
         [encoder setRenderPipelineState:_pipelineState];
         if (_wordVertexBuffer && _wordVertexCount > 0) {
@@ -288,15 +294,18 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
             [encoder drawPrimitives:MTLPrimitiveTypeLine vertexStart:0 vertexCount:_guideVertexCount];
         }
     }
+    [_renderStateLock unlock];
     [encoder endEncoding];
     [commandBuffer presentDrawable:drawable];
     [commandBuffer commit];
 }
 
 - (void)updateWordVertices:(const float *)positions colors:(const float *)colors texCoords:(const short *)texCoords highlighted:(const BOOL *)highlighted wordCount:(NSUInteger)wordCount scale:(float)scale {
+    [_renderStateLock lock];
     if (!positions || !colors || wordCount == 0) {
         _wordVertexCount = 0;
         _wordCount = 0;
+        [_renderStateLock unlock];
         return;
     }
 
@@ -363,16 +372,21 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
         outVertices[base + 4] = (WordVertex){.position = {x1, y1}, .uv = {u1, v1}, .color = c1};
         outVertices[base + 5] = (WordVertex){.position = {x3, y3}, .uv = {u3, v3}, .color = c3};
     }
+    [_renderStateLock unlock];
 }
 
 - (void)updateWordTextures:(NSArray<id<MTLTexture>> *)textures {
+    [_renderStateLock lock];
     [_wordTextures release];
     _wordTextures = [textures mutableCopy];
+    [_renderStateLock unlock];
 }
 
 - (void)updateGuideVertices:(const float *)positions colors:(const float *)colors count:(NSUInteger)count {
+    [_renderStateLock lock];
     if (!positions || !colors || count == 0) {
         _guideVertexCount = 0;
+        [_renderStateLock unlock];
         return;
     }
     const NSUInteger bufferLength = count * sizeof(WordVertex);
@@ -395,6 +409,7 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
         };
     }
     _guideVertexCount = count;
+    [_renderStateLock unlock];
 }
 
 @end
