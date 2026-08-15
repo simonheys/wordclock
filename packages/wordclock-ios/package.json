@@ -8,6 +8,6 @@
   },
   "devDependencies": {
     "glob": "13.0.6",
-    "tsx": "4.22.3"
+    "tsx": "4.23.12"
   }
 }
