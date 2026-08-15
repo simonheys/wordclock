@@ -2,15 +2,15 @@
   "name": "wordclock",
   "version": "1.2.1",
   "private": true,
-  "packageManager": "pnpm@11.2.2",
-  "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
+  "author": "Simon Heys <si@simonheys.com>",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "format": "prettier --ignore-unknown --write . && turbo run format",
-    "format:check": "prettier --ignore-unknown --check .",
+    "format": "oxfmt . && turbo run format",
+    "format:check": "oxfmt --check .",
     "build": "turbo run build --filter='!wordclock-macos'",
-    "lint": "turbo run lint",
+    "lint": "oxlint --deny-warnings .",
+    "lint:fix": "oxlint --fix --deny-warnings .",
     "typecheck": "turbo run typecheck",
     "test": "CI=true turbo run test --filter='!wordclock-macos'",
     "dev": "turbo run dev",
@@ -18,19 +18,19 @@
     "publish-npm": "pnpm run -r --parallel --stream publish-npm"
   },
   "devDependencies": {
-    "eslint": "10.4.0",
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
-    "prettier": "3.8.3",
-    "prettier-plugin-organize-imports": "4.3.0",
+    "oxfmt": "0.63.0",
+    "oxlint": "1.78.0",
     "tsx": "4.22.3",
     "turbo": "2.9.14"
   },
   "lint-staged": {
-    "*": "prettier --ignore-unknown --write",
+    "*": "oxfmt --no-error-on-unmatched-pattern",
     "*.{js,jsx,ts,tsx}": [
-      "eslint --cache --fix",
+      "oxlint --fix --deny-warnings",
       "pnpm --filter @simonheys/wordclock exec vitest related --run"
     ]
-  }
+  },
+  "packageManager": "pnpm@11.2.2"
 }

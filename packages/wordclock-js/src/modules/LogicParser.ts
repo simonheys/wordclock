@@ -34,7 +34,6 @@ const getOperator = <Operator extends AllOperatorValues>(
 
 // ____________________________________________________________________________________________________ term
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Result = any
 type Props = Record<string, Result>
 

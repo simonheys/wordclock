@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "semi": false,
+  "singleQuote": true,
+  "ignorePatterns": ["packages/wordclock-words/json/*.json"],
+  "experimentalTailwindcss": {
+    "stylesheet": "./apps/example/src/app/globals.css",
+    "functions": ["clsx", "cva", "cn"]
+  }
+}
