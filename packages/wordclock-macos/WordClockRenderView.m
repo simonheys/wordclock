@@ -453,7 +453,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         if (self.controller.scene) {
             sceneScale = self.controller.scene.scale;
         }
-        [self.metalView updateWordVertices:_vertices colors:_colours texCoords:_coordinates wordCount:_numberOfWords scale:sceneScale];
+        [self.metalView updateWordVertices:_vertices colors:_colours texCoords:_coordinates highlighted:_highlighted wordCount:_numberOfWords scale:sceneScale];
         [self updateMetalGuideVerticesWithScale:sceneScale];
     }
 }

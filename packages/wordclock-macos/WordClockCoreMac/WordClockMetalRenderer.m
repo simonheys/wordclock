@@ -51,6 +51,8 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
     id<MTLTexture> _opaqueTexture;
     id<MTLTexture> _transparentTexture;
     NSMutableArray<id<MTLTexture>> *_wordTextures;
+    BOOL *_wordHighlighted;
+    NSUInteger _wordHighlightedCapacity;
     MTKView *_view;
 }
 @end
@@ -152,6 +154,7 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
     [_wordVertexBuffer release];
     [_guideVertexBuffer release];
     [_wordTextures release];
+    free(_wordHighlighted);
     [_samplerState release];
     [_opaqueTexture release];
     [_transparentTexture release];
@@ -246,19 +249,34 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
             [encoder setFragmentSamplerState:_samplerState atIndex:0];
         }
         if (_wordVertexBuffer && _wordVertexCount > 0) {
-            for (NSUInteger i = 0; i < _wordCount; i++) {
-                id<MTLTexture> texture = nil;
-                if (i < [_wordTextures count]) {
-                    id candidate = [_wordTextures objectAtIndex:i];
-                    if (candidate != [NSNull null]) {
-                        texture = candidate;
+            // Two passes so highlighted words are never occluded by the
+            // unhighlighted ones, which overlap heavily in the rotary layout.
+            // The pre-Metal renderer did the same by deferring highlighted
+            // indices to a second glDrawArrays loop.
+            const BOOL *highlighted = (_wordHighlightedCapacity >= _wordCount) ? _wordHighlighted : NULL;
+            for (int pass = 0; pass < 2; pass++) {
+                const BOOL drawingHighlighted = (pass == 1);
+                if (drawingHighlighted && !highlighted) {
+                    break;  // nothing was deferred, everything drew in pass 0
+                }
+                for (NSUInteger i = 0; i < _wordCount; i++) {
+                    const BOOL wordIsHighlighted = highlighted ? highlighted[i] : NO;
+                    if (wordIsHighlighted != drawingHighlighted) {
+                        continue;
                     }
+                    id<MTLTexture> texture = nil;
+                    if (i < [_wordTextures count]) {
+                        id candidate = [_wordTextures objectAtIndex:i];
+                        if (candidate != [NSNull null]) {
+                            texture = candidate;
+                        }
+                    }
+                    if (!texture) {
+                        texture = _transparentTexture;
+                    }
+                    [encoder setFragmentTexture:texture atIndex:0];
+                    [encoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:(NSUInteger)(i * 6) vertexCount:6];
                 }
-                if (!texture) {
-                    texture = _transparentTexture;
-                }
-                [encoder setFragmentTexture:texture atIndex:0];
-                [encoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:(NSUInteger)(i * 6) vertexCount:6];
             }
         } else {
             [encoder setFragmentTexture:_opaqueTexture atIndex:0];
@@ -275,11 +293,28 @@ static matrix_float4x4 WordClockOrtho(CGFloat left, CGFloat right, CGFloat botto
     [commandBuffer commit];
 }
 
-- (void)updateWordVertices:(const float *)positions colors:(const float *)colors texCoords:(const short *)texCoords wordCount:(NSUInteger)wordCount scale:(float)scale {
+- (void)updateWordVertices:(const float *)positions colors:(const float *)colors texCoords:(const short *)texCoords highlighted:(const BOOL *)highlighted wordCount:(NSUInteger)wordCount scale:(float)scale {
     if (!positions || !colors || wordCount == 0) {
         _wordVertexCount = 0;
         _wordCount = 0;
         return;
+    }
+
+    // Kept alongside the vertices so the draw order can never use flags from a
+    // different word count than the geometry.
+    if (_wordHighlightedCapacity < wordCount) {
+        BOOL *resized = realloc(_wordHighlighted, wordCount * sizeof(BOOL));
+        if (resized) {
+            _wordHighlighted = resized;
+            _wordHighlightedCapacity = wordCount;
+        }
+    }
+    if (_wordHighlighted && _wordHighlightedCapacity >= wordCount) {
+        if (highlighted) {
+            memcpy(_wordHighlighted, highlighted, wordCount * sizeof(BOOL));
+        } else {
+            memset(_wordHighlighted, 0, wordCount * sizeof(BOOL));
+        }
     }
     const NSUInteger vertexCount = wordCount * 6;
     const NSUInteger bufferLength = vertexCount * sizeof(WordVertex);
