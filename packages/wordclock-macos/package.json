@@ -12,7 +12,8 @@
     "make-dist": "tsx ./_scripts/make-dist",
     "settings": "tsx ./_scripts/settings",
     "update-copyright": "tsx ./_scripts/update-copyright",
-    "notarize": "tsx ./_scripts/notarize"
+    "notarize": "tsx ./_scripts/notarize",
+    "release": "tsx ./_scripts/release"
   },
   "devDependencies": {
     "dotenv": "17.4.2",

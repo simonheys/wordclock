@@ -33,6 +33,17 @@ Run package scripts from `packages/wordclock-macos`, or from the repository root
   pnpm notarize
   ```
 
+- Describe the changes in `RELEASE_NOTES.md`, then draft the GitHub release
+
+  ```bash
+  pnpm release
+  ```
+
+  This verifies the DMG is stapled, attaches it, and appends the footer from
+  `.github/release-footer.md` to the notes. It creates a draft so the notes can be
+  reviewed before going live; pass `--publish` to release directly. Requires the
+  [GitHub CLI](https://cli.github.com) to be installed and authenticated.
+
 ## Signing And Notarization
 
 Required to create a distributable release for macOS. Used to digitally sign the app and notarize it with Apple.
