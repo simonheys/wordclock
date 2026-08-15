@@ -2,69 +2,77 @@
   "name": "@simonheys/wordclock",
   "version": "1.2.0",
   "private": false,
-  "type": "module",
-  "author": "Simon Heys <si@simonheys.com>",
+  "description": "Simple react component that can run in a web browser",
+  "keywords": [
+    "wordclock"
+  ],
+  "homepage": "https://github.com/simonheys/wordclock#readme",
+  "bugs": {
+    "url": "https://github.com/simonheys/wordclock/issues"
+  },
   "license": "MIT",
-  "main": "./dist/wordclock.cjs",
-  "module": "./dist/wordclock.js",
-  "types": "./dist/wordclock.d.ts",
+  "author": "Simon Heys <si@simonheys.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonheys/wordclock.git"
+  },
   "files": [
     "dist"
   ],
+  "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/wordclock.d.ts",
-      "import": "./dist/wordclock.js",
-      "require": "./dist/wordclock.cjs",
-      "default": "./dist/wordclock.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown src/index.ts --format esm,cjs --dts --platform neutral",
+    "build:watch": "pnpm build --watch",
+    "dev": "concurrently \"pnpm build:watch\" \"pnpm dev:example\"",
+    "dev:example": "cd example && pnpm dev",
+    "publish-npm": "pnpm build && npm publish --access public",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@simonheys/wordclock-words": "*",
     "resize-observer-polyfill": "1.5.1"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.58.7",
     "@semantic-release/commit-analyzer": "13.0.1",
     "@semantic-release/github": "12.0.8",
     "@semantic-release/npm": "13.1.5",
     "@semantic-release/release-notes-generator": "14.1.1",
-    "@simonheys/eslint-config": "workspace:*",
     "@simonheys/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@testing-library/user-event": "14.6.1",
-    "@types/react": "19.2.15",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "concurrently": "9.2.1",
-    "eslint": "10.4.0",
     "happy-dom": "20.9.0",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "semantic-release": "25.0.3",
-    "typescript": "6.0.3",
+    "tsdown": "0.22.14",
+    "typescript": "7.0.2",
     "vite": "8.0.14",
-    "vite-plugin-dts": "5.0.1",
     "vitest": "4.1.7"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0"
-  },
-  "scripts": {
-    "build": "vite build",
-    "build:watch": "vite build --watch",
-    "dev": "concurrently \"pnpm build:watch\" \"pnpm dev:example\"",
-    "dev:example": "cd example && pnpm dev",
-    "publish-npm": "pnpm build && npm publish --access public",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
-    "format": "prettier --ignore-unknown --write .",
-    "format:check": "prettier --ignore-unknown --check ."
   },
   "browserslist": {
     "production": [
@@ -77,20 +85,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "Simple react component that can run in a web browser",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simonheys/wordclock.git"
-  },
-  "keywords": [
-    "wordclock"
-  ],
-  "bugs": {
-    "url": "https://github.com/simonheys/wordclock/issues"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "homepage": "https://github.com/simonheys/wordclock#readme"
+  }
 }
