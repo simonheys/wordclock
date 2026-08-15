@@ -1,8 +1,8 @@
 {
   "name": "wordclock-macos",
   "version": "1.2.1",
-  "author": "Simon Heys <si@simonheys.com>",
   "license": "MIT",
+  "author": "Simon Heys <si@simonheys.com>",
   "scripts": {
     "build": "tsx ./_scripts/build",
     "update-build-number": "tsx ./_scripts/update-build-number",
