@@ -51,6 +51,7 @@ interface PlaygroundConfig {
   hour: number
   minute: number
   second: number
+  fitMargin: number
   translateX: number
   translateY: number
   shortestRotation: boolean
@@ -129,6 +130,7 @@ const INITIAL_CONFIG: PlaygroundConfig = {
   hour: 19,
   minute: 11,
   second: 23,
+  fitMargin: 5,
   translateX: 0,
   translateY: 0,
   shortestRotation: true,
@@ -222,6 +224,7 @@ const applyRotaryFit = (
   width: number,
   height: number,
   mode: FitMode,
+  fitMargin: number,
   translateX: number,
   translateY: number,
 ): { phrase: Bounds } => {
@@ -252,7 +255,7 @@ const applyRotaryFit = (
     originX,
     originY,
   )
-  const padding = Math.max(16, Math.min(width, height) * 0.05)
+  const padding = Math.min(width, height) * (Math.min(49, Math.max(0, fitMargin)) / 100)
   const boundsWidth = Math.max(1, scaleReference.right - scaleReference.left)
   const boundsHeight = Math.max(1, scaleReference.bottom - scaleReference.top)
   let factor = 1
@@ -608,6 +611,7 @@ export function CanvasPlayground() {
           runtime.width,
           runtime.height,
           current.fit,
+          current.fitMargin,
           current.translateX,
           current.translateY,
         )
@@ -848,6 +852,17 @@ export function CanvasPlayground() {
               <option value="phrase-wheel-centred">Fit phrase, wheel centred</option>
             </select>
           </Control>
+          {config.fit === 'none' ? null : (
+            <RangeControl
+              label="Fit margin"
+              max={20}
+              min={0}
+              step={0.5}
+              suffix="%"
+              value={config.fitMargin}
+              onChange={(value) => update('fitMargin', value)}
+            />
+          )}
           <RangeControl
             label="Translate X"
             max={400}
@@ -989,6 +1004,7 @@ function RangeControl({
         </output>
       </span>
       <input
+        aria-label={label}
         className="accent-sky-500"
         max={max}
         min={min}

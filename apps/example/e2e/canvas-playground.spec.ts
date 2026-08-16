@@ -24,6 +24,10 @@ test('canvas playground exercises Arabic rotary fitting and layout transitions',
   await expect(page.getByLabel('Show phrase bounds')).toBeChecked()
   await expect(page.getByTestId('resolved-phrase')).toContainText('seconds')
   await expect(page.getByText('Type divisor', { exact: true })).toHaveCount(0)
+  const fitMargin = page.getByRole('slider', { name: /Fit margin/ })
+  await expect(fitMargin).toHaveValue('5')
+  await fitMargin.press('ArrowRight')
+  await expect(fitMargin).toHaveValue('5.5')
 
   await page.getByLabel('Language').selectOption('Arabic')
   await page.getByLabel('Rotary fit').selectOption('phrase-wheel-centred')
