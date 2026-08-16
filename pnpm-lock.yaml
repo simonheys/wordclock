@@ -32,6 +32,9 @@ importers:
       '@simonheys/wordclock':
         specifier: workspace:*
         version: link:../../packages/wordclock-js
+      '@simonheys/wordclock-canvas':
+        specifier: workspace:*
+        version: link:../../packages/wordclock-canvas
       '@simonheys/wordclock-words':
         specifier: workspace:*
         version: link:../../packages/wordclock-words

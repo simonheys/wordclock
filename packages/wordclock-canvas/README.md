@@ -64,13 +64,22 @@ One concentric ring per word group. Words are spokes reading radially outward, a
 ```ts
 const state = refreshRotaryMetrics(createRotaryState(definition), definition)
 
-// each frame
-resolve(definition, getTimeProps(), mask)
-updateRotaryState(state, definition, mask, performance.now(), deltaMs)
-const { coordinates } = layoutRotary(definition, state, { width, height })
+let previous = performance.now()
+const frame = (now: number) => {
+  const deltaMs = Math.min(100, now - previous)
+  resolve(definition, getTimeProps(), mask)
+  updateRotaryState(state, definition, mask, now, deltaMs)
+  const { coordinates } = layoutRotary(definition, state, { width, height })
+  draw(context, definition, coordinates, colours, { font })
+  previous = now
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
 ```
 
 Rings animate to bring the selected word to the reading line, taking the shorter way round, with the same `easeOutBack` over 300ms as the native version.
+
+There is no fixed FPS cap: `requestAnimationFrame` follows the browser and display cadence, including 90Hz and 120Hz displays. All animation progress uses elapsed time, so duration and radial motion remain consistent across refresh rates.
 
 ## Transition
 

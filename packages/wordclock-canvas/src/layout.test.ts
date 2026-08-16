@@ -243,6 +243,46 @@ describe('layoutRotary', () => {
     expect(Math.sin(after - before)).toBeGreaterThan(0)
   })
 
+  it('keeps radial motion consistent at 60Hz and 120Hz', () => {
+    const definition = measured(
+      wordsJson([
+        [
+          {
+            type: 'sequence',
+            bind: 'minute',
+            first: 0,
+            text: Array.from({ length: 60 }, (_, i) => `w${i}`),
+          },
+        ],
+        [
+          {
+            type: 'sequence',
+            bind: 'minute',
+            first: 0,
+            text: Array.from({ length: 60 }, (_, i) => `ring${i}`),
+          },
+        ],
+      ]),
+    )
+
+    const radiusAfter250Ms = (refreshRate: 60 | 120) => {
+      const state = refreshRotaryMetrics(createRotaryState(definition), definition)
+      const mask = new Uint8Array(definition.words.length)
+      const frameMs = 1000 / refreshRate
+
+      resolve(definition, getTimeProps(new Date(2026, 7, 15, 9, 9, 0)), mask)
+      updateRotaryState(state, definition, mask, 0, frameMs)
+      resolve(definition, getTimeProps(new Date(2026, 7, 15, 9, 10, 0)), mask)
+      for (let frame = 1; frame <= refreshRate / 4; frame++) {
+        updateRotaryState(state, definition, mask, frame * frameMs, frameMs)
+      }
+
+      return state.rings[1]?.displayedRadius
+    }
+
+    expect(radiusAfter250Ms(120)).toBeCloseTo(radiusAfter250Ms(60) ?? 0, 8)
+  })
+
   it('does not accumulate turns as rings wrap past the end', () => {
     const definition = measured(sequence('second', 60))
     const state = createRotaryState(definition)

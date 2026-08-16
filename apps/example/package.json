@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@simonheys/wordclock": "workspace:*",
+    "@simonheys/wordclock-canvas": "workspace:*",
     "@simonheys/wordclock-words": "workspace:*",
     "next": "16.3.1",
     "react": "19.2.8",
