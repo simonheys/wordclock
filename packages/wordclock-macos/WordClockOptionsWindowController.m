@@ -432,4 +432,9 @@
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
+- (IBAction)tipJarTapped:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"https://github.com/sponsors/simonheys"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 @end
