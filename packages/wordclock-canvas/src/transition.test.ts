@@ -120,6 +120,8 @@ describe('tweenCoordinates', () => {
 })
 
 describe('updateColours', () => {
+  const colourTweenMs = 150
+
   const single = () => {
     const state = createColourState(1)
     const mask = new Uint8Array(1)
@@ -137,8 +139,27 @@ describe('updateColours', () => {
     mask[0] = 1
     updateColours(state, mask, DEFAULT_PALETTE, 0) // starts the tween
     updateColours(state, mask, DEFAULT_PALETTE, 75) // halfway through 150ms
-    // quadEaseIn(0.5) = 0.25, so 0.25 + 0.75 * 0.25
-    expect(state.words[0]?.current[0]).toBeCloseTo(0.4375, 6)
+    expect(state.words[0]?.current[0]).toBeGreaterThan(0.25)
+    expect(state.words[0]?.current[0]).toBeLessThan(1)
+  })
+
+  it('eases alpha separately from Oklab colour when highlighting on', () => {
+    const state = createColourState(1)
+    const mask = new Uint8Array([0])
+    const palette = {
+      ...DEFAULT_PALETTE,
+      foreground: [0, 0, 0, 0] as const,
+      highlight: [1, 1, 1, 1] as const,
+    }
+    updateColours(state, mask, palette, 0)
+    mask[0] = 1
+    updateColours(state, mask, palette, 0)
+    updateColours(state, mask, palette, colourTweenMs / 2)
+
+    // At t=0.5, colour uses quadEaseIn(0.5)=0.25 while alpha uses
+    // quadEaseOut(0.5)=0.75.
+    expect(state.words[0]?.current[3]).toBeCloseTo(0.75, 6)
+    expect(state.words[0]?.current[0]).toBeLessThan(state.words[0]?.current[3] ?? 0)
   })
 
   it('eases RGB out when highlighting off', () => {
@@ -149,8 +170,28 @@ describe('updateColours', () => {
     mask[0] = 0
     updateColours(state, mask, DEFAULT_PALETTE, 200)
     updateColours(state, mask, DEFAULT_PALETTE, 275) // halfway
-    // quadEaseOut(0.5) = 0.75, so 1 - 0.75 * 0.75
-    expect(state.words[0]?.current[0]).toBeCloseTo(0.4375, 6)
+    expect(state.words[0]?.current[0]).toBeGreaterThan(0.25)
+    expect(state.words[0]?.current[0]).toBeLessThan(1)
+  })
+
+  it('interpolates RGB through Oklab rather than raw sRGB components', () => {
+    const state = createColourState(1)
+    const mask = new Uint8Array([0])
+    const palette = {
+      ...DEFAULT_PALETTE,
+      foreground: [1, 0, 0, 1] as const,
+      highlight: [0, 0, 1, 1] as const,
+    }
+    updateColours(state, mask, palette, 0)
+    mask[0] = 1
+    updateColours(state, mask, palette, 0)
+    // quadEaseIn(sqrt(0.5)) = 0.5: Oklab's midpoint has a visible green
+    // component, unlike the raw sRGB midpoint rgb(0.5, 0, 0.5).
+    updateColours(state, mask, palette, colourTweenMs * Math.SQRT1_2)
+
+    expect(state.words[0]?.current[0]).toBeCloseTo(0.5504, 3)
+    expect(state.words[0]?.current[1]).toBeCloseTo(0.3256, 3)
+    expect(state.words[0]?.current[2]).toBeCloseTo(0.6365, 3)
   })
 
   it('resumes from the live value when interrupted mid-fade', () => {

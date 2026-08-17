@@ -125,7 +125,7 @@ combination of words.
 
 ## Colours
 
-Highlight transitions are ported component by component from the native version, including its asymmetry: highlighting on runs RGB through `quadEaseIn` while alpha uses `quadEaseOut`; highlighting off runs all four through `quadEaseOut`. Each component tweens from its live value, so an interrupted fade resumes rather than snapping.
+Highlight transitions use one 150ms elapsed-time transition per word. Colour endpoints are mixed in perceptually uniform Oklab while alpha is interpolated separately, retaining the native version's asymmetry: highlighting on runs colour through `quadEaseIn` while alpha uses `quadEaseOut`; highlighting off uses `quadEaseOut` for both. An interrupted fade restarts from the colour currently on screen rather than snapping.
 
 `DEFAULT_PALETTE` is the macOS factory default — black background, `0.25` grey foreground, white highlight.
 
