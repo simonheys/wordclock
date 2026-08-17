@@ -72,6 +72,7 @@ interface WordColour {
   startedAt: number
   rgbEaseIn: boolean
   highlighted: boolean
+  fadingFromHighlight: boolean
 }
 
 export interface ColourState {
@@ -90,6 +91,7 @@ export function createColourState(count: number): ColourState {
       startedAt: -1,
       rgbEaseIn: false,
       highlighted: false,
+      fadingFromHighlight: false,
     })),
     initialised: false,
   }
@@ -117,12 +119,15 @@ export function updateColours(
       writeOklab(target, word.fromOklab)
       writeOklab(target, word.toOklab)
       word.highlighted = wanted
+      word.fadingFromHighlight = false
       return
     }
 
     const targetChanged = target.some((value, k) => value !== word.to[k])
     if (wanted !== word.highlighted || targetChanged) {
+      const wasFront = word.highlighted || word.fadingFromHighlight
       word.highlighted = wanted
+      word.fadingFromHighlight = !wanted && wasFront
       for (let k = 0; k < 4; k++) {
         word.from[k] = word.current[k] ?? 0 // start from the live value
         word.to[k] = target[k] ?? 0
@@ -149,6 +154,7 @@ export function updateColours(
         word.current[k] = word.to[k] ?? 0
       }
       word.startedAt = -1
+      word.fadingFromHighlight = false
       continue
     }
     const rgbEase = word.rgbEaseIn ? quadEaseIn(t) : quadEaseOut(t)
@@ -180,5 +186,5 @@ export function rgbaStyle(colour: Palette['background']): string {
 /** True while the word is highlighted or still fading. */
 export function isFront(state: ColourState, index: number): boolean {
   const word = state.words[index]
-  return word !== undefined && (word.highlighted || word.startedAt >= 0)
+  return word !== undefined && (word.highlighted || word.fadingFromHighlight)
 }

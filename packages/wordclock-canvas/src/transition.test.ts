@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { DEFAULT_PALETTE, createColourState, updateColours } from './colour'
+import { DEFAULT_PALETTE, createColourState, isFront, updateColours } from './colour'
 import { parseWords } from './definition'
 import { TAU } from './easing'
 import { createCoordinates } from './layout'
@@ -139,8 +139,7 @@ describe('updateColours', () => {
     mask[0] = 1
     updateColours(state, mask, DEFAULT_PALETTE, 0) // starts the tween
     updateColours(state, mask, DEFAULT_PALETTE, 75) // halfway through 150ms
-    expect(state.words[0]?.current[0]).toBeGreaterThan(0.25)
-    expect(state.words[0]?.current[0]).toBeLessThan(1)
+    expect(state.words[0]?.current[0]).toBeCloseTo(0.41973258, 6)
   })
 
   it('eases alpha separately from Oklab colour when highlighting on', () => {
@@ -158,8 +157,8 @@ describe('updateColours', () => {
 
     // At t=0.5, colour uses quadEaseIn(0.5)=0.25 while alpha uses
     // quadEaseOut(0.5)=0.75.
+    expect(state.words[0]?.current[0]).toBeCloseTo(0.13149942, 6)
     expect(state.words[0]?.current[3]).toBeCloseTo(0.75, 6)
-    expect(state.words[0]?.current[0]).toBeLessThan(state.words[0]?.current[3] ?? 0)
   })
 
   it('eases RGB out when highlighting off', () => {
@@ -170,8 +169,7 @@ describe('updateColours', () => {
     mask[0] = 0
     updateColours(state, mask, DEFAULT_PALETTE, 200)
     updateColours(state, mask, DEFAULT_PALETTE, 275) // halfway
-    expect(state.words[0]?.current[0]).toBeGreaterThan(0.25)
-    expect(state.words[0]?.current[0]).toBeLessThan(1)
+    expect(state.words[0]?.current[0]).toBeCloseTo(0.41973258, 6)
   })
 
   it('interpolates RGB through Oklab rather than raw sRGB components', () => {
@@ -207,6 +205,27 @@ describe('updateColours', () => {
     updateColours(state, mask, DEFAULT_PALETTE, 75)
     // the reversal starts from where it got to, not from full highlight
     expect(state.words[0]?.from[0]).toBeCloseTo(partway, 6)
+  })
+
+  it('keeps only highlighted or fading-highlight words in front during palette changes', () => {
+    const state = createColourState(2)
+    const mask = new Uint8Array([1, 0])
+    updateColours(state, mask, DEFAULT_PALETTE, 0)
+
+    const changedPalette = {
+      ...DEFAULT_PALETTE,
+      foreground: [0.5, 0.5, 0.5, 1] as const,
+    }
+    updateColours(state, mask, changedPalette, 100)
+
+    expect(isFront(state, 0)).toBe(true)
+    expect(isFront(state, 1)).toBe(false)
+
+    mask[0] = 0
+    updateColours(state, mask, changedPalette, 200)
+    expect(isFront(state, 0)).toBe(true)
+    updateColours(state, mask, changedPalette, 350)
+    expect(isFront(state, 0)).toBe(false)
   })
 
   it('arrives exactly on the target', () => {
