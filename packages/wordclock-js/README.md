@@ -58,8 +58,8 @@ The rotary-specific props are:
   centred and fits the viewport.
 - `fit="phrase-wheel-centred"`: keep the wheel centre fixed while scaling enough for that phrase to
   fit.
-- `fit="linear-scale-wheel-centred"`: keep the wheel centred and cap rotary type at the fitted
-  linear-layout size; an already-smaller rotary layout is not enlarged.
+- `fit="phrase-centred-linear-scale"`: centre the current highlighted phrase and cap rotary type at
+  the fitted linear-layout size; an already-smaller rotary layout is not enlarged.
 - `fitMargin`: breathing room on every edge, as a percentage of the viewport's shorter side.
 - `translateX` and `translateY`: final pixel offsets after fitting.
 - `transitionStyle`: `"fast"`, `"medium"`, or `"slow"`.

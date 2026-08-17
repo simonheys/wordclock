@@ -6,7 +6,7 @@ export type RotaryFitMode =
   | 'none'
   | 'phrase'
   | 'phrase-wheel-centred'
-  | 'linear-scale-wheel-centred'
+  | 'phrase-centred-linear-scale'
 
 export interface Bounds {
   left: number
@@ -217,15 +217,19 @@ export const applyRotaryFit = (
     }
   }
 
-  if (mode === 'linear-scale-wheel-centred') {
+  if (mode === 'phrase-centred-linear-scale') {
     const cappedScale = Math.min(baseScale, linearScale)
     const scale = baseScale > 0 ? cappedScale / baseScale : 1
-    transformCoordinates(coordinates, originX, originY, scale, translateX, translateY)
+    const boundsCentreX = (phrase.left + phrase.right) / 2
+    const boundsCentreY = (phrase.top + phrase.bottom) / 2
+    const offsetX = translateX + width / 2 - (originX + (boundsCentreX - originX) * scale)
+    const offsetY = translateY + height / 2 - (originY + (boundsCentreY - originY) * scale)
+    transformCoordinates(coordinates, originX, originY, scale, offsetX, offsetY)
     return {
-      phrase: transformBounds(phrase, originX, originY, scale, translateX, translateY),
+      phrase: transformBounds(phrase, originX, originY, scale, offsetX, offsetY),
       scale,
-      translateX,
-      translateY,
+      translateX: offsetX,
+      translateY: offsetY,
     }
   }
 

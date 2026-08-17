@@ -660,8 +660,8 @@ export function CanvasPlayground() {
               <option value="none">Current heuristic</option>
               <option value="phrase">Fit phrase</option>
               <option value="phrase-wheel-centred">Fit phrase, wheel centred</option>
-              <option value="linear-scale-wheel-centred">
-                Wheel centred, no larger than linear
+              <option value="phrase-centred-linear-scale">
+                Phrase centred, no larger than linear
               </option>
             </select>
           </Control>

@@ -115,7 +115,7 @@ setTimeout(tick, millisecondsUntilNextChange(definition))
 | `pivot`                        | `'leading'` (default, matches macOS) or `'centre'`. Where a word rotates about. Settled layouts are identical; only the transition path differs.  |
 | `shortestRotation`             | Default `true`. Takes each word by the smaller arc to the same final orientation. macOS lerps raw, which spins far-side words almost a full turn. |
 | `highlightInFront`             | Default `true`. Draws highlighted words last so the dense rings cannot occlude them.                                                              |
-| `tracking`, `leading`, `align` | Linear layout metrics. `leading` is extra line height as an em fraction and defaults to `0`.                                                       |
+| `tracking`, `leading`, `align` | Linear layout metrics. `leading` is extra line height as an em fraction and defaults to `0`.                                                      |
 | `typeDivisor`                  | Rotary type size relative to the smaller container edge.                                                                                          |
 
 `applyRotaryFit` can scale and translate rotary coordinates around either the highlighted phrase
@@ -123,8 +123,8 @@ or a caller-supplied maximum phrase width. `findLongestResolvedPhrase` finds the
 can actually occur on a selected local day, so responsive sizing need not be based on a hypothetical
 combination of words.
 
-The `linear-scale-wheel-centred` mode keeps the wheel centred and caps rotary type at a
-caller-supplied fitted linear scale without enlarging an already-smaller rotary layout.
+The `phrase-centred-linear-scale` mode centres the current highlighted phrase and caps rotary type
+at a caller-supplied fitted linear scale without enlarging an already-smaller rotary layout.
 
 ## Colours
 

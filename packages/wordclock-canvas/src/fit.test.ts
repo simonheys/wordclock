@@ -86,7 +86,7 @@ describe('phrase fitting', () => {
     expect(ten.scale).toBeLessThan(five.scale)
   })
 
-  it('centres the wheel and caps its type at the linear scale without enlarging it', () => {
+  it('centres the phrase and caps its type at the linear scale without enlarging it', () => {
     const definition = createDefinition()
     const state = refreshRotaryMetrics(createRotaryState(definition), definition)
     const mask = resolve(definition, getTimeProps(new Date(2026, 8, 16, 12, 0, 1)))
@@ -97,23 +97,21 @@ describe('phrase fitting', () => {
     const rotary = layoutRotary(definition, state, { width, height })
     const original = rotary.coordinates.find((coordinate) => coordinate.visible)
     const originalHeight = original?.h ?? 0
-    const originalX = original?.x ?? 0
-    const originalY = original?.y ?? 0
     const result = applyRotaryFit(rotary.coordinates, definition, state, {
       width,
       height,
       baseScale: rotary.scale,
       linearScale: rotary.scale / 2,
       resolvedPhraseWidth: 230,
-      mode: 'linear-scale-wheel-centred',
+      mode: 'phrase-centred-linear-scale',
     })
 
     const visibleRotary = rotary.coordinates.find((coordinate) => coordinate.visible)
     expect(visibleRotary?.h).toBeCloseTo(originalHeight / 2, 6)
-    expect(visibleRotary?.x).toBeCloseTo(width / 2 + (originalX - width / 2) / 2, 6)
-    expect(visibleRotary?.y).toBeCloseTo(height / 2 + (originalY - height / 2) / 2, 6)
+    expect((result.phrase.left + result.phrase.right) / 2).toBeCloseTo(width / 2, 6)
+    expect((result.phrase.top + result.phrase.bottom) / 2).toBeCloseTo(height / 2, 6)
     expect(result.scale).toBeCloseTo(0.5, 6)
-    expect(result.translateX).toBe(0)
+    expect(result.translateX).not.toBe(0)
     expect(result.translateY).toBe(0)
 
     const alreadySmaller = layoutRotary(definition, state, { width, height })
@@ -123,8 +121,9 @@ describe('phrase fitting', () => {
       baseScale: alreadySmaller.scale,
       linearScale: alreadySmaller.scale * 2,
       resolvedPhraseWidth: 230,
-      mode: 'linear-scale-wheel-centred',
+      mode: 'phrase-centred-linear-scale',
     })
     expect(uncapped.scale).toBe(1)
+    expect((uncapped.phrase.left + uncapped.phrase.right) / 2).toBeCloseTo(width / 2, 6)
   })
 })

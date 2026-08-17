@@ -29,7 +29,7 @@ test('canvas playground exercises Arabic rotary fitting and layout transitions',
   await fitMargin.press('ArrowRight')
   await expect(fitMargin).toHaveValue('5.5')
 
-  await page.getByLabel('Rotary fit').selectOption('linear-scale-wheel-centred')
+  await page.getByLabel('Rotary fit').selectOption('phrase-centred-linear-scale')
   await expect(fitMargin).toHaveCount(0)
 
   await page.getByLabel('Language').selectOption('Arabic')
