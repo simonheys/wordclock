@@ -1,6 +1,7 @@
 {
   "name": "wordclock-macos",
   "version": "1.2.1",
+  "private": true,
   "license": "MIT",
   "author": "Simon Heys <si@simonheys.com>",
   "scripts": {

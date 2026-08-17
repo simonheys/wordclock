@@ -10,7 +10,7 @@ const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? `http://127.0.0.1:${port}`
 const webServer = process.env.PLAYWRIGHT_BASE_URL
   ? undefined
   : {
-      command: `pnpm --filter @simonheys/wordclock build && pnpm --filter @simonheys/wordclock-example dev --hostname 127.0.0.1 --port ${port}`,
+      command: `pnpm --filter @wordclock/react build && pnpm --filter @wordclock/example dev --hostname 127.0.0.1 --port ${port}`,
       cwd: repositoryRoot,
       reuseExistingServer: !process.env.CI,
       timeout: 120000,

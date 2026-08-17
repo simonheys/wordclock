@@ -1,14 +1,11 @@
 import { expect, type Locator, test } from '@playwright/test'
 
-type FitMetrics = {
+type CanvasMetrics = {
+  backingHeight: number
+  backingWidth: number
   clientHeight: number
-  fontSize: number
-  scrollHeight: number
+  clientWidth: number
 }
-
-const fitTolerance = 1
-const fontSizeTolerance = 0.5
-const minimumFittedFontSize = 20
 
 test.use({
   deviceScaleFactor: 2,
@@ -18,66 +15,41 @@ test.use({
   },
 })
 
-const getFitMetrics = async (locator: Locator) =>
-  locator.evaluate((element: HTMLElement): FitMetrics => {
-    return {
-      clientHeight: element.clientHeight,
-      fontSize: Number.parseFloat(getComputedStyle(element).fontSize),
-      scrollHeight: element.scrollHeight,
-    }
-  })
+const getCanvasMetrics = async (locator: Locator) =>
+  locator.evaluate((canvas: HTMLCanvasElement): CanvasMetrics => ({
+    backingHeight: canvas.height,
+    backingWidth: canvas.width,
+    clientHeight: canvas.clientHeight,
+    clientWidth: canvas.clientWidth,
+  }))
 
-const expectToFit = async (locator: Locator) => {
-  await expect
-    .poll(async () => {
-      const { clientHeight, scrollHeight } = await getFitMetrics(locator)
-      return scrollHeight - clientHeight
-    })
-    .toBeLessThanOrEqual(fitTolerance)
-}
-
-const expectFontSizeGreaterThan = async (locator: Locator, fontSize: number) => {
-  await expect
-    .poll(async () => {
-      const { fontSize } = await getFitMetrics(locator)
-      return fontSize
-    })
-    .toBeGreaterThan(fontSize)
-}
-
-const expectFontSizeLessThan = async (locator: Locator, fontSize: number) => {
-  await expect
-    .poll(async () => {
-      const { fontSize } = await getFitMetrics(locator)
-      return fontSize
-    })
-    .toBeLessThan(fontSize)
-}
-
-test('word clock refits when its container width changes', async ({ page }) => {
+test('word clock resizes its canvas with its container and device pixel ratio', async ({
+  page,
+}) => {
   await page.goto('/')
 
   const frame = page.getByTestId('word-clock-frame')
-  const words = page.getByTestId('word-clock-words')
+  const canvas = page.getByTestId('word-clock-words').locator('canvas')
 
-  await expectFontSizeGreaterThan(words, minimumFittedFontSize)
-  await expectToFit(words)
-  const initialMetrics = await getFitMetrics(words)
+  await expect
+    .poll(async () => {
+      const metrics = await getCanvasMetrics(canvas)
+      return metrics.backingWidth / metrics.clientWidth
+    })
+    .toBe(2)
+  const initial = await getCanvasMetrics(canvas)
 
   await frame.evaluate((element: HTMLElement) => {
     element.style.width = '320px'
   })
-
-  await expectFontSizeLessThan(words, initialMetrics.fontSize - fontSizeTolerance)
-  await expectToFit(words)
-  const narrowMetrics = await getFitMetrics(words)
+  await expect
+    .poll(async () => (await getCanvasMetrics(canvas)).backingWidth)
+    .toBeLessThan(initial.backingWidth)
 
   await frame.evaluate((element: HTMLElement) => {
     element.style.width = '100%'
   })
-
-  await expectFontSizeGreaterThan(words, narrowMetrics.fontSize + fontSizeTolerance)
-  await expectToFit(words)
+  await expect.poll(async () => (await getCanvasMetrics(canvas)).backingWidth).toBeGreaterThan(640)
 })
 
 test('word clock loads the selected word file', async ({ page }) => {
@@ -90,5 +62,10 @@ test('word clock loads the selected word file', async ({ page }) => {
 
   await expect(languageSelect).toHaveValue('French_simple_fragmented.json')
   await expect(page.getByText('Unable to load word file')).toHaveCount(0)
-  await expect.poll(async () => words.innerText()).toContain('Zéro')
+  await expect(words).toHaveAttribute('data-word-clock-language', 'fr')
+  await expect(words).toHaveAttribute(
+    'data-word-clock-title',
+    '(Fragmented) Trois heures, quatre minutes, une second',
+  )
+  await expect(words.getByRole('timer')).not.toHaveText('')
 })

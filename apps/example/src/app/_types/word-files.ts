@@ -1,4 +1,4 @@
-import type { WordsJson } from '@simonheys/wordclock'
+import type { WordsJson } from '@wordclock/react'
 
 export type WordFileOption = {
   file: string

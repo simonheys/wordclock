@@ -17,7 +17,7 @@ export default function CanvasPage() {
         </Link>
         <div>
           <p className="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">
-            @simonheys/wordclock-canvas
+            @wordclock/canvas
           </p>
           <h1 className="text-3xl font-semibold tracking-tight">Canvas playground</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">

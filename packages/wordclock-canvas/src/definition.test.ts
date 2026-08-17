@@ -8,7 +8,7 @@ import { getTimeProps, millisecondsUntilNextChange, parseWords, resolve } from '
 import type { WordsJson } from './types'
 
 const require = createRequire(import.meta.url)
-const wordsDirectory = join(dirname(require.resolve('@simonheys/wordclock-words')), '.')
+const wordsDirectory = join(dirname(require.resolve('@wordclock/words')), '.')
 
 const wordFiles = readdirSync(wordsDirectory)
   .filter((name) => name.endsWith('.json') && name !== 'Manifest.json')

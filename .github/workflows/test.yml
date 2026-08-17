@@ -48,6 +48,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Install Playwright
-        run: pnpm --filter @simonheys/wordclock-example exec playwright install --with-deps chromium
+        run: pnpm --filter @wordclock/example exec playwright install --with-deps chromium
       - name: Run e2e tests
-        run: pnpm --filter @simonheys/wordclock-example test:e2e
+        run: pnpm --filter @wordclock/example test:e2e

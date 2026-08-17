@@ -1,87 +1,99 @@
 # WordClock React
 
-React components for rendering a word clock in the browser.
+A React wrapper around the framework-free WordClock canvas renderer. It renders linear and rotary
+layouts, animates between them at the display's native `requestAnimationFrame` cadence, and keeps
+the canvas backing store in sync with the device pixel ratio.
 
-The package renders a supplied word definition, highlights the words that match the current time, and fits the text to the component container.
-It does not choose, fetch, or index word files; loading is owned by the consuming app.
+The package does not choose or fetch word files. Loading remains the consuming app's responsibility.
 
-## For Consumers
-
-Install the React package and the word definitions package:
+## Usage
 
 ```bash
-pnpm add @simonheys/wordclock @simonheys/wordclock-words
+pnpm add @wordclock/react @wordclock/words
 ```
 
-Import one of the bundled word files and render it:
-
 ```tsx
-import { WordClock, WordClockContent, type WordsJson } from '@simonheys/wordclock'
-import english from '@simonheys/wordclock-words/json/English_simple_fragmented.json'
+import { WordClock, type WordsJson } from '@wordclock/react'
+import english from '@wordclock/words/json/English_simple_fragmented.json'
 
 export function Clock() {
   return (
-    <WordClock words={english as WordsJson}>
-      <WordClockContent />
-    </WordClock>
+    <div className="h-screen bg-white font-bold dark:bg-black">
+      <WordClock
+        words={english as WordsJson}
+        foregroundClassName="text-neutral-300 dark:text-neutral-700"
+        highlightClassName="text-red-500 dark:text-white"
+      />
+    </div>
   )
 }
 ```
 
-The assertion is intentionally at the app boundary: `@simonheys/wordclock-words` publishes raw JSON
-rather than generated TypeScript modules.
+`WordClock` fills its parent and leaves the canvas transparent, so background classes stay on the
+normal DOM container. The two colour class props are applied to hidden probe elements. Their
+computed colours are passed into the renderer and are re-read when the document theme changes.
+The browser resolves the resulting CSS colour before it reaches the renderer, including the
+`lab(...)` values emitted by Tailwind's production transform and wide-gamut colour syntax.
 
-For language selectors, derive whatever option model the consuming app needs from the manifest and
-word-file `meta` fields. In an SSR app, do this on the server and pass only the small option model to
-the client:
+Because Tailwind discovers classes statically, pass complete class names such as
+`"text-red-500 dark:text-white"`; do not assemble them from fragments at runtime.
 
-```ts
-import type { WordsJson } from '@simonheys/wordclock'
-import manifest from '@simonheys/wordclock-words/json/Manifest.json'
+## Rotary layouts
 
-const options = await Promise.all(
-  manifest.files.map(async (file) => {
-    const wordFile = await import(`@simonheys/wordclock-words/json/${file}`)
-    const words = wordFile.default as WordsJson
-
-    return { file, label: words.meta.title }
-  }),
-)
+```tsx
+<WordClock
+  words={words}
+  layout="rotary"
+  fit="phrase"
+  fitMargin={8}
+  foregroundClassName="text-neutral-500"
+  highlightClassName="text-current"
+/>
 ```
 
-Client-only apps can use the same data boundary, but should choose their own bundler strategy: static
-imports, dynamic imports, an app-owned loader map, or a remote fetch layer.
+The rotary-specific props are:
 
-`WordClock` accepts normal `div` attributes and passes them to the rendered words container. This is useful for styling, labels, and test IDs.
+- `fit="none"`: preserve the base wheel size.
+- `fit="phrase"`: scale and translate so the longest phrase that can occur on the selected day is
+  centred and fits the viewport.
+- `fit="phrase-wheel-centred"`: keep the wheel centre fixed while scaling enough for that phrase to
+  fit.
+- `fitMargin`: breathing room on every edge, as a percentage of the viewport's shorter side.
+- `translateX` and `translateY`: final pixel offsets after fitting.
+- `transitionStyle`: `"fast"`, `"medium"`, or `"slow"`.
 
-The package expects `react` and `react-dom` to be provided by the consuming app. Supported peer ranges are React 18 and React 19.
+Linear layout also accepts `tracking`, `leading`, and `align`.
 
-## Word Files
+`WordClock` accepts normal `div` attributes. It includes an off-screen live `<time role="timer">`
+containing the currently highlighted phrase, while the visual canvas is hidden from assistive
+technology. Use the optional controlled `date` prop for previews and tests, and `onPhraseChange` if
+the consumer needs the resolved phrase.
 
-The `words` prop uses the `WordsJson` shape exported by this package. Each file contains:
+The old `WordClockContent`, `WordClockWord`, and render-per-word compound API is intentionally
+removed: the React component now draws with canvas under the hood.
+
+## Word files
+
+The `words` prop uses the exported `WordsJson` shape. Each file contains:
 
 - `meta.language`: language code used by the manifest
 - `meta.title`: human-readable title for selectors and labels
 - `groups`: ordered rows of `item`, `sequence`, and `space` entries
 
-Use `@simonheys/wordclock-words` for the maintained set of bundled definitions.
+For language selectors, derive the consumer's option model from the word-file manifest and load the
+selected JSON in the app. `@wordclock/words` publishes raw JSON, so a TypeScript consumer
+normally asserts the imported value as `WordsJson` at that boundary.
 
-## For Contributors
+React 18 and React 19 are supported as peer dependencies.
 
-Run package commands from the repository root:
+## Development
 
-```bash
-pnpm --filter @simonheys/wordclock test
-pnpm --filter @simonheys/wordclock typecheck
-pnpm --filter @simonheys/wordclock lint
-pnpm --filter @simonheys/wordclock build
-```
-
-To exercise the package in the example app:
+Run from the repository root:
 
 ```bash
-pnpm --filter @simonheys/wordclock build
-pnpm --filter @simonheys/wordclock-example dev
+pnpm --filter @wordclock/react test
+pnpm --filter @wordclock/react typecheck
+pnpm --filter @wordclock/react build
 ```
 
-The package build emits ESM, CommonJS, and TypeScript declaration files under `dist`.
+The build emits ESM, CommonJS, and TypeScript declarations under `dist`.

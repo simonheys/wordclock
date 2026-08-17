@@ -15,9 +15,13 @@
     "test": "CI=true turbo run test --filter='!wordclock-macos'",
     "dev": "turbo run dev",
     "prepare": "husky",
-    "publish-npm": "pnpm run -r --parallel --stream publish-npm"
+    "changeset": "changeset",
+    "release:status": "changeset status",
+    "release:version": "changeset version && pnpm install --lockfile-only && oxfmt .",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "3.0.0",
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
     "oxfmt": "0.63.0",
@@ -29,8 +33,8 @@
     "*": "oxfmt --no-error-on-unmatched-pattern",
     "*.{js,jsx,ts,tsx}": [
       "oxlint --fix --deny-warnings",
-      "pnpm --filter @simonheys/wordclock exec vitest related --run"
+      "pnpm --filter @wordclock/react exec vitest related --run"
     ]
   },
-  "packageManager": "pnpm@11.2.2"
+  "packageManager": "pnpm@11.22.0"
 }

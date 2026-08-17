@@ -3,6 +3,7 @@
 import {
   DEFAULT_PALETTE,
   advanceTransition,
+  applyRotaryFit,
   cloneCoordinates,
   createCanvasMetrics,
   createColourState,
@@ -10,6 +11,7 @@ import {
   createRotaryState,
   createTransition,
   draw,
+  findLongestResolvedPhrase,
   getTimeProps,
   layoutLinear,
   layoutRotary,
@@ -18,24 +20,27 @@ import {
   refreshRotaryMetrics,
   resizeCanvas,
   resolve,
+  resolvePhrase,
   rgbaStyle,
   tweenCoordinates,
   updateColours,
   updateRotaryState,
   type Coordinate,
+  type Bounds,
   type Definition,
   type FontSpec,
   type RotaryState,
+  type RotaryFitMode,
   type Transition,
   type TransitionStyle,
   type WordsJson,
-} from '@simonheys/wordclock-canvas'
-import arabicWords from '@simonheys/wordclock-words/json/Arabic.json'
-import englishWords from '@simonheys/wordclock-words/json/English.json'
+} from '@wordclock/canvas'
+import arabicWords from '@wordclock/words/json/Arabic.json'
+import englishWords from '@wordclock/words/json/English.json'
 import { useEffect, useRef, useState } from 'react'
 
 type ClockLayout = 'linear' | 'rotary'
-type FitMode = 'none' | 'phrase' | 'phrase-wheel-centred'
+type FitMode = RotaryFitMode
 type Language = 'English' | 'Arabic'
 type DprMode = 'device' | '1' | '2'
 type ViewportPreset = 'responsive' | 'square' | 'portrait' | 'wide'
@@ -59,21 +64,6 @@ interface PlaygroundConfig {
   showGuides: boolean
   showPhraseBounds: boolean
   replay: number
-}
-
-interface Bounds {
-  left: number
-  right: number
-  top: number
-  bottom: number
-}
-
-interface LongestExample {
-  hour: number
-  minute: number
-  second: number
-  phrase: string
-  width: number
 }
 
 interface Runtime {
@@ -110,8 +100,6 @@ const WORDS: Record<Language, WordsJson> = {
   English: englishWords as WordsJson,
   Arabic: arabicWords as WordsJson,
 }
-const longestExampleCache = new Map<string, LongestExample>()
-
 const VIEWPORTS: Record<ViewportPreset, { width: number; height: number }> = {
   responsive: { width: 960, height: 600 },
   square: { width: 720, height: 720 },
@@ -157,187 +145,6 @@ const copyCoordinates = (from: readonly Coordinate[], to: Coordinate[]) => {
   }
 }
 
-const transformCoordinates = (
-  coordinates: Coordinate[],
-  originX: number,
-  originY: number,
-  scale: number,
-  translateX: number,
-  translateY: number,
-) => {
-  for (const coordinate of coordinates) {
-    coordinate.x = originX + (coordinate.x - originX) * scale + translateX
-    coordinate.y = originY + (coordinate.y - originY) * scale + translateY
-    coordinate.w *= scale
-    coordinate.h *= scale
-  }
-}
-
-const readingLineBounds = (
-  definition: Definition,
-  state: RotaryState,
-  phraseWidth: number,
-  scale: number,
-  originX: number,
-  originY: number,
-): Bounds => {
-  const halfHeight = (definition.emHeight * scale) / 2
-  const inner = state.baseRadius * scale
-  const outer = (state.baseRadius + phraseWidth) * scale
-  if (definition.direction === 'rtl') {
-    return {
-      left: originX - outer,
-      right: originX - inner,
-      top: originY - halfHeight,
-      bottom: originY + halfHeight,
-    }
-  }
-  return {
-    left: originX + inner,
-    right: originX + outer,
-    top: originY - halfHeight,
-    bottom: originY + halfHeight,
-  }
-}
-
-const transformBounds = (
-  bounds: Bounds,
-  originX: number,
-  originY: number,
-  scale: number,
-  translateX: number,
-  translateY: number,
-): Bounds => ({
-  left: originX + (bounds.left - originX) * scale + translateX,
-  right: originX + (bounds.right - originX) * scale + translateX,
-  top: originY + (bounds.top - originY) * scale + translateY,
-  bottom: originY + (bounds.bottom - originY) * scale + translateY,
-})
-
-const applyRotaryFit = (
-  coordinates: Coordinate[],
-  definition: Definition,
-  state: RotaryState,
-  resolvedPhraseWidth: number,
-  dailyMaximumWidth: number,
-  baseScale: number,
-  width: number,
-  height: number,
-  mode: FitMode,
-  fitMargin: number,
-  translateX: number,
-  translateY: number,
-): { phrase: Bounds } => {
-  const originX = width / 2
-  const originY = height / 2
-  const phrase = readingLineBounds(
-    definition,
-    state,
-    resolvedPhraseWidth,
-    baseScale,
-    originX,
-    originY,
-  )
-  if (mode === 'none') {
-    if (translateX !== 0 || translateY !== 0) {
-      transformCoordinates(coordinates, originX, originY, 1, translateX, translateY)
-    }
-    return {
-      phrase: transformBounds(phrase, originX, originY, 1, translateX, translateY),
-    }
-  }
-
-  const scaleReference = readingLineBounds(
-    definition,
-    state,
-    dailyMaximumWidth || resolvedPhraseWidth,
-    baseScale,
-    originX,
-    originY,
-  )
-  const padding = Math.min(width, height) * (Math.min(49, Math.max(0, fitMargin)) / 100)
-  const boundsWidth = Math.max(1, scaleReference.right - scaleReference.left)
-  const boundsHeight = Math.max(1, scaleReference.bottom - scaleReference.top)
-  let factor = 1
-  let offsetX = translateX
-  let offsetY = translateY
-
-  if (mode === 'phrase') {
-    factor = Math.min((width - padding * 2) / boundsWidth, (height - padding * 2) / boundsHeight)
-    const boundsCentreX = (scaleReference.left + scaleReference.right) / 2
-    const boundsCentreY = (scaleReference.top + scaleReference.bottom) / 2
-    offsetX += width / 2 - (originX + (boundsCentreX - originX) * factor)
-    offsetY += height / 2 - (originY + (boundsCentreY - originY) * factor)
-  } else {
-    const leftExtent = Math.max(0, originX - scaleReference.left)
-    const rightExtent = Math.max(0, scaleReference.right - originX)
-    const topExtent = Math.max(0, originY - scaleReference.top)
-    const bottomExtent = Math.max(0, scaleReference.bottom - originY)
-    const leftRatio = leftExtent > 0 ? (originX - padding) / leftExtent : 1
-    const rightRatio = rightExtent > 0 ? (width - padding - originX) / rightExtent : 1
-    const topRatio = topExtent > 0 ? (originY - padding) / topExtent : 1
-    const bottomRatio = bottomExtent > 0 ? (height - padding - originY) / bottomExtent : 1
-    factor = Math.min(leftRatio, rightRatio, topRatio, bottomRatio)
-  }
-
-  transformCoordinates(coordinates, originX, originY, factor, offsetX, offsetY)
-  return {
-    phrase: transformBounds(phrase, originX, originY, factor, offsetX, offsetY),
-  }
-}
-
-const resolvedPhrase = (definition: Definition, mask: Uint8Array) => {
-  const words: string[] = []
-  let width = 0
-  for (const word of definition.words) {
-    if (mask[word.index] !== 1) {
-      continue
-    }
-    if (words.length > 0) {
-      width += definition.spaceWidth
-    }
-    words.push(word.text)
-    width += word.width
-  }
-  return { phrase: words.join(' '), width }
-}
-
-const findLongestExample = (
-  language: Language,
-  definition: Definition,
-  referenceDate: Date,
-): LongestExample => {
-  const dateKey = `${referenceDate.getFullYear()}-${referenceDate.getMonth()}-${referenceDate.getDate()}`
-  const cacheKey = `${language}:${dateKey}`
-  const cached = longestExampleCache.get(cacheKey)
-  if (cached !== undefined) {
-    return cached
-  }
-
-  const mask = new Uint8Array(definition.words.length)
-  const candidate = new Date(referenceDate)
-  const seconds = definition.granularity === 'second' ? 60 : 1
-  let longest: LongestExample = { hour: 0, minute: 0, second: 0, phrase: '', width: 0 }
-
-  for (let hour = 0; hour < 24; hour++) {
-    candidate.setHours(hour)
-    for (let minute = 0; minute < 60; minute++) {
-      candidate.setMinutes(minute)
-      for (let second = 0; second < seconds; second++) {
-        candidate.setSeconds(second)
-        resolve(definition, getTimeProps(candidate), mask)
-        const resolved = resolvedPhrase(definition, mask)
-        if (resolved.width > longest.width) {
-          longest = { hour, minute, second, phrase: resolved.phrase, width: resolved.width }
-        }
-      }
-    }
-  }
-
-  longestExampleCache.set(cacheKey, longest)
-  return longest
-}
-
 const selectedDate = (config: PlaygroundConfig) => {
   if (config.liveTime) {
     return new Date()
@@ -355,9 +162,9 @@ const ensureDailyMaximum = (
 ) => {
   const key = dailyMaximumKey(runtime.language, date)
   if (key === runtime.dailyMaximumKey) {
-    return longestExampleCache.get(key)
+    return findLongestResolvedPhrase(runtime.definition, date)
   }
-  const example = findLongestExample(runtime.language, runtime.definition, date)
+  const example = findLongestResolvedPhrase(runtime.definition, date)
   runtime.dailyMaximumKey = key
   runtime.dailyMaximumWidth = example.width
   return example
@@ -577,7 +384,7 @@ export function CanvasPlayground() {
           const date = selectedDate(current)
           resolve(runtime.definition, getTimeProps(date), runtime.mask)
           runtime.lastTimeKey = timeKey
-          const phrase = resolvedPhrase(runtime.definition, runtime.mask)
+          const phrase = resolvePhrase(runtime.definition, runtime.mask)
           runtime.resolvedPhraseWidth = phrase.width
           if (current.fit !== 'none') {
             ensureDailyMaximum(runtime, current, date)
@@ -601,20 +408,17 @@ export function CanvasPlayground() {
           },
           runtime.rotary,
         )
-        const rotaryFit = applyRotaryFit(
-          runtime.rotary,
-          runtime.definition,
-          runtime.rotaryState,
-          runtime.resolvedPhraseWidth,
-          runtime.dailyMaximumWidth,
-          rotaryResult.scale,
-          runtime.width,
-          runtime.height,
-          current.fit,
-          current.fitMargin,
-          current.translateX,
-          current.translateY,
-        )
+        const rotaryFit = applyRotaryFit(runtime.rotary, runtime.definition, runtime.rotaryState, {
+          resolvedPhraseWidth: runtime.resolvedPhraseWidth,
+          maximumPhraseWidth: runtime.dailyMaximumWidth,
+          baseScale: rotaryResult.scale,
+          width: runtime.width,
+          height: runtime.height,
+          mode: current.fit,
+          margin: current.fitMargin,
+          translateX: current.translateX,
+          translateY: current.translateY,
+        })
 
         if (current.layout !== runtime.targetLayout) {
           startTransition(runtime, current.layout, current.transitionStyle, now, false)

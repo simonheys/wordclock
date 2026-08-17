@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'WordClock Example',
-  description: 'Next.js example app for exercising @simonheys/wordclock.',
+  description: 'Next.js example app for exercising @wordclock/react.',
 }
 
 export default function RootLayout({

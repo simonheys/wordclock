@@ -2,6 +2,8 @@ packages:
   - 'packages/**'
   - 'apps/**'
 
+linkWorkspacePackages: true
+
 allowBuilds:
   '@parcel/watcher@2.5.1': false
   'esbuild@0.28.0': false

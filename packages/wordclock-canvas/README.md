@@ -1,8 +1,12 @@
 # WordClock Canvas
 
-Framework-free canvas renderer for WordClock, published as `@simonheys/wordclock-canvas`.
+Framework-free canvas renderer for WordClock, published as `@wordclock/canvas`.
 
-Where [WordClock React](/packages/wordclock-js) lays words out with flexbox, this package computes an explicit position for every word and draws it to a canvas. That makes two things possible that the DOM version cannot do: the **rotary** layout from the [macOS screen saver](/packages/wordclock-macos), and the staggered **transition** between linear and rotary.
+It computes an explicit position for every word and draws it to a canvas. The
+[WordClock React](/packages/wordclock-js) package wraps this renderer with lifecycle, responsive
+sizing, CSS theme colours, and accessibility. The core supports both the **rotary** layout from the
+[macOS screen saver](/packages/wordclock-macos) and the staggered **transition** between linear and
+rotary.
 
 Zero runtime dependencies. No React, no DOM measurement, no reflow.
 
@@ -36,8 +40,8 @@ import {
   resizeCanvas,
   resolve,
   updateColours,
-} from '@simonheys/wordclock-canvas'
-import words from '@simonheys/wordclock-words/json/English.json'
+} from '@wordclock/canvas'
+import words from '@wordclock/words/json/English.json'
 
 const font = { family: 'system-ui, sans-serif', weight: 700 }
 const context = canvas.getContext('2d')
@@ -114,6 +118,11 @@ setTimeout(tick, millisecondsUntilNextChange(definition))
 | `tracking`, `leading`, `align` | Linear layout metrics.                                                                                                                            |
 | `typeDivisor`                  | Rotary type size relative to the smaller container edge.                                                                                          |
 
+`applyRotaryFit` can scale and translate rotary coordinates around either the highlighted phrase
+or a caller-supplied maximum phrase width. `findLongestResolvedPhrase` finds the widest phrase that
+can actually occur on a selected local day, so responsive sizing need not be based on a hypothetical
+combination of words.
+
 ## Colours
 
 Highlight transitions are ported component by component from the native version, including its asymmetry: highlighting on runs RGB through `quadEaseIn` while alpha uses `quadEaseOut`; highlighting off runs all four through `quadEaseOut`. Each component tweens from its live value, so an interrupted fade resumes rather than snapping.
@@ -133,8 +142,8 @@ The canvas is not readable by assistive technology. Render the highlighted phras
 From the repository root:
 
 ```bash
-pnpm --filter @simonheys/wordclock-canvas build
-pnpm --filter @simonheys/wordclock-canvas test
-pnpm --filter @simonheys/wordclock-canvas typecheck
+pnpm --filter @wordclock/canvas build
+pnpm --filter @wordclock/canvas test
+pnpm --filter @wordclock/canvas typecheck
 pnpm lint
 ```

@@ -1,13 +1,13 @@
 # WordClock Example
 
-Next.js app for exercising `@simonheys/wordclock` against the bundled word files in `@simonheys/wordclock-words`.
+Next.js app for exercising `@wordclock/react` against the bundled word files in `@wordclock/words`.
 
 ## For Consumers
 
 Use this app to inspect how the React package behaves with different language files and container heights. The page lets you:
 
 - mount and unmount the clock component
-- switch between word files from `@simonheys/wordclock-words`
+- switch between word files from `@wordclock/words`
 - test the text fitting behavior at several fixed heights
 
 The implementation is also an example of consumer-owned loading:
@@ -21,7 +21,7 @@ The implementation is also an example of consumer-owned loading:
 - `src/app/_types/word-files.ts` contains the serializable data contracts shared across the
   server/client boundary.
 
-This keeps `@simonheys/wordclock-words` as a raw JSON package while still avoiding eager client-side
+This keeps `@wordclock/words` as a raw JSON package while still avoiding eager client-side
 imports of every word file.
 
 ## For Contributors
@@ -29,12 +29,10 @@ imports of every word file.
 Run commands from the repository root:
 
 ```bash
-pnpm --filter @simonheys/wordclock-example dev
-pnpm --filter @simonheys/wordclock-example format:check
-pnpm --filter @simonheys/wordclock-example typecheck
-pnpm --filter @simonheys/wordclock-example build
-pnpm --filter @simonheys/wordclock-example lint
-pnpm --filter @simonheys/wordclock-example test:e2e
+pnpm --filter @wordclock/example dev
+pnpm --filter @wordclock/example typecheck
+pnpm --filter @wordclock/example build
+pnpm --filter @wordclock/example test:e2e
 ```
 
 The e2e tests are metric- and behavior-based. They verify that the word clock stays within its
@@ -44,5 +42,5 @@ use screenshots for visual regression testing.
 When changing the React package, rebuild it before relying on this app to verify package output:
 
 ```bash
-pnpm --filter @simonheys/wordclock build
+pnpm --filter @wordclock/react build
 ```

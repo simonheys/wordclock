@@ -1,6 +1,6 @@
 # WordClock Words
 
-Word definitions used by `@simonheys/wordclock` to describe time in different languages and styles.
+Word definitions used by `@wordclock/react` to describe time in different languages and styles.
 
 This package is intentionally thin: it publishes the raw word-definition JSON files and a manifest.
 Consumers decide how to inspect, load, validate, cache, or bundle those files.
@@ -11,7 +11,7 @@ It does not publish loader helpers, generated TypeScript modules, or duplicated 
 Import the manifest to list available word files:
 
 ```ts
-import manifest from '@simonheys/wordclock-words/json/Manifest.json'
+import manifest from '@wordclock/words/json/Manifest.json'
 
 const files = manifest.files
 ```
@@ -19,7 +19,7 @@ const files = manifest.files
 Import a specific word file when the consumer wants a static dependency:
 
 ```ts
-import english from '@simonheys/wordclock-words/json/English_simple_fragmented.json'
+import english from '@wordclock/words/json/English_simple_fragmented.json'
 ```
 
 `Manifest.json` contains:
@@ -56,5 +56,5 @@ When adding or changing a word file:
 - run the validation tests
 
 ```bash
-pnpm --filter @simonheys/wordclock-words test
+pnpm --filter @wordclock/words test
 ```

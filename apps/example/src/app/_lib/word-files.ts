@@ -1,5 +1,5 @@
-import { type Manifest, type WordsJson } from '@simonheys/wordclock'
-import manifestJson from '@simonheys/wordclock-words/json/Manifest.json'
+import { type Manifest, type WordsJson } from '@wordclock/react'
+import manifestJson from '@wordclock/words/json/Manifest.json'
 
 import type { WordClockExampleData, WordFileGroup } from '../_types/word-files'
 import { loadWordFile } from './load-word-file'

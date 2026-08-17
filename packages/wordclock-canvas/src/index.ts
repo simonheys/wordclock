@@ -19,6 +19,17 @@ export {
   shortestAngleDelta,
 } from './easing'
 export {
+  applyRotaryFit,
+  findLongestResolvedPhrase,
+  resolvePhrase,
+  type Bounds,
+  type LongestResolvedPhrase,
+  type ResolvedPhrase,
+  type RotaryFitMode,
+  type RotaryFitOptions,
+  type RotaryFitResult,
+} from './fit'
+export {
   cloneCoordinates,
   createCoordinates,
   createRotaryState,

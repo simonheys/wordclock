@@ -2,7 +2,7 @@
 
 import { type ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { WordClock, WordClockContent, type WordsJson } from '@simonheys/wordclock'
+import { WordClock, type WordsJson } from '@wordclock/react'
 
 import { loadWordFile } from '../_lib/load-word-file'
 import type { WordFileGroup } from '../_types/word-files'
@@ -123,9 +123,12 @@ export function WordClockExample({
       >
         {loadError && <div className="p-4 text-sm text-red-600">{loadError}</div>}
         {mounted && (
-          <WordClock data-testid="word-clock-words" words={words}>
-            <WordClockContent />
-          </WordClock>
+          <WordClock
+            data-testid="word-clock-words"
+            foregroundClassName="text-gray-400 dark:text-gray-700"
+            highlightClassName="text-red-500 dark:text-white"
+            words={words}
+          />
         )}
       </div>
     </>

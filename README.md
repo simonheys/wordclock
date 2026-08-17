@@ -16,15 +16,15 @@ https://github.com/simonheys/wordclock/releases
 
 - [WordClock React](/packages/wordclock-js)
 
-  React components published as `@simonheys/wordclock`. The package renders a supplied word definition; consumers decide how to load those definitions.
+  React components published as `@wordclock/react`. The package renders a supplied word definition; consumers decide how to load those definitions.
 
 - [WordClock Canvas](/packages/wordclock-canvas)
 
-  Framework-free canvas renderer published as `@simonheys/wordclock-canvas`. Computes an explicit position for every word, which enables the rotary layout and the transition between linear and rotary.
+  Framework-free canvas renderer published as `@wordclock/canvas`. Computes an explicit position for every word, which enables the rotary layout and the transition between linear and rotary.
 
 - [WordClock Words](/packages/wordclock-words)
 
-  Raw JSON word definitions published as `@simonheys/wordclock-words`. The package is intentionally thin: it contains JSON files and a manifest, not loader helpers.
+  Raw JSON word definitions published as `@wordclock/words`. The package is intentionally thin: it contains JSON files and a manifest, not loader helpers.
 
 - [WordClock Example](/apps/example)
 
