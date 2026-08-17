@@ -84,6 +84,7 @@ interface Runtime {
   dpr: number
   lastFrame: number
   lastTimeKey: number
+  linearScale: number
   resolvedPhraseWidth: number
   dailyMaximumWidth: number
   dailyMaximumKey: string
@@ -127,6 +128,8 @@ const INITIAL_CONFIG: PlaygroundConfig = {
   showPhraseBounds: false,
   replay: 0,
 }
+
+const usesPhraseFit = (fit: FitMode) => fit === 'phrase' || fit === 'phrase-wheel-centred'
 
 const copyCoordinates = (from: readonly Coordinate[], to: Coordinate[]) => {
   const length = from.length
@@ -312,6 +315,7 @@ const createRuntime = (
     dpr: 0,
     lastFrame: now,
     lastTimeKey: -1,
+    linearScale: 0,
     resolvedPhraseWidth: 0,
     dailyMaximumWidth: 0,
     dailyMaximumKey: '',
@@ -372,11 +376,12 @@ export function CanvasPlayground() {
           runtime.height = size.height
           runtime.dpr = wantedDpr
           needsResize = false
-          layoutLinear(
+          const linearResult = layoutLinear(
             runtime.definition,
             { width: size.width, height: size.height },
             runtime.linear,
           )
+          runtime.linearScale = linearResult.scale
         }
 
         const timeKey = selectedTimeKey(current, runtime.definition)
@@ -386,7 +391,7 @@ export function CanvasPlayground() {
           runtime.lastTimeKey = timeKey
           const phrase = resolvePhrase(runtime.definition, runtime.mask)
           runtime.resolvedPhraseWidth = phrase.width
-          if (current.fit !== 'none') {
+          if (usesPhraseFit(current.fit)) {
             ensureDailyMaximum(runtime, current, date)
           }
           const phraseNode = phraseRef.current
@@ -412,6 +417,7 @@ export function CanvasPlayground() {
           resolvedPhraseWidth: runtime.resolvedPhraseWidth,
           maximumPhraseWidth: runtime.dailyMaximumWidth,
           baseScale: rotaryResult.scale,
+          linearScale: runtime.linearScale,
           width: runtime.width,
           height: runtime.height,
           mode: current.fit,
@@ -479,7 +485,7 @@ export function CanvasPlayground() {
 
   const updateFit = (fit: FitMode) => {
     const runtime = runtimeRef.current
-    if (fit !== 'none' && runtime !== null && runtime.language === config.language) {
+    if (usesPhraseFit(fit) && runtime !== null && runtime.language === config.language) {
       ensureDailyMaximum(runtime, config)
     }
     update('fit', fit)
@@ -654,9 +660,12 @@ export function CanvasPlayground() {
               <option value="none">Current heuristic</option>
               <option value="phrase">Fit phrase</option>
               <option value="phrase-wheel-centred">Fit phrase, wheel centred</option>
+              <option value="linear-scale-wheel-centred">
+                Wheel centred, no larger than linear
+              </option>
             </select>
           </Control>
-          {config.fit === 'none' ? null : (
+          {usesPhraseFit(config.fit) ? (
             <RangeControl
               label="Fit margin"
               max={20}
@@ -666,7 +675,7 @@ export function CanvasPlayground() {
               value={config.fitMargin}
               onChange={(value) => update('fitMargin', value)}
             />
-          )}
+          ) : null}
           <RangeControl
             label="Translate X"
             max={400}

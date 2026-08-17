@@ -58,11 +58,14 @@ The rotary-specific props are:
   centred and fits the viewport.
 - `fit="phrase-wheel-centred"`: keep the wheel centre fixed while scaling enough for that phrase to
   fit.
+- `fit="linear-scale-wheel-centred"`: keep the wheel centred and cap rotary type at the fitted
+  linear-layout size; an already-smaller rotary layout is not enlarged.
 - `fitMargin`: breathing room on every edge, as a percentage of the viewport's shorter side.
 - `translateX` and `translateY`: final pixel offsets after fitting.
 - `transitionStyle`: `"fast"`, `"medium"`, or `"slow"`.
 
-Linear layout also accepts `tracking`, `leading`, and `align`.
+Linear layout also accepts `tracking`, `leading`, and `align`. `leading` is extra line height as an
+em fraction and defaults to `0`, matching CSS `line-height: 1` / Tailwind `leading-none`.
 
 `WordClock` accepts normal `div` attributes. It includes an off-screen live `<time role="timer">`
 containing the currently highlighted phrase, while the visual canvas is hidden from assistive

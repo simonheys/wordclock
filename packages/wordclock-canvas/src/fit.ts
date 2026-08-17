@@ -2,7 +2,11 @@ import { getTimeProps, resolve } from './definition'
 import type { RotaryState } from './layout'
 import type { Coordinate, Definition } from './types'
 
-export type RotaryFitMode = 'none' | 'phrase' | 'phrase-wheel-centred'
+export type RotaryFitMode =
+  | 'none'
+  | 'phrase'
+  | 'phrase-wheel-centred'
+  | 'linear-scale-wheel-centred'
 
 export interface Bounds {
   left: number
@@ -26,6 +30,8 @@ export interface RotaryFitOptions {
   width: number
   height: number
   baseScale: number
+  /** Fitted linear-layout scale, used to cap the rotary type size. */
+  linearScale?: number
   resolvedPhraseWidth: number
   maximumPhraseWidth?: number
   mode?: RotaryFitMode
@@ -180,6 +186,7 @@ export const applyRotaryFit = (
     width,
     height,
     baseScale,
+    linearScale = baseScale,
     resolvedPhraseWidth,
     maximumPhraseWidth = resolvedPhraseWidth,
     mode = 'none',
@@ -205,6 +212,18 @@ export const applyRotaryFit = (
     return {
       phrase: transformBounds(phrase, originX, originY, 1, translateX, translateY),
       scale: 1,
+      translateX,
+      translateY,
+    }
+  }
+
+  if (mode === 'linear-scale-wheel-centred') {
+    const cappedScale = Math.min(baseScale, linearScale)
+    const scale = baseScale > 0 ? cappedScale / baseScale : 1
+    transformCoordinates(coordinates, originX, originY, scale, translateX, translateY)
+    return {
+      phrase: transformBounds(phrase, originX, originY, scale, translateX, translateY),
+      scale,
       translateX,
       translateY,
     }

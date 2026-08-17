@@ -76,8 +76,12 @@ export function wrap(
 
 /** Largest scale whose wrapped text still fits the box. */
 export function fitScale(definition: Definition, options: LinearOptions): number {
-  const { width, height, tracking = 1, leading = 0.1 } = options
-  const lineHeight = definition.emHeight * (1 + leading)
+  const { width, height, tracking = 1, leading = 0 } = options
+  // CSS line-height is based on the em, not the font's full bounding box. The
+  // latter can be substantially taller (118px for a 100px system font in
+  // Chromium), which makes a fitted clock much smaller than equivalent DOM
+  // text. Keep ascent/descent for drawing and use the reference em for rows.
+  const lineHeight = definition.referenceSize * (1 + leading)
   if (
     !Number.isFinite(width) ||
     !Number.isFinite(height) ||
@@ -129,10 +133,10 @@ export function layoutLinear(
   options: LinearOptions,
   out?: Coordinate[],
 ): LinearResult {
-  const { width, height, tracking = 1, leading = 0.1, align = 'left', pivot = 'leading' } = options
+  const { width, height, tracking = 1, leading = 0, align = 'left', pivot = 'leading' } = options
   const scale = options.scale ?? fitScale(definition, options)
   const lines = wrap(definition, { maxWidth: width, scale, tracking })
-  const lineHeight = definition.emHeight * scale * (1 + leading)
+  const lineHeight = definition.referenceSize * scale * (1 + leading)
   const rtl = definition.direction === 'rtl'
   const centrePivot = pivot === 'centre'
 

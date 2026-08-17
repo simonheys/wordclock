@@ -90,7 +90,7 @@ describe('fitScale', () => {
     const scale = fitScale(definition, { width, height })
 
     const lines = wrap(definition, { maxWidth: width, scale })
-    expect(lines.length * definition.emHeight * scale * 1.1).toBeLessThanOrEqual(height)
+    expect(lines.length * definition.referenceSize * scale).toBeLessThanOrEqual(height)
     for (const line of lines) {
       expect(line.width).toBeLessThanOrEqual(width)
     }
@@ -107,6 +107,17 @@ describe('fitScale', () => {
     const definition = measured(sequence('minute', 1))
     const scale = fitScale(definition, { width: 1000, height: 1000 })
     expect(scale).toBeGreaterThan(4)
+  })
+
+  it('uses the em rather than the taller glyph bounding box for line height', () => {
+    const definition = measured(sequence('minute', 1))
+    expect(definition.emHeight).toBeGreaterThan(definition.referenceSize)
+
+    const scale = fitScale(definition, { width: 10_000, height: 100 })
+    const layout = layoutLinear(definition, { width: 10_000, height: 100 })
+
+    expect(scale).toBeCloseTo(1, 5)
+    expect(layout.lineHeight).toBeCloseTo(100, 5)
   })
 
   it('returns zero for an unusable box', () => {

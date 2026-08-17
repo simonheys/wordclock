@@ -86,6 +86,7 @@ interface Runtime {
   lastFrame: number
   lastTimeKey: number
   linearOptionsKey: string
+  linearScale: number
   maximumPhraseKey: string
   maximumPhraseWidth: number
   resolvedPhraseWidth: number
@@ -209,6 +210,8 @@ const startTransition = (
   runtime.targetLayout = target
 }
 
+const usesPhraseFit = (fit: RotaryFitMode) => fit === 'phrase' || fit === 'phrase-wheel-centred'
+
 export function WordClock({
   words,
   layout = 'linear',
@@ -218,7 +221,7 @@ export function WordClock({
   translateX = 0,
   translateY = 0,
   tracking = 1,
-  leading = 0.1,
+  leading = 0,
   align = 'left',
   shortestRotation = true,
   highlightInFront = true,
@@ -358,6 +361,7 @@ export function WordClock({
         lastFrame: startedAt,
         lastTimeKey: Number.NaN,
         linearOptionsKey: '',
+        linearScale: 0,
         maximumPhraseKey: '',
         maximumPhraseWidth: 0,
         resolvedPhraseWidth: 0,
@@ -400,7 +404,7 @@ export function WordClock({
           options.align,
         ].join(':')
         if (linearOptionsKey !== runtime.linearOptionsKey) {
-          layoutLinear(
+          const linearResult = layoutLinear(
             runtime.definition,
             {
               width: runtime.width,
@@ -411,6 +415,7 @@ export function WordClock({
             },
             runtime.linear,
           )
+          runtime.linearScale = linearResult.scale
           runtime.linearOptionsKey = linearOptionsKey
         }
 
@@ -430,7 +435,7 @@ export function WordClock({
           options.onPhraseChange?.(phrase.phrase)
         }
 
-        if (options.fit !== 'none' && options.layout === 'rotary') {
+        if (usesPhraseFit(options.fit) && options.layout === 'rotary') {
           const maximumKey = dayKey(selectedDate)
           if (maximumKey !== runtime.maximumPhraseKey) {
             runtime.maximumPhraseWidth = findLongestResolvedPhrase(
@@ -454,6 +459,7 @@ export function WordClock({
           width: runtime.width,
           height: runtime.height,
           baseScale: rotaryResult.scale,
+          linearScale: runtime.linearScale,
           resolvedPhraseWidth: runtime.resolvedPhraseWidth,
           maximumPhraseWidth: runtime.maximumPhraseWidth,
           mode: options.fit,

@@ -85,4 +85,46 @@ describe('phrase fitting', () => {
 
     expect(ten.scale).toBeLessThan(five.scale)
   })
+
+  it('centres the wheel and caps its type at the linear scale without enlarging it', () => {
+    const definition = createDefinition()
+    const state = refreshRotaryMetrics(createRotaryState(definition), definition)
+    const mask = resolve(definition, getTimeProps(new Date(2026, 8, 16, 12, 0, 1)))
+    updateRotaryState(state, definition, mask, 0)
+
+    const width = 300
+    const height = 180
+    const rotary = layoutRotary(definition, state, { width, height })
+    const original = rotary.coordinates.find((coordinate) => coordinate.visible)
+    const originalHeight = original?.h ?? 0
+    const originalX = original?.x ?? 0
+    const originalY = original?.y ?? 0
+    const result = applyRotaryFit(rotary.coordinates, definition, state, {
+      width,
+      height,
+      baseScale: rotary.scale,
+      linearScale: rotary.scale / 2,
+      resolvedPhraseWidth: 230,
+      mode: 'linear-scale-wheel-centred',
+    })
+
+    const visibleRotary = rotary.coordinates.find((coordinate) => coordinate.visible)
+    expect(visibleRotary?.h).toBeCloseTo(originalHeight / 2, 6)
+    expect(visibleRotary?.x).toBeCloseTo(width / 2 + (originalX - width / 2) / 2, 6)
+    expect(visibleRotary?.y).toBeCloseTo(height / 2 + (originalY - height / 2) / 2, 6)
+    expect(result.scale).toBeCloseTo(0.5, 6)
+    expect(result.translateX).toBe(0)
+    expect(result.translateY).toBe(0)
+
+    const alreadySmaller = layoutRotary(definition, state, { width, height })
+    const uncapped = applyRotaryFit(alreadySmaller.coordinates, definition, state, {
+      width,
+      height,
+      baseScale: alreadySmaller.scale,
+      linearScale: alreadySmaller.scale * 2,
+      resolvedPhraseWidth: 230,
+      mode: 'linear-scale-wheel-centred',
+    })
+    expect(uncapped.scale).toBe(1)
+  })
 })
