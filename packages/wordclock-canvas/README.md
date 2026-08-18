@@ -123,8 +123,10 @@ or a caller-supplied maximum phrase width. `findLongestResolvedPhrase` finds the
 can actually occur on a selected local day, so responsive sizing need not be based on a hypothetical
 combination of words.
 
-The `phrase-centred-linear-scale` mode centres the current highlighted phrase and caps rotary type
-at a caller-supplied fitted linear scale without enlarging an already-smaller rotary layout.
+The `phrase-centred-linear-scale` mode centres the longest phrase that can occur on the selected day
+and targets a caller-supplied fitted linear scale, enlarging or shrinking the natural rotary layout
+as needed. It only reduces below the linear size when that maximum phrase would overflow the
+viewport. Using the maximum phrase as a stable envelope prevents the wheel moving as time changes.
 
 ## Colours
 

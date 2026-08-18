@@ -210,7 +210,8 @@ const startTransition = (
   runtime.targetLayout = target
 }
 
-const usesPhraseFit = (fit: RotaryFitMode) => fit === 'phrase' || fit === 'phrase-wheel-centred'
+const usesMaximumPhrase = (fit: RotaryFitMode) =>
+  fit === 'phrase' || fit === 'phrase-wheel-centred' || fit === 'phrase-centred-linear-scale'
 
 export function WordClock({
   words,
@@ -435,7 +436,7 @@ export function WordClock({
           options.onPhraseChange?.(phrase.phrase)
         }
 
-        if (usesPhraseFit(options.fit) && options.layout === 'rotary') {
+        if (usesMaximumPhrase(options.fit) && options.layout === 'rotary') {
           const maximumKey = dayKey(selectedDate)
           if (maximumKey !== runtime.maximumPhraseKey) {
             runtime.maximumPhraseWidth = findLongestResolvedPhrase(

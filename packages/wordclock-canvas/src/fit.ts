@@ -217,11 +217,23 @@ export const applyRotaryFit = (
     }
   }
 
+  const scaleReference = readingLineBounds(
+    definition,
+    state,
+    maximumPhraseWidth,
+    baseScale,
+    originX,
+    originY,
+  )
+
   if (mode === 'phrase-centred-linear-scale') {
-    const cappedScale = Math.min(baseScale, linearScale)
-    const scale = baseScale > 0 ? cappedScale / baseScale : 1
-    const boundsCentreX = (phrase.left + phrase.right) / 2
-    const boundsCentreY = (phrase.top + phrase.bottom) / 2
+    const boundsWidth = Math.max(1, scaleReference.right - scaleReference.left)
+    const boundsHeight = Math.max(1, scaleReference.bottom - scaleReference.top)
+    const linearScaleRatio = baseScale > 0 ? Math.max(0, linearScale) / baseScale : 1
+    const viewportScaleRatio = Math.min(width / boundsWidth, height / boundsHeight)
+    const scale = Math.min(linearScaleRatio, viewportScaleRatio)
+    const boundsCentreX = (scaleReference.left + scaleReference.right) / 2
+    const boundsCentreY = (scaleReference.top + scaleReference.bottom) / 2
     const offsetX = translateX + width / 2 - (originX + (boundsCentreX - originX) * scale)
     const offsetY = translateY + height / 2 - (originY + (boundsCentreY - originY) * scale)
     transformCoordinates(coordinates, originX, originY, scale, offsetX, offsetY)
@@ -233,14 +245,6 @@ export const applyRotaryFit = (
     }
   }
 
-  const scaleReference = readingLineBounds(
-    definition,
-    state,
-    maximumPhraseWidth,
-    baseScale,
-    originX,
-    originY,
-  )
   const padding = Math.min(width, height) * (Math.min(49, Math.max(0, margin)) / 100)
   const boundsWidth = Math.max(1, scaleReference.right - scaleReference.left)
   const boundsHeight = Math.max(1, scaleReference.bottom - scaleReference.top)
