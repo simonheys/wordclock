@@ -94,16 +94,16 @@ importers:
     devDependencies:
       '@semantic-release/commit-analyzer':
         specifier: 13.0.1
-        version: 13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 13.0.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       '@semantic-release/github':
         specifier: 12.0.9
-        version: 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 12.0.9(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       '@semantic-release/npm':
         specifier: 13.1.5
-        version: 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+        version: 13.1.5(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))
       '@semantic-release/release-notes-generator':
         specifier: 14.1.1
-        version: 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 14.1.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       '@simonheys/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
@@ -123,8 +123,8 @@ importers:
         specifier: 19.2.4
         version: 19.2.4(@types/react@19.2.18)
       concurrently:
-        specifier: 9.2.4
-        version: 9.2.4
+        specifier: 10.0.5
+        version: 10.0.5
       happy-dom:
         specifier: 20.11.2
         version: 20.11.2
@@ -136,7 +136,7 @@ importers:
         version: 19.2.8(react@19.2.8)
       semantic-release:
         specifier: 25.0.9
-        version: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+        version: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
       tsdown:
         specifier: 0.22.14
         version: 0.22.14(tsx@4.23.12)(typescript@7.0.2)
@@ -175,19 +175,19 @@ importers:
     devDependencies:
       '@semantic-release/commit-analyzer':
         specifier: 13.0.1
-        version: 13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 13.0.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       '@semantic-release/github':
         specifier: 12.0.9
-        version: 12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 12.0.9(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       '@semantic-release/npm':
         specifier: 13.1.5
-        version: 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
+        version: 13.1.5(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))
       '@semantic-release/release-notes-generator':
         specifier: 14.1.1
-        version: 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+        version: 14.1.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       semantic-release:
         specifier: 25.0.9
-        version: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+        version: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
       vitest:
         specifier: 4.1.10
         version: 4.1.10(@types/node@24.13.3)(happy-dom@20.11.2)(vite@8.2.1(@types/node@24.13.3)(esbuild@0.28.0)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0))
@@ -1675,6 +1675,10 @@ packages:
     resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
+  chalk@5.6.2:
+    resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
   char-regex@1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
     engines: {node: '>=10'}
@@ -1698,10 +1702,6 @@ packages:
   cliui@7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
 
-  cliui@8.0.1:
-    resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
-    engines: {node: '>=12'}
-
   cliui@9.0.1:
     resolution: {integrity: sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==}
     engines: {node: '>=20'}
@@ -1722,9 +1722,9 @@ packages:
   compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
 
-  concurrently@9.2.4:
-    resolution: {integrity: sha512-TZ0CEhyzvFjgtAvHTusDMgj7wNdihCh7LLLrzdUOXIhdlnL2JBBGA9eJxR24rtqgmdjh3OA3hrN1rCHj6HM8qA==}
-    engines: {node: '>=18'}
+  concurrently@10.0.5:
+    resolution: {integrity: sha512-JaP/CoftUrCcAFW/g//RbgEGwlelnEae6cfBLgH6ZdO6s8jPkn6p9SB9u6pdVxYXoiSnFqseOlHfrEfF82TVOg==}
+    engines: {node: '>=22'}
     hasBin: true
 
   config-chain@1.1.13:
@@ -2958,6 +2958,10 @@ packages:
     resolution: {integrity: sha512-CY8u7DtbvucKuquCmOFEKhr9Besln7n9uN8eFbwcoGYWXOMW07u2o8njWaiXt11ylS3qoGF55pILjRmPlbodyg==}
     engines: {node: '>=18'}
 
+  supports-color@10.2.2:
+    resolution: {integrity: sha512-SS+jx45GF1QjgEXQx4NJZV9ImqmO2NPz5FNsIHrsDjh2YsHnawpan7SNQ1o8NuhrbHZy9AZhIoCUiCeaW/C80g==}
+    engines: {node: '>=18'}
+
   supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
@@ -2965,10 +2969,6 @@ packages:
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
-
-  supports-color@8.1.1:
-    resolution: {integrity: sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==}
-    engines: {node: '>=10'}
 
   supports-hyperlinks@3.1.0:
     resolution: {integrity: sha512-2rn0BZ+/f7puLOHZm1HOJfwBggfaHXUpPUSSG/SWM4TWp5KCfmNYwnC3hruy2rZlMnmWZ+QAGpZfchu3f3695A==}
@@ -3314,10 +3314,6 @@ packages:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
 
-  yargs-parser@21.1.1:
-    resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
-    engines: {node: '>=12'}
-
   yargs-parser@22.0.0:
     resolution: {integrity: sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=23}
@@ -3325,10 +3321,6 @@ packages:
   yargs@16.2.0:
     resolution: {integrity: sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==}
     engines: {node: '>=10'}
-
-  yargs@17.7.2:
-    resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
-    engines: {node: '>=12'}
 
   yargs@18.0.0:
     resolution: {integrity: sha512-4UEqdc2RYGHZc7Doyqkrqiln3p9X2DZVxaGbwhn2pi7MrRagKaOcIKe8L3OxYcbhXLgLFUS3zAYuQjKBQgmuNg==}
@@ -3858,23 +3850,23 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@semantic-release/commit-analyzer@13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/commit-analyzer@13.0.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
-      debug: 4.4.0(supports-color@8.1.1)
-      import-from-esm: 2.0.0(supports-color@8.1.1)
+      debug: 4.4.0(supports-color@10.2.2)
+      import-from-esm: 2.0.0(supports-color@10.2.2)
       lodash-es: 4.17.21
       micromatch: 4.0.8
-      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
 
   '@semantic-release/error@4.0.0': {}
 
-  '@semantic-release/github@12.0.8(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/github@12.0.8(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)':
     dependencies:
       '@octokit/core': 7.0.6
       '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
@@ -3882,22 +3874,22 @@ snapshots:
       '@octokit/plugin-throttling': 11.0.3(@octokit/core@7.0.6)
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
       dir-glob: 3.0.1
-      http-proxy-agent: 9.0.0(supports-color@8.1.1)
-      https-proxy-agent: 9.0.0(supports-color@8.1.1)
+      http-proxy-agent: 9.0.0(supports-color@10.2.2)
+      https-proxy-agent: 9.0.0(supports-color@10.2.2)
       issue-parser: 7.0.1
       lodash-es: 4.17.21
       mime: 4.0.6
       p-filter: 4.1.0
-      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
       tinyglobby: 0.2.17
       undici: 7.16.0
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/github@12.0.9(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/github@12.0.9(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)':
     dependencies:
       '@octokit/core': 7.0.6
       '@octokit/plugin-paginate-rest': 14.0.0(@octokit/core@7.0.6)
@@ -3905,22 +3897,22 @@ snapshots:
       '@octokit/plugin-throttling': 11.0.3(@octokit/core@7.0.6)
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
       dir-glob: 3.0.1
-      http-proxy-agent: 9.0.0(supports-color@8.1.1)
-      https-proxy-agent: 9.0.0(supports-color@8.1.1)
+      http-proxy-agent: 9.0.0(supports-color@10.2.2)
+      https-proxy-agent: 9.0.0(supports-color@10.2.2)
       issue-parser: 7.0.1
       lodash-es: 4.17.21
       mime: 4.0.6
       p-filter: 4.1.0
-      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
       tinyglobby: 0.2.17
       undici: 7.16.0
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@semantic-release/npm@13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))':
+  '@semantic-release/npm@13.1.5(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))':
     dependencies:
       '@actions/core': 3.0.1
       '@semantic-release/error': 4.0.0
@@ -3935,21 +3927,21 @@ snapshots:
       rc: 1.2.8
       read-pkg: 10.0.0
       registry-auth-token: 5.0.3
-      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
       semver: 7.7.3
       tempy: 3.1.0
 
-  '@semantic-release/release-notes-generator@14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)':
+  '@semantic-release/release-notes-generator@14.1.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)':
     dependencies:
       conventional-changelog-angular: 8.0.0
       conventional-changelog-writer: 8.0.0
       conventional-commits-filter: 5.0.0
       conventional-commits-parser: 6.0.0
-      debug: 4.4.3(supports-color@8.1.1)
-      import-from-esm: 2.0.0(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
+      import-from-esm: 2.0.0(supports-color@10.2.2)
       lodash-es: 4.17.21
       read-package-up: 11.0.0
-      semantic-release: 25.0.9(supports-color@8.1.1)(typescript@7.0.2)
+      semantic-release: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -4385,6 +4377,8 @@ snapshots:
 
   chalk@5.4.1: {}
 
+  chalk@5.6.2: {}
+
   char-regex@1.0.2: {}
 
   clean-stack@5.2.0:
@@ -4414,12 +4408,6 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
 
-  cliui@8.0.1:
-    dependencies:
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
-      wrap-ansi: 7.0.0
-
   cliui@9.0.1:
     dependencies:
       string-width: 7.2.0
@@ -4443,14 +4431,14 @@ snapshots:
       array-ify: 1.0.0
       dot-prop: 5.3.0
 
-  concurrently@9.2.4:
+  concurrently@10.0.5:
     dependencies:
-      chalk: 4.1.2
+      chalk: 5.6.2
       rxjs: 7.8.2
       shell-quote: 1.9.0
-      supports-color: 8.1.1
+      supports-color: 10.2.2
       tree-kill: 1.2.2
-      yargs: 17.7.2
+      yargs: 18.0.0
 
   config-chain@1.1.13:
     dependencies:
@@ -4504,17 +4492,17 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  debug@4.4.0(supports-color@8.1.1):
+  debug@4.4.0(supports-color@10.2.2):
     dependencies:
       ms: 2.1.3
     optionalDependencies:
-      supports-color: 8.1.1
+      supports-color: 10.2.2
 
-  debug@4.4.3(supports-color@8.1.1):
+  debug@4.4.3(supports-color@10.2.2):
     dependencies:
       ms: 2.1.3
     optionalDependencies:
-      supports-color: 8.1.1
+      supports-color: 10.2.2
 
   deep-extend@0.6.0: {}
 
@@ -4761,17 +4749,17 @@ snapshots:
     dependencies:
       lru-cache: 11.2.4
 
-  http-proxy-agent@9.0.0(supports-color@8.1.1):
+  http-proxy-agent@9.0.0(supports-color@10.2.2):
     dependencies:
       agent-base: 9.0.0
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@9.0.0(supports-color@8.1.1):
+  https-proxy-agent@9.0.0(supports-color@10.2.2):
     dependencies:
       agent-base: 9.0.0
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -4786,9 +4774,9 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
-  import-from-esm@2.0.0(supports-color@8.1.1):
+  import-from-esm@2.0.0(supports-color@10.2.2):
     dependencies:
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
       import-meta-resolve: 4.1.0
     transitivePeerDependencies:
       - supports-color
@@ -5394,16 +5382,16 @@ snapshots:
 
   scheduler@0.27.0: {}
 
-  semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2):
+  semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2):
     dependencies:
-      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       '@semantic-release/error': 4.0.0
-      '@semantic-release/github': 12.0.8(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
-      '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))
-      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@8.1.1)(typescript@7.0.2))(supports-color@8.1.1)
+      '@semantic-release/github': 12.0.8(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
+      '@semantic-release/npm': 13.1.5(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))
+      '@semantic-release/release-notes-generator': 14.1.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
       aggregate-error: 5.0.0
       cosmiconfig: 9.0.0(typescript@7.0.2)
-      debug: 4.4.3(supports-color@8.1.1)
+      debug: 4.4.3(supports-color@10.2.2)
       env-ci: 11.2.0
       execa: 9.5.2
       figures: 6.1.0
@@ -5412,7 +5400,7 @@ snapshots:
       git-log-parser: 1.2.1
       hook-std: 4.0.0
       hosted-git-info: 9.0.2
-      import-from-esm: 2.0.0(supports-color@8.1.1)
+      import-from-esm: 2.0.0(supports-color@10.2.2)
       lodash-es: 4.17.21
       marked: 15.0.12
       marked-terminal: 7.3.0(marked@15.0.12)
@@ -5571,15 +5559,13 @@ snapshots:
       function-timeout: 1.0.2
       time-span: 5.1.0
 
+  supports-color@10.2.2: {}
+
   supports-color@5.5.0:
     dependencies:
       has-flag: 3.0.0
 
   supports-color@7.2.0:
-    dependencies:
-      has-flag: 4.0.0
-
-  supports-color@8.1.1:
     dependencies:
       has-flag: 4.0.0
 
@@ -5846,8 +5832,6 @@ snapshots:
 
   yargs-parser@20.2.9: {}
 
-  yargs-parser@21.1.1: {}
-
   yargs-parser@22.0.0: {}
 
   yargs@16.2.0:
@@ -5859,16 +5843,6 @@ snapshots:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 20.2.9
-
-  yargs@17.7.2:
-    dependencies:
-      cliui: 8.0.1
-      escalade: 3.2.0
-      get-caller-file: 2.0.5
-      require-directory: 2.1.1
-      string-width: 4.2.3
-      y18n: 5.0.8
-      yargs-parser: 21.1.1
 
   yargs@18.0.0:
     dependencies:
