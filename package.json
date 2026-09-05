@@ -19,11 +19,11 @@
   },
   "devDependencies": {
     "husky": "9.1.7",
-    "lint-staged": "17.3.0",
-    "oxfmt": "0.63.0",
-    "oxlint": "1.78.0",
-    "tsx": "4.23.12",
-    "turbo": "2.10.10"
+    "lint-staged": "17.5.0",
+    "oxfmt": "0.66.0",
+    "oxlint": "1.81.0",
+    "tsx": "4.23.13",
+    "turbo": "2.10.12"
   },
   "lint-staged": {
     "*": "oxfmt --no-error-on-unmatched-pattern",
@@ -32,5 +32,5 @@
       "pnpm --filter @simonheys/wordclock exec vitest related --run"
     ]
   },
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@11.25.0"
 }
