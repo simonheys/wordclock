@@ -16,7 +16,7 @@
     "release": "tsx ./_scripts/release"
   },
   "devDependencies": {
-    "dotenv": "17.4.2",
+    "dotenv": "18.0.4",
     "fs-extra": "11.4.0",
     "glob": "13.0.6",
     "moment": "2.30.1",
