@@ -4,5 +4,10 @@ packages:
 
 allowBuilds:
   '@parcel/watcher@2.5.1': false
-  'esbuild@0.28.0': false
+  'esbuild@0.28.2': false
   'sharp@0.34.5': false
+
+# Upstream tools pin vulnerable versions; keep their security fixes in place.
+overrides:
+  'oxfmt>tinypool': 2.1.2
+  'concurrently>shell-quote': 1.11.0
