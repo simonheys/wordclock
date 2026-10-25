@@ -12,7 +12,7 @@
   "dependencies": {
     "@simonheys/wordclock": "workspace:*",
     "@simonheys/wordclock-words": "workspace:*",
-    "next": "16.3.1",
+    "next": "16.4.3",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
