@@ -3,11 +3,11 @@
 import { useEffect, useMemo } from 'react'
 
 import type { CSSProperties, FC, HTMLAttributes } from 'react'
-import { useResizeTextToFit } from '../hooks/useResizeTextToFit.js'
-import useTimeProps from '../hooks/useTimeProps.js'
-import * as WordsFileParser from '../modules/WordsFileParser.js'
-import type { WordsJson, WordsLabel, WordsLogic } from './types.js'
-import { WordClockProvider } from './useWordClock.js'
+import { useResizeTextToFit } from '../hooks/useResizeTextToFit'
+import useTimeProps from '../hooks/useTimeProps'
+import * as WordsFileParser from '../modules/WordsFileParser'
+import type { WordsJson, WordsLabel, WordsLogic } from './types'
+import { WordClockProvider } from './useWordClock'
 
 const containerStyle: CSSProperties = {
   width: '100%',

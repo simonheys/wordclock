@@ -86,8 +86,9 @@ pnpm --filter @simonheys/wordclock-example dev
 
 The package build emits ESM, CommonJS, and TypeScript declaration files under `dist`.
 
-Vite builds the ESM and CommonJS entry points; TypeScript emits declarations alongside them.
-Relative source imports use `.js` extensions so the emitted declarations also resolve in Node.js.
+Vite builds the ESM and CommonJS entry points. A separate Vite build uses
+`rolldown-plugin-dts` with its TypeScript 7 generator to bundle the declarations into `dist/index.d.ts`.
+Source imports remain extensionless; the declaration bundle resolves internal imports for consumers.
 
 After building, check both runtime exports and TypeScript consumers with:
 

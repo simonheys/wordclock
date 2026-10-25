@@ -5,7 +5,8 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "noEmitOnError": true
   },
   "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/dist/**"]
 }
