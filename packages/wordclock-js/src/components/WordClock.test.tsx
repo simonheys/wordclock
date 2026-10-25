@@ -82,18 +82,18 @@ test('highlights words for the current second and updates every second', () => {
   vi.setSystemTime(new Date(2024, 0, 1, 12, 0, 0))
 
   render(
-    <WordClock words={secondsWords}>
+    <WordClock words={secondsWords} style={{ color: '#123456' }}>
       <WordClockContent />
     </WordClock>,
   )
 
   expect(screen.getByText('zero seconds')).toHaveStyle({ color: '#ff0000' })
-  expect(screen.getByText('one second')).toHaveStyle({ color: 'inherit' })
+  expect(screen.getByText('one second')).toHaveStyle({ color: '#123456' })
 
   act(() => {
     vi.advanceTimersByTime(1000)
   })
 
-  expect(screen.getByText('zero seconds')).toHaveStyle({ color: 'inherit' })
+  expect(screen.getByText('zero seconds')).toHaveStyle({ color: '#123456' })
   expect(screen.getByText('one second')).toHaveStyle({ color: '#ff0000' })
 })
