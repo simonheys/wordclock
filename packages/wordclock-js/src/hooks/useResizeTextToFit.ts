@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react'
 
-import useSize from './useSize'
+import useSize from './useSize.js'
 
 const minimumFontSize = 1
 const maximumFontSize = 256

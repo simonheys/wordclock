@@ -1,8 +1,8 @@
 import type { FC } from 'react'
-import * as LogicParser from '../modules/LogicParser'
-import { useWordClock } from './useWordClock'
-import type { WordClockWordProps } from './WordClockWord'
-import { WordClockWord } from './WordClockWord'
+import * as LogicParser from '../modules/LogicParser.js'
+import { useWordClock } from './useWordClock.js'
+import type { WordClockWordProps } from './WordClockWord.js'
+import { WordClockWord } from './WordClockWord.js'
 
 interface WordClockContentProps {
   wordComponent?: FC<WordClockWordProps>

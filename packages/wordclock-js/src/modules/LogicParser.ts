@@ -1,4 +1,4 @@
-import * as LogicParserStringUtil from './LogicParserStringUtil'
+import * as LogicParserStringUtil from './LogicParserStringUtil.js'
 
 // /** Extract the 'data' type of each item in the union if it exists */
 // type ExtractDataType<Type> = Type extends { data: any } ? Type["data"] : never

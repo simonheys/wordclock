@@ -85,3 +85,14 @@ pnpm --filter @simonheys/wordclock-example dev
 ```
 
 The package build emits ESM, CommonJS, and TypeScript declaration files under `dist`.
+
+Vite builds the ESM and CommonJS entry points; TypeScript emits declarations alongside them.
+Relative source imports use `.js` extensions so the emitted declarations also resolve in Node.js.
+
+After building, check both runtime exports and TypeScript consumers with:
+
+```bash
+pnpm --filter @simonheys/wordclock test:package
+```
+
+Use `pnpm --filter @simonheys/wordclock build:watch` to rebuild JavaScript and declarations as source files change.
