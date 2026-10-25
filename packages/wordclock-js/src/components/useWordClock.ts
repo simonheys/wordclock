@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 
-import type { TimeProps } from '../hooks/useTimeProps.js'
-import type { WordsLabel, WordsLogic } from './types.js'
+import type { TimeProps } from '../hooks/useTimeProps'
+import type { WordsLabel, WordsLogic } from './types'
 
 interface WordClockContentProps {
   logic: WordsLogic

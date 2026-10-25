@@ -36,8 +36,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build && tsc -p tsconfig.build.json",
-    "build:watch": "pnpm build && concurrently -k \"vite build --watch --emptyOutDir false\" \"tsc -p tsconfig.build.json --watch\"",
+    "build": "vite build && node scripts/build-types.mjs",
+    "build:watch": "pnpm build && concurrently -k \"vite build --watch --emptyOutDir false\" \"node scripts/build-types.mjs --watch\"",
     "dev": "concurrently \"pnpm build:watch\" \"pnpm dev:example\"",
     "dev:example": "cd example && pnpm dev",
     "publish-npm": "pnpm build && npm publish --access public",
