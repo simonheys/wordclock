@@ -1,0 +1,10 @@
+{
+  "extends": "../../typescript-config/react-library.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "verbatimModuleSyntax": false,
+    "types": ["react"]
+  },
+  "include": ["types/consumer.mts", "types/consumer.cts"]
+}

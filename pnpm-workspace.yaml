@@ -9,5 +9,5 @@ allowBuilds:
 
 # Upstream tools pin vulnerable versions; keep their security fixes in place.
 overrides:
-  'oxfmt>tinypool': 2.1.2
-  'concurrently>shell-quote': 1.11.0
+  'oxfmt>tinypool': 2.2.0
+  'concurrently>shell-quote': 1.12.0

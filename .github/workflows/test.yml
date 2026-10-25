@@ -30,6 +30,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm build
+      - name: Check package exports
+        run: pnpm --filter @simonheys/wordclock test:package
       - name: Test
         run: pnpm test
 
