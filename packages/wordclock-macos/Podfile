@@ -3,7 +3,7 @@ inhibit_all_warnings!
 
 def myPods
   platform :osx, '11.5'
-	pod 'CocoaLumberjack', '~> 1.8'
+	pod 'CocoaLumberjack', '~> 3.0'
   pod 'libextobjc/EXTScope', '~> 0.4'
 end
 
