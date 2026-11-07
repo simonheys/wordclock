@@ -18,7 +18,7 @@
   "devDependencies": {
     "dotenv": "18.0.9",
     "fs-extra": "11.4.1",
-    "glob": "13.0.6",
+    "glob": "13.0.7",
     "moment": "2.31.0",
     "tsx": "4.23.15",
     "xml2js": "0.6.2"
