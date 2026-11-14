@@ -20,10 +20,10 @@
   "devDependencies": {
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "oxfmt": "0.74.0",
-    "oxlint": "1.89.0",
+    "oxfmt": "0.78.0",
+    "oxlint": "1.93.0",
     "tsx": "4.23.15",
-    "turbo": "2.11.10"
+    "turbo": "2.11.11"
   },
   "lint-staged": {
     "*": "oxfmt --no-error-on-unmatched-pattern",
@@ -32,5 +32,5 @@
       "pnpm --filter @simonheys/wordclock exec vitest related --run"
     ]
   },
-  "packageManager": "pnpm@12.15.0"
+  "packageManager": "pnpm@12.18.0"
 }
