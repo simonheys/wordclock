@@ -66,7 +66,7 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "rolldown-plugin-dts": "0.28.8",
-    "semantic-release": "25.0.9",
+    "semantic-release": "26.0.1",
     "typescript": "7.0.2",
     "vite": "8.3.5",
     "vitest": "5.0.5"
