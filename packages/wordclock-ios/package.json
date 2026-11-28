@@ -7,7 +7,7 @@
     "format": "tsx ./_scripts/code-format"
   },
   "devDependencies": {
-    "glob": "13.0.6",
+    "glob": "13.0.7",
     "tsx": "4.23.15"
   }
 }
